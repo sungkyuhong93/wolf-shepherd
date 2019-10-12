@@ -1,0 +1,256 @@
+<!-- FORM SNIPPET -->  
+  <div class="grid--full">
+      <div class="grid__item large--two-thirds push--large--one-sixth">
+ 
+        <div class="contact-us-page form-vertical">
+              {% form 'contact' %}
+ 
+              {% comment %}
+              Successful message
+              {% endcomment %}
+              {% if form.posted_successfully? %}
+              <p class="note form-success">
+                {{ 'contact.form.post_success' | t }}
+              </p>
+              {% endif %}
+              {{ form.errors | default_errors }}
+ 
+          
+		<!-- Begin going through blocks and adding fields to the Form -->  
+          {% for block in section.blocks %}
+				
+          	<!-- Field Type: Text -->
+              {% if block.type == 'text' %}
+                <label for="DemoForm{{block.settings.title}}" class="hidden-label">{{ block.settings.title }}</label>
+                <input type="{{block.settings.type}}" 
+                       id="DemoForm{{block.settings.title}}" 
+                       class="input-full" 
+                       name="contact[{{ block.settings.title }}]" 
+                       placeholder = "{{ block.settings.title | capitalize }}{% if block.settings.required %}*{%endif%}" 
+                       {% if block.settings.required %} required{% endif %}
+                       {% if block.settings.type == 'text' %} autocapitalize="words"
+                       {% elsif block.settings.type == 'email' %} autocorrect="off" autocapitalize="off"
+                       {% else %} pattern="[0-9\-]*" {% endif %}
+                 >
+              {% endif %}
+ 
+          
+          	<!-- Field Type: Textarea -->
+              {% if block.type == 'textarea' %}
+                <label for="DemoFormName" class="hidden-label">{{ block.settings.title }}</label>
+              	<textarea rows="10" id="DemoFormMessage" 
+                          class="input-full" 
+                          name="contact[{{block.settings.title}}]" 
+                          {% if block.settings.required %} required {%endif%}
+                >{{block.settings.title | capitalize}}{% if block.settings.required %}*{%endif%}</textarea>
+              {% endif %}
+ 
+          
+          	<!-- Field Type: Dropdown -->
+              {% if block.type == 'dropdown' %}
+          		{% assign options = block.settings.dropdown_options | split: ',' %}
+				<select name = "{{block.settings.title}}" {% if block.settings.required %}required{%endif%}>
+                  <option disabled selected value = "{{block.settings.title}}">
+                    {{ block.settings.title | capitalize }}{% if block.settings.required %}*{% endif %}
+                  </option>
+                  {% for option in options %}
+	                  <option value = "{{option | strip }}">{{option | strip }}</option>
+                  {% endfor %}
+          		</select>
+              {% endif %}
+
+
+
+     <!-------------------- NEW FIELDS (TEMP) - Some do not apply to contact but will be used for general form ------>
+
+              <!-- Field Type: Radio -->
+              	{% if block.type == 'radio' %}
+              		{% assign options = block.settings.radio_options | split: ',' %}
+              		{% for option in options %}
+              			<input type = "radio" name = "{{block.settings.title}}" value = "{{option | strip}}">{{option | strip}} 
+              		{% endfor %}
+              	{% endif %}
+
+              	<!-- Field Type: Checkbox -->
+              		{% if block.type == 'checkboxes' %}
+              			{% assign options = block.settings.checkbox_options | split: ',' %}
+              			{% for option in options %}
+              				<input type = "checkbox" name = "{{block.settings.title}}" value = "{{option | strip}}">{{option | strip}} 
+              			{% endfor %}
+              		{% endif %}
+
+
+              <!-- Field Type: Password: SHOULD ONLY BE USED ON CREATE ACCOUNT FORMS --> 
+	              {% if block.type == 'password' %}
+	              <label for="FormPassword" class="hidden-label">{{block.settings.title}}</label>
+	              <input type="password" 
+	              		 class="input-full"
+	              		 name="password"
+	              		 placeholder="{{block.settings.title| capitalize}}*">
+	           	  {% endif %}
+
+
+          
+	          	<!-- Field Type: Reset -->
+		          	{% if block.type == 'reset' %}
+		          	<input type="reset" placeholder="{{block.settings.title}}">
+		 			{% endif %}
+
+
+          {% endfor %} 
+          <!-- End Block Loop -->
+ 
+ 
+          <input type="submit" class="button left" value="{{section.settings.cta_label}}">
+ 
+        {% endform %}
+        </div>
+        
+     </div>
+  </div>
+ 
+
+
+{% schema %}
+  {
+    "name": "Form Builder",
+ 	"blocks": [
+	  {
+		"name": "Text Field (Oneline)",
+		"type": "text",
+		"settings": [
+		  {
+			"type": "checkbox",
+			"id": "required",
+			"label": "Required",
+			"default": true
+		  },
+		  {
+		    "type": "text",
+			"id": "title",
+			"label": "Text field label"
+		  },
+		  {
+			"type": "select",
+			"id": "type",
+			"options": [
+				{"value": "text", "label": "Standard Text"},
+				{"value": "email", "label": "Email Address"},
+				{"value": "tel", "label": "Phone Number"}
+			],
+			"label": "Text Field Data"
+		  }
+		]
+	  },
+	  {
+		"name": "Text Field (Multiline)",
+		"type": "textarea",
+		"settings": [
+		  {
+			"type": "checkbox",
+			"id": "required",
+			"label": "Required",
+			"default": true
+		  },
+		  {
+		    "type": "text",
+			"id": "title",
+			"label": "Text field label"
+		  }
+		]
+	  },
+	  {
+		"name": "Dropdown Box",
+		"type": "dropdown",
+		"settings": [
+		  {
+			"type": "checkbox",
+			"id": "required",
+			"label": "Required",
+			"default": false
+		  },
+		  {
+		    "type": "text",
+			"id": "title",
+			"label": "Dropdown label"
+		  },
+		  {
+			"type": "textarea",
+			"id": "dropdown_options",
+			"label": "Dropdown Box Options",
+			"info": "Please separate options with a comma"
+		  }
+		]
+	},
+	{
+		"name": "Radio Buttons",
+		"type": "radio",
+		"settings": [
+			{
+				"type": "checkbox",
+				"id": "required",
+				"label": "Required",
+				"default": false
+		  	},
+		  	{
+		  		"type": "text",
+		  		"id": "title",
+		  		"label": "Radio label"
+		  	},
+		  	{
+				"type": "textarea",
+				"id": "radio_options",
+				"label": "Radio Button Options",
+				"info": "Please separate options with a comma"
+		  	}
+		]
+	},
+	{
+		"name": "Checkbox Selections",
+		"type": "checkboxes",
+		"settings": [
+			{
+				"type": "checkbox",
+				"id": "required",
+				"label": "Required",
+				"default": false
+		  	},
+		  	{
+		  		"type": "text",
+		  		"id": "title",
+		  		"label": "Checbox label"
+		  	},
+		  	{
+				"type": "textarea",
+				"id": "checkbox_options",
+				"label": "Checkbox Options",
+				"info": "Please separate options with a comma"
+		  	}
+		]
+	},
+	{
+		"name": "Password Field",
+		"type": "password",
+		"settings": [
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Password field label"
+			}
+		]
+	},
+	{
+		"name": "Reset Field",
+		"type": "reset",
+		"settings": [
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Reset field label"
+			}
+		]
+	}
+  ]
+}
+
+{% endschema %}

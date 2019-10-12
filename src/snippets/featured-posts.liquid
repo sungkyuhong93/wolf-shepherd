@@ -1,0 +1,36 @@
+{% comment %}
+  Set the default grid_item_width if no variable is set
+{% endcomment %}
+{% unless grid_item_width %}
+  {% assign grid_item_width = gridWidth %}
+{% endunless %}
+
+<div class="grid__item  {{ grid_item_width }}  blog-grid-item__match-height">
+
+  <div class="blog-grid-item">
+    <a href="{{ article.url }}" class="blog-grid-item__image-container" style="background-image: url({{ article.image | img_url: '600x' }})">
+    </a>
+  </div>
+
+  <div class="blog-grid-item__meta">
+
+    <a href="{{ article.url }}">
+      <h2 class="h5 blog-grid-item__title">
+        {{ article.title }}
+      </h2>
+    </a>
+
+    <p class="rte blog-grid-item__excerpt">
+      {% if article.excerpt.size > 0 %}
+        {{ article.excerpt | strip_html | truncate: 100 | escape }}
+      {% else %}
+        {{ article.content | strip_html | truncate: 100 | escape }}
+      {% endif %}
+    </p>
+
+    {% comment %}<a href="{{ article.url }}" class="">
+      {{ 'blogs.article.read_more' | t }}
+    </a>{% endcomment %}
+
+  </div>
+</div>

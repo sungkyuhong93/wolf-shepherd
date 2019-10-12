@@ -1,0 +1,25 @@
+<!--- snippets/search-form.liquid -->
+<div class="search-hero">
+    <div class="search-hero__close">{% include 'icons' with icon: 'close' %}</div>
+    <div class="search-hero__inner">
+        <form action="/search" method="get" role="search" class="search">
+            <div class="search-title">
+                <h6>Search {{ store.name }}</h6>
+                <p>Start typing...</p>
+            </div>
+            <div class="input-group">
+                <input type="search"
+                  id="SearchInput"
+                  class="input-group__field search__input"
+                  name="q"
+                  value="{{ search.terms | escape }}"
+                  placeholder="Search..."
+                  aria-label="{{ 'general.search.placeholder' | t }}"
+                  autofocus>
+                <span class="input-group__btn">
+                  <button class="search__submit" type="submit">{{ 'general.search.submit' | t }}</button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>

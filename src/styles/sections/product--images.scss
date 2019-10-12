@@ -1,0 +1,32 @@
+/*============================================================================
+  #Product--images
+==============================================================================*/
+.product-images{
+	display: inline-block;
+	width:100%;
+	img{
+		outline: none!important;
+		z-index: 10 !important;
+	}
+}
+.main-product-slider:not(.slick-initialized), .product-slider-nav:not(.slick-initialized){
+    display: none
+}
+.main-product-slider{
+	overflow: hidden;
+	position: relative;
+}
+
+.product-slider-nav{
+	overflow: hidden;
+}
+
+.product-slider-nav__image{
+	img{
+		border-bottom:3px solid #fff;
+		padding: 10px;
+	}
+	&.slick-current img{
+		border-bottom:3px solid red;
+	}
+}

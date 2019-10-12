@@ -1,0 +1,105 @@
+{% if type == "section" %}
+  {% assign sectionId = section.id %}
+  {% assign sectionEnable = section.settings.enable %}
+  {% assign sectionAlign = section.settings.alignment %}
+  {% assign sectionImage = section.settings.image | img_url: 'master'  %}
+  {% assign sectionImageMobile = section.settings.mobile_image | img_url: 'master'  %}
+  {% assign sectionFullWidth = section.settings.full-width %}
+  {% assign sectionMarginBottom = section.settings.margin_bottom %}
+  {% assign sectionTextColor = section.settings.text_color %}
+  {% assign sectionTitle = section.settings.title %}
+  {% assign sectionSubTitle = section.settings.subtitle  %}
+  {% assign sectionText = section.settings.text| strip_html %}
+  {% assign sectionButtonLabel = section.settings.button_label %}
+  {% assign sectionButtonLink = section.settings.button_link %}
+  {% assign sectionButtonColor = section.settings.button_color %}
+
+{% elsif type == "article" %}
+  {% assign sectionId = 'null' %}
+  {% assign sectionEnable = true %}
+  {% assign sectionAlign = 'center' %}
+  {% assign sectionImage = article.image | img_url: 'master' %}
+  {% assign sectionImageMobile = article.image | img_url: 'master' %}
+  {% assign sectionFullWidth = 'wrapper' %}
+  {% assign sectionMarginBottom = 'margin' %}
+  {% assign sectionTextColor = 'white' %}
+  {% assign sectionTitle = article.title %}
+  {% assign sectionSubTitle = ''  %}
+  {% assign sectionText = article.content | strip_html | truncate: 100 %}
+  {% assign sectionButtonLabel = 'Read more' %}
+  {% assign sectionButtonLink = article.url %}
+  {% assign sectionButtonColor = 'white' %}
+
+{% else %}
+  {% assign sectionId = block.id %}
+  {% assign sectionEnable = block.settings.enable %}
+  {% assign sectionAlign = block.settings.alignment %}
+  {% assign sectionImage = block.settings.image | img_url: 'master'  %}
+  {% assign sectionImageMobile = block.settings.mobile_image | img_url: 'master'  %}
+  {% assign sectionFullWidth = block.settings.full-width %}
+  {% assign sectionMarginBottom = block.settings.margin_bottom %}
+  {% assign sectionTextColor = block.settings.text_color %}
+  {% assign sectionTitle = block.settings.title  %}
+  {% assign sectionSubTitle = block.settings.subtitle %}
+  {% assign sectionText = block.settings.text | strip_html %}
+  {% assign sectionButtonLabel = block.settings.button_label %}
+  {% assign sectionButtonLink = block.settings.button_link %}
+  {% assign sectionButtonColor = block.settings.button_color %}
+
+
+{% endif %}
+
+{% if sectionEnable %}
+  {%- capture alignContent -%}
+    {% case sectionAlign %}
+      {% when 'left' %}
+        hero-main--left
+      {% when 'right' %}
+        hero-main--right
+      {% else %}
+        hero-main--center
+    {% endcase %}
+  {%- endcapture -%}
+
+  <style>
+    .hero-main--{{ sectionId }}{
+      background-image:url('{{ sectionImageMobile }}');
+    }
+    @media screen and (min-width: 749px) {
+      .hero-main--{{ sectionId }}{
+        background-image:url('{{ sectionImage }}');
+      }
+    }
+  </style>
+
+  {% if sectionFullWidth != 'full-width' %}<div class="page-width">{% endif %}
+   
+  <div class="hero-main {{ alignContent }} hero-main--{{ sectionId }} 
+    {% if sectionTextColor == 'white' %}hero-main--white{% endif %}
+    {% if sectionMarginBottom == 'margin' %}section-margin-bottom{% endif %}">
+
+    <div class="hero-main__wrapper">
+      
+      {% if sectionSubTitle != blank %}
+        <h4 class="hero-subtitle">{{ sectionSubTitle | escape }}</h4>
+      {% endif %}
+
+      {% if sectionTitle != blank %}
+        <h2 class="h1 hero-main__title">{{ sectionTitle | escape }}</h2>
+      {% endif %}
+      
+        <p class="rte-setting hero-main__text">
+        {% if sectionText != blank %}{{ sectionText }}{% endif %}
+        </p>
+
+        {% if sectionButtonLabel != blank and sectionButtonLink != blank %}
+          <a href="{{ sectionButtonLink }}" class="{% if sectionButtonColor == 'white' %} button--white-no-border {% else %} button {% endif %}">
+            {{ sectionButtonLabel }}
+          </a>
+        {% endif %}
+    </div>
+  </div>
+
+  {% if sectionFullWidth != 'full-width' %}</div>{% endif %}
+  
+{% endif %}

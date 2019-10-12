@@ -1,0 +1,214 @@
+/* ============================================================================
+#Exit intent
+============================================================================== */
+.error_special {
+  background: $COLOR_ERROR;
+  padding: 10px;
+
+  span {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .help-error {
+    color: $COLOR_ERROR;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.modal {
+  $parent: &;
+  background: rgba($COLOR_BLACK, 0.5);
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: 0.2s;
+  width: 100%;
+  z-index: 999;
+
+  &.is-active {
+    bottom: 0;
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &--corner-block {
+    background-image: linear-gradient(45deg, #F2C94C, #FF2687);
+    border-radius: 7px;
+    bottom: 0;
+    box-shadow: 0 0 33px rgba($COLOR_BLACK, 0.2);
+    height: initial;
+    left: 0;
+    max-width: 100%;
+    padding: 10px;
+    right: 0;
+    top: initial;
+    transform: none;
+    z-index: 1000;
+
+    #{$parent}__signup_form {
+      background: $COLOR_WHITE;
+      border-radius: 4px;
+      bottom: initial;
+      height: initial;
+      left: initial;
+      max-width: initial;
+      padding: 20px;
+      position: static;
+      right: initial;
+      top: initial;
+      transform: none;
+      width: 100%;
+
+      form {
+        margin: 0 auto 10px;
+        padding: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  &__close-link {
+    bottom: 11px;
+    color: rgba($COLOR_BLACK, 0.5);
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 10px;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  &__close {
+    padding: 5px;
+    position: absolute;
+    right: 5px;
+    top: -40px;
+  }
+
+  &__title {
+    color: $COLOR_SECONDARY;
+    letter-spacing: 2px;
+    margin: 0 auto 15px;
+    width: 100%;
+  }
+
+  &__message {
+    color: $COLOR_SECONDARY;
+    font-size: 15px;
+    margin: 0 auto 20px;
+    width: 100%;
+  }
+
+  .inline-form {
+    border: 1px solid $COLOR_BLACK;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  &--white {
+    color: $COLOR_WHITE;
+
+    #{$parent}__close, #{$parent}__close-link {
+      color: $COLOR_WHITE;
+
+      .icon {
+        fill: $COLOR_WHITE;
+      }
+    }
+
+    .inline-form {
+      border: 1px solid $COLOR_WHITE;
+    }
+
+    form {
+      input {
+        color: $COLOR_WHITE;
+
+        &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+          color: $COLOR_WHITE;
+          opacity: 1; /* Firefox */
+        }
+
+        &:-ms-input-placeholder {
+          /* Internet Explorer 10-11 */
+          color: $COLOR_WHITE;
+        }
+
+        &::-ms-input-placeholder { /* Microsoft Edge */
+          color: $COLOR_WHITE;
+        }
+      }
+    }
+  }
+
+  &__signup_form {
+    @include transform(translate(-50%, -50%));
+    @include flexbox;
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(center);
+    background: {
+      color: #333;
+      position: center center;
+      repeat: no-repeat;
+      size:cover;
+    }
+    height: 400px;
+    left: 50%;
+    max-width: 90%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 600px;
+
+    form {
+      display: block;
+      margin: 0 auto 40px;
+      padding: 20px;
+
+      input {
+        background: none;
+        border: 0;
+        color: $COLOR_BLACK;
+        float: left;
+        padding: 5px 20px;
+      }
+
+      .button, .button--white {
+        border: 0;
+      }
+    }
+  }
+}
+
+@include media-query($medium-up) {
+  .modal {
+    &.is-active {
+      bottom: 20px;
+    }
+
+    &--corner-block {
+      bottom: 20px;
+      left: initial;
+      padding: 10px;
+      right: 20px;
+      width: 460px;
+    }
+
+    &__close {
+      right: -5px;
+    }
+  }
+}

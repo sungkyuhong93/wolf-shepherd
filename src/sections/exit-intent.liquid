@@ -1,0 +1,107 @@
+{% if section.settings.exit_intent %}
+
+  {% for block in section.blocks %}
+    {% if template contains block.settings.ExitIntent_display %}
+      {% include 'exit-intent' %}
+    {% endif %}
+  {% endfor %}
+
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Exit Intent",
+    "max_blocks": 4,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "exit_intent",
+        "label": "Enable Exit Intent Popup"
+      },
+      {
+        "type": "text",
+        "id": "ExitIntent_delay",
+        "label": "Seconds to delay exit intent from starting"
+      }
+    ],
+    "blocks": [
+        {
+        "type": "popup",
+        "name": "Popup",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "corner-block",
+            "label": "Enable Small corner pop up"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "message",
+            "label": "Message"
+          },
+          {
+            "type": "select",
+            "id": "ExitIntent_display",
+            "label": "Show on page",
+            "default": "index",
+            "options": [
+              {
+                "label": "Home",
+                "value": "index"
+              },
+              {
+                "label": "Collection",
+                "value": "collection"
+              },
+              {
+                "label": "Product",
+                "value": "product"
+              },
+              {
+                "label": "Cart",
+                "value": "cart"
+              }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Desktop Image"
+          },
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+          },
+          {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text colour",
+            "default": "black",
+            "options": [
+              {
+                "label": "White",
+                "value": "white"
+              },
+              {
+                "label": "Black",
+                "value": "black"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "ExitIntent_popup_delay",
+            "label": "Seconds to delay exit intent on mouse leave"
+          }
+        ]
+      }
+    ]
+  }
+
+{% endschema %}

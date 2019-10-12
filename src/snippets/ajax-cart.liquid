@@ -1,0 +1,48 @@
+{%- if settings.mini_cart == true or settings.ajax_cart == true -%}
+<div class="cart-ajax__wrapper {% if settings.mini_cart == true %}cart-ajax--mini-cart{% endif %}">
+  <div class="cart-ajax__background">
+    {%- if settings.mini_cart != true %}
+      <div class="cart-ajax__related-title cart-ajax__related-title--hide">
+        <h2>
+          You may also like
+        </h2>
+      </div>
+      <div class="cart-ajax__related"></div>
+    {%- endif -%}
+  </div>
+  <div id="cart" class="cart-ajax" data-cart-total="{{ cart.item_count }}" >
+
+    <a href="#" class="cart-ajax__close">
+      {% include 'icons' with icon: 'close' %}
+    </a>
+
+    <div class="cart-ajax__header">
+      <h3 class="cart-ajax__title">My cart</h3>
+      <p class="cart-ajax__subtitle">You have <span class="cart-ajax__subtitle-counter">{{ cart.item_count }}</span> items</p>
+    </div>
+
+    <div class="cart-ajax__list">
+    </div>
+
+                    
+    
+    <div class="cart-ajax__tools">
+      <a href="/collections/all" class="cart-ajax__continue-shopping cart-ajax__link styled-link">Continue Shopping</a>
+      {% if settings.cart_vat %}
+        <p class="cart-ajax__message">{{ settings.cart_vat }}</p>
+      {% endif %}
+      <a href="/cart" class="button">Cart</a>
+      <a href="/checkout" class="button button--checkout">{{ 'cart.general.checkout' | t }} <span class="cart-ajax--total-price"></span></a>
+    </div>
+
+  </div>
+
+</div>
+{%- endif -%}
+
+<script>
+  {% assign upsell = settings.collection | default: all %}
+  // <![CDATA[
+  var cartUpsell   = {{ collections[upsell].products | json }};
+  // ]]>
+</script>

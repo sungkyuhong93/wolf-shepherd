@@ -1,0 +1,330 @@
+/*============================================================================
+Slideshow
+==============================================================================*/
+$slideshow-height-small: 475px;
+$slideshow-height-medium: 650px;
+$slideshow-height-large: 775px;
+$slideshow-loader: #fff;
+$z-index-slideshow-image: 1;
+$z-index-slideshow-video: 2;
+$z-index-slideshow-text: 3;
+$z-index-slideshow-controls: 4;
+$color-slideshow-close-bg: #fff;
+$color-slideshow-close-text: #000;
+
+.slideshow-wrapper {
+  position: relative;
+}
+
+.slideshow {
+  margin-bottom: 0;
+
+  &.slideshow--small {
+    height: $slideshow-height-small;
+  }
+
+  &.slideshow--medium {
+    height: $slideshow-height-medium - 150;
+  }
+
+  &.slideshow--large {
+    height: $slideshow-height-large - 200;
+  }
+
+  // Make sure slides fill full height
+  .slideshow__slide,
+  .slick-list,
+  .slick-track {
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+/*================ General slide styles ================*/
+.slideshow__slide {
+  position: relative;
+  overflow: hidden;
+}
+
+/*================ Slide images ================*/
+.slideshow__image {
+/*   position: absolute; */
+  top: 0;
+  left: 0;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  z-index: $z-index-slideshow-image;
+
+  img{
+  	width: 100%;
+    height: 100%;
+    object-position: 50% 50%;
+    object-fit: cover;
+
+  }
+
+	&[data-bg-pos="top"] img{
+		object-position: 50% 0%;
+	}
+	&[data-bg-pos="bottom"] img{
+		object-position: 50% 100%;
+	}
+
+
+  .slick-initialized &,
+  .no-js & {
+    opacity: 1;
+  }
+
+  .slideshow__slide--background-video & {
+    opacity: 0;
+  }
+
+  .no-autoplay & {
+    opacity: 1;
+  }
+}
+
+// z-index stacking issues in oldIE
+.ie9 {
+  .slideshow__slide {
+    // sass-lint:disable no-important
+    z-index: 1 !important;
+  }
+
+  .slick-dots {
+    z-index: 2;
+  }
+}
+
+/*================ Slide text ================*/
+.slideshow__text-wrap {
+  height: 100%;
+
+  .slideshow__link & {
+    cursor: inherit;
+  }
+
+}
+
+.slideshow__text-content {
+
+  position: absolute;
+  width: 100%;
+  text-align:center;
+  top:10%;
+  opacity: 0;
+  transition-delay: 0.3s;
+  z-index: $z-index-slideshow-text;
+
+  &.align-center{
+  	 top:50%;
+	 transform: translateY(-50%);
+  }
+  &.align-bottom{
+  	 bottom:10%;
+  	 top:auto;
+  }
+
+  .slick-active &,
+  .no-js & {
+    opacity: 1;
+  }
+
+  .slick-initialized &,
+  .no-js & {
+    &::after {
+      opacity: 0;
+      visibility: hidden;
+      content: none;
+    }
+  }
+  h2{margin-top:0;}
+
+  .slideshow__subtitle{
+  	margin-bottom:30px;
+  }
+}
+/*================ Slide Video ================*/
+.slideshow__video {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: $z-index-slideshow-video;
+}
+
+// Background video
+.slideshow__video--background {
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s ease-in;
+
+  .autoplay &.video-is-loaded {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+// Place invisible element over video to prevent clicks
+.slideshow__slide--background-video::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: $z-index-slideshow-video;
+}
+
+.slideshow__video-control--close{
+  position: absolute;
+}
+
+.slideshow__video--chrome {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  transition: all 0.2s ease-in;
+
+  iframe{
+    width:700px;
+    height:500px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    @include transform(translate(-50%,-50%));
+  }
+
+  // YouTube video will not load if iframe is display: none
+  .ie9 & {
+    display: block;
+  }
+
+  .slideshow__slide.video-is-playing &,
+  .slideshow__slide.video-is-paused & {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    z-index:100;
+  }
+}
+
+/*================ Video control buttons ================*/
+.slideshow__video-control {
+  position: absolute;
+  padding: 5px;
+  z-index: $z-index-slideshow-controls;
+  transition: all 0.1s ease-out;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+}
+
+// Video loader shown when initializing
+.video-loader {
+  transition: all 0.1s ease-out 0.5s;
+  z-index: $z-index-slideshow-controls;
+  top: 50%;
+  left: 50%;
+
+  .ie9 &,
+  .video-is-loaded &,
+  .video-is-playing &,
+  .video-is-paused &,
+  .autoplay &,
+  .no-autoplay & {
+    content: none;
+    display: none;
+  }
+
+  .video-is-loading &,
+  .autoplay .video-is-loading &,
+  .no-autoplay .video-is-loading & {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.slideshow__video-control--play-wrapper {
+  height: 30px;
+}
+
+.slideshow__video-control--play {
+  position: relative;
+  margin: 0 auto;
+
+  .slideshow__video--background {
+    top: 50%;
+    @include transform(translateY(-50%));
+  }
+
+  .video-is-loaded & {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .video-is-loading &,
+  .video-is-playing &,
+  .slideshow__slide.video-is-paused & {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .icon {
+    width: 42px;
+    height: 100%;
+  }
+}
+
+.slideshow__video-control--close {
+  top: 10px;
+  z-index:1000;
+  right: 10px;
+  display:none;
+
+  .video-is-playing &,
+  .slideshow__slide.video-is-paused & {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ============================================================================
+Slider
+============================================================================== */
+.hero-main__slider {
+  display: block;
+
+  &__slide {
+    
+  }
+
+  .slick-dots {
+    display: none!important;
+  }
+}

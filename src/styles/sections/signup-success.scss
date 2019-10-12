@@ -1,0 +1,53 @@
+/*============================================================================
+#Signup success
+==============================================================================*/
+.signup-success {
+  position: relative;
+  position: fixed;
+  bottom: -200px;
+  left:0;
+  height: 200px;
+  width: 100%;
+  padding: 20px 20px 90px;
+  z-index: 25;
+  
+  text-align: center;
+  background: #000;
+
+  @include flexbox();
+  @include flex-direction(column);
+  @include align-items(center);
+  @include justify-content(center);
+
+  transition:0.4s;
+
+  @include media-query($medium-up){
+    padding-bottom: 40px;
+  }
+  
+  h4{
+    margin:0;
+    color:#fff;
+  }
+  p{
+    margin: 5px 0;
+    color:#fff;
+  }
+
+  &.active{
+    bottom: 0;
+  }
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  
+    .icon.icon-close-white{
+      circle, ellipse, g, line, path, polygon, polyline, rect {
+        fill: #fff!important;
+      }
+    }
+  }
+}

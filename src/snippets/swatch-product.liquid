@@ -1,0 +1,27 @@
+{% assign file_extension = 'png' %}
+{% if swatchShow %}
+<div class="swatch__wrapper">
+  {% for value in option.values %}    
+    {% assign swatchValue = value | handleize | downcase %}
+    {% assign swatchBackground = false %}
+    {% if optionName == 'color' or optionName == 'colour' %}
+      {% for block in section.blocks %}
+        {% assign blockColor = block.settings.color | handleize | downcase %}
+        {% if block.type == 'swatch' and blockColor == swatchValue %}  
+          {% assign swatchBackground = block.settings.hex-code %}      
+        {% endif %}
+      {% endfor %}
+    {% endif%}
+
+    <div class="swatch swatch-product swatch-product--{{ value | handleize }}
+    {% if option.selected_value == value %}swatch-product--active{% endif %}" 
+    data-swatch-value="{{ value | escape }}"
+    style="background-color:{% if swatchBackground != false %}{{swatchBackground}}{% else %}{{swatchValue}}{% endif %};"
+    >
+      {% unless optionName == 'color' or optionName == 'colour' %}
+        {{ swatchValue }}
+      {% endunless %}
+    </div>
+  {% endfor %}
+</div>
+{% endif %}

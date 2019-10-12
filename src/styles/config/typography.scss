@@ -1,0 +1,69 @@
+/**
+ * Config: Typography
+ * -----------------------------------------------------------------------------
+ * - Modular scale built by https://github.com/modularscale/modularscale-sass
+ *
+ */
+@import '~mathsass';
+@import '~modularscale-sass/stylesheets/modularscale';
+
+/**
+ * Font scale configuration.
+ */
+$modularscale: (
+  base: 12px,
+  ratio: 1.2,
+  400px: (
+    ratio: 24at6,
+  ),
+  768px: (
+    base: 16px,
+    ratio: 26at6,
+  ),
+  1366px: (
+    base: 18px,
+    ratio: 40at9,
+  ),
+);
+
+/**
+ * Font stack.
+ */
+// stylelint-disable
+$FONT_DISPLAY: 'Poppins', sans-serif;
+$FONT_HEADING: 'Poppins', sans-serif;
+$FONT_BODY: 'Roboto', sans-serif;
+
+// stylelint-enable
+
+/**
+* Global body
+*/
+$FONT_SIZE_SMALL: 14px;
+
+/**
+ * Weights.
+ */
+$WEIGHT_THIN: 100;
+$WEIGHT_EXTRA_LIGHT: 200;
+$WEIGHT_LIGHT: 300;
+$WEIGHT_BOOK: 400;
+$WEIGHT_MEDIUM: 500;
+$WEIGHT_NORMAL: normal;
+$WEIGHT_SEMIBOLD: 600;
+$WEIGHT_BOLD: 700;
+$WEIGHT_HEAVY: 800;
+$WEIGHT_BLACK: 900;
+
+/**
+ * Typographic positioning and spacing.
+ */
+$BASELINE: 1rem;
+$LINE_HEIGHT_LIST: 2;
+$LINE_HEIGHT_BODY: 1.8;
+$LINE_HEIGHT_LEAD: 1.8;
+$LINE_HEIGHT_META: 1.25;
+$LINE_HEIGHT_DISPLAY: 1.4;
+$LETTER_SPACING_BODY: 0.4px;
+$LETTER_SPACING_DISPLAY: 0;
+$LETTER_SPACING_SUBHEADING: 1px;

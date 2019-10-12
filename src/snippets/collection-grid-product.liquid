@@ -1,0 +1,138 @@
+{% comment %}
+  Set the default grid_item_width if no variable is set
+{% endcomment %}
+{% unless grid_item_width %}
+  {% assign grid_item_width = gridWidth %}
+{% endunless %}
+
+{% comment %}
+  Check if the product is sold out and set a variable to be used below.
+{% endcomment %}
+{% assign sold_out = true %}
+{% if product.available %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% comment %}
+  If product contains tag badge
+{% endcomment %}
+{% assign has_badge_text = false %}
+{% assign has_badge_color = false %}
+{% assign badge_text = '' %}
+{% assign badge_color = '' %}
+
+{% for tag in product.tags %}
+  {% if tag contains "badge-text" %}
+    {% assign has_badge_text = true %}
+    {% assign badge_text = tag | split: ':' | last %}
+  {% endif %}
+  {% if tag contains "badge-colour" or tag contains "badge-color" %}
+    {% assign has_badge_color = true %}
+    {% assign badge_color = tag | split: ':' | last %}
+  {% endif %}
+{% endfor %}
+
+{% assign stock_counter = 0 %}
+{% if sold_out == true %}
+  {% assign has_badge_text = true %}
+  {% assign badge_text = 'Sold Out' %}
+{% else %}
+  {% for variant in product.variants %}
+    {% if variant.inventory_management == "shopify" and variant.inventory_policy != "continue" %}
+      {% assign stock_counter = stock_counter | plus: variant.inventory_quantity %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign stock_level = settings.low_in_stock | plus: 0  %}
+  {% if stock_counter != 0 and stock_counter <= stock_level %}
+    {% assign has_badge_text = true %}
+    {% assign badge_text = stock_counter | append: ' left in stock' %}
+  {% endif %}
+{% endif %}
+
+<div class="collection-grid-item__match-height {{ grid_item_width }} text-{{section.settings.product-text-alignment}}">
+
+  <div class="collection-grid-item">
+
+    {% if has_badge_text %}
+      <div class="collection-grid-item__badge" {% if has_badge_color %}style="background-color: {{ badge_color }}"{% endif %}>{{ badge_text }}</div>
+    {% endif %}
+
+    <a href="{{ product.url | within: collection }}" class="collection-grid-item__image-wrapper">
+
+
+        {% if product.images.size > 1 %}
+            {% for image in product.images limit:2 %}
+
+          {% assign image_order = 'collection-grid-item__first-image' %}
+          {% if forloop.index == 2 %}
+              {% assign image_order = 'collection-grid-item__second-image' %}
+          {% endif %}
+
+          {% assign image_url = image.src | img_url: '440x' %}
+          {% assign image_url_2x = image.src | img_url: '880x' %}
+            <img 
+            src="{{ image_url }}"
+            srcset="{{image_url}} 1x, {{image_url_2x}} 2x" 
+            alt="{{ image.alt }}" 
+            class="{{ image_order }}" />
+
+            {% endfor %}
+        {% else %}
+          {% assign image_url = product.featured_image.src | img_url: '440x' %}
+        {% assign image_url_2x = product.featured_image.src | img_url: '880x' %}
+          <img 
+          src="{{ image_url }}" 
+          srcset="{{image_url}} 1x, {{image_url_2x}} 2x"
+          alt="{{ product.featured_image.alt | escape }}"  
+          class="collection-grid-item__no-hover lazyload blur-up" />
+        {% endif %}
+      
+    </a>
+
+    <div class="collection-grid-item__text-wrapper">
+      
+      <a href="{{ product.url }}">
+        <h3 class="h4 collection-grid-item__title">{{ product.title }}</h3>
+
+        {% if section.settings.show_excerpt %}
+          <p>{{product.description | strip_html | truncatewords:30 }}</p>
+        {% endif %}
+
+        <p class="collection-grid-item__price">
+          {% if product.compare_at_price > product.price %}
+            {% if product.price_varies %}
+              {%- assign sale_price = product.price | money -%}
+              {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+            {% else %}
+              {{ 'products.product.on_sale' | t }}
+              {{ product.price | money }}
+            {% endif %}
+          {% else %}
+            {% if product.price_varies %}
+              {%- assign price = product.price | money -%}
+              {{ 'products.product.from_text_html' | t: price: price }}
+            {% else %}
+              {{ product.price | money }}
+            {% endif %}
+          {% endif %}
+        </p>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% comment %}{% include 'swatch-collection' %}{% endcomment %}
+{% comment %}{% if template contains 'collection' %}
+  {% if section.settings.enable_quick_shop %}
+  <a class="cta" data-featherlight="#quick-shop-{{product.id}}" href="#">{{ 'collections.general.quick_shop'  |t}}</a>
+  {% endif %}
+{% endif %}{% endcomment %}
+
+{% comment %}{% if template contains 'collection' %}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+<div id="quick-shop-{{product.id}}" class="quick-shop-outer"><div class="quick-shop">{% include 'embed-product' %}</div></div>
+{% endif %}{% endcomment %}
+
+

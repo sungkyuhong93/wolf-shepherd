@@ -1,0 +1,18 @@
+{%- capture ajaxCartBoo -%}
+  {%- if settings.mini_cart == true -%}true{%- elsif settings.ajax_cart == true -%}true{%- else -%}false{%- endif -%}
+{%- endcapture -%}
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace('no-js', '');
+
+  window.theme = {
+    strings: {
+      addToCart: {{ 'products.product.add_to_cart' | t | json }},
+      soldOut: {{ 'products.product.sold_out' | t | json }},
+      unavailable: {{ 'products.product.unavailable' | t | json }}
+    },
+    moneyFormat: {{ shop.money_format | json }},
+    ajaxCart: {{ajaxCartBoo | handleize }},
+    popQueue: false
+  };
+</script>

@@ -1,0 +1,59 @@
+/* ============================================================================
+Swatches Styles
+============================================================================== */
+.swatch__wrapper {
+  @include flexbox;
+  @include justify-content(center);
+  text-align: center;
+  margin-top: 30px;
+}
+
+.swatch {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  overflow: hidden;
+  padding: 12px 10px 10px;
+}
+
+.swatch-product {
+  background: $COLOR_WHITE;
+  border-radius: 50%;
+  color: $COLOR_BLACK;
+  height: 35px;
+  line-height: 35px;
+  margin: 0 5px;
+  min-width: 35px;
+  padding: 0;
+  transition: all 0.6s ease;
+  width: 35px;
+
+  &.swatch-product--active {
+    background: $COLOR_BLACK;
+    color: $COLOR_WHITE;
+  }
+}
+
+.swatch-soldout {
+  opacity: 0.4;
+}
+
+.product-meta {
+  .selector-wrapper--color, .selector-wrapper--colour {
+    margin: -20px 0 30px;
+
+    .swatch-product {
+      border: 2px solid rgba($COLOR_BLACK, 0.3);
+      border-radius: 0;
+      font-weight: 600;
+      height: 25px;
+      margin: 0 5px;
+      min-width: 25px;
+      width: 25px;
+
+      &.swatch-product--active, &:hover {
+        border: 2px solid $COLOR_BLACK;
+      }
+    }
+  }
+}

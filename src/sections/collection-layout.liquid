@@ -1,0 +1,315 @@
+{% comment %}
+  modules/.scss
+{% endcomment %}
+{%- assign collectionCounter = section.settings.product_per_row -%} 
+{%- capture collectionCounterClass -%}
+  grid__item small--one-half
+  {% case collectionCounter %}
+    {% when '2' %}
+      medium-up--one-half
+    {% when '3' %}
+      medium-up--one-third
+    {% when '4' %}
+      medium-up--one-quarter
+    {% else %}
+      medium-up--one-whole
+  {% endcase %}
+{%- endcapture -%}
+
+{%- capture alignContent -%}
+  {% case section.settings.alignment %}
+    {% when 'left' %}
+      text-left
+    {% when 'right' %}
+      text-right
+    {% else %}
+      text-center
+  {% endcase %}
+{%- endcapture -%}
+
+{% capture collectionText %}
+   <header class="{{ alignContent }}" role="banner">
+    {% if collection.metafields.collection['alternate-image'] %}
+      <img class="collection-header__img" src="{{ collection.metafields.collection['alternate-image']}}"/>
+    {% endif %}
+    <h1 class=" hero-title header__title">{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+      <div class="collection-header__text rte">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+  </header>
+{% endcapture %}
+
+{% assign collectionCount = section.settings.product_per_page | plus: 0  %}
+
+{% paginate collection.products by collectionCount %}
+
+  {% if section.settings.enable_collection_image and collection.image %}
+
+    {% if section.settings.full-width == 'half-width' %}
+    <div class="page-width">
+      <div class="grid--full display-flex section-margin-bottom {% if section.settings.text_color == 'white' %}collection-header-banner--white{% endif %}" style="background-color:{{section.settings.background-color}}">
+        <div class="grid__item medium-up--one-half copy-container" >
+          {{ collectionText }}
+        </div>
+        <div class="grid__item medium-up--one-half image-container" style="background-image: url({{ collection.image | img_url: 'master' }})">
+          <img src="{{ collection.image | img_url: 'x500' }}"/>
+        </div>
+      </div>
+    </div>
+    {% else %}
+      <div class="{% if section.settings.full-width == 'wrapper' %} page-width {% endif %}">
+        <div 
+          class="collection-header-banner
+          {% if section.settings.text_color == 'white' %}collection-header-banner--white{% endif %}" 
+          style="background-image: url({{ collection.image | img_url: 'master' }})">
+          {% if section.settings.full-width == 'full-width' %}<div class="page-width">{% endif %}
+            {{ collectionText }}
+          {% if section.settings.full-width == 'full-width' %}</div>{% endif %}
+        </div>
+      </div>
+    {% endif %}
+  {% else %}
+  <div class="page-width">
+    <h1 class="collection-header__title text-center">{{ collection.title }}</h1>
+  </div>
+  {% endif %}
+
+  <div class="collection-wrapper">
+    <div class="page-width">
+      {% if section.blocks.size > 0 %}
+      <div class="grid">
+        <div class="grid__item medium-up--one-quarter">
+          {% include 'collection-sidebar' %}
+        </div>
+        <div class="grid__item medium-up--three-quarters">
+      {% endif %}
+        <div class="grid">
+          {% for product in collection.products %}
+            
+            {% include 'collection-grid-product' with gridWidth: collectionCounterClass  %}
+
+            {% if forloop.index == 10 %}
+
+              <div class="grid__item collection-grid-item__match-height medium-up--two-thirds">            
+                {% include 'newsletter'  %}
+              </div>
+            {% endif %}
+
+            {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+              <p>{{ 'collections.general.no_matches' | t }}</p>
+              {% break %}
+            {% endif %}
+            
+          {% endfor %}
+        </div>
+      {% if section.blocks.size > 0 %}
+        </div></div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if paginate.pages > 1 %}
+  <div class="page-width text-center">
+    {% include 'pagination' %}
+  </div>
+  {% endif %}
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Collection Layout",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Collection Hero image"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_collection_image",
+        "label": "Use collection image banner"
+      },
+      {
+        "type": "select",
+        "id": "full-width",
+        "label": "Collection Banner Full width",
+        "default": "full-width",
+        "options": [
+          {
+            "label": "Full width",
+            "value": "full-width"
+          },
+          {
+            "label": "Image half width",
+            "value": "half-width"
+          },
+          {
+            "label": "Within wrapper",
+            "value": "wrapper"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_color",
+        "label": "Text colour",
+        "default": "black",
+        "options": [
+          {
+            "label": "White",
+            "value": "white"
+          },
+          {
+            "label": "Black",
+            "value": "black"
+          }
+        ]
+      },
+      {
+        "type":"color",
+        "id":"background-color",
+        "label":"Header BG Color",
+        "info":"If half width"
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Text alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Collection Settings"
+      },
+      {
+        "type": "number",
+        "id": "product_per_page",
+        "label": "Number of products per page"
+      },
+      {
+        "type": "select",
+        "id": "product_per_row",
+        "label": "Number of products per row",
+        "default": "3",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_excerpt",
+        "label": "Show product excerpt",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "product-text-alignment",
+        "label": "Product text alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+
+      
+
+      {
+        "type": "header",
+        "content": "Collection Newsletter"
+      },
+       {
+        "type": "checkbox",
+        "id": "show_newsletter",
+        "label": "Show newsletter signup",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "newsletter-image",
+        "label": "Newsletter Image Background"
+      },
+      {
+        "type": "text",
+        "id": "newsletter-title",
+        "label": "Newsletter title"
+      },
+      {
+        "type": "text",
+        "id": "newsletter-text",
+        "label": "Newsletter text"
+      },
+      {
+        "type": "select",
+        "id": "newsletter_text_color",
+        "label": "Text colour",
+        "default": "black",
+        "options": [
+          {
+            "label": "White",
+            "value": "white"
+          },
+          {
+            "label": "Black",
+            "value": "black"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "filter-group",
+        "name": "Filter Group",
+        "settings": [
+          {
+            "label": "Title for filter group",
+            "id": "filter-group-title",
+            "type": "text"
+          },
+          {
+            "label": "Comma separated tag list",
+            "id": "tag-list",
+            "type": "textarea"
+          }
+        ]
+      }
+    ]
+  }
+
+{% endschema %}

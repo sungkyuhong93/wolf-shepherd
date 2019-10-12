@@ -1,0 +1,86 @@
+{% comment %}
+  Set the default grid_item_width if no variable is set
+{% endcomment %}
+{% unless grid_item_width %}
+  {% assign grid_item_width = gridWidth %}
+{% endunless %}
+
+<div class="grid__item">
+  <div class="grid">
+    <div class="medium-up--one-third grid__item">
+    {% if article.image %}
+      {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
+      {% capture img_wrapper_id %}ArticleImageWrapper-{{ article.image.id }}{% endcapture %}
+      {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+      <div id="{{ img_wrapper_id }}" class="article__grid-image-wrapper js">
+        <a href="{{ article.url }}" class="article__grid-image-container" >
+          <img id="{{ img_id }}"
+               class="article__grid-image"
+               src="{{ article.image | img_url: '480x377' }}"
+               data-src="{{ img_url }}"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-aspectratio="{{ article.image.aspect_ratio }}"
+               data-sizes="auto"
+               alt="{{ article.image.alt | escape }}">
+        </a>
+      </div>
+      <noscript>
+        <a href="{{ article.url }}" class="article__grid-image-wrapper">
+          {{ article | img_url: '480x377', scale: 2 | img_tag: article.title, 'article__grid-image' }}
+        </a>
+      </noscript>
+    {% endif %}
+    </div>
+
+    <div class="medium-up--one-third grid__item article__grid-meta{% if article.image %} article__grid-meta--has-image{% endif %}">
+      <h2 class="h5 article__title uppercase">
+        <a href="{{ article.url }}">{{ article.title }}</a>
+      </h2>
+
+      {% if section.settings.blog_show_author %}
+        <span class="article__author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+      {% endif %}
+
+      {% if section.settings.blog_show_date %}
+        <span class="article__date">
+          {{ article.published_at | time_tag: format: 'month_day_year' }}
+        </span>
+      {% endif %}
+
+      <div class="rte article__grid-excerpt">
+        {% if article.excerpt.size > 0 %}
+          {{ article.excerpt }}
+        {% else %}
+          {{ article.content | strip_html | truncate: 150 }}
+        {% endif %}
+      </div>
+
+      {% if article.tags.size > 0 %}
+        <div class="article__tags rte">
+          {% for tag in article.tags %}
+            <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article__grid-tag">{{ tag }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <ul class="list--inline article__meta-buttons">
+        <li>
+          <a href="{{ article.url }}" class="button">
+            {{ 'blogs.article.read_more' | t }}
+          </a>
+        </li>
+
+        {% if blog.comments_enabled? and article.comments_count > 0 %}
+          <li>
+            <a href="{{ article.url }}#comments" class="button">
+              {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+
+    
+  </div>
+</div>

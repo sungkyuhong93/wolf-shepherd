@@ -1,0 +1,59 @@
+/* ============================================================================
+#notification-bar
+============================================================================== */
+#Notification-bar {
+  text-align: center;
+  width: 100%;
+
+  .notification-bar__carousel {
+    margin: 0 auto;
+    max-width: 900px;
+    min-height: 38px;
+    padding: 8px 30px;
+
+    &:not(.slick-initialized) {
+      display: none;
+    }
+
+    p {
+      font-size: 12px;
+      line-height: 22px;
+      margin: 0;
+
+			a {
+        text-decoration: underline;
+      }
+    }
+  }
+
+	.slick-arrow {
+    background-image: url(#{'{{ "icon-left.png" | asset_url }}'});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 6px auto;
+    height: 30px;
+    left: -30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+
+    &.slick-next {
+      background-image: url(#{'{{ "icon-right.png" | asset_url }}'});
+      left: auto;
+      right: -30px;
+    }
+  }
+}
+
+.notification-bar__white {
+  color: $COLOR_WHITE;
+}
+
+.notification-bar--carousel {
+  display: none;
+
+	&.slick-initialized {
+    display: block;
+  }
+}

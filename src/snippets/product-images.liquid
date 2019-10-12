@@ -1,0 +1,49 @@
+{% assign productImages =  %}
+{% assign loopCounter  = 0 %}
+
+{% for image in product.images %}
+
+  	{% assign productImage    = image.src | img_url: 'master'  %}
+
+  	{% for variant in product.variants %}
+	  	{% assign variantImage = variant.image.src | img_url: 'master'  %}
+	  	{% if variantImage == productImage %}
+	  		{% assign productImage = variantImage  %}
+	  		{% assign productData = 'data-slick-variant="' | append: variant.id | append: '"'  %}
+	  		{% if variant.selected %}
+		  		{% assign slickStart = loopCounter  %}
+	  		{% endif %}
+	  	{% endif %}
+    {% endfor %}
+
+    {% capture productImages %}
+    	{{ productImages }}
+	    <img src="{{ productImage }}" alt="{{ image.alt | escape }}" {{productData}} {{productDataSelected}}>
+    {% endcapture %}
+
+	{% assign loopCounter = loopCounter | plus: 1 %}
+
+{% endfor %}
+
+<div class="product-images">
+	{% if product.images.size > 1 %}
+	
+		<div class="main-product-slider" data-slick='{"initialSlide": {{slickStart}} }'>
+			{{ productImages }}
+		</div>
+
+		<div class="product-slider-nav">
+			{% for image in product.images %}
+				{% assign productThumbnail    = image.src | img_url: '240x'  %}
+				<div class="product-slider-nav__image">
+			        <img src="{{ productThumbnail }}" alt="{{ image.alt | escape }}">
+			    </div>
+		  	{% endfor %}
+		</div>
+
+	{% else %}
+		{% if featured_image != blank %}
+			<img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+		{% endif %}
+	{% endif %}
+</div>

@@ -1,0 +1,199 @@
+/**
+ * Typography
+ * -----------------------------------------------------------------------------
+ * Styles for displaying content with some of the most commonly used HTML elements,
+ * including normalization, typography, images, tables, and more.
+ *
+ */
+html, body {
+  font-family: $FONT_BODY;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-weight: $WEIGHT_NORMAL;
+  line-height: $LINE_HEIGHT_BODY;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+}
+
+/**
+ * Display styles.
+ */
+.d1 {
+  @include ms-respond(font-size, 12);
+  font-family: $FONT_DISPLAY;
+  font-weight: $WEIGHT_NORMAL;
+  letter-spacing: $LETTER_SPACING_DISPLAY;
+  line-height: $LINE_HEIGHT_DISPLAY;
+}
+
+.d2 {
+  @include ms-respond(font-size, 10);
+  font-family: $FONT_DISPLAY;
+  font-weight: $WEIGHT_NORMAL;
+  letter-spacing: $LETTER_SPACING_DISPLAY;
+  line-height: $LINE_HEIGHT_DISPLAY;
+}
+
+.d3 {
+  @include ms-respond(font-size, 7);
+  font-family: $FONT_DISPLAY;
+  font-weight: $WEIGHT_NORMAL;
+  letter-spacing: $LETTER_SPACING_DISPLAY;
+  line-height: $LINE_HEIGHT_DISPLAY;
+}
+
+/**
+ * Basic headers.
+ */
+h1, .h1 {
+  @include ms-respond(font-size, 9);
+  font-family: $FONT_HEADING;
+  font-weight: $WEIGHT_NORMAL;
+  line-height: $LINE_HEIGHT_DISPLAY;
+  margin: 0 0 $SPACING_XL;
+}
+
+h2, .h2 {
+  @include ms-respond(font-size, 5);
+  font-family: $FONT_HEADING;
+  font-weight: $WEIGHT_NORMAL;
+  line-height: $LINE_HEIGHT_DISPLAY;
+  margin: 0 0 $SPACING_L;
+}
+
+h3, .h3 {
+  @include ms-respond(font-size, 2);
+  font-family: $FONT_HEADING;
+  font-weight: $WEIGHT_NORMAL;
+  line-height: $LINE_HEIGHT_DISPLAY;
+  margin: 0 0 $SPACING_M;
+}
+
+h4, .h4 {
+  @include ms-respond(font-size, 3);
+  font-family: $FONT_HEADING;
+  font-weight: $WEIGHT_NORMAL;
+  line-height: $LINE_HEIGHT_DISPLAY;
+  margin: 0 0 $SPACING_M;
+}
+
+h5, .h5 {
+  @include ms-respond(font-size, 0.8);
+  font-family: $FONT_BODY;
+  font-weight: $WEIGHT_NORMAL;
+  line-height: $LINE_HEIGHT_BODY;
+  margin: 0 0 $SPACING_M;
+}
+
+h6, .h6 {
+  @include ms-respond(font-size, 0.6);
+  font-family: $FONT_BODY;
+  font-weight: $WEIGHT_NORMAL;
+  line-height: $LINE_HEIGHT_DISPLAY;
+  margin: 0 0 $SPACING_M;
+}
+
+/**
+ * Header styling.
+ */
+.smallcaps {
+  @include ms-respond(font-size, -1.5);
+  font-family: $FONT_BODY;
+  font-weight: $WEIGHT_MEDIUM;
+  letter-spacing: $LETTER_SPACING_SUBHEADING;
+  text-transform: uppercase;
+}
+
+/**
+ * Other styles.
+ */
+p {
+  @include ms-respond(font-size, 0);
+  font-family: $FONT_BODY;
+  font-weight: $WEIGHT_NORMAL;
+  line-height: $LINE_HEIGHT_BODY;
+  margin: 0 0 $SPACING_L;
+}
+
+a, .text-link {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+
+  }
+}
+
+.lead {
+  @include ms-respond(font-size, 0.2);
+  line-height: $LINE_HEIGHT_LEAD;
+}
+
+.meta {
+  @include ms-respond(font-size, -4);
+  font-family: $FONT_BODY;
+  font-weight: $WEIGHT_MEDIUM;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+caption, .caption, label {
+  @include ms-respond(font-size, -5);
+  font-weight: $WEIGHT_MEDIUM;
+}
+
+.legal,
+%legal {
+  @include ms-respond(font-size, -6);
+}
+
+/**
+ * Block styles.
+ */
+blockquote {
+  @include ms-respond(font-size, 2);
+  border-left: 2px solid $COLOR_PRIMARY;
+  line-height: $LINE_HEIGHT_BODY;
+  margin: 0 0 $SPACING_XL;
+  margin-bottom: $SPACING_XL;
+  padding-left: $SPACING_2XL;
+
+  cite {
+    @include ms-respond(font-size, 0);
+  }
+}
+
+ol,
+.ol,
+ul,
+.ul {
+  @include ms-respond(font-size, 0);
+  line-height: $LINE_HEIGHT_BODY;
+}
+
+input[type=email]{
+  @include ms-respond(font-size, -2);
+  font-family: $FONT_BODY;
+  line-height: $LINE_HEIGHT_BODY;
+}
+
+code {
+  background: $COLOR_PRIMARY_LIGHT;
+  color: $COLOR_PRIMARY;
+  display: inline-block;
+  margin: 20px 0;
+  overflow-x: auto;
+  padding: 20px 40px;
+  width: 100%;
+
+  xmp {
+    background: transparent;
+    line-height: $LINE_HEIGHT_BODY;
+    overflow-x: initial;
+    padding: 0;
+  }
+}

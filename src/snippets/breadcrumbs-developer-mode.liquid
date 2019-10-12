@@ -1,0 +1,19 @@
+{% if settings.hide_shopify_preview_bar %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        document.getElementById('preview-bar-iframe').classList.add('is-hidden');
+      }, {{ settings.hide_shopify_preview_bar_timer | times: 1000 }});
+    });
+  </script>
+
+  <style>
+    #preview-bar-iframe {
+      height: 65px !important;
+    }
+
+    #preview-bar-iframe.is-hidden {
+      transform: translateY(70px) !important;
+    }
+  </style>
+{% endif %}

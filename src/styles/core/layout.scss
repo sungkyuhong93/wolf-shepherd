@@ -1,0 +1,30 @@
+html {
+  background-color: $color-body;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+.page-width {
+  @include clearfix();
+  	max-width: $width-site;
+  	padding: 0 20px;
+  	margin: 0 auto;
+ 	@include media-query($medium-up){
+		padding: 0 $gutter;
+	}
+}
+
+.page-content{
+	margin-top: 40px;
+	margin-bottom: 60px;
+}

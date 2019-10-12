@@ -1,0 +1,253 @@
+{% include 'newsletter', width:"full"  %}
+
+<footer>
+  <div class="page-width">
+    <div class="grid">
+  
+      {% capture socialLinks %}
+        {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+        <ul class="social-links">
+          {% for social in social_accounts %}
+            {%- assign social_handle = social | handleize -%}
+            {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
+            {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
+
+            {% if settings[social_link] != blank %}
+              <li>
+                <a target="_blank" href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
+                  {% include 'icons' with icon: social_handle  %}
+                  <span class="icon-fallback-text">{{ social }}</span>
+                </a>
+              </li>
+            {% endif %}
+
+          {% endfor %}
+        </ul>
+      {% endcapture %}
+
+      {% if section.settings.logo-bottom-left %}
+        <div class="grid__item medium-up--one-third">
+          <img src="{{ section.settings.logo-bottom-left | img_url: '200x' }}"/>          
+        </div>
+        <div class="grid__item medium-up--two-thirds">
+          <div class="grid">
+      {% endif %}
+
+      {%- assign blockSize = section.blocks.size -%} 
+      {%- capture blockSizeClass -%}
+        grid__item small--one-half
+        {% case blockSize %}
+          {% when 2 %}
+            medium-up--one-half
+          {% when 3 %}
+            medium-up--one-third
+          {% when 4 %}
+            medium-up--one-quarter
+          {% else %}
+            medium-up--one-whole
+        {% endcase %}
+      {%- endcapture -%}
+
+      {% for block in section.blocks  %}
+        <div class="{{ blockSizeClass }}">
+          {% if block.settings.footer_title != blank %}
+            <h4>{{ block.settings.footer_title | escape }}</h4>
+          {% endif %}
+
+          {% if block.type == 'footer_menu' %}
+            {%- assign footer_linklist = block.settings.footer_linklist -%}
+            {% if linklists[footer_linklist].links.size > 0 %}
+              <ul>
+                {% for link in linklists[footer_linklist].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% else %}
+            {{ socialLinks }}
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      {% if section.settings.logo-bottom-left %}
+        </div></div>
+      {% endif %}
+
+
+    </div>
+  </div>
+
+  <div class="page-width">
+    <div class="grid">
+
+      <div class="grid__item">
+        <div class="copyright">
+          <small>&copy; {{ 'layout.footer.copyright' | t }} {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }},  Designed and Built by <a href="https://karmoon.co.uk/" target="_blank">Karmoon</a></small>
+        </div>
+
+        {% if section.settings.show_payment_icons %}
+          {% unless shop.enabled_payment_types == empty %}
+            {%- assign payment_icons_available = 'amazon_payments,american_express,apple_pay,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,visa' | split: ',' -%}
+
+            <span class="visually-hidden">{{ 'layout.footer.payment_methods' | t }}</span>
+            <ul class="payment-icons">
+              {% for type in shop.enabled_payment_types %}
+                {% if payment_icons_available contains type %}
+                  <li>
+                    {%- assign icon_name = type | prepend: 'icon-' -%}
+                    {% include icon_name %}
+                    <span class="visually-hidden">{{ type | capitalize | replace: '_', ' ' }}</span>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% endunless %}
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "max_blocks": 4,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_payment_icons",
+        "label": "Show payment icons",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "color_header_text",
+        "label": "Menu Text color",
+        "default": "#000"
+      },    
+      {
+        "type": "color",
+        "id": "color_header_background",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo-bottom-left",
+        "label": "Display logo bottom left corner"
+      },
+      {
+        "type":"paragraph",
+        "content":"Newsletter"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_newsletter",
+        "label": "Show newsletter signup",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "newsletter-full-width",
+        "label": "Full width",
+        "default": "full-width",
+        "options": [
+          {
+            "label": "Full width",
+            "value": "full-width"
+          },
+          {
+            "label": "Within wrapper",
+            "value": "wrapper"
+          }
+        ]
+      },
+      {
+        "type": "image_picker",
+        "id": "newsletter-image",
+        "label": "Newsletter Image Background"
+      },
+      {
+        "type": "color",
+        "id": "newsletter-bg",
+        "label": "Newsletter Background",
+        "info":"If no image",
+        "default":"#F7F7F7"
+      },
+      {
+        "type": "text",
+        "id": "newsletter-title",
+        "label": "Newsletter title"
+      },
+      {
+        "type": "text",
+        "id": "newsletter-text",
+        "label": "Newsletter text"
+      },
+      {
+        "type": "select",
+        "id": "newsletter_text_color",
+        "label": "Text colour",
+        "default": "black",
+        "options": [
+          {
+            "label": "White",
+            "value": "white"
+          },
+          {
+            "label": "Black",
+            "value": "black"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "newsletter_margin_bottom",
+        "label": "Margin bottom",
+        "default": "no-margin",
+        "options": [
+          {
+            "label": "Margin bottom",
+            "value": "margin"
+          },
+          {
+            "label": "No margin",
+            "value": "no-margin"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "footer_menu",
+        "name": "Footer menu",
+        "settings": [
+          {
+            "id": "footer_title",
+            "type": "text",
+            "label": "Menu Title"
+          },
+          {
+            "type": "link_list",
+            "id": "footer_linklist",
+            "label": "First menu",
+            "default": "footer"
+          }
+        ]
+      },
+      {
+        "type": "socail_media",
+        "name": "Social links",
+        "settings": [
+          {
+            "id": "footer_title",
+            "type": "text",
+            "label": "Menu Title"
+          }
+        ]
+      }
+    ]
+  }
+
+{% endschema %}

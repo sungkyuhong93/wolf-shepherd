@@ -1,0 +1,16 @@
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="-12.738588%" y1="69.3459164%" x2="115.604264%" y2="29.7704307%" id="linearGradient-1">
+            <stop stop-color="#662D90" offset="0%"></stop>
+            <stop stop-color="#D41459" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-460.000000, -950.000000)" fill="url(#linearGradient-1)">
+            <circle id="Oval" cx="492" cy="982" r="32"></circle>
+        </g>
+    </g>
+</svg>

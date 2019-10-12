@@ -1,0 +1,76 @@
+<div class="page-width">
+  <div class="grid grid--full about-section grid--rev">
+    <div class="grid__item  inline middle medium-up--one-half text-center">
+      <div class="grid grid--full padded">
+        <div class="grid__item text-center">
+          <h1 class="h2 page-title">{{ section.settings.title_one }}</h1>
+        </div>
+        <div class="grid__item">
+          <div class="rte">
+            {{ section.settings.text_one }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid__item inline middle medium-up--one-half text-center">
+      <img src="{{ section.settings.image_one | img_url: '800x' }}">
+    </div>
+  </div>
+  
+  <div class="grid grid--full about-section">
+    <div class="grid__item  inline middle medium-up--one-half text-center">
+      <div class="grid grid--full padded">
+        <div class="grid__item text-center">
+          <h1 class="h2 page-title">{{ section.settings.title_two }}</h1>
+        </div>
+        <div class="grid__item">
+          <div class="rte">
+            {{ section.settings.text_two }}
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="grid__item  inline middle medium-up--one-half text-center">
+        <img src="{{ section.settings.image_two | img_url: '800x' }}">
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "About Page",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image_one",
+        "label": "About block two image"
+      },
+      {
+        "type": "text",
+        "id": "title_one",
+        "label": "About block two title"
+      },
+      {
+        "type": "richtext",
+        "id": "text_one",
+        "label": "About block two text"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_two",
+        "label": "About block two image"
+      },
+      {
+        "type": "text",
+        "id": "title_two",
+        "label": "About block two title"
+      },
+      {
+        "type": "richtext",
+        "id": "text_two",
+        "label": "About block two text"
+      }
+    ]
+  }
+{% endschema %}

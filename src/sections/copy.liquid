@@ -1,0 +1,127 @@
+{% if section.settings.enable %}
+  {%- capture alignContent -%}
+    {% case section.settings.alignment %}
+      {% when 'left' %}
+        hero-main--left
+      {% else %}
+        hero-main--center
+    {% endcase %}
+  {%- endcapture -%}
+
+  <div class="page-width">
+   
+  <div class="{{ alignContent }}
+    {% if section.settings.text_color == 'white' %}hero-main--white{% endif %}
+    {% if section.settings.margin_bottom == 'margin' %}section-margin-bottom{% endif %}">
+
+    <div class="copy-main__wrapper {% if section.settings.alignment == 'left' %}grid {%endif %}">
+
+      {% if section.settings.title != blank %}
+        <h2 class="h1 copy-title {% if section.settings.alignment == 'left' %} medium-up--one-third grid__item {% endif %} ">{{ section.settings.title | escape }}</h2>
+      {% endif %}
+      
+        <div class="rte-setting copy-text {% if section.settings.alignment == 'left' %} medium-up--two-thirds grid__item {% endif %}">
+        {% if section.settings.text != blank %}{{ section.settings.text }}{% endif %}
+        {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+          <a href="{{ section.settings.button_link }}" class="button button--white">
+            {{ section.settings.button_label }}
+          </a>
+        {% endif %}
+        </div>
+    </div>
+  </div>
+
+  </div>
+  
+{% endif %}
+ 
+{% schema %}
+  {
+    "name": "Copy Section",
+    "class": "index-section index-section--flush",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable",
+        "label": "Show section"
+      },
+      {
+        "type": "select",
+        "id": "margin_bottom",
+        "label": "Margin bottom",
+        "default": "no-margin",
+        "options": [
+          {
+            "label": "Margin bottom",
+            "value": "margin"
+          },
+          {
+            "label": "No margin",
+            "value": "no-margin"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Text alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_color",
+        "label": "Text colour",
+        "default": "black",
+        "options": [
+          {
+            "label": "White",
+            "value": "white"
+          },
+          {
+            "label": "Black",
+            "value": "black"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Image with text overlay"
+      },      
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.</p>"
+      },
+      
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Copy Section",
+        "category": "Misc"
+      }
+    ]
+  }
+{% endschema %}

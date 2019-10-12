@@ -1,0 +1,33 @@
+/*============================================================================
+pagination
+==============================================================================*/
+.pagination{
+	padding:0 0 40px 0;
+	@include flexbox();
+	@include align-items(center);
+	@include justify-content(center);
+	li{
+		display:inline-block;
+		list-style:none;
+	}
+	.pagination-nav{
+		font-weight:bold;
+		margin-left:30px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		&.back{
+			margin-left:0;
+			margin-right:30px;
+		}
+		.btn--disabled{
+			opacity: 0.2;
+		}
+	}
+	.page{
+		padding:0 5px;
+		line-height: 20px;
+		&:hover, &.current{
+			font-weight: 600;
+		}
+	}
+}

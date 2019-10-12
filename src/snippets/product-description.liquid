@@ -1,0 +1,29 @@
+<div class="description_section">      
+ 
+
+    {% comment %}
+      Examaple Description:
+      %title-1-start%
+      Title 1 Here 
+      %title-1-end%
+      %text-1-start%
+      Text 1 Here
+      %text-1-end%
+      %title-2-start% 
+      Title 2 here
+      %title-2-end%
+      %text-2-start%
+      Text 2 Here
+      %text-2-end%
+    {% endcomment %}
+
+    {% if product.description contains '%title-' %}
+    {% assign mainDescription  = product.description | split: '%title-1-start%' | first %}
+    {% endif %}
+
+    {% if mainDescription != blank  %}
+      {{ mainDescription }}
+    {% else %}
+      {{ product.description }}
+    {% endif %}
+</div>

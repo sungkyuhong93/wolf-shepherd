@@ -1,0 +1,52 @@
+{
+  "name": "breadcrumbs",
+  "version": "1.0.0-alpha.1",
+  "private": true,
+  "author": "Karmoon",
+  "description": "An opinionated, Slate compatible, starting point for developing Shopify themes.",
+  "keywords": [
+    "Karmoon",
+    "theme"
+  ],
+  "bugs": "https://github.com/Shopify/starter-theme/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shopify/starter-theme.git"
+  },
+  "devDependencies": {
+    "@shopify/slate-tools": "1.0.0-beta.12",
+    "babel-preset-shopify": "^16.2.0",
+    "eslint-plugin-shopify": "^19.0.0",
+    "stylelint-config-prettier": "^3.0.4",
+    "stylelint-config-shopify": "^5.0.0"
+  },
+  "dependencies": {
+    "@shopify/theme-a11y": "^1.0.1",
+    "@shopify/theme-cart": "^1.0.0-alpha.7",
+    "@shopify/theme-currency": "^1.0.0-alpha.7",
+    "@shopify/theme-images": "^1.0.0-alpha.7",
+    "@shopify/theme-rte": "^1.0.0-alpha.7",
+    "@shopify/theme-sections": "^1.1.0",
+    "@shopify/theme-variants": "^1.0.0-alpha.8",
+    "instafeed.js": "^1.4.1",
+    "jquery": "^3.2.1",
+    "jquery-match-height": "^0.7.2",
+    "jquery.cookie": "^1.4.1",
+    "lazysizes": "^4.1.1",
+    "lodash-es": "^4.17.4",
+    "mathsass": "^0.10.1",
+    "modularscale-sass": "^3.0.8",
+    "normalize.css": "^7.0.0",
+    "slick-carousel": "^1.8.1"
+  },
+  "scripts": {
+    "start": "slate-tools start",
+    "watch": "slate-tools start --skipFirstDeploy",
+    "build": "slate-tools build",
+    "deploy": "slate-tools build && slate-tools deploy",
+    "zip": "slate-tools build && slate-tools zip",
+    "lint": "slate-tools lint",
+    "format": "slate-tools format"
+  }
+}

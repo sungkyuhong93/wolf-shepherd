@@ -1,0 +1,25 @@
+<ul class="pagination">
+  <li class="back pagination-nav">
+    {% unless paginate.previous.is_link %}
+      <div class="button button--disabled prev">
+        <span class="icon__fallback-text">{% comment %}{{ 'general.pagination.previous' | t }}{% endcomment %}Prev</span>
+      </div>
+    {% else %}
+      <a href="{{ paginate.previous.url }}" class="button button--secondary prev">
+        <span class="icon__fallback-text">{% comment %}{{ 'general.pagination.previous' | t }}{% endcomment %}Prev</span>
+      </a>
+    {% endunless %}
+  </li>
+  <li>{{ paginate | default_pagination: next: '', previous: '' }}</li>
+  <li class="next pagination-nav">
+    {% unless paginate.next.is_link %}
+      <div class="button button--secondary button--disabled">
+        <span class="icon__fallback-text">{% comment %}{{ 'general.pagination.next' | t }}{% endcomment %}Next</span>
+      </div>
+    {% else %}
+      <a href="{{ paginate.next.url }}" class="button button--secondary ">
+        <span class="icon__fallback-text">{% comment %}{{ 'general.pagination.next' | t }}{% endcomment %}Next</span>
+      </a>
+    {% endunless %}
+  </li>
+</ul>

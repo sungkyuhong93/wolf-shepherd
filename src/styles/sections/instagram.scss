@@ -1,0 +1,154 @@
+/**
+ * Section: Instafeed
+ * -----------------------------------------------------------------------------
+ * Base styling for Instafeed app section.
+ *
+ */
+ #instafeed-section {
+  display: none;
+  position: relative;
+
+  &.active {
+    display: block;
+  }
+
+  .flickity-prev-next-button {
+    background-image: var(--icon-arrow-left);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 31px;
+    top: 20px;
+    transform: translateY(0);
+    width: 15px;
+
+    &.next {
+      background-image: var(--icon-arrow-right);
+    }
+
+    .flickity-button-icon {
+      display: none;
+    }
+
+    @include media-query( $medium-up ) {
+      height: 38px;
+      top: 17px;
+      width: 38px;
+    }
+  }
+}
+
+/* ============================================================================
+Instagram
+============================================================================== */
+.instafeed {
+  $parent: &;
+  padding-top: 70px;
+
+  &__img {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px solid $COLOR_WHITE;
+    display: inline-block;
+    margin: 0;
+    padding-bottom: 40%;
+    position: relative;
+    width: 40%;
+
+    &:hover .instafeed__overlay {
+      opacity: 1;
+    }
+
+    &:nth-of-type(1n+6) {
+      display: none;
+    }
+  }
+
+  &__overlay {
+    align-items: center;
+    background-color: rgba($COLOR_BLACK, 0.5);
+    bottom: 0;
+    display: flex;
+    left: 0;
+    opacity: 0;
+    padding: 15px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &__overlay-text {
+    color: $COLOR_WHITE;
+    height: 125px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+  }
+
+  &--load-more {
+    display: flex;
+    flex-flow: wrap;
+
+    #instafeed {
+      margin: 0 -2%;
+    }
+
+    #{$parent}__img {
+      margin: 2%;
+      padding-bottom: 46%;
+      width: 46%;
+
+      &:nth-of-type(1n+6) {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__load-more {
+    margin-bottom: 30px;
+    padding-top: 30px;
+    text-align: center;
+
+    .button {
+      width: 100%;
+    }
+  }
+
+  .flickity-slider & {
+    &__img:nth-of-type(1n+6) {
+      display: inline-block;
+    }
+  }
+
+  @include media-query($medium-up) {
+    &__header--image {
+      top: -60px;
+
+      img {
+        max-width: 250px;
+      }
+    }
+
+    &__img {
+      padding-bottom: 20%;
+      width: 20%;
+    }
+
+    &--load-more {
+      #{$parent}__img {
+        padding-bottom: 21%;
+        width: 21%;
+      }
+    }
+
+    &__load-more {
+      margin-bottom: 50px;
+      padding-top: 50px;
+
+      .button {
+        width: auto;
+      }
+    }
+  }
+}

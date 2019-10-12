@@ -1,0 +1,130 @@
+/*============================================================================
+Cart page
+==============================================================================*/
+$border-color: #dedede;
+
+#Cart, .cart-summary, .cart-notes{
+    margin: 0 0 30px 0;
+    background: #fff;
+    border: 1px solid $border-color;
+	input[name="update"] { 
+	    margin-bottom: 10px;
+	    margin-top: 10px;
+	}
+}
+
+.cart__title{
+	font-size: 16px;
+	text-transform: uppercase;
+    padding: 20px;
+    margin: 0;
+	border-bottom: 1px solid $border-color;
+	background: #f3f3f3;
+}
+.cart__title-subtitle{
+	float: right;
+}
+
+.cart__body{
+	padding: 20px;
+} 
+
+
+
+.cart__row{
+	position: relative;
+	@include flexbox();
+	@include align-items(center);
+	margin-bottom: 30px;
+	&:last-of-type{
+		margin-bottom: 10px;
+	}
+}
+
+.cart-item__remove{
+	text-transform: lowercase;
+	text-decoration: underline;
+	font-weight: bold;
+	color:$black;
+}
+
+
+.cart__image{
+	margin-right: 15px;
+	display: inline-block;
+    padding: 10px 5px;
+    border: 1px solid #dedede85;
+	img{
+		min-width: 70px;
+		width:100px;
+	}
+	@include media-query($medium-up){
+		margin-right: 30px;
+		padding: 15px;
+		img{
+			width:120px;
+		}	
+	}
+}
+
+.cart__content{
+	margin-right: 20px;
+	width: 40%;
+}
+
+  
+.cart-item__title{
+	font-size: 18px;
+	margin:0;
+	padding-right: 10px;
+}
+.cart-item__price{
+	display: inline-block;
+	margin:0;
+	font-size: 18px;
+}
+.cart-item__price-per-unit{
+	font-size: 14px;
+	font-weight: normal;
+	text-transform: none;
+}
+.cart-item__variant{
+	font-size: 12px;
+	margin: 0 0 10px 0;
+	@include opacity(0.6);
+}
+
+.cart-item__quanity{
+	span{
+		text-align: center;
+		display: block;
+	    padding: 10px 0;
+	}
+	input{
+
+	}
+}
+
+
+
+.cart-summary .cart__body{
+	text-align: center;
+	p{
+		margin-top: 0;
+	}
+}
+
+
+
+.cart-notes{
+	label{
+		display: block;
+	    margin: 10px 0 20px;
+	    font-size: 14px;
+	}
+	textarea{
+		min-width:100%;
+		min-height: 130px;
+		border: 1px solid $border-color;
+	}
+}
