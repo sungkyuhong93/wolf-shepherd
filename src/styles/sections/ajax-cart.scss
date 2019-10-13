@@ -1,180 +1,177 @@
-/*============================================================================
+/* ============================================================================
 Ajaxt-cart
-==============================================================================*/
-/*=============== Counter ===============*/
-#Cart-icon{
+============================================================================== */
+
+/* =============== Counter =============== */
+#Cart-icon {
   padding-right: 4px;
 }
-.cart-icon__container{
+
+.cart-icon__container {
   position: relative;
 }
-#CartCount{
-  display: none;
-  position: absolute;
+
+#CartCount {
   background: #000;
+  border-radius: 10px;
+  color: #fff;
+  display: none;
+  font-size: 10px;
   line-height: 18px;
   min-width: 18px;
-  color: #fff;
-  text-align: center;
-  font-size: 10px;
-  border-radius: 10px;
-  top: -8px;
+  position: absolute;
   right: -12px;
-}
-.cart-count--show{
-  display: block!important;
-}
-.cart-ajax__subtitle-counter{
-  display: inline-block!important; 
+  text-align: center;
+  top: -8px;
 }
 
-/*=============== Ajax cart ===============*/
+.cart-count--show {
+  display: block !important;
+}
+
+.cart-ajax__subtitle-counter {
+  display: inline-block !important; 
+}
+
+/* =============== Ajax cart =============== */
 $cart-height: calc(100vh - 240px);
 
-.cart-ajax__wrapper .cart-ajax { 
+.cart-ajax__wrapper .cart-ajax {
   @include transform(translateX(100%));
 }
+
 .cart-ajax__wrapper.cart-ajax--show {
   .cart-ajax__background {
-    pointer-events:all;
     opacity: 1;
-
+    pointer-events: all;
   }
+
   .cart-ajax {
-    pointer-events:all;
     @include transform(translateX(0%));
+    pointer-events: all;
   }
 }
 
 .cart-ajax__tools {
-  position: fixed;
-  right: 15px;
   bottom: 15px;
   left: 15px;
   margin-top: 20px;
+  position: fixed;
+  right: 15px;
 
   .ie9 &,
   html[data-useragent*='MSIE 10.0'] &,
   html[data-useragent*='rv:11.0'] & {
-    position:absolute;
-    width:370px;
+    position: absolute;
+    width: 370px;
   }
 
   .button {
-    width: 100%;
     margin-bottom: 10px;
-    &:last-child{
-    	margin-bottom: 0;
+    width: 100%;
+
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }
 
-.cart-ajax__background {    
-  position: fixed;
-  top:0;
-  right:0;
+.cart-ajax__background {
+  background: rgba(255, 255, 255, 0.9);
   bottom: 0;
   left: 0;
-  z-index: 1000;
-
+  opacity: 0;
   overflow: auto;
   padding: 20px 420px 20px 20px;
-  
-  background:rgba(255, 255, 255, 0.9);
-  opacity: 0;
-
-  pointer-events:none;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
   transition: 0.2s;
+  z-index: 1000;
 }
 
 .cart-ajax {
+  background-color: #fff;
+  border: 0;
+  border-left: 1px solid rgba(#000, 0.4);
+  bottom: 0;
+  max-width: 100%;
+  padding: 15px 20px 90px;
+  pointer-events: none;
   position: fixed;
   right: 0;
   top: 0;
-  bottom:0;
-  z-index: 99999;
-
-  padding: 15px 20px 90px 20px;
-  max-width: 100%;
-  width: 400px;
-
-  border: none;
-  background-color: #fff;
-  border-left:1px solid rgba(#000,0.4);
-
-  pointer-events:none;
-
   transition: all 0.25s cubic-bezier(0.3, 0.6, 0.4, 1);
-
+  width: 400px;
+  z-index: 99999;
 }
 
-
-/*=============== Ajax header section ===============*/
+/* =============== Ajax header section =============== */
 .cart-ajax__close {
   display: block;
   position: absolute;
-  top: 10px;
   right: 10px;
+  top: 10px;
 }
+
 .cart-ajax__header {
   text-align: center;
 }
+
 .cart-ajax__title {
-	margin: 0;
+  margin: 0;
 }
+
 .cart-ajax__subtitle {
   margin-top: 0;
 }
 
-
-/*=============== Ajax main body/rows of product ===============*/
-.cart-ajax__list{
+/* =============== Ajax main body/rows of product =============== */
+.cart-ajax__list {
+  border-bottom: rgba(#000, 0.3) 1px solid;
   height: $cart-height;
   max-height: $cart-height;
-  
-  padding-bottom: 20px;
   overflow-y: auto;
-
-  border-bottom: rgba(#000, 0.3) 1px solid;
+  padding-bottom: 20px;
 }
 
-.cart-ajax__row{
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  overflow: hidden;
-
+.cart-ajax__row {
   border-bottom: lighten(#000, 90%) 1px solid;
-  
+  display: table;
+  margin-bottom: 20px;
+  overflow: hidden;
+  padding-bottom: 20px;
   transition: opacity 0.35s cubic-bezier(0.2, 0.6, 0.4, 1);
-  &.cart-ajax__row--deleted{
+  width: 100%;
+
+  &.cart-ajax__row--deleted {
     opacity: 0;
   }
-  &:last-child{
+
+  &:last-child {
     border-top-width: 0;
     margin-bottom: 0;
     padding-top: 0;
   }
 }
 
-.cart-ajax__row {
-  width: 100%;
-  display: table;
-}
-
 .cart-ajax__row__column {
-  vertical-align: middle;
   display: table-cell;
   position: relative;
+  vertical-align: middle;
 
   &:nth-child(1) {
-    width: 25%;
     padding: 0 3% 0 0;
+    width: 25%;
   }
 
   &:nth-child(2) {
+    padding: 0;
     width: 70%;
-    padding:0;
   }
+
   &:nth-child(3) {
     vertical-align: bottom;
   }
@@ -182,19 +179,16 @@ $cart-height: calc(100vh - 240px);
 
 .cart-ajax__row__image {
   $dimensions: 90px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
   display: block;
   height: $dimensions;
-  width: 60px;
   margin-right: 10px;
-
-  background: {
-  	size: contain;
-  	position: center center;
-  	repeat: no-repeat;
-  }
+  width: 60px;
 
   @media only screen and (min-width: 380px) {
-    width:$dimensions;
+    width: $dimensions;
   }
 
   @include media-query($large-up) {
@@ -209,13 +203,13 @@ $cart-height: calc(100vh - 240px);
   margin-bottom: 5px;
 }
 
-.cart-ajax__row__unit-price{
-  display: block; 
+.cart-ajax__row__unit-price {
+  display: block;
 }
 
 .cart-ajax__row__title {
-  text-decoration: none;
   margin: 0;
+  text-decoration: none;
 }
 
 .cart-ajax__row__subtitle {
@@ -223,126 +217,118 @@ $cart-height: calc(100vh - 240px);
 }
 
 .cart-ajax__row__variant {
-	font-weight: normal;
-	display: block;
+  display: block;
   margin: 0 0 5px;
 }
 
-.cart-ajax__remove{
-	cursor:pointer;
+.cart-ajax__remove {
+  cursor: pointer;
   position: absolute;
-  top: 0;
   right: 0;
+  top: 0;
 }
 
-
-
-
-
-.cart-ajax__message{
+.cart-ajax__message {
   text-align: center;
 }
-.cart-ajax__link{
-  text-align: center;
+
+.cart-ajax__link {
   display: block;
   margin-bottom: 10px;
+  text-align: center;
 }
 
-
-
-/*============================================================================
+/* ============================================================================
 Mini Cart
-==============================================================================*/
-.cart-ajax--mini-cart{
+============================================================================== */
+.cart-ajax--mini-cart {
   &.cart-ajax__wrapper .cart-ajax {
     @include transform(translateX(0%) translateY(10%));
     opacity: 0;
-
   }
 
-  &.cart-ajax__wrapper.cart-ajax--show{
-    .cart-ajax{
+  &.cart-ajax__wrapper.cart-ajax--show {
+    .cart-ajax {
       @include transform(translateX(0%) translateY(0%));
       opacity: 1;
     }
-    .cart-ajax__background{
-      pointer-events:none;
-      opacity: 0;
-    }
-  } 
 
-  .cart-ajax{
+    .cart-ajax__background {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  .cart-ajax {
+    border: 1px solid #999;
+    bottom: initial;
+    max-width: calc(100% - 40px);
     position: absolute;
     right: 20px;
     top: 70px;
-    bottom: initial;
-    max-width: calc(100% - 40px);
-    border: 1px solid #999;
   }
-  .cart-ajax__list{
+
+  .cart-ajax__list {
     height: 200px;
     padding-bottom: 0;
   }
-  .cart-ajax__continue-shopping{
-    display:none;
-  }
-  .button--checkout{
+
+  .cart-ajax__continue-shopping {
     display: none;
   }
 
-  @media only screen and (min-width: $width-site ) {
-    .cart-ajax{
+  .button--checkout {
+    display: none;
+  }
+
+  @media only screen and (min-width: $width-site) {
+    .cart-ajax {
+      margin-right: -700px;
       position: absolute;
       right: 50%;
-      margin-right: -700px;
     }
   }
 }
 
-
-
-/*============================================================================
+/* ============================================================================
 Related Products
-==============================================================================*/
-.cart-ajax__background{
-  text-align: center;
-}
-.cart-ajax__related-title{
-  margin-top: 20px;
+============================================================================== */
+.cart-ajax__related-title {
   margin-bottom: 20px;
-  &.cart-ajax__related-title--hide{
-    display:none;
-  }
-  h2{
+  margin-top: 20px;
+
+  &.cart-ajax__related-title--hide {
+    display: none;
   }
 }
-.cart-ajax__related__product-wrapper{
+
+.cart-ajax__related__product-wrapper {
   display: inline-block;
-  margin: 20px; 
-  text-align: center;  
+  margin: 20px;
+  text-align: center;
   vertical-align: top;
   width: 80%;
-  @include media-query($medium-up){
-    width: 30%;
+
+  @include media-query($medium-up) {
     margin-left: 1%;
     margin-right: 1%;
-  }
-  @include media-query($large-up){
-    width: 36%;
+    width: 30%;
   }
 
+  @include media-query($large-up) {
+    width: 36%;
+  }
 }
-.cart-ajax__related__product-image{
-  height: 0;
-  padding-top: 150%;
-  display: block;
+
+.cart-ajax__related__product-image {
   background-position: center;
   background-size: cover;
+  display: block;
+  height: 0;
   margin-bottom: 10px;
+  padding-top: 150%;
 }
-.cart-ajax__related__product-title{
-  
-}
-.cart-ajax__related__product-price{
-  display: block; 
+
+.cart-ajax__related__product-price {
+  display: block;
 }

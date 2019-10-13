@@ -11,36 +11,37 @@
   {%- endcapture -%}
 
   <style>
-    .hero-main--{{ section.id }}{
+    {% comment %} .hero-main--{{ section.id }}{
       background-image:url('{{ section.settings.mobile_image | img_url: 'master' }}');
     }
     @media screen and (min-width: 749px) {
       .hero-main--{{ section.id }}{
         background-image:url('{{ section.settings.image | img_url: 'master' }}');
       }
-    }
+    } {% endcomment %}
   </style>
 
   {% if section.settings.full-width != 'full-width' %}<div class="page-width">{% endif %}
    
   <div class="hero-main {{ alignContent }} hero-main--{{ section.id }} 
     {% if section.settings.text_color == 'white' %}hero-main--white{% endif %}
-    {% if section.settings.margin_bottom == 'margin' %}section-margin-bottom{% endif %}">
+    {% if section.settings.margin_bottom == 'margin' %}section-margin-bottom{% endif %} lazyload" 
+    data-bgset="{{section.settings.mobile_image | img_url: 'master'}} [(max-width: 749px)] | {{section.settings.image | img_url: 'master'}}">
 
     <div class="hero-main__wrapper">
 
       {% if section.settings.title != blank %}
-        <h2 class="h1 hero-title">{{ section.settings.title | escape }}</h2>
+        <h2 class="h1 hero-main__title">{{ section.settings.title | escape }}</h2>
       {% endif %}
       
-        <div class="rte-setting hero-text">
+      <div class="rte-setting hero-main__text">
         {% if section.settings.text != blank %}{{ section.settings.text }}{% endif %}
         {% if section.settings.button_label != blank and section.settings.button_link != blank %}
           <a href="{{ section.settings.button_link }}" class="{% if section.settings.button_color == 'white' %}button--white {% else %} button {% endif %}">
             {{ section.settings.button_label }}
           </a>
         {% endif %}
-        </div>
+      </div>
     </div>
   </div>
 

@@ -59,11 +59,11 @@
 // Overrides .visually-hidden when focused
 .skip-link:focus {
   @include visually-shown(absolute);
-  z-index: 10000;
-  padding: $grid-gutter / 2;
   background-color: $color-body;
   color: $color-body-text;
+  padding: $grid-gutter / 2;
   transition: none;
+  z-index: 10000;
 }
 
 .hide {
@@ -71,6 +71,6 @@
   display: none !important;
 }
 
-.section-margin-bottom{
+.section-margin-bottom {
   margin-bottom: 20px !important;
 }

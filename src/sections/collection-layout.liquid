@@ -88,6 +88,12 @@
         <div class="grid">
           {% for product in collection.products %}
             
+            {% comment %} {% include 'responsive-image' with
+                image: product.featured_image,
+                max_width: 700,
+                max_height: 800
+            %} {% endcomment %}
+
             {% include 'collection-grid-product' with gridWidth: collectionCounterClass  %}
 
             {% if forloop.index == 10 %}
