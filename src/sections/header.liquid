@@ -29,6 +29,8 @@
     </div>
   {% endif %}
 {% endcapture %}
+
+
 <div id="HeaderWrapper" class="{% if section.settings.logo_position == 'center' %} header--logo-center {% else %} header--logo-left {% endif %}"  data-section-id="{{ section.id }}" data-section-type="header-section">
   <div class="page-width">
 
@@ -115,6 +117,8 @@
       {% if section.settings.enable_full_screen_search %}{% include 'search-form' %}{% endif %}
 
     </header>
+
+    
   </div>
   
   {% include 'ajax-cart' %}

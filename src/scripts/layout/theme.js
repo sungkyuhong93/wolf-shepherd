@@ -11,9 +11,8 @@ import '../../styles/theme.scss.liquid';
 import {focusHash, bindInPageLinks} from '@shopify/theme-a11y';
 import {cookiesEnabled} from '@shopify/theme-cart';
 
-
 import {load} from '@shopify/theme-sections';
-import '../sections/navigation';
+import Navigation from '../sections/navigation';
 import '../sections/notification-bar';
 import '../sections/meganav';
 import '../sections/sticky-nav';
@@ -27,6 +26,7 @@ import '../components/type';
 import '../components/quantity';
 
 document.addEventListener('DOMContentLoaded', () => {
+  Navigation();
   ExitIntent();
   load('*');
 });

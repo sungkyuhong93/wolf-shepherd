@@ -1,0 +1,154 @@
+<style>
+  {% if section.settings.logo != blank %}
+    .site-header__logo-image {
+      max-width: {{ section.settings.logo_max_width }}px;
+    }
+  {% endif %}
+</style>
+
+{% capture logohtml %}
+  {% if template.name == 'index' %}
+    <h1 itemscope itemtype="http://schema.org/Organization">
+  {% else %}
+    <div class="h1" itemscope itemtype="http://schema.org/Organization">
+  {% endif %}
+    <a href="/" itemprop="url" class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
+      {% if section.settings.logo != blank %}
+        {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
+        <img src="{{ section.settings.logo | img_url: image_size }}"
+              srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+              alt="{{ section.settings.logo.alt | default: shop.name }}"
+              itemprop="logo">
+      {% else %}
+        {{ shop.name }}
+      {% endif %}
+    </a>
+  {% if template.name == 'index' %}
+    </h1>
+  {% else %}
+    </div>
+  {% endif %}
+{% endcapture %}
+
+
+<div js-site-header="true" class="site-header 
+  {% if section.settings.logo_position == 'center' %} site-header--logo-center {% else %} site-header--logo-left {% endif %}"  
+  data-section-id="{{ section.id }}" data-section-type="site-header-section">
+
+  <div class="page-width">
+    
+    {% include 'site-header-navigation' %}
+
+    
+
+    <header class="site-header__header" role="banner">
+      
+      <div js-mobile-nav="toggle" class="site-header__hamburger-container">
+        <div class="site-header__hamburger"></div>
+      </div>
+
+      {{logohtml}}
+
+      <ul class="site-nav__account">
+
+        {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+          <li class="mobile--hide">
+              <a href="/account">Account</a>
+          </li>
+        {% else %}
+          <li class="mobile--hide">
+            <a href="/account/login">Account</a>
+          </li>
+        {% endif %}
+
+
+        {% endif %}
+
+        <li class="mobile--hide">
+          <a href="#"  class="site-header__search-icon {% if section.settings.enable_full_screen_search %}full-screen-search{% endif %}">
+            {% include 'icons' with icon: 'search' %}
+
+            {% unless section.settings.enable_full_screen_search %}
+              {% include 'search-form--basic' %}
+            {% endunless %}
+
+          </a>
+        </li>
+
+        <li>
+          <a href="/cart" id="Cart-icon" class="site-header__cart-icon">
+
+            <div class="cart-icon__container">
+              <span id="CartCount" class="js-cart-item-count {% if cart.item_count != 0 %}cart-count--show{% endif %}">{{ cart.item_count }}</span>
+              {% include 'icons' with icon: 'cart' %}
+            </div>
+
+          </a>
+        </li>
+
+      </ul>
+     
+      {% if section.settings.enable_full_screen_search %}{% include 'search-form' %}{% endif %}
+
+    </header>
+  </div>
+  
+</div>
+
+{% include 'ajax-cart' %}
+
+{% include 'site-header-navigation-mobile' %}
+
+<div js-site-header="overlay" class="site-header__overlay">{% comment %}Do not delete this div{% endcomment %}</div>
+
+{% schema %}
+  {
+    "name": "Site Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "select",
+        "id": "logo_position",
+        "label":     "Position of Logo",
+        "options": [
+          {
+           "value": "left",
+           "label": "Left"
+          },
+          {
+           "value": "center",
+           "label": "Centre"
+          }
+        ],
+        "default":   "left"
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "min": 50,
+        "max": 450,
+        "step": 10,
+        "unit": "px",
+        "label": "Custom logo width",
+        "default": 250
+      },
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      },        
+      {
+        "type": "checkbox",
+        "id": "enable_full_screen_search",
+        "label": "Enable Full Screen Search",
+        "default": false
+      }
+    ]
+  }
+{% endschema %}

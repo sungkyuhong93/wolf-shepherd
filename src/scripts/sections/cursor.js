@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import Hammer from 'hammerjs';
 import cssClasses from '../helpers/cssClasses';
 // import {register} from '@shopify/theme-sections';
 
@@ -12,6 +11,8 @@ const selectors = {
   siteHeader: '[js-site-header="true"]',
   siteHeaderOverlay: '[js-site-header="overlay"]',
 };
+
+const cursor = document.querySelector('.cursor');
 
 export default () => {
 
@@ -33,56 +34,40 @@ export default () => {
     nodeSelectors.siteHeaderOverlay.addEventListener('click', removeActiveState);
     document.documentElement.addEventListener('keydown', handleKeydown);
 
-    const slideOut = new Hammer(nodeSelectors.mobileNav);
-    const slideOutBackground = new Hammer(nodeSelectors.siteHeaderOverlay);
-    // add a "PAN" recognizer to it (all directions)
-    slideOut.add(new Hammer.Pan({direction: Hammer.DIRECTION_ALL, threshold: 0 }));
-    slideOut.on('pan', handleDrag);
-    slideOutBackground.on('swipeleft touch', removeActiveState);
+    // document.addEventListener('mousemove', mouseChaser);
+
+    document.addEventListener('mousemove', ev => {
+      cursor.classList.remove('cursor--hide');
+
+      cursor.setAttribute('style', 'top: '+(ev.pageY)+'px; left: '+(ev.pageX)+'px;');
+
+      if (ev.target.classList.contains('site-header__overlay')) {
+        cursor.classList.add('cursor--close');
+      } else {
+        cursor.classList.remove('cursor--close');
+      }
+
+      window.setTimeout(() => {
+        cursor.classList.add('cursor--hide');
+      }, 500);
+    });
   }
 
-  // setting up a few vars to keep track of things.
-  // at issue is these values need to be encapsulated
-  // in some scope other than global.
-  let lastPosX = 0;
-  let isDragging = false;
-  function handleDrag(ev) {
+  function mouseChaser(ev) {
+    console.log(ev);
+    cursor.classList.remove('cursor--hide');
 
-    // for convience, let's get a reference to our object
-    const elem = ev.target;
+    cursor.setAttribute('style', 'top: '+(ev.pageY)+'px; left: '+(ev.pageX)+'px;');
 
-    // DRAG STARTED
-    // here, let's snag the current position
-    // and keep track of the fact that we're dragging
-    if (!isDragging) {
-      isDragging = true;
-      lastPosX = elem.offsetLeft;
-      elem.style.transition = '0s';
+    if (ev.target.classList.contains('site-header__overlay')) {
+      cursor.classList.add('cursor--close');
+    } else {
+      cursor.classList.remove('cursor--close');
     }
 
-    // we simply need to determine where the x,y of this
-    // object is relative to where it's "last" known position is
-    // NOTE: deltaX and deltaY are cumulative
-    // Thus we need to always calculate 'real x and y' relative
-    // to the "lastPosX/Y"
-    const posX = ev.deltaX + lastPosX;
-
-    // move our element to that position
-    if (posX < 0 && posX > -300) {
-      elem.style.left = `${posX}px`;
-    }
-
-    // DRAG ENDED
-    // this is where we simply forget we are dragging
-    if (ev.isFinal) {
-      isDragging = false;
-      elem.style.transition = '0.2s';
-      if (posX > -150) {
-        addActiveState();
-      } else {
-        removeActiveState();
-      }
-    }
+    window.setTimeout(() => {
+      cursor.classList.add('cursor--hide');
+    }, 500);
   }
 
   function toggleActiveState() {
@@ -100,13 +85,15 @@ export default () => {
   }
 
   function removeActiveState() {
-    nodeSelectors.mobileNav.style.left = `${-300}px`;
+    nodeSelectors.mobileNav.classList.remove(cssClasses.active);
+    nodeSelectors.siteHeader.classList.remove(cssClasses.active);
     nodeSelectors.siteHeaderOverlay.classList.remove(cssClasses.active);
     document.querySelector('body').style.overflowY = 'initial';
   }
 
   function addActiveState() {
-    nodeSelectors.mobileNav.style.left = `${0}px`;
+    nodeSelectors.mobileNav.classList.add(cssClasses.active);
+    nodeSelectors.siteHeader.classList.add(cssClasses.active);
     nodeSelectors.siteHeaderOverlay.classList.add(cssClasses.active);
     document.querySelector('body').style.overflowY = 'hidden';
   }

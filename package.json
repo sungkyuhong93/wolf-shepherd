@@ -29,6 +29,7 @@
     "@shopify/theme-rte": "^1.0.0-alpha.7",
     "@shopify/theme-sections": "^1.1.0",
     "@shopify/theme-variants": "^1.0.0-alpha.8",
+    "hammerjs": "^2.0.8",
     "instafeed.js": "^1.4.1",
     "jquery": "^3.2.1",
     "jquery-match-height": "^0.7.2",
