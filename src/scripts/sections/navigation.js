@@ -1,7 +1,5 @@
-import $ from 'jquery';
 import Hammer from 'hammerjs';
 import cssClasses from '../helpers/cssClasses';
-// import {register} from '@shopify/theme-sections';
 
 /**
  * DOM selectors.
@@ -26,6 +24,17 @@ export default () => {
   };
 
   /**
+   * Global Variables
+   */
+  const slideOut = new Hammer(nodeSelectors.mobileNav);
+  const slideOutBackground = new Hammer(nodeSelectors.siteHeaderOverlay);
+  // setting up a few vars to keep track of things.
+  // at issue is these values need to be encapsulated
+  // in some scope other than global.
+  let lastPosX = 0;
+  let isDragging = false;
+
+  /**
    * Set click events on items.
    */
   function setClickEvents() {
@@ -33,21 +42,13 @@ export default () => {
     nodeSelectors.siteHeaderOverlay.addEventListener('click', removeActiveState);
     document.documentElement.addEventListener('keydown', handleKeydown);
 
-    const slideOut = new Hammer(nodeSelectors.mobileNav);
-    const slideOutBackground = new Hammer(nodeSelectors.siteHeaderOverlay);
     // add a "PAN" recognizer to it (all directions)
     slideOut.add(new Hammer.Pan({direction: Hammer.DIRECTION_ALL, threshold: 0 }));
     slideOut.on('pan', handleDrag);
     slideOutBackground.on('swipeleft touch', removeActiveState);
   }
 
-  // setting up a few vars to keep track of things.
-  // at issue is these values need to be encapsulated
-  // in some scope other than global.
-  let lastPosX = 0;
-  let isDragging = false;
   function handleDrag(ev) {
-
     // for convience, let's get a reference to our object
     const elem = ev.target;
 
@@ -62,9 +63,6 @@ export default () => {
 
     // we simply need to determine where the x,y of this
     // object is relative to where it's "last" known position is
-    // NOTE: deltaX and deltaY are cumulative
-    // Thus we need to always calculate 'real x and y' relative
-    // to the "lastPosX/Y"
     const posX = ev.deltaX + lastPosX;
 
     // move our element to that position

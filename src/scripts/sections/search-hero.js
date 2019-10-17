@@ -23,8 +23,9 @@ theme.SearchPopup = (function() {
 
   } else {
     const $searchForm = $('.site-header__search-icon');
-    const $searchFocus = $('.search-form input');
+    const $searchFocus = $('.site-header__search-icon .search-form input');
     $searchForm.on('click', () => {
+      console.log('click it');
       $searchForm.addClass('search-form--is-active');
       $searchFocus.focus();
       return false;

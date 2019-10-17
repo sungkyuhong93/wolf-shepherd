@@ -8,11 +8,11 @@
 
 {% capture logohtml %}
   {% if template.name == 'index' %}
-    <h1 itemscope itemtype="http://schema.org/Organization">
+    <h1 class="site-header__site-logo" itemscope itemtype="http://schema.org/Organization">
   {% else %}
-    <div class="h1" itemscope itemtype="http://schema.org/Organization">
+    <div class="h1 site-header__site-logo"  itemscope itemtype="http://schema.org/Organization">
   {% endif %}
-    <a href="/" itemprop="url" class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
+    <a href="/" itemprop="url" >
       {% if section.settings.logo != blank %}
         {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
         <img src="{{ section.settings.logo | img_url: image_size }}"
@@ -32,14 +32,12 @@
 
 
 <div js-site-header="true" class="site-header 
-  {% if section.settings.logo_position == 'center' %} site-header--logo-center {% else %} site-header--logo-left {% endif %}"  
+  {% if section.settings.logo_position == 'left' %} site-header--left-align {% endif %}"  
   data-section-id="{{ section.id }}" data-section-type="site-header-section">
 
   <div class="page-width">
     
     {% include 'site-header-navigation' %}
-
-    
 
     <header class="site-header__header" role="banner">
       
@@ -49,23 +47,25 @@
 
       {{logohtml}}
 
-      <ul class="site-nav__account">
+      {% comment %} {% if section.settings.enable_full_screen_search %}{% include 'search-form' %}{% endif %} {% endcomment %}
 
+    </header>
+
+    <div class="site-header__misc">
+      <ul>
         {% if shop.customer_accounts_enabled %}
-        {% if customer %}
-          <li class="mobile--hide">
-              <a href="/account">Account</a>
-          </li>
-        {% else %}
-          <li class="mobile--hide">
-            <a href="/account/login">Account</a>
-          </li>
+          {% if customer %}
+            <li class="site-header__mobile-hide">
+                <a href="/account">Account</a>
+            </li>
+          {% else %}
+            <li class="site-header__mobile-hide">
+              <a href="/account/login">Account</a>
+            </li>
+          {% endif %}
         {% endif %}
 
-
-        {% endif %}
-
-        <li class="mobile--hide">
+        <li class="site-header__mobile-hide">
           <a href="#"  class="site-header__search-icon {% if section.settings.enable_full_screen_search %}full-screen-search{% endif %}">
             {% include 'icons' with icon: 'search' %}
 
@@ -88,10 +88,7 @@
         </li>
 
       </ul>
-     
-      {% if section.settings.enable_full_screen_search %}{% include 'search-form' %}{% endif %}
-
-    </header>
+    </div>
   </div>
   
 </div>
@@ -125,7 +122,7 @@
            "label": "Centre"
           }
         ],
-        "default":   "left"
+        "default":   "center"
       },
       {
         "type": "range",
