@@ -10,13 +10,22 @@
         {%- assign collection = collections[block.settings.collection] -%}
 
         <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}">
-          {% if collection.image != blank %}
-            {{ collection | img_url: '480x480' | img_tag: collection.title }}
-          {% elsif collection.products.first != blank %}
-            {{ collection.products.first | img_url: '480x480' | img_tag: collection.title }}
-          {% elsif collection == empty %}
+          {%- capture image_url -%}
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | img_url: '480x480' }}
+            {% elsif collection.image != blank %}
+              {{ collection | img_url: '480x480'  }}
+            {% elsif collection.products.first != blank %}
+              {{ collection.products.first | img_url: '480x480' }}
+            {% endif %}
+          {%- endcapture -%}
+          {% if collection == empty %}
             {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
             {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+          {% else %}
+            <img 
+            data-src="{{ image_url | handlize }}"
+            class="lazyload {{ image_order }}" />
           {% endif %}
 
           <p>
@@ -26,6 +35,8 @@
               {{ collection.title }}
             {% endif %}
           </p>
+
+          <div class="button">Shop Now</div>
         </a>
       </div>
     {% endfor %}
@@ -74,6 +85,11 @@
             "label": "Collection",
             "id": "collection",
             "type": "collection"
+          },
+          {
+            "label": "Image",
+            "id": "image",
+            "type": "image_picker"
           }
         ]
       }
