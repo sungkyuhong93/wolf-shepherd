@@ -9,7 +9,7 @@
     {% for option in product.options_with_values %}
       
       {% assign swatchShow = false %}      
-      {% if section.settings.show_swatches %}
+      {% if settings.show_swatches %}
 
         {% assign optionName = option.name | downcase | handleize  %}
         {% assign swatchShow = true %}

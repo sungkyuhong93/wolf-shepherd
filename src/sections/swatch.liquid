@@ -1,0 +1,33 @@
+<style>
+  {%- for block in section.blocks -%}
+    {% assign blockColor = block.settings.color | handleize | downcase %}
+    {% assign swatchBackground = block.settings.hex-code %}      
+    .swatch-product--{{blockColor}} {
+      background-color: {{swatchBackground}} !important;
+    }
+  {%- endfor -%}
+</style>
+
+{% schema %}
+  {
+    "name": "Swatch",
+    "blocks": [
+      {
+        "type": "swatch",
+        "name": "Swatch",
+        "settings": [
+          {
+            "type": "text",
+            "id": "color",
+            "label":"Colour variant name"
+          },
+          {
+            "type": "color",
+            "id": "hex-code",
+            "label":"Colour hex code"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

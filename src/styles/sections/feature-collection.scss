@@ -33,24 +33,6 @@
 }
 
 .feature-collection {
-  &--left {
-    h2 {
-      text-align: left;
-    }
-  }
-
-  &--center {
-    h2 {
-      text-align: center;
-    }
-  }
-
-  &--right {
-    h2 {
-      text-align: right;
-    }
-  }
-
   .slick-arrow {
     background: transparent;
     cursor: pointer;

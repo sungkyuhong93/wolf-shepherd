@@ -1,6 +1,32 @@
 /* ============================================================================
   #Headers
 ============================================================================== */
+.header {
+  &--left {
+    text-align: left;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    margin-bottom: 20px;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
 .banner-image {
   background-position: center center;
   background-size: cover;
@@ -37,37 +63,6 @@
 
     img {
       display: none;
-    }
-  }
-}
-
-.header {
-  padding: 0 0 40px;
-
-  &--left {
-    text-align: left;
-  }
-
-  &--right {
-    text-align: right;
-  }
-
-  &--center {
-    text-align: center;
-  }
-
-  &__title {
-    font-family: $FONT_DISPLAY;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
-  }
-
-  &__text {
-    font-family: $font-body;
-    margin-bottom: 20px;
-
-    p {
-      margin: 0;
     }
   }
 }

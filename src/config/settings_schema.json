@@ -200,6 +200,28 @@
       }
     ]
   },
+
+  {
+    "name": "Product",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product Information"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_swatches",
+        "label": "Show swatches",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_swatches_collection",
+        "label": "Swatches on collection grid",
+        "default": true
+      }
+    ]
+  },
   {
     "name": "Cart",
     "settings": [

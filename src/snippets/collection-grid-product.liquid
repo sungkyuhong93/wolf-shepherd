@@ -60,33 +60,33 @@
 
     <a href="{{ product.url | within: collection }}" class="collection-grid-item__image-wrapper">
 
-
-        {% if product.images.size > 1 %}
-            {% for image in product.images limit:2 %}
+      {% if product.images.size > 1 %}
+        {% for image in product.images limit: 2 %}
 
           {% assign image_order = 'collection-grid-item__first-image' %}
           {% if forloop.index == 2 %}
-              {% assign image_order = 'collection-grid-item__second-image' %}
+            {% assign image_order = 'collection-grid-item__second-image' %}
           {% endif %}
 
           {% assign image_url = image.src | img_url: '440x' %}
           {% assign image_url_2x = image.src | img_url: '880x' %}
-            <img 
-            src="{{ image_url }}"
-            srcset="{{image_url}} 1x, {{image_url_2x}} 2x" 
-            alt="{{ image.alt }}" 
-            class="{{ image_order }}" />
 
-            {% endfor %}
-        {% else %}
-          {% assign image_url = product.featured_image.src | img_url: '440x' %}
-        {% assign image_url_2x = product.featured_image.src | img_url: '880x' %}
           <img 
-          src="{{ image_url }}" 
-          srcset="{{image_url}} 1x, {{image_url_2x}} 2x"
-          alt="{{ product.featured_image.alt | escape }}"  
-          class="collection-grid-item__no-hover lazyload blur-up" />
-        {% endif %}
+          data-src="{{ image_url }}"
+          data-srcset="{{image_url}} 1x, {{image_url_2x}} 2x" 
+          alt="{{ image.alt }}" 
+          class="lazyload {{ image_order }}" />
+
+        {% endfor %}
+      {% else %}
+        {% assign image_url = product.featured_image.src | img_url: '440x' %}
+        {% assign image_url_2x = product.featured_image.src | img_url: '880x' %}
+        <img 
+        data-src="{{ image_url }}"
+        data-srcset="{{image_url}} 1x, {{image_url_2x}} 2x"
+        alt="{{ product.featured_image.alt | escape }}"  
+        class="lazyload" />
+      {% endif %}
       
     </a>
 
@@ -119,20 +119,9 @@
         </p>
       </a>
     </div>
+
+    {% include 'swatch-collection' %}
+
   </div>
+
 </div>
-
-{% comment %}{% include 'swatch-collection' %}{% endcomment %}
-{% comment %}{% if template contains 'collection' %}
-  {% if section.settings.enable_quick_shop %}
-  <a class="cta" data-featherlight="#quick-shop-{{product.id}}" href="#">{{ 'collections.general.quick_shop'  |t}}</a>
-  {% endif %}
-{% endif %}{% endcomment %}
-
-{% comment %}{% if template contains 'collection' %}
-{%- assign current_variant = product.selected_or_first_available_variant -%}
-{%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
-<div id="quick-shop-{{product.id}}" class="quick-shop-outer"><div class="quick-shop">{% include 'embed-product' %}</div></div>
-{% endif %}{% endcomment %}
-
-

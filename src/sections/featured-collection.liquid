@@ -1,29 +1,11 @@
 {% comment %}
   modules/feature-collection.scss
 {% endcomment %}
-  {%- capture alignContent -%}
-    {% case section.settings.alignment %}
-      {% when 'left' %}
-        feature-collection--left
-      {% when 'right' %}
-        feature-collection--right
-      {% else %}
-        feature-collection--center
-    {% endcase %}
-  {%- endcapture -%}
 
 <div class="page-width">
   <div class="grid">
-    <div class=" feature-collection {{ alignContent }} {% if section.settings.margin_bottom == 'margin' %}section-margin-bottom{% endif %}">
+    <div class=" feature-collection {{ section.settings.margin_bottom }}">
       
-      {% if section.settings.title != blank %}
-        <div class="grid__item">
-          <div class="feature-collection__header">
-            <h2 class="feature-collection__title">{{ section.settings.title | escape }}</h2>
-          </div>
-        </div>
-      {% endif %}
-
       {%- assign collection = collections[section.settings.collection] -%}
       {%- assign collectionCounter = section.settings.product_count -%} 
       {%- capture collectionCounterClass -%}
@@ -96,12 +78,6 @@
     "name": "Featured collection",
     "settings": [
       {
-        "type": "text",
-        "id": "title",
-        "label": "Heading",
-        "default": "Featured collection"
-      },
-      {
         "id": "collection",
         "type": "collection",
         "label": "Collection"
@@ -110,7 +86,7 @@
         "type": "select",
         "id": "product_count",
         "label": "Number of products to show",
-        "default": "3",
+        "default": "4",
         "options": [
           {
             "value": "2",
@@ -146,31 +122,11 @@
         "options": [
           {
             "label": "Margin bottom",
-            "value": "margin"
+            "value": "section-margin-bottom"
           },
           {
             "label": "No margin",
             "value": "no-margin"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "alignment",
-        "label": "Text alignment",
-        "default": "center",
-        "options": [
-          {
-            "value": "left",
-            "label": "Left"
-          },
-          {
-            "value": "center",
-            "label": "Center"
-          },
-          {
-            "value": "right",
-            "label": "Right"
           }
         ]
       },

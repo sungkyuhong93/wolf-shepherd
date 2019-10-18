@@ -8,13 +8,31 @@
       header--center
   {% endcase %}
 {%- endcapture -%}
-<header class="header {{ alignContent }}">
+
+<style>
+  @media only screen and (min-width: 45.85em) {
+    .header--{{sectionID}} .header__container {
+      margin: 0 auto;
+      max-width: {{maxWidth}}%;
+    }
+  }
+</style>
+
+<header class="header header--{{sectionID}} {{ alignContent }} {{specialClass}}">
   <div class="page-width">
-    {% if title != blank %}
-      <h2 class="header__title" {% if color %}style="color:{{color}}"{% endif %}>{{ title | escape }}</h2>
-    {% endif %}
-    {% if text != blank %}
-      <div class="header__text" {% if color %}style="color:{{color}}"{% endif %}>{{ text }}</div>
-    {% endif %}
+    <div class="header__container {{marginBottom}}">
+      {% if title != blank %}
+        <h2 class="header__title">{{ title | escape }}</h2>
+      {% endif %}
+      {% if text != blank %}
+        <div class="header__text">{{ text }}</div>
+      {% endif %}
+
+      {% if button_label != blank and button_link != blank %}
+        <a href="{{ button_link }}" class="button">
+          {{ button_label }}
+        </a>
+      {% endif %}
+    </div>
   </div>
 </header>

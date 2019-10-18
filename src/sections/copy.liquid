@@ -1,50 +1,19 @@
-{% if section.settings.enable %}
-  {%- capture alignContent -%}
-    {% case section.settings.alignment %}
-      {% when 'left' %}
-        hero-main--left
-      {% else %}
-        hero-main--center
-    {% endcase %}
-  {%- endcapture -%}
+{% include 'header' with 
+  sectionID: section.id
+  marginBottom: section.settings.margin_bottom,
+  align: section.settings.alignment,
+  maxWidth: section.settings.max_width,
+  title: section.settings.title, 
+  text: section.settings.text,
+  button_label: section.settings.button_label,
+  button_link: section.settings.button_link
+%}
 
-  <div class="page-width">
-   
-  <div class="{{ alignContent }}
-    {% if section.settings.text_color == 'white' %}hero-main--white{% endif %}
-    {% if section.settings.margin_bottom == 'margin' %}section-margin-bottom{% endif %}">
-
-    <div class="copy-main__wrapper {% if section.settings.alignment == 'left' %}grid {%endif %}">
-
-      {% if section.settings.title != blank %}
-        <h2 class="h1 copy-title {% if section.settings.alignment == 'left' %} medium-up--one-third grid__item {% endif %} ">{{ section.settings.title | escape }}</h2>
-      {% endif %}
-      
-        <div class="rte-setting copy-text {% if section.settings.alignment == 'left' %} medium-up--two-thirds grid__item {% endif %}">
-        {% if section.settings.text != blank %}{{ section.settings.text }}{% endif %}
-        {% if section.settings.button_label != blank and section.settings.button_link != blank %}
-          <a href="{{ section.settings.button_link }}" class="button button--white">
-            {{ section.settings.button_label }}
-          </a>
-        {% endif %}
-        </div>
-    </div>
-  </div>
-
-  </div>
-  
-{% endif %}
- 
 {% schema %}
   {
     "name": "Copy Section",
     "class": "index-section index-section--flush",
     "settings": [
-      {
-        "type": "checkbox",
-        "id": "enable",
-        "label": "Show section"
-      },
       {
         "type": "select",
         "id": "margin_bottom",
@@ -53,7 +22,7 @@
         "options": [
           {
             "label": "Margin bottom",
-            "value": "margin"
+            "value": "section-margin-bottom"
           },
           {
             "label": "No margin",
@@ -74,24 +43,21 @@
           {
             "value": "center",
             "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
           }
         ]
       },
       {
-        "type": "select",
-        "id": "text_color",
-        "label": "Text colour",
-        "default": "black",
-        "options": [
-          {
-            "label": "White",
-            "value": "white"
-          },
-          {
-            "label": "Black",
-            "value": "black"
-          }
-        ]
+        "type": "range",
+        "id": "max_width",
+        "min": 30,
+        "max": 100,
+        "step": 10,
+        "label": "Desktop max width",
+        "default": 100
       },
       {
         "type": "text",
@@ -120,7 +86,7 @@
     "presets": [
       {
         "name": "Copy Section",
-        "category": "Misc"
+        "category": "Text"
       }
     ]
   }

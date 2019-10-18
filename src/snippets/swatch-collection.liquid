@@ -1,30 +1,33 @@
-{% for option in product.options_with_values %}     
-    
-    {% assign swatchShow = false %}      
-
+{% assign swatchShow = false %}      
+{% if settings.show_swatches_collection %}
+  {% for option in product.options_with_values %}     
+    {% assign swatchShow = false %}
     {% assign optionName = option.name | downcase | handleize  %}
+    {% assign currentLoop = '' %}
+
     {% if optionName == 'color' or optionName == 'colour' %}
-        {% assign swatchShow = true %}
+      {% assign swatchShow = true %}
     {% endif %}
 
-	{% assign file_extension = 'png' %}
-	{% if swatchShow %}
-	<div class="swatch__wrapper">
-		{% for value in option.values %}
+    {% if swatchShow %}
+      <div class="swatch__wrapper">
+        {% for value in option.values %}
+          {% for variant in product.variants %}     
+            {% if variant.option1 == value or variant.option2 == value or variant.option3 == value %}
+              {% assign color = value | handleize %}
+              {% if currentLoop contains color %}
+              {% else %}
+                <a href="{{ variant.url }}" class="swatch swatch-product swatch-product--{{color }}" 
+                  style="background-color: {{ color }};">
+                </a>
+              {% endif %}
+              {% assign currentLoop = currentLoop | append: ',' | append: color %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
 
 
-			{% for variant in product.variants %}     
-				{% if variant.option1 == value or variant.option2 == value or variant.option3 == value%}
-
-					{% assign color = value | handleize %}
-					<a href="{{ variant.url }}" class="swatch" style="background-color: {{ color | split: ' ' | last | handle }}; background-image: url({{ color | handle | append: '.' | append: file_extension | asset_url }})"
-					>
-					</a>
-
-				{% endif %}
-			{% endfor %}
-
-		{% endfor %}
-	</div>
-	{% endif %}
-{% endfor %}
