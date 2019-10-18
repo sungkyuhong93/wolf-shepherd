@@ -1,85 +1,25 @@
-{% if section.settings.enable %}
+{% if section.settings.full-width != 'full-width' %}<div class="page-width">{% endif %}
 
-  {% for block in section.blocks %}
-    <style>
-      .hero-main--{{ block.id }}{
-        background-image:url('{{ block.settings.mobile_image | img_url: 'master' }}');
-        background-position: {{ block.settings.mobile_image_position }};
-      }
-      @media screen and (min-width: 749px) {
-        .hero-main--{{ block.id }}{
-          background-image:url('{{ block.settings.image | img_url: 'master' }}');
-          background-position: {{ block.settings.image_position }};
-        }
-      }
-    </style>
-  {% endfor %}
+  <div class="slideshow {% if section.settings.margin_bottom == 'margin' %}section-margin-bottom{% endif %}"
+    data-section-id="{{ section.id }}" data-section-type="slideshow">
+    <div class="slideshow__container">
+      {% for block in section.blocks %}
 
-  {% if section.settings.full-width != 'full-width' %}<div class="page-width">{% endif %}
+        <div class="slideshow__slide slideshow__slide--{{block.id}}" {{ block.shopify_attributes }}>
+          {% include 'hero-image' type: 'block' %}
+        </div>
 
-    <div class="hero-main__slider-wrapper {% if section.settings.margin_bottom == 'margin' %}section-margin-bottom{% endif %}">
-      <div class="hero-main__slider">
-        {% for block in section.blocks %}
-          {%- capture alignContent -%}
-            {% case block.settings.alignment %}
-              {% when 'left' %}
-                hero-main--left
-              {% when 'right' %}
-                hero-main--right
-              {% else %}
-                hero-main--center
-            {% endcase %}
-          {%- endcapture -%}
-
-          {%- capture verticalAlignContent -%}
-            {% case block.settings.vertical_alignment %}
-              {% when 'top' %}
-                hero-main--top
-              {% when 'middle' %}
-                hero-main--middle
-              {% else %}
-                hero-main--bottom
-            {% endcase %}
-          {%- endcapture -%}
-          <div class="hero-main__slider__slide">
-            <div class="hero-main {{ alignContent }} {{ verticalAlignContent }} hero-main--{{ block.id }} 
-              {% if block.settings.text_color == 'white' %}hero-main--white{% endif %}">
-
-              <div class="hero-main__wrapper">
-
-                {% if block.settings.title != blank %}
-                  <h2 class="h1 hero-main__title">{{ block.settings.title | escape }}</h2>
-                {% endif %}
-                
-                  <div class="rte-setting hero-main__text">
-                  {% if block.settings.text != blank %}{{ block.settings.text }}{% endif %}
-                  {% if block.settings.button_label != blank and block.settings.button_link != blank %}
-                    <a href="{{ block.settings.button_link }}" class="{% if block.settings.button_color == 'white' %}button--white {% else %} button {% endif %}">
-                      {{ block.settings.button_label }}
-                    </a>
-                  {% endif %}
-                  </div>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
+      {% endfor %}
     </div>
+  </div>
 
-  {% if section.settings.full-width != 'full-width' %}</div>{% endif %}
-  
-{% endif %}
+{% if section.settings.full-width != 'full-width' %}</div>{% endif %}
  
 {% schema %}
   {
     "name": "HeroSlideshow",
     "class": "index-section index-section--flush",
     "settings": [
-      {
-        "type": "checkbox",
-        "id": "enable",
-        "label": "Show section"
-      },
       {
         "type": "select",
         "id": "margin_bottom",
@@ -119,51 +59,90 @@
         "name": "Image slide",
         "settings": [
           {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Desktop Image"
+            "type": "checkbox",
+            "id": "enable",
+            "label": "Show section"
           },
           {
             "type": "select",
-            "id": "image_position",
-            "label": "Desktop Image alignment",
-            "default": "center",
+            "id": "margin_bottom",
+            "label": "Margin bottom",
+            "default": "no-margin",
             "options": [
               {
-                "value": "top",
-                "label": "Top"
+                "label": "Margin bottom",
+                "value": "section-margin-bottom"
               },
               {
-                "value": "center",
-                "label": "Center"
+                "label": "No margin",
+                "value": "no-margin"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "full-width",
+            "label": "Full width",
+            "default": "full-width",
+            "options": [
+              {
+                "label": "Full width",
+                "value": "full-width"
               },
               {
-                "value": "bottom",
-                "label": "Bottom"
+                "label": "Within wrapper",
+                "value": "wrapper"
               }
             ]
           },
           {
             "type": "image_picker",
+            "id": "image",
+            "label": "Desktop Image",
+            "info": "Advised size:"
+          },
+          {
+            "type": "image_picker",
             "id": "mobile_image",
-            "label": "Mobile Image"
+            "label": "Mobile Image",
+            "info": "Advised size:"
           },
           {
             "type": "select",
-            "id": "mobile_image_position",
-            "label": "Mobile Image alignment",
-            "default": "center",
+            "id": "positionX",
+            "label": "Text position horizontal",
+            "default": "hero-image--center",
             "options": [
               {
-                "value": "top",
-                "label": "Top"
+                "value": "hero-image--left",
+                "label": "Left"
               },
               {
-                "value": "center",
+                "value": "hero-image--center",
                 "label": "Center"
               },
               {
-                "value": "bottom",
+                "value": "hero-image--right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "positionY",
+            "label": "Text position vertical",
+            "default": "hero-image--middle",
+            "options": [
+              {
+                "value": "hero-image--top",
+                "label": "Top"
+              },
+              {
+                "value": "hero-image--middle",
+                "label": "Middle"
+              },
+              {
+                "value": "hero-image--bottom",
                 "label": "Bottom"
               }
             ]
@@ -172,39 +151,19 @@
             "type": "select",
             "id": "alignment",
             "label": "Text alignment",
-            "default": "center",
+            "default": "hero-image--text-center",
             "options": [
               {
-                "value": "left",
+                "value": "hero-image--text-left",
                 "label": "Left"
               },
               {
-                "value": "center",
+                "value": "hero-image--text-center",
                 "label": "Center"
               },
               {
-                "value": "right",
+                "value": "hero-image--text-right",
                 "label": "Right"
-              }
-            ]
-          },
-          {
-            "type": "select",
-            "id": "vertical_alignment",
-            "label": "Text Vertical alignment",
-            "default": "middle",
-            "options": [
-              {
-                "value": "top",
-                "label": "Top"
-              },
-              {
-                "value": "middle",
-                "label": "Middle"
-              },
-              {
-                "value": "bottom",
-                "label": "Bottom"
               }
             ]
           },
@@ -212,15 +171,15 @@
             "type": "select",
             "id": "text_color",
             "label": "Text colour",
-            "default": "black",
+            "default": "hero-image--black",
             "options": [
               {
                 "label": "White",
-                "value": "white"
+                "value": "hero-image--white"
               },
               {
                 "label": "Black",
-                "value": "black"
+                "value": "hero-image--black"
               }
             ]
           },
@@ -235,7 +194,7 @@
             "id": "text",
             "label": "Text",
             "default": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.</p>"
-          },
+          },     
           {
             "type": "text",
             "id": "button_label",
@@ -250,15 +209,15 @@
             "type": "select",
             "id": "button_color",
             "label": "Button colour",
-            "default": "black",
+            "default": "button button--black",
             "options": [
               {
                 "label": "White",
-                "value": "white"
+                "value": "button--white"
               },
               {
                 "label": "Black",
-                "value": "black"
+                "value": "button button--black"
               }
             ]
           }
@@ -267,7 +226,7 @@
     ],
     "presets": [
       {
-        "name": "Hero Slideshow",
+        "name": "Slideshow",
         "category": "Image"
       }
     ]

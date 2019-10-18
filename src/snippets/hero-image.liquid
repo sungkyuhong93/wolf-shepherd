@@ -2,6 +2,8 @@
   {% assign sectionId = section.id %}
   {% assign sectionEnable = section.settings.enable %}
   {% assign sectionAlign = section.settings.alignment %}
+  {% assign sectionPositionX = section.settings.positionX %}
+  {% assign sectionPositionY = section.settings.positionY %}    
   {% assign sectionImage = section.settings.image | img_url: 'master'  %}
   {% assign sectionImageMobile = section.settings.mobile_image | img_url: 'master'  %}
   {% assign sectionFullWidth = section.settings.full-width %}
@@ -9,7 +11,7 @@
   {% assign sectionTextColor = section.settings.text_color %}
   {% assign sectionTitle = section.settings.title %}
   {% assign sectionSubTitle = section.settings.subtitle  %}
-  {% assign sectionText = section.settings.text| strip_html %}
+  {% assign sectionText = section.settings.text %}
   {% assign sectionButtonLabel = section.settings.button_label %}
   {% assign sectionButtonLink = section.settings.button_link %}
   {% assign sectionButtonColor = section.settings.button_color %}
@@ -34,6 +36,8 @@
   {% assign sectionId = block.id %}
   {% assign sectionEnable = block.settings.enable %}
   {% assign sectionAlign = block.settings.alignment %}
+  {% assign sectionPositionX = block.settings.positionX %}
+  {% assign sectionPositionY = block.settings.positionY %}   
   {% assign sectionImage = block.settings.image | img_url: 'master'  %}
   {% assign sectionImageMobile = block.settings.mobile_image | img_url: 'master'  %}
   {% assign sectionFullWidth = block.settings.full-width %}
@@ -41,62 +45,38 @@
   {% assign sectionTextColor = block.settings.text_color %}
   {% assign sectionTitle = block.settings.title  %}
   {% assign sectionSubTitle = block.settings.subtitle %}
-  {% assign sectionText = block.settings.text | strip_html %}
+  {% assign sectionText = block.settings.text %}
   {% assign sectionButtonLabel = block.settings.button_label %}
   {% assign sectionButtonLink = block.settings.button_link %}
   {% assign sectionButtonColor = block.settings.button_color %}
 
-
 {% endif %}
 
 {% if sectionEnable %}
-  {%- capture alignContent -%}
-    {% case sectionAlign %}
-      {% when 'left' %}
-        hero-main--left
-      {% when 'right' %}
-        hero-main--right
-      {% else %}
-        hero-main--center
-    {% endcase %}
-  {%- endcapture -%}
-
-  <style>
-    .hero-main--{{ sectionId }}{
-      background-image:url('{{ sectionImageMobile }}');
-    }
-    @media screen and (min-width: 749px) {
-      .hero-main--{{ sectionId }}{
-        background-image:url('{{ sectionImage }}');
-      }
-    }
-  </style>
-
   {% if sectionFullWidth != 'full-width' %}<div class="page-width">{% endif %}
    
-  <div class="hero-main {{ alignContent }} hero-main--{{ sectionId }} 
-    {% if sectionTextColor == 'white' %}hero-main--white{% endif %}
-    {% if sectionMarginBottom == 'margin' %}section-margin-bottom{% endif %}">
+  <div class="hero-image hero-image--{{ sectionId }} 
+    {{ sectionPositionX }} 
+    {{ sectionPositionY }} 
+    {{ sectionAlign }} 
+    {{ sectionTextColor }}
+    {{ sectionMarginBottom }} lazyload" 
+    data-bgset="{{sectionImageMobile}} [(max-width: 749px)] | {{sectionImage}}">
 
-    <div class="hero-main__wrapper">
-      
-      {% if sectionSubTitle != blank %}
-        <h4 class="hero-subtitle">{{ sectionSubTitle | escape }}</h4>
-      {% endif %}
+    <div class="hero-image__wrapper">
 
       {% if sectionTitle != blank %}
-        <h2 class="h1 hero-main__title">{{ sectionTitle | escape }}</h2>
+        <h2 class="h1 hero-image__title">{{ sectionTitle | escape }}</h2>
       {% endif %}
       
-        <p class="rte-setting hero-main__text">
+      <div class="rte-setting hero-image__text">
         {% if sectionText != blank %}{{ sectionText }}{% endif %}
-        </p>
-
         {% if sectionButtonLabel != blank and sectionButtonLink != blank %}
-          <a href="{{ sectionButtonLink }}" class="{% if sectionButtonColor == 'white' %} button--white-no-border {% else %} button {% endif %}">
+          <a href="{{ sectionButtonLink }}" class="{{ sectionButtonColor }}">
             {{ sectionButtonLabel }}
           </a>
         {% endif %}
+      </div>
     </div>
   </div>
 

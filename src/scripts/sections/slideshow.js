@@ -1,15 +1,22 @@
 import $ from 'jquery';
 import _ from 'slick-carousel';
+import {register} from '@shopify/theme-sections';
 
-theme.Slideshow = (function() {
+register('slideshow', {
+  onLoad() {
+    this.init();
+  },
 
-  const $slideshow = $('.hero-main__slider');
+  init() {
+    this.slickRender();
+  },
 
-  function slickRender() {
-    $slideshow.slick(getSliderSettings());
-  }
+  slickRender() {
+    const $slideshow = $('.slideshow__container');
+    $slideshow.slick(this.getSliderSettings());
+  },
 
-  function getSliderSettings() {
+  getSliderSettings() {
     return {
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -18,31 +25,16 @@ theme.Slideshow = (function() {
       dots: true,
       autoplay: true,
       autoplaySpeed: 10000,
-    }
-  }
+    };
+  },
 
-  function init() {
-    slickRender();
-  }
+  onBlockSelect: (blockId) => { 
+    const $blockClass = $(`.slideshow__slide--${blockId}`).closest('.slick-slide');
+    const slideIndex  = $blockClass.attr('data-slick-index');
+    $('.slideshow__container').slick('goTo', slideIndex);
+  },
 
-  init();
-
-  return {
-    sliderSettings: getSliderSettings
-  }
-
-})();
-
-theme.SlideshowSection = function SlideshowSection() {};
-
-theme.SlideshowSection.prototype = $.extend({}, theme.SlideshowSection.prototype, {
-	onBlockSelect: function(e){
-		var blockId     = parseInt(e.detail.blockId),
-		    $blockClass = $('.slideshow__slide--' + blockId),
-		    slideIndex  = $blockClass.attr('data-slick-index');
-		$('.slideshow').slick("goTo", slideIndex);
-	},
-  onSelect: function() {
-	  $('.slideshow').slick(theme.Slideshow.sliderSettings());
-  }
+  onSelect: () => {
+    // $('.slideshow__container').slick(this.getSliderSettings());
+  },
 });
