@@ -5,7 +5,11 @@
   {% assign sectionPositionX = section.settings.positionX %}
   {% assign sectionPositionY = section.settings.positionY %}    
   {% assign sectionImage = section.settings.image | img_url: 'master'  %}
-  {% assign sectionImageMobile = section.settings.mobile_image | img_url: 'master'  %}
+  {% if section.settings.mobile_image != blank %}
+    {% assign sectionImageMobile = section.settings.mobile_image | img_url: 'master'  %}
+  {% else %}
+    {% assign sectionImageMobile = section.settings.image | img_url: 'master'  %}
+  {% endif %}
   {% assign sectionFullWidth = section.settings.full-width %}
   {% assign sectionMarginBottom = section.settings.margin_bottom %}
   {% assign sectionTextColor = section.settings.text_color %}
@@ -15,7 +19,7 @@
   {% assign sectionButtonLabel = section.settings.button_label %}
   {% assign sectionButtonLink = section.settings.button_link %}
   {% assign sectionButtonColor = section.settings.button_color %}
-
+  {% assign sectionMobileTextPosition = section.settings.mobile_text_position %}
 {% elsif type == "article" %}
   {% assign sectionId = 'null' %}
   {% assign sectionEnable = true %}
@@ -31,7 +35,6 @@
   {% assign sectionButtonLabel = 'Read more' %}
   {% assign sectionButtonLink = article.url %}
   {% assign sectionButtonColor = 'white' %}
-
 {% else %}
   {% assign sectionId = block.id %}
   {% assign sectionEnable = block.settings.enable %}
@@ -39,7 +42,11 @@
   {% assign sectionPositionX = block.settings.positionX %}
   {% assign sectionPositionY = block.settings.positionY %}   
   {% assign sectionImage = block.settings.image | img_url: 'master'  %}
-  {% assign sectionImageMobile = block.settings.mobile_image | img_url: 'master'  %}
+  {% if section.settings.mobile_image != blank %}
+    {% assign sectionImageMobile = block.settings.mobile_image | img_url: 'master'  %}
+  {% else %}
+    {% assign sectionImageMobile = block.settings.image | img_url: 'master'  %}
+  {% endif %}
   {% assign sectionFullWidth = block.settings.full-width %}
   {% assign sectionMarginBottom = block.settings.margin_bottom %}
   {% assign sectionTextColor = block.settings.text_color %}
@@ -49,36 +56,46 @@
   {% assign sectionButtonLabel = block.settings.button_label %}
   {% assign sectionButtonLink = block.settings.button_link %}
   {% assign sectionButtonColor = block.settings.button_color %}
-
+  {% assign sectionMobileTextPosition = block.settings.mobile_text_position %}
 {% endif %}
 
 {% if sectionEnable %}
   {% if sectionFullWidth != 'full-width' %}<div class="page-width">{% endif %}
+
+  {% capture textCapture %}
+    {% if sectionTitle != blank %}
+      <h2 class="h1 hero-image__title">{{ sectionTitle | escape }}</h2>
+    {% endif %}
+    
+    <div class="rte-setting hero-image__text">
+      {% if sectionText != blank %}{{ sectionText }}{% endif %}
+      {% if sectionButtonLabel != blank and sectionButtonLink != blank %}
+        <a href="{{ sectionButtonLink }}" class="{{ sectionButtonColor }}">
+          {{ sectionButtonLabel }}
+        </a>
+      {% endif %}
+    </div>
+  {% endcapture %}
    
   <div class="hero-image hero-image--{{ sectionId }} 
     {{ sectionPositionX }} 
     {{ sectionPositionY }} 
     {{ sectionAlign }} 
     {{ sectionTextColor }}
-    {{ sectionMarginBottom }} lazyload" 
+    {{ sectionMarginBottom }} 
+    {{ sectionMobileTextPosition }} lazyload" 
     data-bgset="{{sectionImageMobile}} [(max-width: 749px)] | {{sectionImage}}">
 
     <div class="hero-image__wrapper">
-
-      {% if sectionTitle != blank %}
-        <h2 class="h1 hero-image__title">{{ sectionTitle | escape }}</h2>
-      {% endif %}
-      
-      <div class="rte-setting hero-image__text">
-        {% if sectionText != blank %}{{ sectionText }}{% endif %}
-        {% if sectionButtonLabel != blank and sectionButtonLink != blank %}
-          <a href="{{ sectionButtonLink }}" class="{{ sectionButtonColor }}">
-            {{ sectionButtonLabel }}
-          </a>
-        {% endif %}
-      </div>
+      {{ textCapture }}
     </div>
   </div>
+
+  {% if sectionMobileTextPosition contains "--mobile-text-under" %}
+    <div class="hero-image__mobile-text">
+      {{ textCapture }}
+    </div>
+  {% endif %}
 
   {% if sectionFullWidth != 'full-width' %}</div>{% endif %}
   

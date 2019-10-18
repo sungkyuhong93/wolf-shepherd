@@ -49,12 +49,6 @@
         "info": "Advised size:"
       },
       {
-        "type": "image_picker",
-        "id": "mobile_image",
-        "label": "Mobile Image",
-        "info": "Advised size:"
-      },
-      {
         "type": "select",
         "id": "positionX",
         "label": "Text position horizontal",
@@ -165,6 +159,32 @@
           {
             "label": "Black",
             "value": "button button--black"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Mobile only settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image",
+        "info": "Advised size:"
+      },
+      {
+        "type": "select",
+        "id": "mobile_text_position",
+        "label": "Mobile text position",
+        "default": "hero-image--mobile-text-overlay",
+        "options": [
+          {
+            "label": "Text under",
+            "value": "hero-image--mobile-text-under"
+          },
+          {
+            "label": "Text overlay",
+            "value": "hero-image--mobile-text-overlay"
           }
         ]
       }

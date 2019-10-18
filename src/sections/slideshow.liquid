@@ -17,7 +17,7 @@
  
 {% schema %}
   {
-    "name": "HeroSlideshow",
+    "name": "Slideshow",
     "class": "index-section index-section--flush",
     "settings": [
       {
@@ -61,7 +61,8 @@
           {
             "type": "checkbox",
             "id": "enable",
-            "label": "Show section"
+            "label": "Show section",
+            "default": true
           },
           {
             "type": "select",
@@ -99,12 +100,6 @@
             "type": "image_picker",
             "id": "image",
             "label": "Desktop Image",
-            "info": "Advised size:"
-          },
-          {
-            "type": "image_picker",
-            "id": "mobile_image",
-            "label": "Mobile Image",
             "info": "Advised size:"
           },
           {
@@ -218,6 +213,33 @@
               {
                 "label": "Black",
                 "value": "button button--black"
+              }
+            ]
+          },
+
+          {
+            "type": "header",
+            "content": "Mobile only settings"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image",
+            "info": "Advised size:"
+          },
+          {
+            "type": "select",
+            "id": "mobile_text_position",
+            "label": "Mobile text position",
+            "default": "hero-image--mobile-text-overlay",
+            "options": [
+              {
+                "label": "Text under",
+                "value": "hero-image--mobile-text-under"
+              },
+              {
+                "label": "Text overlay",
+                "value": "hero-image--mobile-text-overlay"
               }
             ]
           }
