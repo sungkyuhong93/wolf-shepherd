@@ -77,7 +77,7 @@ theme.AjaxCart = (function() {
   });
 
   $(document).on('mouseup', (event) => {
-    if (!selectors.$cartBody.is(event.target) && selectors.$cartBody.has(event.target).length === 0) { 
+    if (!selectors.$cartBody.is(event.target) && selectors.$cartBody.has(event.target).length === 0) {
       cartClose();
     }
   });
@@ -177,6 +177,7 @@ theme.AjaxCart = (function() {
 
   function cartCounter(cart) {
     $('#CartCount, .cart-ajax__subtitle-counter').html(cart.item_count);
+
     if (cart.item_count === 0) {
       selectors.$cartCount.removeClass('cart-count--show');
     } else {

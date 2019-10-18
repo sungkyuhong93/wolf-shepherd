@@ -57,9 +57,8 @@
   {% endif %}
 
   {% if settings.stickynav_enable %}<div class="header-fixed">{% endif %}
-    {% comment %} {% section 'header' %} {% endcomment %}
     {% section 'site-header' %}
-    {% section 'meganav' %}
+    {% comment %} {% section 'meganav' %} {% endcomment %}
   {% if settings.stickynav_enable %}</div>{% endif %}
 
   {% if settings.notification_position == "below" %}

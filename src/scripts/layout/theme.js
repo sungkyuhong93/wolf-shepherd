@@ -14,7 +14,7 @@ import {cookiesEnabled} from '@shopify/theme-cart';
 import {load} from '@shopify/theme-sections';
 import Navigation from '../sections/navigation';
 import '../sections/notification-bar';
-import '../sections/meganav';
+import '../sections/site-header';
 import '../sections/sticky-nav';
 import '../sections/ajax-cart';
 import '../sections/emoji';

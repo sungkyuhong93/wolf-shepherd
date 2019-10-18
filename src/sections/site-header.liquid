@@ -30,7 +30,6 @@
   {% endif %}
 {% endcapture %}
 
-
 <div js-site-header="true" class="site-header 
   {% if section.settings.logo_position == 'left' %} site-header--left-align {% endif %}"  
   data-section-id="{{ section.id }}" data-section-type="site-header-section">
@@ -68,22 +67,18 @@
         <li class="site-header__mobile-hide">
           <a href="#"  class="site-header__search-icon {% if section.settings.enable_full_screen_search %}full-screen-search{% endif %}">
             {% include 'icons' with icon: 'search' %}
-
             {% unless section.settings.enable_full_screen_search %}
               {% include 'search-form--basic' %}
             {% endunless %}
-
           </a>
         </li>
 
         <li>
           <a href="/cart" id="Cart-icon" class="site-header__cart-icon">
-
             <div class="cart-icon__container">
-              <span id="CartCount" class="js-cart-item-count {% if cart.item_count != 0 %}cart-count--show{% endif %}">{{ cart.item_count }}</span>
+              <span id="CartCount" class="js-cart-item-count cart-count {% if cart.item_count != 0 %}cart-count--show{% endif %}">{{ cart.item_count }}</span>
               {% include 'icons' with icon: 'cart' %}
             </div>
-
           </a>
         </li>
 
@@ -145,6 +140,81 @@
         "id": "enable_full_screen_search",
         "label": "Enable Full Screen Search",
         "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "meganav",
+        "name": "Meganav",
+        "settings": [
+          {
+            "type": "text",
+            "id": "navlink_bind",
+            "label": "Which menu item does this dropdown belong to?"
+          },
+          {
+            "type": "header",
+            "content": "List one"
+          },
+          {
+            "type": "checkbox",
+            "id": "meganav_linklist_title_1",
+            "label": "Show this menu's title"
+          },
+          {
+            "type": "link_list",
+            "id": "meganav_linklist_1",
+            "label": "List one menu"
+          },
+          {
+            "type": "header",
+            "content": "List Two"
+          },
+          {
+            "type": "checkbox",
+            "id": "meganav_linklist_title_2",
+            "label": "Show this menu's title"
+          },
+          {
+            "type": "link_list",
+            "id": "meganav_linklist_2",
+            "label": "List two menu"
+          },
+          {
+            "type": "header",
+            "content": "Image links"
+          },
+          {
+            "type": "text",
+            "id": "meganav_image_title_1",
+            "label": "Image title"
+          },
+          {
+            "type": "url",
+            "id": "meganav_image_link_1",
+            "label": "Image link"
+          },
+          {
+            "type": "image_picker",
+            "id": "meganav_image_1",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "meganav_image_title_2",
+            "label": "Image title"
+          },
+          {
+            "type": "url",
+            "id": "meganav_image_link_2",
+            "label": "Image link"
+          },
+          {
+            "type": "image_picker",
+            "id": "meganav_image_2",
+            "label": "Image"
+          }
+        ]
       }
     ]
   }

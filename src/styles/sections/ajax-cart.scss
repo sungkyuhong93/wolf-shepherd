@@ -11,7 +11,7 @@ Ajaxt-cart
   position: relative;
 }
 
-#CartCount {
+.cart-count {
   background: $COLOR_BLACK;
   border-radius: 10px;
   color: $COLOR_WHITE;
@@ -23,11 +23,12 @@ Ajaxt-cart
   right: -12px;
   text-align: center;
   top: -8px;
+
+  &--show {
+    display: block !important;
+  }
 }
 
-.cart-count--show {
-  display: block !important;
-}
 
 .cart-ajax__subtitle-counter {
   display: inline-block !important; 

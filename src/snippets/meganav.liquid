@@ -1,0 +1,40 @@
+<div class="meganav" id="Meganav-{{block.id}}" data-meganav-child='{{ block.settings.meganav_parent | handle }}' {{ block.shopify_attributes }} >
+  <span class="meganav__arrow"></span>
+  <div class="page-width">      
+    <div class="meganav__list">
+      {% for i in (1..4) %}
+        {% assign meganav_linklist = 'meganav_linklist_' | append: i %}
+        {% assign meganav_linklist_title = 'meganav_linklist_title_' | append: i %}
+        {% assign childlist = block.settings[meganav_linklist] %}
+        <ul>
+          {% if block.settings[meganav_linklist_title] %}
+            <li>
+              <h5>{{ linklists[childlist].title }}</h5>
+            </li>
+          {% endif %}
+          {% for link in linklists[childlist].links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    </div>
+
+    <div class="meganav__images">
+      {% for i in (1..4) %}
+        {% assign meganav_image_title = 'meganav_image_title_' | append: i %}
+        {% assign meganav_image_link = 'meganav_image_link_' | append: i %}
+        {% assign meganav_image = 'meganav_image_' | append: i %}
+        {% if block.settings[meganav_image] != blank %}
+          <a href="{{ block.settings[meganav_image_link] }}" class="meganav__image">
+            <div class="meganav__image-container">
+              <h3>{{ block.settings[meganav_image_title] }}</h3>
+            </div>
+            {{ block.settings[meganav_image] | img_url: 'master' | img_tag }}
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

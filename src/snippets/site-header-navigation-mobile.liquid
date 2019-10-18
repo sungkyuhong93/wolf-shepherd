@@ -6,43 +6,83 @@
       {% include 'search-form--basic' %}
     </div>
 
-    <ul class="mobile-navigation__list">
+    <div class="mobile-navigation__list">
 
-      {% for link in linklists[section.settings.main_linklist].links %}
-        {%- assign child_list_handle = link.title | handleize -%}
-        {% if menus[child_list_handle].links != blank %}
-          <li class="site-nav--has-submenu{% if link.active %} site-nav--active{% endif %}" data-meganav-parent="{{ link.title | handle }}">
-            <a href="{{ link.url }}" class="site-nav__link">
-              {{ link.title }}
-              <span class="dropdown-arrow dropdown-close">{% comment %}<img src="{{ 'icon-angle-down.svg' | asset_url }}">{% endcomment %}</span>
-              <span class="desktop--hide dropdown-arrow dropdown-open">{% comment %}<img src="{{ 'icon-angle-up.svg' | asset_url }}">{% endcomment %}</span>
-              
-            </a>
-            
-            <ul class="site-nav__submenu">
-              {% for childlink in menus[child_list_handle].links %}
-                <li {% if childlink.active %}class="site-nav--active"{% endif %}>
-                  <a href="{{ childlink.url }}" class="site-nav__link">{{ childlink.title | escape }}</a>
+      <ul class="site-nav">
+        {% for link in linklists[section.settings.main_linklist].links %}
+          {% assign meganav = false %}
+          {% comment %}
+          ------------------------------------------------------------------------------
+            Has meganav
+          ------------------------------------------------------------------------------
+          {% endcomment %}
+          {% for block in section.blocks %}
+            {%- if block.settings.navlink_bind == link.title  -%}
+              {% comment %} {% assign meganav = true %}
+              <li class="site-nav__item site-nav__item--has-meganav {% if link.active %}site-nav__link--active{% endif %}" js-mega-nav="desktop-nav">
+                <a class="site-nav__link" href="{{ link.url }}">
+                  {{ link.title }}
+                </a>
+                {% include 'meganav' %}
+              </li> {% endcomment %}
+            {%- endif -%}  
+          {% endfor %}
 
+          {% comment %}
+          ------------------------------------------------------------------------------
+            0 levels
+          ------------------------------------------------------------------------------
+          {% endcomment %}
+          {% if link.levels == 0 and meganav != true %}
+            <li class="site-nav__item" data-meganav-parent="{{ link.title | handle }}">
+              <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" href="{{ link.url }}">
+                {{ link.title }}
+              </a>
+            </li>
 
-                </li>
-              {% endfor %}
-            </ul>
-          </li>
-        {% else %}
-          <li {% if link.active %}class="site-nav--active"{% endif %} data-meganav-parent="{{ link.title | handle }}">
-            <a href="{{ link.url }}" class="site-nav__link">{{ link.title }}
-              <span class="desktop--hide dropdown-arrow dropdown-close">{% comment %}<img src="{{ 'icon-angle-down.svg' | asset_url }}">{% endcomment %}</span>
-              <span class="desktop--hide dropdown-arrow dropdown-open">{% comment %}<img src="{{ 'icon-angle-up.svg' | asset_url }}">{% endcomment %}</span>
-            </a>
+          {% comment %}
+          ------------------------------------------------------------------------------
+            1 level
+          ------------------------------------------------------------------------------
+          {% endcomment %}
+          {% elsif link.levels == 1 and meganav != true %}
+            <li class="site-nav__item site-nav__item--has-dropdown" data-meganav-parent="{{ link.title | handle }}">
+              <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" href="{{ link.url }}">
+                {{ link.title }}
+                <span class="site-nav__link-toggle" js-open="dropdown" data-open=".site-nav__dropdown--{{forloop.index}}">open</span>
+              </a>
+
+              <ul class="site-nav__dropdown site-nav__dropdown--{{forloop.index}} navlist navlist--block">
+                {% for child_link in link.links %}
+                  <li class="navlist__item">
+                    <a class="navlist__link" href="{{ child_link.url }}">
+                      {{ child_link.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endif %}
+        {% endfor %}
+
+        {% if shop.customer_accounts_enabled %}
+          <li class="site-nav__item" data-meganav-parent="{{ link.title | handle }}">
+
+            {% if customer %}
+              <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" href="/account">
+                Account
+              </a>
+            {% else %}
+              <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" href="/account/login">
+                Login
+              </a>
+            {% endif %}
           </li>
         {% endif %}
-      {% endfor %}
 
-    </ul>
-
+      </ul>
+    </div>
   </div>
-
 </nav>
 
 

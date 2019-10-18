@@ -5,8 +5,8 @@ theme.SearchPopup = (function() {
 
   if ($('.site-header__search-icon.full-screen-search').length) {
 
-    $(document).on('keydown', () => {
-      if (evt.keyCode === 27) {
+    $(document).on('keydown', (ev) => {
+      if (ev.keyCode === 27) {
         $('body > .search-hero').removeClass('search-hero--is-active');  
       }
     });
@@ -25,7 +25,6 @@ theme.SearchPopup = (function() {
     const $searchForm = $('.site-header__search-icon');
     const $searchFocus = $('.site-header__search-icon .search-form input');
     $searchForm.on('click', () => {
-      console.log('click it');
       $searchForm.addClass('search-form--is-active');
       $searchFocus.focus();
       return false;
