@@ -17,8 +17,9 @@
               {% assign color = value | handleize %}
               {% if currentLoop contains color %}
               {% else %}
-                <a href="{{ variant.url }}" class="swatch swatch-product swatch-product--{{color }}" 
+                <a href="{{ variant.url }}" class="swatch swatch__tooltip swatch-product swatch-product--{{color }}" 
                   style="background-color: {{ color }};">
+                  <span class="swatch__tooltip-info">{{color}}</span>
                 </a>
               {% endif %}
               {% assign currentLoop = currentLoop | append: ',' | append: color %}

@@ -4,29 +4,85 @@ Swatches Styles
 .swatch__wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
   text-align: center;
 }
 
 .swatch {
+  $parent: &;
   cursor: pointer;
   display: inline-block;
   margin: 0;
-  overflow: hidden;
   padding: 12px 10px 10px;
+
+  &__tooltip-info {
+    display: none;
+  }
+
+  @include media-query($large-up) {
+    &__tooltip {
+      position: relative;
+
+      &:hover #{$parent}__tooltip-info {
+        bottom: -30px;
+        opacity: 1;
+      }
+    }
+
+    &__tooltip-info {
+      background: $COLOR_WHITE;
+      border: 1px solid $COLOR_BLACK;;
+      bottom: -40px;
+      display: block;
+      font-size: 11px;
+      left: 50%;
+      line-height: 16px;
+      opacity: 0;
+      padding: 3px 12px;
+      position: absolute;
+      text-transform: capitalize;
+      transform: translateX(-50%);
+      transition: 0.4s;
+
+      &::before {
+        border-color: transparent transparent $COLOR_BLACK transparent;
+        border-style: solid;
+        border-width: 0 4px 6px;
+        content: '';
+        height: 0;
+        left: 50%;
+        position: absolute;
+        top: -6px;
+        transform: translateX(-50%);
+        width: 0;
+      }
+  
+      &::after {
+        border-color: transparent transparent $COLOR_WHITE transparent;
+        border-style: solid;
+        border-width: 0 4px 6px;
+        content: '';
+        height: 0;
+        left: 50%;
+        position: absolute;
+        top: -5px;
+        transform: translateX(-50%);
+        width: 0;
+      }
+    }
+  }
 }
 
 .swatch-product {
   background: $COLOR_WHITE;
   border-radius: 50%;
   color: $COLOR_BLACK;
-  height: 35px;
-  line-height: 35px;
+  height: 25px;
+  line-height: 25px;
   margin: 0 5px;
-  min-width: 35px;
+  min-width: 25px;
   padding: 0;
   transition: all 0.6s ease;
-  width: 35px;
+  width: 25px;
 
   &.swatch-product--active {
     background: $COLOR_BLACK;
