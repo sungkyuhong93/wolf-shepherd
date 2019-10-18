@@ -18,7 +18,7 @@ import '../sections/site-header';
 import '../sections/sticky-nav';
 import '../sections/ajax-cart';
 import '../sections/emoji';
-import '../sections/instagram-feed';
+import Instafeed from '../sections/instagram-feed';
 import '../sections/search-hero';
 import ExitIntent from '../sections/exit-intent';
 
@@ -28,6 +28,7 @@ import '../components/quantity';
 document.addEventListener('DOMContentLoaded', () => {
   Navigation();
   ExitIntent();
+  Instafeed();
   load('*');
 });
 
