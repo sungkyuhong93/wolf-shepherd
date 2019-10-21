@@ -14,12 +14,35 @@
   {% assign sectionMarginBottom = section.settings.margin_bottom %}
   {% assign sectionTextColor = section.settings.text_color %}
   {% assign sectionTitle = section.settings.title %}
-  {% assign sectionSubTitle = section.settings.subtitle  %}
   {% assign sectionText = section.settings.text %}
   {% assign sectionButtonLabel = section.settings.button_label %}
   {% assign sectionButtonLink = section.settings.button_link %}
   {% assign sectionButtonColor = section.settings.button_color %}
   {% assign sectionMobileTextPosition = section.settings.mobile_text_position %}
+{% elsif type == "collection" %}
+  {% assign sectionId = section.id %}
+  {% assign sectionEnable = section.settings.enable %}
+  {% assign sectionAlign = section.settings.alignment %}
+  {% assign sectionPositionX = section.settings.positionX %}
+  {% assign sectionPositionY = section.settings.positionY %}
+  {% if collection.metafields.collection['alternate-image'] != blank %}
+    {% assign sectionImage = collection.metafields.collection['alternate-image']  %}
+    {% assign sectionImageMobile = collection.metafields.collection['alternate-image'] %}
+  {% else %}
+    {% assign sectionImage = collection.image | img_url: 'master'  %}
+    {% assign sectionImageMobile = collection.image | img_url: 'master'  %}
+  {% endif %}
+  {% assign sectionHeight = 'hero-image--small' %}
+  {% assign sectionFullWidth = section.settings.full-width %}
+  {% assign sectionMarginBottom = section.settings.margin_bottom %}
+  {% assign sectionTextColor = section.settings.text_color %}
+  {% assign sectionTitle = collection.title %}
+  {% assign sectionText = collection.description %}
+  {% assign sectionButtonLabel = blank %}
+  {% assign sectionButtonLink = blank %}
+  {% assign sectionButtonColor = blank %}
+  {% assign sectionMobileTextPosition = section.settings.mobile_text_position %}
+
 {% elsif type == "article" %}
   {% assign sectionId = 'null' %}
   {% assign sectionEnable = true %}
@@ -30,7 +53,6 @@
   {% assign sectionMarginBottom = 'margin' %}
   {% assign sectionTextColor = 'white' %}
   {% assign sectionTitle = article.title %}
-  {% assign sectionSubTitle = ''  %}
   {% assign sectionText = article.content | strip_html | truncate: 100 %}
   {% assign sectionButtonLabel = 'Read more' %}
   {% assign sectionButtonLink = article.url %}
@@ -51,7 +73,6 @@
   {% assign sectionMarginBottom = block.settings.margin_bottom %}
   {% assign sectionTextColor = block.settings.text_color %}
   {% assign sectionTitle = block.settings.title  %}
-  {% assign sectionSubTitle = block.settings.subtitle %}
   {% assign sectionText = block.settings.text %}
   {% assign sectionButtonLabel = block.settings.button_label %}
   {% assign sectionButtonLink = block.settings.button_link %}
@@ -78,7 +99,8 @@
   {% endcapture %}
    
   <div class="hero-image hero-image--{{ sectionId }} 
-    {{ sectionPositionX }} 
+    {{ sectionHeight }}
+    {{ sectionPositionX }}
     {{ sectionPositionY }} 
     {{ sectionAlign }} 
     {{ sectionTextColor }}

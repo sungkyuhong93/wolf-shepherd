@@ -2,7 +2,7 @@ import $ from 'jquery';
 import {formatMoney} from '@shopify/theme-currency';
 import {misc as icons} from '../helpers/svg-map';
 
-theme.AjaxCart = (function() {
+theme.AjaxCart = (() => {
 
   if (theme.ajaxCart === false) {
     return false;
@@ -233,7 +233,7 @@ theme.AjaxCart = (function() {
 
   function relateProducts(cart) {
 
-    const relateProductsArray = []; 
+    const relateProductsArray = [];
 
     if ($(window).width() < 750) {
       return false;
@@ -266,6 +266,7 @@ theme.AjaxCart = (function() {
     }
 
     $('.cart-ajax__related').html(relateProducts);
+    return;
   }
 
   // Cart Page

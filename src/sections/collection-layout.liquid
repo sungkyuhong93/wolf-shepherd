@@ -16,64 +16,16 @@
   {% endcase %}
 {%- endcapture -%}
 
-{%- capture alignContent -%}
-  {% case section.settings.alignment %}
-    {% when 'left' %}
-      text-left
-    {% when 'right' %}
-      text-right
-    {% else %}
-      text-center
-  {% endcase %}
-{%- endcapture -%}
-
-{% capture collectionText %}
-   <header class="{{ alignContent }}" role="banner">
-    {% if collection.metafields.collection['alternate-image'] %}
-      <img class="collection-header__img" src="{{ collection.metafields.collection['alternate-image']}}"/>
-    {% endif %}
-    <h1 class=" hero-title header__title">{{ collection.title }}</h1>
-    {% if collection.description != blank %}
-      <div class="collection-header__text rte">
-        {{ collection.description }}
-      </div>
-    {% endif %}
-  </header>
-{% endcapture %}
-
 {% assign collectionCount = section.settings.product_per_page | plus: 0  %}
 
 {% paginate collection.products by collectionCount %}
 
-  {% if section.settings.enable_collection_image and collection.image %}
-
-    {% if section.settings.full-width == 'half-width' %}
-    <div class="page-width">
-      <div class="grid--full display-flex section-margin-bottom {% if section.settings.text_color == 'white' %}collection-header-banner--white{% endif %}" style="background-color:{{section.settings.background-color}}">
-        <div class="grid__item medium-up--one-half copy-container" >
-          {{ collectionText }}
-        </div>
-        <div class="grid__item medium-up--one-half image-container" style="background-image: url({{ collection.image | img_url: 'master' }})">
-          <img src="{{ collection.image | img_url: 'x500' }}"/>
-        </div>
-      </div>
-    </div>
-    {% else %}
-      <div class="{% if section.settings.full-width == 'wrapper' %} page-width {% endif %}">
-        <div 
-          class="collection-header-banner
-          {% if section.settings.text_color == 'white' %}collection-header-banner--white{% endif %}" 
-          style="background-image: url({{ collection.image | img_url: 'master' }})">
-          {% if section.settings.full-width == 'full-width' %}<div class="page-width">{% endif %}
-            {{ collectionText }}
-          {% if section.settings.full-width == 'full-width' %}</div>{% endif %}
-        </div>
-      </div>
-    {% endif %}
+  {% if section.settings.enable and collection.image %}
+    {% include 'hero-image' with type: 'collection' %}
   {% else %}
-  <div class="page-width">
-    <h1 class="collection-header__title text-center">{{ collection.title }}</h1>
-  </div>
+    <div class="page-width">
+      <h1 class="collection__header text-center">{{ collection.title }}</h1>
+    </div>
   {% endif %}
 
   <div class="collection-wrapper">
@@ -87,20 +39,14 @@
       {% endif %}
         <div class="grid">
           {% for product in collection.products %}
-            
-            {% comment %} {% include 'responsive-image' with
-                image: product.featured_image,
-                max_width: 700,
-                max_height: 800
-            %} {% endcomment %}
 
             {% include 'collection-grid-product' with gridWidth: collectionCounterClass  %}
 
             {% if forloop.index == 10 %}
 
-              <div class="grid__item collection-grid-item__match-height medium-up--two-thirds">            
+              {% comment %} <div class="grid__item collection-grid-item__match-height medium-up--two-thirds">            
                 {% include 'newsletter'  %}
-              </div>
+              </div> {% endcomment %}
             {% endif %}
 
             {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
@@ -129,26 +75,39 @@
     "settings": [
       {
         "type": "header",
-        "content": "Collection Hero image"
+        "content": "Collection hero image"
       },
       {
         "type": "checkbox",
-        "id": "enable_collection_image",
-        "label": "Use collection image banner"
+        "id": "enable",
+        "label": "Show section",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "margin_bottom",
+        "label": "Margin bottom",
+        "default": "no-margin",
+        "options": [
+          {
+            "label": "Margin bottom",
+            "value": "section-margin-bottom"
+          },
+          {
+            "label": "No margin",
+            "value": "no-margin"
+          }
+        ]
       },
       {
         "type": "select",
         "id": "full-width",
-        "label": "Collection Banner Full width",
+        "label": "Full width",
         "default": "full-width",
         "options": [
           {
             "label": "Full width",
             "value": "full-width"
-          },
-          {
-            "label": "Image half width",
-            "value": "half-width"
           },
           {
             "label": "Within wrapper",
@@ -158,46 +117,102 @@
       },
       {
         "type": "select",
-        "id": "text_color",
-        "label": "Text colour",
-        "default": "black",
+        "id": "positionX",
+        "label": "Text position horizontal",
+        "default": "hero-image--center",
         "options": [
           {
-            "label": "White",
-            "value": "white"
+            "value": "hero-image--left",
+            "label": "Left"
           },
           {
-            "label": "Black",
-            "value": "black"
+            "value": "hero-image--center",
+            "label": "Center"
+          },
+          {
+            "value": "hero-image--right",
+            "label": "Right"
           }
         ]
       },
       {
-        "type":"color",
-        "id":"background-color",
-        "label":"Header BG Color",
-        "info":"If half width"
+        "type": "select",
+        "id": "positionY",
+        "label": "Text position vertical",
+        "default": "hero-image--middle",
+        "options": [
+          {
+            "value": "hero-image--top",
+            "label": "Top"
+          },
+          {
+            "value": "hero-image--middle",
+            "label": "Middle"
+          },
+          {
+            "value": "hero-image--bottom",
+            "label": "Bottom"
+          }
+        ]
       },
       {
         "type": "select",
         "id": "alignment",
         "label": "Text alignment",
-        "default": "center",
+        "default": "hero-image--text-center",
         "options": [
           {
-            "value": "left",
+            "value": "hero-image--text-left",
             "label": "Left"
           },
           {
-            "value": "center",
+            "value": "hero-image--text-center",
             "label": "Center"
           },
           {
-            "value": "right",
+            "value": "hero-image--text-right",
             "label": "Right"
           }
         ]
       },
+      {
+        "type": "select",
+        "id": "text_color",
+        "label": "Text colour",
+        "default": "hero-image--black",
+        "options": [
+          {
+            "label": "White",
+            "value": "hero-image--white"
+          },
+          {
+            "label": "Black",
+            "value": "hero-image--black"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Mobile only settings"
+      },
+      {
+        "type": "select",
+        "id": "mobile_text_position",
+        "label": "Mobile text position",
+        "default": "hero-image--mobile-text-overlay",
+        "options": [
+          {
+            "label": "Text under",
+            "value": "hero-image--mobile-text-under"
+          },
+          {
+            "label": "Text overlay",
+            "value": "hero-image--mobile-text-overlay"
+          }
+        ]
+      },
+
+
       {
         "type": "header",
         "content": "Collection Settings"

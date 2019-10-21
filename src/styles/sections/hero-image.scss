@@ -78,6 +78,11 @@ Hero image
     }
   }
 
+  &--small {
+    height: 250px;
+    min-height: 250px;
+  }
+
   @include media-query( $medium-up ) {
     height: 100vh;
     padding: 50px;
@@ -125,6 +130,11 @@ Hero image
 
     &--text-right {
       text-align: right;
+    }
+
+    &--small {
+      height: 390px;
+      min-height: 390px;
     }
 
     &__wrapper {
