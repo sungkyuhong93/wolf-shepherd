@@ -1,4 +1,4 @@
-<div {% if section.settings.full-width != 'full-width' %}class="page-width"{% endif %} data-section-id="{{ section.id }}" data-section-type="quotes">
+<div {% if section.settings.full-width != 'full-width' %}class="page-width"{% endif %} data-section-id="{{ section.id }}" data-section-type="testimonials">
   {% if section.settings.title != blank %}
     <div class="section-header text-center">
       <h2>{{ section.settings.title | escape }}</h2>
@@ -6,14 +6,14 @@
   {% endif %}
 
   {% if section.blocks.size > 0 %}
-    <div class="quotes-wrapper">
-      <div class="quotes-slider" id="Quotes-{{ section.id }}" data-count="{{ section.blocks.size }}">
+    <div class="testimonials">
+      <div class="testimonials__slider" id="testimonials-{{ section.id }}" data-count="{{ section.blocks.size }}">
         {% for block in section.blocks %}
-          <div class="quotes-slide--{{ block.id }} text-center" {{ block.shopify_attributes }}>
+          <div class="testimonials__slide testimonials__slide--{{ block.id }}" data-slide-count="{{forloop.index | minus: 1 }}" {{ block.shopify_attributes }}>
             <img src="{{ block.settings.image | img_url: '250x' }}">
-            <blockquote class="quotes-slider__text text-center">
+            <blockquote class="testimonials__slider-text">
               {% if block.settings.quote != blank %}
-                <div class="rte-setting">{{ block.settings.quote }}</div>
+                <div>{{ block.settings.quote }}</div>
               {% endif %}
               {% if block.settings.author != blank %}
                 <cite>{{ block.settings.author | escape }}</cite>
