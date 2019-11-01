@@ -1,0 +1,89 @@
+{% if type == "section" %}
+  {% assign sectionID = section.id %}
+  {% assign sectionEnable = section.settings.enable %}
+  {% assign sectionFullWidth = section.settings.full-width %}
+  {% assign sectionMarginBottom = section.settings.margin_bottom %}
+  {% assign videoSectionBackground = section.settings.image | img_url: 'master' %}
+  {% assign videoSectionUrlReady = section.settings.vimeo_link %}
+  {% assign textColor = section.settings.text_color %}
+  {% assign ogg = section.settings.mp4 %}
+  {% assign mp4 = section.settings.ogg %}
+  {% assign sectionTitle = section.settings.title %}
+  {% assign sectionText = section.settings.text %}
+  {% assign sectionButtonLabel = section.settings.button_1 %}
+  {% assign sectionButtonLink = section.settings.button_link_1 %}
+  {% assign sectionButtonLabelTwo = section.settings.play_text %}
+  {% if section.settings.text_color contains '--white' %}
+    {% assign sectionButtonColor = 'button' %}
+  {% else %}
+    {% assign sectionButtonColor = 'button button--white' %}
+  {% endif %}
+{% else %}
+  {% assign sectionEnable = block.settings.enable %}
+  {% assign sectionFullWidth = block.settings.full-width %}
+  {% assign sectionMarginBottom = block.settings.margin_bottom %}
+  {% assign videoSectionBackground = block.settings.image | img_url: 'master' %}
+  {% assign videoSectionUrlReady = block.settings.video_link %}
+{% endif %}
+
+{% if sectionEnable %}
+
+  {% if sectionFullWidth != 'full-width' %}<div class="page-width">{% endif %}
+
+    <div class="video-modal {{textColor}} 
+      {% if sectionMarginBottom == 'margin' %}section-margin-bottom{% endif %}" >
+
+      <div class="video-modal__video">
+        <video autoplay muted loop poster="{{ videoSectionBackground }}">
+          <source src="{{mp4}}" type="video/mp4">
+          <source src="{{ogg}}" type="video/ogg">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+
+      <div js-video-modal="overlay" class="video-modal__overlay"></div>
+
+      <div class="video-modal__text-area">
+        {% if sectionTitle != blank %}
+          <h2 class="h1 video-modal__title">{{ sectionTitle | escape }}</h2>
+        {% endif %}
+        
+        <div class="video-modal__text ">
+          {% if sectionText != blank %}{{ sectionText }}{% endif %}
+        </div>
+
+        <div class="video-modal__buttons">
+          {% if sectionButtonLabel != blank and sectionButtonLink != blank %}
+            <a href="{{ sectionButtonLink }}" class="{{ sectionButtonColor }}">
+              {{ sectionButtonLabel }}
+            </a>
+          {% endif %}
+          <div js-video-modal="trigger" js-video-target="#modal-{{sectionID}}" class="play_text {{ sectionButtonColor }}">
+            {{ sectionButtonLabelTwo }}
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  {% if sectionFullWidth != 'full-width' %}</div>{% endif %}
+
+  <div id="modal-{{sectionID}}"
+  class="modal">
+
+    <div class="modal__video" >
+
+      {% assign videoSectionUrlReady = videoSectionUrlReady | split: "https://vimeo.com/" %}
+      <iframe src="https://player.vimeo.com/video/{{ videoSectionUrlReady[1] }}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    
+      <a class="modal__close modal__close--white" href="#" js-video-modal="close" js-video-target="#modal-{{sectionID}}">
+        {% include 'icons' with icon: 'close' %}
+      </a>
+
+
+    </div>
+  
+  </div>
+
+{% endif %}

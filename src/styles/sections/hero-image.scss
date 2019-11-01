@@ -83,6 +83,16 @@ Hero image
     min-height: 250px;
   }
 
+  &--medium {
+    height: 380px;
+    min-height: 380px;
+  }
+
+  &--large {
+    height: 520px;
+    min-height: 520px;
+  }
+
   @include media-query( $medium-up ) {
     height: 100vh;
     padding: 50px;
@@ -135,6 +145,16 @@ Hero image
     &--small {
       height: 390px;
       min-height: 390px;
+    }
+
+    &--medium {
+      height: 580px;
+      min-height: 580px;
+    }
+
+    &--large {
+      height: 720px;
+      min-height: 720px;
     }
 
     &__wrapper {

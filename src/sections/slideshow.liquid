@@ -1,6 +1,6 @@
 {% if section.settings.full-width != 'full-width' %}<div class="page-width">{% endif %}
 
-  <div class="slideshow {% if section.settings.margin_bottom == 'margin' %}section-margin-bottom{% endif %}"
+  <div class="slideshow {{ section.settings.margin_bottom }}"
     data-section-id="{{ section.id }}" data-section-type="slideshow">
     <div class="slideshow__container">
       {% for block in section.blocks %}
@@ -28,7 +28,7 @@
         "options": [
           {
             "label": "Margin bottom",
-            "value": "margin"
+            "value": "section-margin-bottom"
           },
           {
             "label": "No margin",
@@ -93,6 +93,30 @@
               {
                 "label": "Within wrapper",
                 "value": "wrapper"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "height",
+            "label": "Block height",
+            "default": "hero-image--xlarge",
+            "options": [
+              {
+                "label": "Small",
+                "value": "hero-image--small"
+              },
+              {
+                "label": "Medium",
+                "value": "hero-image--medium"
+              },
+              {
+                "label": "Large",
+                "value": "hero-image--large"
+              },
+              {
+                "label": "X-Large",
+                "value": "hero-image--xlarge"
               }
             ]
           },

@@ -20,6 +20,7 @@ import '../sections/ajax-cart';
 import '../sections/emoji';
 import Instafeed from '../sections/instagram-feed';
 import '../sections/search-hero';
+import VideoModal from '../sections/video-modal';
 import ExitIntent from '../sections/exit-intent';
 
 import '../components/type';
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   Navigation();
   ExitIntent();
   Instafeed();
+  VideoModal();
   load('*');
 });
 

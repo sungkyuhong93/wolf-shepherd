@@ -34,7 +34,7 @@
   top: 0;
   transition: 0.2s;
   width: 100%;
-  z-index: 999;
+  z-index: 99999;
 
   &.is-active {
     bottom: 0;
@@ -95,6 +95,10 @@
     position: absolute;
     right: 5px;
     top: -40px;
+
+    &--white {
+      color: $COLOR_WHITE;
+    }
   }
 
   &__title {
@@ -154,23 +158,21 @@
   }
 
   &__signup_form {
-    @include transform(translate(-50%, -50%));
-    @include flexbox;
-    @include flex-direction(column);
-    @include align-items(center);
-    @include justify-content(center);
-    background: {
-      color: #333;
-      position: center center;
-      repeat: no-repeat;
-      size:cover;
-    }
+    align-items: center;
+    background-color: $COLOR_BLACK;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
     height: 400px;
+    justify-content: center;
     left: 50%;
     max-width: 90%;
     position: absolute;
     text-align: center;
     top: 50%;
+    transform: translate(-50%, -50%);
     width: 600px;
 
     form {
@@ -189,6 +191,31 @@
       .button, .button--white {
         border: 0;
       }
+    }
+  }
+
+  &__video {
+    align-items: center;
+    background-color: $COLOR_BLACK;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 680px;
+    justify-content: center;
+    left: 50%;
+    max-width: 90%;
+    padding: 40px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+
+    iframe {
+      height: 100%;
+      width: 100%;
     }
   }
 }

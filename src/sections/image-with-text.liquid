@@ -11,49 +11,62 @@
   - Button label: label associated with the button
   - Button link: link of the button
 {%- endcomment -%}
-
-<section class="image-with-text">
-  {% capture image_layout %}
-    <div class="image-with-text__image">
-      {% if section.settings.image != blank %}
-        {% include 'responsive-image' with
-          image: section.settings.image,
-          max_width: 545,
-          max_height: 545
-        %}
-      {% else %}
-        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-      {% endif %}
-    </div>
-  {% endcapture %}
-
-  {% if section.settings.layout == 'left' %}
-    {{ image_layout }}
-  {% endif %}
-
-  <div class="image-with-text__text">
-    {% if section.settings.title != blank %}
-      <h2>{{ section.settings.title | escape }}</h2>
-    {% endif %}
-    {% if section.settings.text != blank %}
-      <div>{{ section.settings.text }}</div>
-    {% endif %}
-    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
-      <a href="{{ section.settings.button_link }}">
-        {{ section.settings.button_label | escape }}
-      </a>
+{% capture image_layout %}
+  <div class="image-with-text__image">
+    {% if section.settings.image != blank %}
+      {% include 'responsive-image' with
+        image: section.settings.image,
+        max_width: 640,
+        max_height: 580
+      %}
+    {% else %}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
     {% endif %}
   </div>
+{% endcapture %}
 
-  {% if section.settings.layout == 'right' %}
+<div class="page-width">
+  <section class="image-with-text {% if section.settings.layout == 'right' %}image-with-text--right{% endif %} {{ section.settings.margin_bottom }}">
+
     {{ image_layout }}
-  {% endif %}
-</section>
+
+    <div class="image-with-text__text">
+      {% if section.settings.title != blank %}
+        <h2>{{ section.settings.title | escape }}</h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div>{{ section.settings.text }}</div>
+      {% endif %}
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <a href="{{ section.settings.button_link }}">
+          {{ section.settings.button_label | escape }}
+        </a>
+      {% endif %}
+    </div>
+
+  </section>
+</div>
 
 {% schema %}
   {
     "name": "Image with text",
     "settings": [
+      {
+        "type": "select",
+        "id": "margin_bottom",
+        "label": "Margin bottom",
+        "default": "no-margin",
+        "options": [
+          {
+            "label": "Margin bottom",
+            "value": "section-margin-bottom"
+          },
+          {
+            "label": "No margin",
+            "value": "no-margin"
+          }
+        ]
+      },
       {
         "type": "image_picker",
         "id": "image",

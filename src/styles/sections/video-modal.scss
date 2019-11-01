@@ -1,0 +1,101 @@
+/* ============================================================================
+Video modal Section
+============================================================================== */
+.video-modal {
+  $parent: &;
+  opacity: 1;
+  padding-bottom: 48%;
+  pointer-events: all;
+  position: relative;
+
+  &--black {
+    #{$parent}__overlay {
+      background: rgba($COLOR_BLACK, 0.6);
+    }
+
+    #{$parent}__text, #{$parent}__text *, #{$parent}__title {
+      color: $COLOR_WHITE;
+    }
+  }
+
+  &__video {
+    height: 100%;
+    left: 0;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0;
+    pointer-events: all;
+    position: absolute;
+    top: 0;
+    transition: 0.3s;
+    width: 100%;
+    z-index: 1;
+
+    video {
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      z-index: 2;
+    }
+  }
+
+  &__overlay {
+    background: rgba($COLOR_WHITE, 0.6);
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: 0.8s ease-in-out;
+    width: 100%;
+    z-index: 3;
+
+    &.is-active {
+      opacity: 0.5;
+    }
+  }
+
+  &__text-area {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    max-width: 100%;
+    opacity: 1;
+    overflow: hidden;
+    padding: 20px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    transition: 0.3s;
+    width: 100%;
+    z-index: 4;
+  }
+
+  &__title {
+    margin-bottom: 10px;
+  }
+
+  &__text {
+    margin-bottom: 20px;
+  }
+
+  &__buttons {
+    .button {
+      margin: 0 5px;
+    }
+  }
+
+  &:hover {
+    
+  }
+
+  @media only screen and (min-width: 1200px) {
+    padding-bottom: 660px;
+  }
+}

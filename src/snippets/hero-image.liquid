@@ -10,6 +10,7 @@
   {% else %}
     {% assign sectionImageMobile = section.settings.image | img_url: 'master'  %}
   {% endif %}
+  {% assign sectionHeight = section.settings.height %}
   {% assign sectionFullWidth = section.settings.full-width %}
   {% assign sectionMarginBottom = section.settings.margin_bottom %}
   {% assign sectionTextColor = section.settings.text_color %}
@@ -42,7 +43,6 @@
   {% assign sectionButtonLink = blank %}
   {% assign sectionButtonColor = blank %}
   {% assign sectionMobileTextPosition = section.settings.mobile_text_position %}
-
 {% elsif type == "article" %}
   {% assign sectionId = 'null' %}
   {% assign sectionEnable = true %}
