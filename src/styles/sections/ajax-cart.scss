@@ -25,12 +25,12 @@ Ajaxt-cart
   top: -8px;
 
   &--show {
-    display: block !important;
+    display: block;
   }
 }
 
 .cart-ajax__subtitle-counter {
-  display: inline-block !important; 
+  display: inline-block; 
 }
 
 /* =============== Ajax cart =============== */
@@ -239,9 +239,6 @@ $CART_HEIGHT: calc(100vh - 240px);
     text-align: center;
   }
 }
-
-
-
 
 /* ============================================================================
 Mini Cart

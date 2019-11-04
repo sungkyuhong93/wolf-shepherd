@@ -1,8 +1,6 @@
 .icon {
   display: inline-block;
-  height: 20px;
   vertical-align: middle;
-  width: 20px;
 
   path {
     fill: currentColor;
@@ -11,6 +9,11 @@
   .no-svg & {
     display: none;
   }
+}
+
+.icon__social {
+  height: 28px;
+  width: 28px;
 }
 
 .icon--wide {

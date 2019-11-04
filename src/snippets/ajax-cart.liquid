@@ -20,14 +20,11 @@
       <h3 class="cart-ajax__title">My cart</h3>
       <p class="cart-ajax__subtitle">You have <span class="cart-ajax__subtitle-counter">{{ cart.item_count }}</span> items</p>
     </div>
-
-    <div class="cart-ajax__list">
-    </div>
-
-                    
     
+    <div class="cart-ajax__list"></div>
+
     <div class="cart-ajax__tools">
-      <a href="/collections/all" class="cart-ajax__continue-shopping cart-ajax__link styled-link">Continue Shopping</a>
+      <a href="/collections/all" class="cart-ajax__continue-shopping cart-ajax__link">Continue Shopping</a>
       {% if settings.cart_vat %}
         <p class="cart-ajax__message">{{ settings.cart_vat }}</p>
       {% endif %}

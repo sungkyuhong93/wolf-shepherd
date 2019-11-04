@@ -1,3 +1,5 @@
+/* Cart popup being displayed when the user clicks on the cart icon */
+
 import $ from 'jquery';
 import {formatMoney} from '@shopify/theme-currency';
 import {misc as icons} from '../helpers/svg-map';
@@ -21,7 +23,7 @@ theme.AjaxCart = (() => {
   };
 
   const cartPage = window.location.pathname;
-  var cartOpened = false;
+  let cartOpened = false;
 
   /* ----------------------------------------------------
   Add to cart functions

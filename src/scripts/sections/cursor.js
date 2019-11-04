@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import cssClasses from '../helpers/cssClasses';
 // import {register} from '@shopify/theme-sections';
 
@@ -36,10 +35,10 @@ export default () => {
 
     // document.addEventListener('mousemove', mouseChaser);
 
-    document.addEventListener('mousemove', ev => {
+    document.addEventListener('mousemove', (ev) => {
       cursor.classList.remove('cursor--hide');
 
-      cursor.setAttribute('style', 'top: '+(ev.pageY)+'px; left: '+(ev.pageX)+'px;');
+      cursor.setAttribute('style', `top: ${ev.pageY}px; left: ${ev.pageX}px;`);
 
       if (ev.target.classList.contains('site-header__overlay')) {
         cursor.classList.add('cursor--close');
@@ -57,7 +56,7 @@ export default () => {
     console.log(ev);
     cursor.classList.remove('cursor--hide');
 
-    cursor.setAttribute('style', 'top: '+(ev.pageY)+'px; left: '+(ev.pageX)+'px;');
+    cursor.setAttribute('style', `top: ${ev.pageY}px; left: ${ev.pageX}px;`);
 
     if (ev.target.classList.contains('site-header__overlay')) {
       cursor.classList.add('cursor--close');

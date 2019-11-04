@@ -21,7 +21,7 @@ Search Form
 
 .site-header__search-icon {
   cursor: pointer;
-  opacity: 1 !important;
+  opacity: 1;
   position: relative;
 
   &.search-form--is-active {
@@ -114,7 +114,7 @@ Search Form
     background: transparent;
     border: 0;
     border-radius: 0;
-    color: $COLOR_WHITE;;
+    color: $COLOR_WHITE;
     padding-right: 0;
   }
 }

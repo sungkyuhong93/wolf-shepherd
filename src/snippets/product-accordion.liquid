@@ -31,7 +31,11 @@
       
       {% if product.description contains titleSplitTrigger %}
       <li class="accordion__link {% if i == 1%} accordion__item--is-active {% endif %}">
-        <h5 class="accordion__title" data-toggle="accordion-{{i}}">{{ titleSplit[0] | strip_html }} <span class="arrow-up arrow">{% include 'icon-angle-up' %}</span><span class="arrow arrow-down">{% include 'icon-angle-down' %}</span></h5>
+        <h5 class="accordion__title" data-toggle="accordion-{{i}}">
+          {{ titleSplit[0] | strip_html }} 
+          <span class="arrow-up arrow">{% include 'icons' with icon: 'minus' %}</span>
+          <span class="arrow arrow-down">{% include 'icons' with icon: 'plus' %}</span>
+        </h5>
         {% if product.description contains textSplitTrigger %}
           <div id="accordion-{{i}}" class="accordion__content {% if i == 1%} accordion__content--is-active {% endif %}">
               {{ textSplit[0] }}
