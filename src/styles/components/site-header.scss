@@ -176,7 +176,7 @@ body {
       width: 50%;
 
       ul {
-        margin: 0;
+        margin: 0 0 0 -20px;
         padding: 0;
       }
 
@@ -185,8 +185,10 @@ body {
       }
 
       a {
-        font-size: ms(0.5);
-        padding: 20px 10px;
+        font-size: 10px;
+        letter-spacing: 0.25px;
+        padding: 20px 20px;
+        text-transform: uppercase;
       }
     }
 

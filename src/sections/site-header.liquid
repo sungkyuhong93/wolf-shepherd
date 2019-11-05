@@ -55,18 +55,22 @@
         {% if shop.customer_accounts_enabled %}
           {% if customer %}
             <li class="site-header__mobile-hide">
-                <a href="/account">Account</a>
+                <a href="/account">
+                  {% include 'icons' with icon: 'account-wolf' %}
+                </a>
             </li>
           {% else %}
             <li class="site-header__mobile-hide">
-              <a href="/account/login">Account</a>
+              <a href="/account/login">
+                {% include 'icons' with icon: 'account-wolf' %}
+              </a>
             </li>
           {% endif %}
         {% endif %}
 
         <li class="site-header__mobile-hide">
           <a href="#"  class="site-header__search-icon {% if section.settings.enable_full_screen_search %}full-screen-search{% endif %}">
-            {% include 'icons' with icon: 'search' %}
+          {% include 'icons' with icon: 'search-wolf' %}
             {% unless section.settings.enable_full_screen_search %}
               {% include 'search-form--basic' %}
             {% endunless %}
@@ -77,7 +81,7 @@
           <a href="/cart" id="Cart-icon" class="site-header__cart-icon">
             <div class="cart-icon__container">
               <span id="CartCount" class="js-cart-item-count cart-count {% if cart.item_count != 0 %}cart-count--show{% endif %}">{{ cart.item_count }}</span>
-              {% include 'icons' with icon: 'cart' %}
+              {% include 'icons' with icon: 'cart-wolf' %}
             </div>
           </a>
         </li>

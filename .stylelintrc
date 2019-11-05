@@ -70,7 +70,7 @@
       { "type": "at-rule", "name": "extend" },
       "custom-properties", 
       "declarations",
-      { "type": "at-rule", "name": "include", "parameter": "mq" },
+      { "type": "at-rule", "name": "include", "parameter": "media-query" },
       { "type": "at-rule", "name": "media" }
     ], { "unspecified": "ignore" }],
     "order/properties-alphabetical-order": true,

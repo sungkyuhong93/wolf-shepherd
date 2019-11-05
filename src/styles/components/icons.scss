@@ -11,6 +11,14 @@
   .no-svg & {
     display: none;
   }
+
+  &__account path {
+    fill: none;
+  }
+
+  &__cart path {
+    fill: none;
+  }
 }
 
 .icon__social {

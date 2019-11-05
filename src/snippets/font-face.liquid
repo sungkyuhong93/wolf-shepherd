@@ -1,19 +1,41 @@
-<link href="https://fonts.googleapis.com/css?family=Poppins:400,600|Roboto:300" rel="stylesheet">
-
 <style>
-{% comment %} Font-Regular {% endcomment %}
-{% comment %} 
+{% comment %} Font-Title {% endcomment %}
 @font-face {
-  font-family: 'Title';
-  src:  url("{{ 'Font-Regular.eot' | asset_url }}") format('embedded-opentype'),  
-        url("{{ 'Font-Regular.otf' | asset_url }}")  format('opentype'),
-	      url("{{ 'Font-Regular.woff' | asset_url }}") format('woff'), 
-        url("{{ 'Font-Regular.ttf' | asset_url }}")  format('truetype'), 
-        url("{{ 'Font-Regular.svg' | asset_url }}") format('svg');
+  font-family: 'DMSerifDisplay-Regular';
+  src:  url("{{ 'DMSerifDisplay-Regular.eot?#iefix' | asset_url }}") format('embedded-opentype'),  
+        url("{{ 'DMSerifDisplay-Regular.woff' | asset_url }}") format('woff'), 
+        url("{{ 'DMSerifDisplay-Regular.ttf' | asset_url }}")  format('truetype'), 
+        url("{{ 'DMSerifDisplay-Regular.svg#DMSerifDisplay-Regular' | asset_url }}") format('svg');
   font-weight: normal;
   font-style: normal;
-} 
-{% endcomment %}
+}
+
+
+{% comment %} Font-Body {% endcomment %}
+@font-face {
+  font-family: 'SackersGothicStd-Medium';
+  src:  url("{{ 'SackersGothicStd-Medium.eot?#iefix' | asset_url }}") format('embedded-opentype'),  
+        url("{{ 'SackersGothicStd-Medium.otf' | asset_url }}")  format('opentype'),
+	      url("{{ 'SackersGothicStd-Medium.woff' | asset_url }}") format('woff'), 
+        url("{{ 'SackersGothicStd-Medium.ttf' | asset_url }}")  format('truetype'), 
+        url("{{ 'SackersGothicStd-Medium.svg#SackersGothicStd-Medium' | asset_url }}") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+{% comment %} Font-Base {% endcomment %}
+@font-face {
+  font-family: 'AtlasGrotesk-Light';
+  src:  url("{{ 'AtlasGrotesk-Light.eot?#iefix' | asset_url }}") format('embedded-opentype'),  
+        url("{{ 'AtlasGrotesk-Light.otf' | asset_url }}")  format('opentype'),
+	      url("{{ 'AtlasGrotesk-Light.woff' | asset_url }}") format('woff'), 
+        url("{{ 'AtlasGrotesk-Light.ttf' | asset_url }}")  format('truetype'), 
+        url("{{ 'AtlasGrotesk-Light.svg#AtlasGrotesk-Light' | asset_url }}") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 
 {% comment %} Font-RegularItalic {% endcomment %}
 {% comment %} 
