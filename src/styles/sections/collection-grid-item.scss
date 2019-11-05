@@ -3,20 +3,6 @@
 ============================================================================== */
 .collection-grid-item {
   $parent: &;
-
-  @include media-query( $large ) {
-    &:hover {
-      #{$parent}__first-image {
-        opacity: 0;
-        transition: ease-in-out 0.4s;
-      }
-
-      #{$parent}__second-image {
-        opacity: 1;
-        transition: ease-in-out 0.4s 0.1s;
-      }
-    }
-  }
   display: block;
   margin: 0 0 40px;
   position: relative;
@@ -24,6 +10,7 @@
   &__badge {
     background-color: $COLOR_WHITE;
     color: $COLOR_BLACK;
+    display: none;
     font-size: ms(1);
     left: -20px;
     overflow: hidden;
@@ -66,6 +53,7 @@
 
   &__text-wrapper {
     margin: 0;
+    text-align: center;
   }
 
   &__title {
@@ -73,11 +61,33 @@
   }
 
   &__price {
+    font-family: $FONT_BASE;
+    font-size: 12px;
     margin: 0;
   }
 
   .swatch__wrapper {
     margin: 0;
+  }
+
+  @include media-query( $large ) {
+    padding: 32px 23px;
+    transition: 0.2s;
+
+    &:hover {
+      background: $COLOR_WHITE;
+      box-shadow: 0 2px 16px rgba($COLOR_BLACK, 0.1);
+
+      #{$parent}__first-image {
+        opacity: 0;
+        transition: ease-in-out 0.4s;
+      }
+
+      #{$parent}__second-image {
+        opacity: 1;
+        transition: ease-in-out 0.4s 0.1s;
+      }
+    }
   }
 }
 
