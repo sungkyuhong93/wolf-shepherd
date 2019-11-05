@@ -31,22 +31,22 @@ Blog page
   }
 
   &__body {
-    margin-bottom: 30px;
 
     @include media-query($medium-up) {
-			img {
+      img {
         margin: 20px -5%;
         max-width: 110%;
         width: 110%;
       }
     }
+    margin-bottom: 30px;
   }
 
   .social-sharing {
     margin-bottom: 30px;
     text-align: center;
 
-		a {
+    a {
       padding: 10px;
     }
   }

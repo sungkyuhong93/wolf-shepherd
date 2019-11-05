@@ -93,19 +93,7 @@ Search Form
     padding-bottom: 10px;
     padding-left: 0;
 
-    &::-webkit-input-placeholder {
-      color: $COLOR_WHITE;
-    }
-
-    &::-moz-placeholder {
-      color: $COLOR_WHITE;
-    }
-
-    &:-ms-input-placeholder {
-      color: $COLOR_WHITE;
-    }
-
-    &::-ms-input-placeholder {
+    &::placeholder {
       color: $COLOR_WHITE;
     }
   }

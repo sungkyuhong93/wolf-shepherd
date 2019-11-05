@@ -9,14 +9,6 @@ Swatches Styles
 
 .swatch {
   $parent: &;
-  cursor: pointer;
-  display: inline-block;
-  margin: 0;
-  padding: 12px 10px 10px;
-
-  &__tooltip-info {
-    display: none;
-  }
 
   @include media-query($large-up) {
     &__tooltip {
@@ -69,6 +61,14 @@ Swatches Styles
         width: 0;
       }
     }
+  }
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  padding: 12px 10px 10px;
+
+  &__tooltip-info {
+    display: none;
   }
 }
 

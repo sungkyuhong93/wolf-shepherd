@@ -30,7 +30,7 @@ Ajaxt-cart
 }
 
 .cart-ajax__subtitle-counter {
-  display: inline-block; 
+  display: inline-block;
 }
 
 /* =============== Ajax cart =============== */
@@ -181,6 +181,12 @@ $CART_HEIGHT: calc(100vh - 240px);
 
   &__row__image {
     $dimensions: 90px;
+
+    @include media-query($large-up) {
+      $dimensions: 100px;
+      height: $dimensions;
+      width: $dimensions;
+    }
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -190,12 +196,6 @@ $CART_HEIGHT: calc(100vh - 240px);
     width: 60px;
 
     @media only screen and (min-width: 380px) {
-      width: $dimensions;
-    }
-
-    @include media-query($large-up) {
-      $dimensions: 100px;
-      height: $dimensions;
       width: $dimensions;
     }
   }
@@ -276,7 +276,7 @@ Mini Cart
   }
 
   .cart-ajax {
-    border: 1px solid #999;
+    border: 1px solid rgb(153, 153, 153);
     bottom: initial;
     max-width: calc(100% - 40px);
     position: absolute;
@@ -319,11 +319,6 @@ Related Products
 }
 
 .cart-ajax__related__product-wrapper {
-  display: inline-block;
-  margin: 20px;
-  text-align: center;
-  vertical-align: top;
-  width: 80%;
 
   @include media-query($medium-up) {
     margin-left: 1%;
@@ -334,6 +329,11 @@ Related Products
   @include media-query($large-up) {
     width: 36%;
   }
+  display: inline-block;
+  margin: 20px;
+  text-align: center;
+  vertical-align: top;
+  width: 80%;
 }
 
 .cart-ajax__related__product-image {

@@ -3,19 +3,6 @@ Hero image
 ============================================================================== */
 .hero-image {
   $parent: &;
-  align-items: center;
-  background-position: center center;
-  background-size: cover;
-  color: $COLOR_BLACK;
-  display: flex;
-  height: 80vh;
-  justify-content: center;
-  min-height: 640px;
-  overflow: hidden;
-  padding: 20px;
-  position: relative;
-  text-align: center;
-  width: 100%;
 
   @include media-query( $small ) {
     &--mobile-text-under {
@@ -34,65 +21,6 @@ Hero image
     }
   }
 
-  &__title {
-    margin-bottom: 15px;
-  }
-
-  &__text {
-    p {
-      display: none;
-      margin: 0 0 30px;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    @include media-query( $medium-up ) {
-      max-width: 600px;
-      position: relative;
-      z-index: 1;
-
-      p {
-        display: block;
-      }
-
-      #{$parent}--center & {
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-  }
-
-  img {
-    max-width: 100%;
-  }
-
-  p {
-    margin-bottom: 15px;
-  }
-
-  &--white {
-    #{$parent}__title, #{$parent}__text {
-      color: $COLOR_WHITE;
-    }
-  }
-
-  &--small {
-    height: 250px;
-    min-height: 250px;
-  }
-
-  &--medium {
-    height: 380px;
-    min-height: 380px;
-  }
-
-  &--large {
-    height: 520px;
-    min-height: 520px;
-  }
-
   @include media-query( $medium-up ) {
     height: 100vh;
     padding: 50px;
@@ -107,7 +35,7 @@ Hero image
 
     &--right {
       justify-content: flex-end;
-  
+
       #{$parent}__text {
         margin-left: auto;
         margin-right: 0;
@@ -182,6 +110,78 @@ Hero image
       }
     }
   }
+  align-items: center;
+  background-position: center center;
+  background-size: cover;
+  color: $COLOR_BLACK;
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  min-height: 640px;
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+  &__title {
+    margin-bottom: 15px;
+  }
+
+  &__text {
+    p {
+      display: none;
+      margin: 0 0 30px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    @include media-query( $medium-up ) {
+      max-width: 600px;
+      position: relative;
+      z-index: 1;
+
+      p {
+        display: block;
+      }
+
+      #{$parent}--center & {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  p {
+    margin-bottom: 15px;
+  }
+
+  &--white {
+    #{$parent}__title, #{$parent}__text {
+      color: $COLOR_WHITE;
+    }
+  }
+
+  &--small {
+    height: 250px;
+    min-height: 250px;
+  }
+
+  &--medium {
+    height: 380px;
+    min-height: 380px;
+  }
+
+  &--large {
+    height: 520px;
+    min-height: 520px;
+  }
 }
 
 .hero-main__one, .hero-main__two {
@@ -238,6 +238,6 @@ Slider
   }
 
   .slick-dots {
-    display: none!important;
+    display: none;
   }
 }

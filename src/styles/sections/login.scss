@@ -45,17 +45,16 @@ Login/account
 }
 
 .recover_wrapper {
+  @include media-query($medium-up) {
+    @include flexbox;
+    @include align-items(center);
+    min-height: 70vh;
+  }
   padding: 25px;
   width: 100%;
 
   input {
     margin-bottom: 20px;
-  }
-
-  @include media-query($medium-up) {
-    @include flexbox;
-    @include align-items(center);
-    min-height: 70vh;
   }
 }
 

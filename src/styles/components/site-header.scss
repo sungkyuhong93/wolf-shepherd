@@ -263,7 +263,7 @@ body {
 
   &--close {
     // background: url('#{$image-path}icon-close.svg');
-    background-color: #fff;
+    background-color: $COLOR_WHITE;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;

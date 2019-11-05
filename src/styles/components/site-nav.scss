@@ -80,25 +80,6 @@ site nav
       width: 80px;
     }
 
-    &__item--has-dropdown {
-      // position: relative;
-
-      // &:hover {
-      //   &::after {
-      //     bottom: -40px;
-      //     content: '';
-      //     height: 40px;
-      //     left: 0;
-      //     position: absolute;
-      //     width: 100%;
-      //   }
-
-      //   .site-nav__dropdown {
-      //     display: block;
-      //   }
-      // }
-    }
-
     &__dropdown {
       display: none;
       list-style: none;

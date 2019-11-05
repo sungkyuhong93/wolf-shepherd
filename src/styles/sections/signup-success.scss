@@ -1,51 +1,48 @@
-/*============================================================================
+/* ============================================================================
 #Signup success
-==============================================================================*/
+============================================================================== */
 .signup-success {
-  position: fixed;
-  bottom: -200px;
-  left:0;
-  height: 200px;
-  width: 100%;
-  padding: 20px 20px 90px;
-  z-index: 25;
-  
-  text-align: center;
-  background: #000;
-
-  @include flexbox();
+  @include flexbox;
   @include flex-direction(column);
   @include align-items(center);
   @include justify-content(center);
-
-  transition:0.4s;
-
-  @include media-query($medium-up){
+  @include media-query($medium-up) {
     padding-bottom: 40px;
   }
-  
-  h4{
-    margin:0;
-    color:#fff;
-  }
-  p{
-    margin: 5px 0;
-    color:#fff;
+  background-color: rgb(0, 0, 0);
+  bottom: -200px;
+  height: 200px;
+  left: 0;
+  padding: 20px 20px 90px;
+  position: fixed;
+  text-align: center;
+  transition: 0.4s;
+  width: 100%;
+  z-index: 25;
+
+  h4 {
+    color: rgb(255, 255, 255);
+    margin: 0;
   }
 
-  &.active{
+  p {
+    color: rgb(255, 255, 255);
+    margin: 5px 0;
+  }
+
+  &.active {
     bottom: 0;
   }
 
   &__close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
     cursor: pointer;
-  
-    .icon.icon-close-white{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+
+    .icon.icon-close-white {
       circle, ellipse, g, line, path, polygon, polyline, rect {
-        fill: #fff!important;
+        fill: rgb(255, 255, 255);
       }
     }
   }

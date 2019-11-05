@@ -44,16 +44,6 @@ $border-color: #dedede;
   }
 
   &__image {
-    border: 1px solid #dedede85;
-    display: inline-block;
-    margin-right: 15px;
-    padding: 10px 5px;
-
-    img {
-      min-width: 70px;
-      width: 100px;
-    }
-
     @include media-query($medium-up) {
       margin-right: 30px;
       padding: 15px;
@@ -61,6 +51,15 @@ $border-color: #dedede;
       img {
         width: 120px;
       }
+    }
+    border: 1px solid rgba(222, 222, 222, 0.52);
+    display: inline-block;
+    margin-right: 15px;
+    padding: 10px 5px;
+
+    img {
+      min-width: 70px;
+      width: 100px;
     }
   }
 }

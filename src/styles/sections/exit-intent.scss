@@ -8,7 +8,7 @@
   span {
     display: inline-block;
     font-size: 12px;
-    font-weight: normal;
+    font-weight: 100;
     margin-top: 10px;
     width: 100%;
   }
@@ -136,23 +136,12 @@
       border: 1px solid $COLOR_WHITE;
     }
 
-    form {
-      input {
+    form input {
+      color: $COLOR_WHITE;
+
+      &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: $COLOR_WHITE;
-
-        &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-          color: $COLOR_WHITE;
-          opacity: 1; /* Firefox */
-        }
-
-        &:-ms-input-placeholder {
-          /* Internet Explorer 10-11 */
-          color: $COLOR_WHITE;
-        }
-
-        &::-ms-input-placeholder { /* Microsoft Edge */
-          color: $COLOR_WHITE;
-        }
+        opacity: 1; /* Firefox */
       }
     }
   }

@@ -15,17 +15,17 @@ html {
 }
 
 .page-width {
+  @include media-query( $medium-up ) {
+    padding: 0 $gutter;
+  }
+
   @include clearfix;
   margin: 0 auto;
   max-width: $width-site;
   padding: 0 20px;
-
-  @include media-query( $medium-up ) {
-    padding: 0 $gutter;
-  }
 }
 
 .page-content {
   margin-bottom: 60px;
-  margin-top: 40px;
+  padding-top: 40px;
 }

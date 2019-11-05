@@ -3,6 +3,20 @@
 ============================================================================== */
 .collection-grid-item {
   $parent: &;
+
+  @include media-query( $large ) {
+    &:hover {
+      #{$parent}__first-image {
+        opacity: 0;
+        transition: ease-in-out 0.4s;
+      }
+
+      #{$parent}__second-image {
+        opacity: 1;
+        transition: ease-in-out 0.4s 0.1s;
+      }
+    }
+  }
   display: block;
   margin: 0 0 40px;
   position: relative;
@@ -64,20 +78,6 @@
 
   .swatch__wrapper {
     margin: 0;
-  }
-
-  @include media-query( $large ) {
-    &:hover {
-      #{$parent}__first-image {
-        opacity: 0;
-        transition: ease-in-out 0.4s;
-      }
-
-      #{$parent}__second-image {
-        opacity: 1;
-        transition: ease-in-out 0.4s 0.1s;
-      }
-    }
   }
 }
 

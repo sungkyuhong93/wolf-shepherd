@@ -1,37 +1,40 @@
 // Text colors
-$color-body-text: #000;
+$color-body-text: rgb(0, 0, 0);
 
 // Background colors
-$color-body: #fff;
+$color-body: rgb(255, 255, 255);
 
 $black: $color-body-text;
 
 // Placeholders
-$placeholder-color-foreground: #161d25;
-$placeholder-color-background: #f9fafb;
+$placeholder-color-foreground: rgb(22, 29, 37);
+$placeholder-color-background: rgb(249, 250, 251);
 
 // Other colors
-$color-accent: #000;
-$color-border: #000;
+$color-accent: rgb(0, 0, 0);
+$color-border: rgb(0, 0, 0);
 
 // Helper colors for form error states
-$color-disabled: #000000;
-$color-disabled-border: #000000;
-$color-error: #ff6d6d;
-$color-error-bg: #ffffff;
-$color-success: #000000;
-$color-success-bg: #000000;
+$color-disabled: rgb(0, 0, 0);
+$color-disabled-border: rgb(0, 0, 0);
+$color-error: rgb(255, 109, 109);
+$color-error-bg: rgb(255, 255, 255);
+$color-success: rgb(0, 0, 0);
+$color-success-bg: rgb(0, 0, 0);
 
 // Transitions
 $transition-duration: 250ms;
 $transition-timing: ease-in-out;
 
 // Grid
+
+/* stylelint-disable */
 $grid-medium: 46.85em;
 $grid-large: 61.85em;
 $grid-widescreen: 87.5em;
 $grid-max-width: 73.75em;
 $grid-gutter: 30px;
+/* stylelint-enable */
 
 // Breakpoints used with the media-query mixin
 $small: 'small';

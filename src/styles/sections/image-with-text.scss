@@ -1,12 +1,5 @@
 .image-with-text {
   $parent: &;
-  display: flex;
-  flex-wrap: wrap;
-
-  &__image {
-    margin-bottom: 20px;
-    min-width: 100%;
-  }
 
   @include media-query( $medium-up ) {
     align-items: center;
@@ -28,5 +21,12 @@
         padding: 0 70px 0 0;
       }
     }
+  }
+  display: flex;
+  flex-wrap: wrap;
+
+  &__image {
+    margin-bottom: 20px;
+    min-width: 100%;
   }
 }
