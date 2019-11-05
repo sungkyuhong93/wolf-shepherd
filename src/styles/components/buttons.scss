@@ -1,39 +1,55 @@
 // /*================ Links & Buttons ================*/
+$BUTTON_COLOR: #032540;
+$BUTTON_PRESS_COLOR: #032540;
+$BUTTON_HOVER_COLOR: #021B2F;
+$BUTTON_DISABLE_COLOR: #8FA1AE;
+$BUTTON_TEXT_COLOR: #FFFFFF;
+
+$BUTTON_WHITE_COLOR: #FFFFFF;
+$BUTTON_WHITE_PRESS_COLOR: rgb(206, 224, 242);
+$BUTTON_WHITE_HOVER_COLOR: rgb(206, 224, 242);
+$BUTTON_WHITE_DISABLE_COLOR: rgb(233, 241, 249);
+$BUTTON_WHITE_TEXT_COLOR: rgb(12, 45, 71);
+
+$BUTTON_LETTER_SPACING: 0.25px;
+
 %button {
   @include prefix('user-select', 'none', moz ms webkit spec);
   @include prefix(appearance, none, webkit moz spec);
-  background: $COLOR_BLACK;
-  border: 1px solid $COLOR_BLACK;
+  background: $BUTTON_COLOR;
+  border: 1px solid $BUTTON_COLOR;
   border-radius: 0;
-  color: $COLOR_WHITE;
+  color: $BUTTON_TEXT_COLOR;
   cursor: pointer;
   display: inline-block;
-  font: 500 14px/46px $FONT_BODY;
-  height: 46px;
+  font: 500 10px/40px $FONT_BODY;
+  height: 40px;
+  letter-spacing: $BUTTON_LETTER_SPACING;
   margin: 0;
+  min-width: 152px;
   outline: 0;
-  padding: 0 45px;
+  padding: 0 40px;
   text-align: center;
   text-decoration: none;
+  text-transform: uppercase;
   transition: 0.4s;
   vertical-align: top;
 
   &.disabled, &[disabled] {
-    background: $COLOR_GREY_3;
-    border-color: $COLOR_GREY_3;
-    color: $COLOR_BLACK;
+    background: $BUTTON_DISABLE_COLOR;
+    border-color: $BUTTON_DISABLE_COLOR;
+    color: $BUTTON_TEXT_COLOR;
     cursor: not-allowed;
-    opacity: 0.6;
 
     &:hover {
-      background-color: $COLOR_GREY_3;
-      color: $COLOR_BLACK;
+      background-color: $BUTTON_DISABLE_COLOR;
+      color: $BUTTON_TEXT_COLOR;
     }
   }
 
   &:hover {
-    background-color: $COLOR_PRIMARY_LIGHT;
-    color: $COLOR_PRIMARY;
+    background-color: $BUTTON_HOVER_COLOR;
+    color: $BUTTON_TEXT_COLOR;
   }
 }
 
@@ -58,20 +74,20 @@
 
 .button--white {
   @extend %button;
-  background: $COLOR_WHITE;
-  border-color: $COLOR_WHITE;
-  color: $COLOR_BLACK;
+  background: $BUTTON_WHITE_COLOR;
+  border-color: $BUTTON_WHITE_PRESS_COLOR;
+  color: $BUTTON_WHITE_TEXT_COLOR;
 
   &:hover {
-    background: $COLOR_BLACK;
-    border-color: $COLOR_BLACK;
-    color: $COLOR_WHITE;
+    background: $BUTTON_WHITE_HOVER_COLOR;
+    border-color: $BUTTON_WHITE_HOVER_COLOR;
+    color: $BUTTON_WHITE_TEXT_COLOR;
   }
 }
 
 .button--primary {
   @extend %button;
-  background: $COLOR_PRIMARY;
+  background: $BUTTON_WHITE_COLOR;
   border-color: $COLOR_PRIMARY;
   color: $COLOR_WHITE;
 

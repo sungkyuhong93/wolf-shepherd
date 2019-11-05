@@ -83,6 +83,11 @@ Hero image
     min-height: 520px;
   }
 
+  &--xlarge {
+    height: 720px;
+    min-height: 720px;
+  }   
+
   @include media-query( $small ) {
     &--mobile-text-under {
       #{$parent}__wrapper {
@@ -101,7 +106,6 @@ Hero image
   }
 
   @include media-query( $medium-up ) {
-    height: 100vh;
     padding: 50px;
 
     &__mobile-text {

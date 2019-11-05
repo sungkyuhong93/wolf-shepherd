@@ -6,7 +6,7 @@
  *
  */
 html, body {
-  font-family: $FONT_BODY;
+  font-family: $FONT_BASE;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-weight: $WEIGHT_NORMAL;
@@ -109,7 +109,7 @@ h6, .h6 {
  */
 p {
   @include ms-respond(font-size, 0);
-  font-family: $FONT_BODY;
+  font-family: $FONT_BASE;
   font-weight: $WEIGHT_NORMAL;
   line-height: $LINE_HEIGHT_BODY;
   margin: 0 0 $SPACING_L;

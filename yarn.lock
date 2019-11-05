@@ -221,11 +221,17 @@
   version "1.0.0-beta.12"
   resolved "https://registry.yarnpkg.com/@shopify/slate-config/-/slate-config-1.0.0-beta.12.tgz#77bbebca7e57a98c4f970016dcffcba98803eae1"
 
-"@shopify/slate-cssvar-loader@1.0.0-beta.12":
-  version "1.0.0-beta.12"
-  resolved "https://registry.yarnpkg.com/@shopify/slate-cssvar-loader/-/slate-cssvar-loader-1.0.0-beta.12.tgz#915071defe9a7c4cf05fab859615a6e2324a72df"
+"@shopify/slate-config@1.0.0-beta.14":
+  version "1.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@shopify/slate-config/-/slate-config-1.0.0-beta.14.tgz#06cb79dea564fd3acf4c4b9b219e587c4b8b299d"
+  integrity sha512-4Z+O36MhI16Obg0ecBVihenIsx5HAfYfTtflARRWLR5a5QSLazbpmaiHFg23PB2ELTxBdXvP2iOtoHqmT7uaKA==
+
+"@shopify/slate-cssvar-loader@^1.0.0-beta.16":
+  version "1.0.0-beta.16"
+  resolved "https://registry.yarnpkg.com/@shopify/slate-cssvar-loader/-/slate-cssvar-loader-1.0.0-beta.16.tgz#071534dd9e7bb80dc46fa8c885de951e5d1a86e5"
+  integrity sha512-xB/iHsBRlpq2afBMpSPp3Hm4toCEX7IVUlyL1ewCeqdL8i7SxyS78/kGxLYhxq3EE5PED59t2fA1Rib3LV56qA==
   dependencies:
-    "@shopify/slate-config" "1.0.0-beta.12"
+    "@shopify/slate-config" "1.0.0-beta.14"
     loader-utils "^1.1.0"
 
 "@shopify/slate-env@1.0.0-beta.12":
@@ -5078,11 +5084,6 @@ gzip-size@3.0.0:
   resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-3.0.0.tgz#546188e9bdc337f673772f81660464b389dce520"
   dependencies:
     duplexer "^0.1.1"
-
-hammer@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/hammer/-/hammer-0.0.5.tgz#0ea1bf81cf7eade639aa0417272c27182c5e8764"
-  integrity sha1-DqG/gc9+reY5qgQXJywnGCxeh2Q=
 
 hammerjs@^2.0.8:
   version "2.0.8"
