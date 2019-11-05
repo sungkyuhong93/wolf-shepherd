@@ -226,15 +226,18 @@
     "name": "Cart",
     "settings": [
       {
+        "type": "header",
+        "content": "Cart Page"
+      },
+      {
         "type": "checkbox",
         "id": "cart_notes_enable",
         "label": "Enable cart notes",
         "default": true
       },
       {
-        "type": "collection",
-        "id": "collection",
-        "label": "Upsell products collection"
+        "type": "header",
+        "content": "Ajax Cart settings"
       },
       {
         "type": "checkbox",
@@ -247,6 +250,48 @@
         "id": "mini_cart",
         "label": "Enable mini cart",
         "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "freeshipping_enable",
+        "label": "Enable Freeshipping",
+        "default": false
+      },
+      {
+        "type": "number",
+        "id": "freeshipping_threshold",
+        "label": "Freeshipping Threshold"
+      },
+      {
+        "type": "checkbox",
+        "id": "collection_enable",
+        "label": "Enable Ajax Upsell",
+        "default": false
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Upsell products collection"
+      }
+    ]
+  },
+  {
+    "name": "Gift Wrapping",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Gift Wrapping"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_gift_wrapping",
+        "label": "Enable Gift Wrapping",
+        "default": false
+      },
+      {
+        "type": "product",
+        "id": "gift_wrap_product",
+        "label": "Gift wrap prouct"
       }
     ]
   },

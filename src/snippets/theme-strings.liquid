@@ -12,7 +12,16 @@
       unavailable: {{ 'products.product.unavailable' | t | json }}
     },
     moneyFormat: {{ shop.money_format | json }},
-    ajaxCart: {{ajaxCartBoo | handleize }},
+    ajaxCart: {
+      enable: {{ajaxCartBoo | handleize }},
+      freeShipping: {{ settings.freeshipping_enable | default: false }},
+      freeShippingTheshold: {{ settings.freeshipping_threshold }},
+      upsellEnable: {{ settings.collection_enable | default: false }},
+    },
+    giftWrap: {
+      enable : {{all_products[settings.gift_wrap_product].variants.first.id | default: false}},
+      id : {{all_products[settings.gift_wrap_product].variants.first.id | default: false}},
+    },
     popQueue: false
   };
 </script>

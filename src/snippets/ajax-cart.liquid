@@ -20,16 +20,57 @@
       <h3 class="cart-ajax__title">My cart</h3>
       <p class="cart-ajax__subtitle">You have <span class="cart-ajax__subtitle-counter">{{ cart.item_count }}</span> items</p>
     </div>
+
+    {% if settings.freeshipping_enable == true %}
+      <div class="cart-ajax__freeshipping">
+        <div class="freeshipping">
+          <div js-freeshipping="info" class="freeshipping__info"></div>
+          <div class="freeshipping__bar">
+            <div js-freeshipping="bar" class="freeshipping__percent"></div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
     
     <div class="cart-ajax__list"></div>
 
+
     <div class="cart-ajax__tools">
-      <a href="/collections/all" class="cart-ajax__continue-shopping cart-ajax__link">Continue Shopping</a>
-      {% if settings.cart_vat %}
-        <p class="cart-ajax__message">{{ settings.cart_vat }}</p>
+
+      {% if settings.enable_gift_wrapping == true %}
+        {% assign giftProduct = all_products[settings.gift_wrap_product].variants.first.id | default: false %}
+        {% assign giftProductHandle = all_products[settings.gift_wrap_product].handle | default: false %}
+        {%- capture giftWrapInCart -%}
+          {% if cart.item_count > 0 %}
+            {% for item in cart.items %}
+              {% if item.product.handle == giftProductHandle %}
+                is-hidden
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {%- endcapture -%}
+
+        {% if giftProduct != false %}
+          <div class="cart-ajax__giftwrapping">
+
+            <div js-gift-wrap="container" class="giftwrapping {{giftWrapInCart}}">
+              <div class="giftwrapping__add">
+                Gifting these items? <span js-gift-wrap="true" data-quantity="1" data-product-id="{{giftProduct}}" class="giftwrapping__link">Add gift wrap to my order</span>
+              </div>
+              <div class="giftwrapping__success">
+                Your order will be gift wrapped 
+                <span js-gift-wrap="false" data-product-id="{{giftProduct}}" class="giftwrapping__remove">Remove</span>
+              </div>
+            </div>
+
+          </div>
+        {% endif %}
       {% endif %}
+
+      {% comment %} <a href="/collections/all" class="cart-ajax__continue-shopping cart-ajax__link">Continue Shopping</a> {% endcomment %}
       <a href="/cart" class="button">Cart</a>
       <a href="/checkout" class="button button--checkout">{{ 'cart.general.checkout' | t }} <span class="cart-ajax--total-price"></span></a>
+
     </div>
 
   </div>

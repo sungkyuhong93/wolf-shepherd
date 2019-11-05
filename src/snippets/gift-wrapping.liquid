@@ -1,0 +1,32 @@
+{% comment %}
+------------------------------------------------------------------------------
+  Gift wrapping for cart page
+------------------------------------------------------------------------------
+{% endcomment %}
+
+{% assign id = all_products[settings.gift_wrap_product].variants.first.id %}
+
+{% assign gift_wraps_in_cart = 0 %}
+{% for item in cart.items %}
+  {% if item.id == id %}
+    {% assign gift_wraps_in_cart = item.quantity %}
+  {% endif %}
+{% endfor %}
+
+<div class="gift-wrapping" class="clearfix rte">
+  <p class="checkbox">
+    <input type="hidden" name="attributes[gift-wrapping]" value="" />
+    <input id="gift-wrapping" type="checkbox" name="attributes[gift-wrapping]" value="yes" js-gift-card="toggle" data-gift-wrap-id="{{ id }}" {% if cart.attributes.gift-wrapping %} checked="checked"{% endif %} />
+    <label for="gift-wrapping">
+      {{ 'cart.gift-wrapping.gift_wrapping_note' | t }}
+    </label>
+  </p>
+  <p>
+    <label class="gift-wrapping__note-label" for="gift-note">{{ 'cart.gift-wrapping.gift_message_note' | t }}</label>
+    <textarea class="gift-wrapping__note" name="attributes[gift-note]" id="gift-note" js-gift-card="message">{{ cart.attributes.gift-note }}</textarea>
+  </p>
+</div>
+
+<style>
+  #updates_{{ id }} { display: none; }
+</style>

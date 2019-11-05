@@ -1,0 +1,31 @@
+/* ============================================================================
+Gift wrapping
+============================================================================== */
+.giftwrapping {
+  $parent: &;
+  padding-bottom: 10px;
+
+  &__remove {
+    cursor: pointer;
+    float: right;
+  }
+
+  &__success {
+    display: none;
+  }
+
+  &__link {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  &.is-hidden {
+    #{$parent}__add {
+      display: none;
+    }
+
+    #{$parent}__success {
+      display: block;
+    }
+  }
+}

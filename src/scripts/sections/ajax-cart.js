@@ -3,10 +3,14 @@
 import $ from 'jquery';
 import {formatMoney} from '@shopify/theme-currency';
 import {misc as icons} from '../helpers/svg-map';
+import FreeShipping from '../sections/free-shipping';
 
-theme.AjaxCart = (() => {
+/**
+ * Export default AjaxCart.
+ */
+export default () => {
 
-  if (theme.ajaxCart === false) {
+  if (theme.ajaxCart.enable === false) {
     return false;
   }
 
@@ -25,68 +29,75 @@ theme.AjaxCart = (() => {
   const cartPage = window.location.pathname;
   let cartOpened = false;
 
-  /* ----------------------------------------------------
-  Add to cart functions
-  -----------------------------------------------------*/
-  selectors.$form.on('submit', function(event) {
-    event.preventDefault();
+  function init() {
+    setEventListeners();
+  }
 
-    const $this = $(this);
-    const formData = $this.serialize();
-    const $error = $this.find('.error');
-    addToCart(formData, $error);
-  });
+  function setEventListeners() {
 
-  /* ----------------------------------------------------
-  change cart functions and triggers
-  -----------------------------------------------------*/ 
-  $(document).on('click', '.cart-ajax__remove', function() {
-    const $this = $(this);
-    cartValueTrigger($this, 'remove');
-  });
+    /* ----------------------------------------------------
+    Add to cart functions
+    -----------------------------------------------------*/
+    selectors.$form.on('submit', function(event) {
+      event.preventDefault();
 
-  $(document).on('focusout', '.cart-ajax .quantity-wrapper input', function() {
-    const $this = $(this);
-    cartValueTrigger($this);
-  });
+      const $this = $(this);
+      const formData = $this.serialize();
+      const $error = $this.find('.error');
+      addToCart(formData, $error);
+    });
 
-  $(document).on('click', '.cart-ajax .quantity-wrapper', function() {
-    const $this = $(this);
-    cartValueTrigger($this);
-  });
+    /* ----------------------------------------------------
+    change cart functions and triggers
+    -----------------------------------------------------*/ 
+    $(document).on('click', '.cart-ajax__remove', function() {
+      const $this = $(this);
+      cartValueTrigger($this, 'remove');
+    });
 
-  $(document).on('click', '.cart-item__remove', function() {
-    const $this = $(this);
-    cartValueTrigger($this, 'remove');
-  });
+    $(document).on('focusout', '.cart-ajax .quantity-wrapper input', function() {
+      const $this = $(this);
+      cartValueTrigger($this);
+    });
 
-  $(document).on('focusout', '.cart-item__quanity .quantity-wrapper input', function() {
-    const $this = $(this);
-    cartValueTrigger($this);
-  });
+    $(document).on('click', '.cart-ajax .quantity-wrapper', function() {
+      const $this = $(this);
+      cartValueTrigger($this);
+    });
 
-  $(document).on('click', '.cart-item__quanity .quantity-wrapper', function() {
-    const $this = $(this);
-    cartValueTrigger($this);
-  });
+    $(document).on('click', '.cart-item__remove', function() {
+      const $this = $(this);
+      cartValueTrigger($this, 'remove');
+    });
 
-  /* ----------------------------------------------------
-  Cart open and close functions
-  -----------------------------------------------------*/
-  selectors.$cartToggleBtn.on('click', (event) => {
-    event.preventDefault();
-    cartRender();
-  });
+    $(document).on('focusout', '.cart-item__quanity .quantity-wrapper input', function() {
+      const $this = $(this);
+      cartValueTrigger($this);
+    });
 
-  $(document).on('mouseup', (event) => {
-    if (!selectors.$cartBody.is(event.target) && selectors.$cartBody.has(event.target).length === 0) {
+    $(document).on('click', '.cart-item__quanity .quantity-wrapper', function() {
+      const $this = $(this);
+      cartValueTrigger($this);
+    });
+
+    /* ----------------------------------------------------
+    Cart open and close functions
+    -----------------------------------------------------*/
+    selectors.$cartToggleBtn.on('click', (event) => {
+      event.preventDefault();
+      cartRender();
+    });
+
+    $(document).on('mouseup', (event) => {
+      if (!selectors.$cartBody.is(event.target) && selectors.$cartBody.has(event.target).length === 0) {
+        cartClose();
+      }
+    });
+
+    selectors.$cartClose.on('click', () => {
       cartClose();
-    }
-  });
-
-  selectors.$cartClose.on('click', () => {
-    cartClose();
-  });
+    });
+  }
 
 
   function cartValueTrigger(element, remove) {
@@ -115,6 +126,7 @@ theme.AjaxCart = (() => {
         $error.addClass('error--hide');
       },
       success: () => {
+        eventBus();
         cartRender();
       },
       error: (XMLHttpRequest) => {
@@ -138,6 +150,7 @@ theme.AjaxCart = (() => {
         }
       },
       success: () => {
+        eventBus();
         cartRender();
       },
     });
@@ -154,7 +167,6 @@ theme.AjaxCart = (() => {
   -----------------------------------------------------*/
   function cartRender() {
     if (cartPage === '/cart') {
-      getCartJSON(updateCartTotal);
       getCartJSON(updateLineItems);
     } else {
       getCartJSON(cartBuild);
@@ -162,7 +174,8 @@ theme.AjaxCart = (() => {
         cartOpen();
       }
     }
-    getCartJSON(cartCounter);
+    updateTotals();
+    FreeShipping().init();
   }
 
   // Ajax Cart Open
@@ -177,6 +190,15 @@ theme.AjaxCart = (() => {
     cartOpened = false;
   }
 
+  function updateTotals() {
+    getCartJSON(cartCounter);
+    if (cartPage === '/cart') {
+      getCartJSON(updateCartTotal);
+    } else {
+      getCartJSON(updateAjaxCartTotal);
+    }
+  }
+
   function cartCounter(cart) {
     $('#CartCount, .cart-ajax__subtitle-counter').html(cart.item_count);
 
@@ -187,19 +209,32 @@ theme.AjaxCart = (() => {
     }
   }
 
+  function updateAjaxCartTotal(cart) {
+    const cartTotal = formatMoney(cart.total_price, theme.moneyFormat);
+    selectors.$cartTotalPrice.html(`<span class=money>${cartTotal}</span>`);
+  }
+
   function cartBuild(cart) {
     const items = cart.items;
-    const cartTotal = formatMoney(cart.total_price, theme.moneyFormat);
-
     selectors.$cartList.html('');
-    selectors.$cartTotalPrice.html(`<span class=money>${cartTotal}</span>`);
 
     $.each(items, (i, item) => {
       const cartRow = createMarkup(item, i);
       selectors.$cartList.append(cartRow);
     });
 
-    relateProducts(cart);
+    if (theme.ajaxCart.upsellEnable !== false) {
+      relateProducts(cart);
+    }
+  }
+
+  // Gift wrapping product check
+  function isGiftWrapCheck(cart) {
+    if (cart.title === 'Gift Wrapping') {
+      return 'cart-ajax__gift-wrap';
+    } else {
+      return '';
+    }
   }
 
   function createMarkup(cart, loopCount) {
@@ -208,9 +243,10 @@ theme.AjaxCart = (() => {
     const cartVariantPrice = formatMoney(cart.price, theme.moneyFormat);
     const cartLinePrice = formatMoney(cart.line_price, theme.moneyFormat);
     const loopCounter = loopCount + 1;
+    const isGiftWrap = isGiftWrapCheck(cart);
 
     const cartRow =  `
-          <div class="cart-ajax__row cart-data" data-line="${loopCounter}" data-id="${cart.id}">
+          <div class="cart-ajax__row cart-data ${isGiftWrap}" data-line="${loopCounter}" data-id="${cart.id}">
             <div class="cart-ajax__row__column">
               <a href="${cart.url}" class="js-click-gtm cart-ajax__row__image" style="background-image: url(${cart.image})"></a>
             </div>
@@ -234,7 +270,6 @@ theme.AjaxCart = (() => {
   }
 
   function relateProducts(cart) {
-
     const relateProductsArray = [];
 
     if ($(window).width() < 750) {
@@ -289,4 +324,17 @@ theme.AjaxCart = (() => {
     });
   }
 
-})();
+  function eventBus() {
+    $(document).trigger('Ajaxcart:success', [false]);
+  }
+
+  /**
+   * Return immutable object.
+   */
+  return Object.freeze({
+    init,
+    eventBus,
+    addToCart,
+    updateTotals,
+  });
+};

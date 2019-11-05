@@ -217,7 +217,7 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
   width: 100px;
 
   &__minus, &__plus {
-    border: 1px solid #e5e5e5;
+    border: 0;
     cursor: pointer;
     height: 40px;
     left: 0;
