@@ -63,16 +63,24 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  @include ms-respond(font-size, 5);
   font-family: $FONT_HEADING;
+  font-size: 32px;
   font-weight: $WEIGHT_NORMAL;
   line-height: $LINE_HEIGHT_DISPLAY;
   margin: 0 0 $SPACING_L;
+
+  @include media-query($medium-up) {
+    font-size: 32px;
+  }
+
+  @include media-query($large-up) {
+    font-size: 40px;
+  }
 }
 
 h3, .h3 {
-  @include ms-respond(font-size, 2);
   font-family: $FONT_HEADING;
+  font-size: 24px;
   font-weight: $WEIGHT_NORMAL;
   line-height: $LINE_HEIGHT_DISPLAY;
   margin: 0 0 $SPACING_M;

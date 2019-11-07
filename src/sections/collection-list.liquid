@@ -1,9 +1,12 @@
 <div class="page-width">
   <div class="{% if section.settings.margin_bottom == 'margin' %}section-margin-bottom{% endif %}">
 
-    {% if section.settings.title != blank %}
-      <h2>{{ section.settings.title | escape }}</h2>
-    {% endif %}
+    <div class="collection-list__header">
+      {% if section.settings.title != blank %}
+        <h2>{{ section.settings.title | escape }}</h2>
+      {% endif %}
+    </div>
+
     <div class="grid">
       <div class="collection-list">
         {% for block in section.blocks limit: section.blocks.size %}
@@ -30,15 +33,15 @@
                 <div class="collection-list__image lazyload" data-bgset="{{ image_url | handlize }}"></div>
               {% endif %}
 
-              <p>
+              <h3>
                 {% if collection == empty %}
                   {{ 'homepage.onboarding.collection_title' | t }}
                 {% else %}
                   {{ collection.title }}
                 {% endif %}
-              </p>
+              </h3>
 
-              <div class="button">Shop Now</div>
+              <div class="button--white">Shop Now</div>
             </a>
           </div>
         {% endfor %}
