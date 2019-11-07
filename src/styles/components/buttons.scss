@@ -126,3 +126,26 @@ $BUTTON_LETTER_SPACING: 0.25px;
 .button--full {
   width: 100%;
 }
+
+.wolf-arrow {
+  background-image: $ICON_ARROW_LEFT;
+  background-position: calc(50% - 1px) calc(50% - 1px);
+  background-repeat: no-repeat;
+  background-size: 10px 13px;
+  border: 1px solid $COLOR_SECONDARY;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0;
+  padding: 17px;
+  transition: 0.2s;
+  z-index: 5;
+
+  &:hover {
+    background-color: $COLOR_SECONDARY;
+  }
+}
+
+.wolf-arrow--right {
+  background-image: $ICON_ARROW_RIGHT;
+  background-position: calc(50% + 1px) calc(50% - 1px);
+}

@@ -48,6 +48,8 @@ $large: 'large';
 $large-down: 'large-down';
 $large-up: 'large-up';
 $widescreen: 'widescreen';
+$tablet-down: 'tablet-down';
+$tablet-up: 'tablet-up';
 
 $breakpoints: (
   $small '(max-width: #{$grid-medium - 1})',
@@ -57,7 +59,9 @@ $breakpoints: (
   $large '(min-width: #{$grid-large}) and (max-width: #{$grid-widescreen - 1})',
   $large-down '(max-width: #{$grid-widescreen - 1})',
   $large-up '(min-width: #{$grid-large})',
-  $widescreen '(min-width: #{$grid-widescreen})'
+  $widescreen '(min-width: #{$grid-widescreen})',
+  $tablet-down '(max-width: 1023px)',
+  $tablet-up '(min-width: 1024px)',
 );
 
 /* ============================================================================
@@ -70,5 +74,5 @@ $breakpoint-has-widths: ($small, $medium-up);
 $breakpoint-has-push: ($small, $medium-up, $large-up);
 
 /* ================ Sizing Variables ================ */
-$width-site: 1440px;
+$width-site: 1340px;
 $gutter: 30px;

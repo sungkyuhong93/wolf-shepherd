@@ -50,8 +50,31 @@
 
     </header>
 
+    {% if section.settings.enable_usp %}
+      
+      <div class="site-header__usp">
+        {% if section.settings.usp_image != blank %}
+          <img src="{{ section.settings.usp_image | img_url: '100x' }}" alt="{{ section.settings.usp_image.alt }}"/>
+        {% endif %}
+        {% if section.settings.usp_text %}
+          <span>{{ section.settings.usp_text }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+
+
     <div class="site-header__misc">
       <ul>
+
+        <li class="site-header__mobile-hide">
+          <a href="#"  class="site-header__search-icon {% if section.settings.enable_full_screen_search %}full-screen-search{% endif %}">
+          {% include 'icons' with icon: 'search-wolf' %}
+            {% unless section.settings.enable_full_screen_search %}
+              {% include 'search-form--basic' %}
+            {% endunless %}
+          </a>
+        </li>
+
         {% if shop.customer_accounts_enabled %}
           {% if customer %}
             <li class="site-header__mobile-hide">
@@ -67,15 +90,6 @@
             </li>
           {% endif %}
         {% endif %}
-
-        <li class="site-header__mobile-hide">
-          <a href="#"  class="site-header__search-icon {% if section.settings.enable_full_screen_search %}full-screen-search{% endif %}">
-          {% include 'icons' with icon: 'search-wolf' %}
-            {% unless section.settings.enable_full_screen_search %}
-              {% include 'search-form--basic' %}
-            {% endunless %}
-          </a>
-        </li>
 
         <li>
           <a href="/cart" id="Cart-icon" class="site-header__cart-icon">
@@ -140,10 +154,24 @@
         "default": "main-menu"
       },        
       {
+        "type": "header",
+        "content": "Desktop only USP"
+      },
+      {
         "type": "checkbox",
-        "id": "enable_full_screen_search",
-        "label": "Enable Full Screen Search",
-        "default": false
+        "id": "enable_usp",
+        "label": "Enable USP",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "usp_image",
+        "label": "USP Image"
+      },
+      {
+        "type": "text",
+        "id": "usp_text",
+        "label": "USP text"
       }
     ],
     "blocks": [

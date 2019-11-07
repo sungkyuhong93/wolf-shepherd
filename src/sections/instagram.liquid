@@ -4,18 +4,6 @@
   - This section requires an Instafeed installation
 ------------------------------------------------------------------------------
 {% endcomment %}
-
-{%- capture alignContent -%}
-  {% case section.settings.alignment %}
-    {% when 'left' %}
-      hero-main--left
-    {% when 'right' %}
-      hero-main--right
-    {% else %}
-      hero-main--center
-  {% endcase %}
-{%- endcapture -%}
-
 <section 
   id="instafeed-section" 
   class="instafeed {{ alignContent }} {% if template != 'index' %} instafeed--load-more {% endif %} {% if section.settings.margin_bottom == 'margin' %}section-margin-bottom{% endif %}" data-section-id="{{ section.id }}" data-section-type="instafeed">
@@ -25,32 +13,20 @@
   <div class="instafeed__header">
 
     {% if section.settings.title != blank %}
-      <h2 class="feature__title">{{ section.settings.title | escape }}</h2>
+      <h2 class="instafeed__title">{{ section.settings.title | escape }}</h2>
     {% endif %}
-    
-    <div class="rte-setting hero-text">
-      {% if section.settings.text != blank %}{{ section.settings.text }}{% endif %}
-    </div>
-
-    <div class="rte-setting hero-text">
-      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
-        <a href="{{ section.settings.button_link }}" class="button button--primary">
-          {{ section.settings.button_label }}
-        </a>
-      {% endif %}
-    </div>
     
   </div>
 
   <div id="instafeed"></div>
 
-  {% if template !=  'index' %} 
-  <div class="instafeed__load-more">
-    <div class="button button--primary" js-instafeed="load-more">
-      Load More
-    </div>
+  <div class="instafeed__footer">
+
+    <a href="https://www.instagram.com/WolfandShepherd/" target="_blank" class="instafeed__link">@WolfandShepherd</h2>
+
   </div>
-  {% endif %}
+
+
 
   {% if section.settings.full-width != 'full-width' %}</div>{% endif %}
 </section>
@@ -105,42 +81,6 @@
         "id": "title",
         "label": "Heading",
         "default": "Instagram"
-      },
-      {
-        "type": "richtext",
-        "id": "text",
-        "label": "Text",
-        "default": "<p>Use this text to give your customers insight into your brand.</p>"
-      },
-      {
-        "type": "text",
-        "id": "button_label",
-        "label": "Button label"
-      },
-      {
-        "type": "url",
-        "id": "button_link",
-        "label": "Button link"
-      },
-      {
-        "type": "select",
-        "id": "alignment",
-        "label": "Text alignment",
-        "default": "center",
-        "options": [
-          {
-            "value": "left",
-            "label": "Left"
-          },
-          {
-            "value": "center",
-            "label": "Center"
-          },
-          {
-            "value": "right",
-            "label": "Right"
-          }
-        ]
       }
     ],
     "presets": [

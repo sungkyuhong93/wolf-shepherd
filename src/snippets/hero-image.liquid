@@ -14,6 +14,7 @@
   {% assign sectionFullWidth = section.settings.full-width %}
   {% assign sectionMarginBottom = section.settings.margin_bottom %}
   {% assign sectionTextColor = section.settings.text_color %}
+  {% assign sectionTextSize = section.settings.text_size | default: 'd2' %}
   {% assign sectionTitle = section.settings.title %}
   {% assign sectionText = section.settings.text %}
   {% assign sectionButtonLabel = section.settings.button_label %}
@@ -37,6 +38,7 @@
   {% assign sectionFullWidth = section.settings.full-width %}
   {% assign sectionMarginBottom = section.settings.margin_bottom %}
   {% assign sectionTextColor = section.settings.text_color %}
+  {% assign sectionTextSize = section.settings.text_size | default: 'd2' %}
   {% assign sectionTitle = collection.title %}
   {% assign sectionText = collection.description %}
   {% assign sectionButtonLabel = blank %}
@@ -52,6 +54,7 @@
   {% assign sectionFullWidth = 'wrapper' %}
   {% assign sectionMarginBottom = 'margin' %}
   {% assign sectionTextColor = 'white' %}
+  {% assign sectionTextSize = 'd2' %}
   {% assign sectionTitle = article.title %}
   {% assign sectionText = article.content | strip_html | truncate: 100 %}
   {% assign sectionButtonLabel = 'Read more' %}
@@ -72,6 +75,7 @@
   {% assign sectionFullWidth = block.settings.full-width %}
   {% assign sectionMarginBottom = block.settings.margin_bottom %}
   {% assign sectionTextColor = block.settings.text_color %}
+  {% assign sectionTextSize = 'd2' %}
   {% assign sectionTitle = block.settings.title  %}
   {% assign sectionText = block.settings.text %}
   {% assign sectionButtonLabel = block.settings.button_label %}
@@ -85,7 +89,7 @@
 
   {% capture textCapture %}
     {% if sectionTitle != blank %}
-      <h2 class="h1 hero-image__title">{{ sectionTitle }}</h2>
+      <h2 class="{{ sectionTextSize }} hero-image__title">{{ sectionTitle }}</h2>
     {% endif %}
     
     <div class="rte-setting hero-image__text">

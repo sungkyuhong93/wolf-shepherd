@@ -6,6 +6,8 @@
  * @namespace instagram
  */
 import Instafeed from 'instafeed.js';
+import $ from 'jquery';
+import _ from 'slick-carousel';
 
 /**
  * DOM selectors.
@@ -34,7 +36,20 @@ export default () => {
       limit: 8,
       clientId: 'Client',
       sortBy: 'most-recent',
-      template: '<a class="instafeed__img"  target="_blank" href="\{\{link\}\}" style="background-image: url\(\{\{image\}\}\)"><span class="instafeed__overlay"><span class="instafeed__overlay-text">{{caption}}</span></span></a>',
+      template: '<div class="instafeed__contianer"><a class="instafeed__img" target="_blank" href="\{\{link\}\}" style="background-image: url\(\{\{image\}\}\)"><span class="instafeed__overlay"><span class="instafeed__overlay-text">{{caption}}</span></span></a></div>',
+      success: (data) => {
+        // read the feed data and create owr own data struture.
+        const images = data.data;
+        let i;
+        for (i = 0; i < images.length; i++) {
+          const image = images[i];
+          console.log(image)
+        }
+      },
+      after: () => {
+        createSlider();
+        console.log('slide it up');
+      },
     });
     userFeed.run();
   }
@@ -56,6 +71,42 @@ export default () => {
     } else {
       createFeed();
     }
+  }
+
+  /**
+   * Create slick slider
+   */
+  function createSlider() {
+    $('#instafeed').slick({
+      arrows: true,
+      vertical: false,
+      prevArrow: '<div class="slick-arrow slick-prev wolf-arrow"></div>',
+      nextArrow: '<div class="slick-arrow slick-next wolf-arrow wolf-arrow--right"></div>',
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      infinite: true,
+      dots: false,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            centerMode: true,
+            centerPadding: '15%',
+          },
+        },
+        {
+          breakpoint: 620,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerMode: true,
+            centerPadding: '15%',
+          },
+        }
+      ],
+    });
   }
 
   function init() {

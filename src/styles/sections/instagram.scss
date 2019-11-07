@@ -11,30 +11,6 @@
   &.active {
     display: block;
   }
-
-  .flickity-prev-next-button {
-    @include media-query( $medium-up ) {
-      height: 38px;
-      top: 17px;
-      width: 38px;
-    }
-    background-image: var(--icon-arrow-left);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 31px;
-    top: 20px;
-    transform: translateY(0);
-    width: 15px;
-
-    &.next {
-      background-image: var(--icon-arrow-right);
-    }
-
-    .flickity-button-icon {
-      display: none;
-    }
-  }
 }
 
 /* ============================================================================
@@ -42,56 +18,33 @@ Instagram
 ============================================================================== */
 .instafeed {
   $parent: &;
-
-  @include media-query($medium-up) {
-    &__header--image {
-      top: -60px;
-
-      img {
-        max-width: 250px;
-      }
-    }
-
-    &__img {
-      padding-bottom: 20%;
-      width: 20%;
-    }
-
-    &--load-more {
-      #{$parent}__img {
-        padding-bottom: 21%;
-        width: 21%;
-      }
-    }
-
-    &__load-more {
-      margin-bottom: 50px;
-      padding-top: 50px;
-
-      .button {
-        width: auto;
-      }
-    }
-  }
   padding-top: 70px;
+
+  &__header {
+    text-align: center;
+  }
+
+  &__footer {
+    text-align: center;
+  }
+
+  &__contianer {
+    padding: 12px;
+  }
 
   &__img {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid $COLOR_WHITE;
-    display: inline-block;
+    display: block;
     margin: 0;
-    padding-bottom: 40%;
+    padding-bottom: 100%;
     position: relative;
-    width: 40%;
+    width: 100%;
 
     &:hover .instafeed__overlay {
       opacity: 1;
-    }
-
-    &:nth-of-type(1n+6) {
-      display: none;
     }
   }
 
@@ -116,38 +69,48 @@ Instagram
     text-overflow: ellipsis;
   }
 
-  &--load-more {
-    display: flex;
-    flex-flow: wrap;
+  .slick-arrow {
+    left: -50px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
-    #instafeed {
-      margin: 0 -2%;
+  .slick-next {
+    background-position: calc(50% + 1px) calc(50% - 1px);
+    left: initial;
+    right: -50px;
+  }
+
+  @include media-query($tablet-down) {
+    .page-width {
+      padding: 0;
     }
 
-    #{$parent}__img {
-      margin: 2%;
-      padding-bottom: 46%;
-      width: 46%;
+    .grid, .grid__item {
+      margin: 0;
+      padding: 0;
+    }
 
-      &:nth-of-type(1n+6) {
-        display: inline-block;
+    .slick-arrow {
+      display: none !important;
+    }
+  }
+
+  @include media-query($medium-up) {
+    &__header--image {
+      top: -60px;
+
+      img {
+        max-width: 250px;
       }
     }
   }
 
-  &__load-more {
-    margin-bottom: 30px;
-    padding-top: 30px;
-    text-align: center;
-
-    .button {
-      width: 100%;
-    }
-  }
-
-  .flickity-slider & {
-    &__img:nth-of-type(1n+6) {
-      display: inline-block;
+  @include media-query($large-up) {
+    .slick-list {
+      margin-left: -12px;
+      width: calc(100% + 24px);
     }
   }
 }

@@ -6,6 +6,7 @@
  *
  */
 html, body {
+  color: $COLOR_TEXT;
   font-family: $FONT_BASE;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -19,11 +20,19 @@ html, body {
  * Display styles.
  */
 .d1 {
-  @include ms-respond(font-size, 12);
   font-family: $FONT_DISPLAY;
+  font-size: 32px;
   font-weight: $WEIGHT_NORMAL;
   letter-spacing: $LETTER_SPACING_DISPLAY;
   line-height: $LINE_HEIGHT_DISPLAY;
+
+  @include media-query($medium-up) {
+    font-size: 48px;
+  }
+
+  @include media-query($large-up) {
+    font-size: 80px;
+  }
 }
 
 .d2 {

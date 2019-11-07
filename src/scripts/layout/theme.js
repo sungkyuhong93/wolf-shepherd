@@ -22,6 +22,7 @@ import QuickAdd from '../sections/quick-add';
 
 import '../sections/notification-bar';
 import '../sections/site-header';
+import '../sections/featured-collection-slider';
 import '../sections/sticky-nav';
 import '../sections/emoji';
 import '../sections/search-hero';

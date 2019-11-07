@@ -18,12 +18,12 @@ Hero image
   width: 100%;
 
   &__title {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 
     p {
       font-family: inherit;
       font-size: inherit;
-      line-height: inherit;
+      line-height: 1;
       margin: 0 !important;
     }
   }
@@ -88,7 +88,7 @@ Hero image
     min-height: 720px;
   }   
 
-  @include media-query( $small ) {
+  @include media-query( $medium-down ) {
     &--mobile-text-under {
       #{$parent}__wrapper {
         display: none;
@@ -110,6 +110,12 @@ Hero image
 
     &__mobile-text {
       display: none;
+    }
+
+    &--mobile-text-under {
+      #{$parent}__wrapper {
+        display: block;
+      }
     }
 
     &--center {
@@ -169,7 +175,7 @@ Hero image
     }
 
     &__wrapper {
-      max-width: 580px;
+      // max-width: 580px;
     }
 
     &__title {

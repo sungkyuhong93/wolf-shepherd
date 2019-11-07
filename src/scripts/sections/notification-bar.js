@@ -2,9 +2,9 @@ import $ from 'jquery';
 import {register} from '@shopify/theme-sections';
 import _ from 'slick-carousel';
 
-const selectors = { 
-  $notificationBar : $('.notification-bar__carousel')
-}  
+const selectors = {
+  $notificationBar: $('.notification-bar__carousel'),
+};
 
 register('notification-bar', {
 
@@ -12,31 +12,31 @@ register('notification-bar', {
     this.cleanSlick();
   },
 
-  getSliderSettings(){
+  getSliderSettings() {
     return {
-      vertical:false,
+      vertical: false,
       slidesToShow: 1,
       slidesToScroll: 1,
       prevArrow: '<div class="slick-arrow slick-prev"></div>',
-      nextArrow: '<div class="slick-arrow slick-next"></div>'
+      nextArrow: '<div class="slick-arrow slick-next"></div>',
     }
   },
 
-  cleanSlick(){
-    let section = this;
-    if(selectors.$notificationBar.hasClass('slick-initialized')) {
+  cleanSlick() {
+    const section = this;
+    if (selectors.$notificationBar.hasClass('slick-initialized')) {
       selectors.$notificationBar.slick('reinit'); 
-    } else{
-      selectors.$notificationBar.slick(section.getSliderSettings()); 
+    } else {
+      selectors.$notificationBar.slick(section.getSliderSettings());
     }
   },
 
-  onBlockSelect: function(e){
-    let blockId     = parseInt(e),
-        $blockClass = $('.notification-bar-' + blockId),
-        slideIndex  = $blockClass.closest('.slick-slide').attr('data-slick-index');
+  onBlockSelect: (e) => {
+    const blockId = parseInt(e);
+    const $blockClass = $(`.notification-bar-${blockId}`);
+    const slideIndex = $blockClass.closest('.slick-slide').attr('data-slick-index');
 
-    selectors.$notificationBar.slick("goTo", slideIndex);
-  }
+    selectors.$notificationBar.slick('goTo', slideIndex);
+  },
 
 });
