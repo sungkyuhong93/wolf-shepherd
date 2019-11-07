@@ -4,6 +4,7 @@ import {register} from '@shopify/theme-sections';
 
 register('testimonials', {
   onLoad() {
+    console.log('testie')
     this.init();
   },
 
@@ -28,7 +29,7 @@ register('testimonials', {
 
   onBlockSelect: (blockId) => { 
     const $blockClass = $(`.testimonials__slide--${blockId}`).closest('.slick-slide');
-    const slideIndex  = $blockClass.attr('data-slick-index');
+    const slideIndex = $blockClass.attr('data-slick-index');
     $('.testimonials__slider').slick('goTo', slideIndex);
   },
 

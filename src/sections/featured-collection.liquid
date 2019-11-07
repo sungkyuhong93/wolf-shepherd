@@ -1,7 +1,7 @@
 {% comment %}
   modules/feature-collection.scss
 {% endcomment %}
-<div class="feature-collection 
+<div class="feature-collection feature-collection--{{section.id}} 
   {% if section.settings.background_light == false %}feature-collection--dark{% endif %}
   {{ section.settings.margin_bottom }}" 
   id="featured-collection-section" 
@@ -10,7 +10,7 @@
   <div class="page-width">
     <div class="grid">
       <div class="grid__item medium-up--one-whole">
-        <div class=" feature-collection__container">
+        <div class="feature-collection__container">
           
           {%- assign collection = collections[section.settings.collection] -%}
           {%- assign collectionCounter = section.settings.product_count -%}   
@@ -39,7 +39,7 @@
             {% assign slidesToShow = collectionCounter %}
             {% assign collectionCounter = collectionCounter | times:3 %}
             {% assign collectionCounterClass = '' %}
-            <div class="collection-carousel">
+            <div class="collection-carousel--{{section.id}}">
           {% endif %}
 
           {% for product in collection.products limit: collectionCounter %}

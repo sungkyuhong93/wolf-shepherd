@@ -42,13 +42,12 @@ export default () => {
         const images = data.data;
         let i;
         for (i = 0; i < images.length; i++) {
-          const image = images[i];
-          console.log(image)
+          // const image = images[i];
+          // console.log(image)
         }
       },
       after: () => {
         createSlider();
-        console.log('slide it up');
       },
     });
     userFeed.run();
