@@ -4,7 +4,7 @@ import {register} from '@shopify/theme-sections';
 
 register('testimonials', {
   onLoad() {
-    console.log('testie')
+    // console.log('testie')
     this.init();
   },
 

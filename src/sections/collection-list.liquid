@@ -1,4 +1,4 @@
-<div class="page-width">
+<div class="page-width" data-section-id="{{ section.id }}" data-section-type="collection-list">
   <div class="{% if section.settings.margin_bottom == 'margin' %}section-margin-bottom{% endif %}">
 
     <div class="collection-list__header">
@@ -8,7 +8,7 @@
     </div>
 
     <div class="grid">
-      <div class="collection-list">
+      <div class="collection-list collection-list--{{section.id}}">
         {% for block in section.blocks limit: section.blocks.size %}
           <div {{ block.shopify_attributes }} class="grid__item medium-up--one-third">
             {%- assign collection = collections[block.settings.collection] -%}
