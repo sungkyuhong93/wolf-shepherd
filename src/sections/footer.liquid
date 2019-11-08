@@ -1,11 +1,14 @@
-{% include 'newsletter', width:"full"  %}
+{% comment %} {% include 'newsletter', width:"full"  %} {% endcomment %}
 
-<footer>
+<footer class="site-footer">
   <div class="page-width">
     <div class="grid">
   
       {% capture socialLinks %}
         {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+
+        {% include 'footer-newsletter' %}
+
         <ul class="social-links">
           {% for social in social_accounts %}
             {%- assign social_handle = social | handleize -%}
@@ -82,7 +85,7 @@
 
       <div class="grid__item">
         <div class="copyright">
-          <small>&copy; {{ 'layout.footer.copyright' | t }} {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }},  Designed and Built by <a href="https://karmoon.co.uk/" target="_blank">Karmoon</a></small>
+          <small>&copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}. All rights reversed.<span style="display:none">Designed and Built by <a href="https://karmoon.co.uk/" target="_blank">Karmoon</a></span></small>
         </div>
 
         {% if section.settings.show_payment_icons %}
@@ -119,103 +122,6 @@
         "id": "show_payment_icons",
         "label": "Show payment icons",
         "default": false
-      },
-      {
-        "type": "color",
-        "id": "color_header_text",
-        "label": "Menu Text color",
-        "default": "#000"
-      },    
-      {
-        "type": "color",
-        "id": "color_header_background",
-        "label": "Background color",
-        "default": "#fff"
-      },
-      {
-        "type": "image_picker",
-        "id": "logo-bottom-left",
-        "label": "Display logo bottom left corner"
-      },
-      {
-        "type":"paragraph",
-        "content":"Newsletter"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_newsletter",
-        "label": "Show newsletter signup",
-        "default": true
-      },
-      {
-        "type": "select",
-        "id": "newsletter-full-width",
-        "label": "Full width",
-        "default": "full-width",
-        "options": [
-          {
-            "label": "Full width",
-            "value": "full-width"
-          },
-          {
-            "label": "Within wrapper",
-            "value": "wrapper"
-          }
-        ]
-      },
-      {
-        "type": "image_picker",
-        "id": "newsletter-image",
-        "label": "Newsletter Image Background"
-      },
-      {
-        "type": "color",
-        "id": "newsletter-bg",
-        "label": "Newsletter Background",
-        "info":"If no image",
-        "default":"#f9fbfc"
-      },
-      {
-        "type": "text",
-        "id": "newsletter-title",
-        "label": "Newsletter title"
-      },
-      {
-        "type": "text",
-        "id": "newsletter-text",
-        "label": "Newsletter text"
-      },
-      {
-        "type": "select",
-        "id": "newsletter_text_color",
-        "label": "Text colour",
-        "default": "black",
-        "options": [
-          {
-            "label": "White",
-            "value": "white"
-          },
-          {
-            "label": "Black",
-            "value": "black"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "newsletter_margin_bottom",
-        "label": "Margin bottom",
-        "default": "no-margin",
-        "options": [
-          {
-            "label": "Margin bottom",
-            "value": "margin"
-          },
-          {
-            "label": "No margin",
-            "value": "no-margin"
-          }
-        ]
       }
     ],
     "blocks": [
@@ -237,13 +143,18 @@
         ]
       },
       {
-        "type": "socail_media",
-        "name": "Social links",
+        "type": "social",
+        "name": "Newsletter / Social links",
         "settings": [
           {
             "id": "footer_title",
             "type": "text",
             "label": "Menu Title"
+          },
+          {
+            "type": "text",
+            "id": "newsletter-text",
+            "label": "Newsletter text"
           }
         ]
       }

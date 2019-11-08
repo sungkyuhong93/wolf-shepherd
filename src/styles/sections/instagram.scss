@@ -18,6 +18,7 @@ Instagram
 ============================================================================== */
 .instafeed {
   $parent: &;
+  overflow: hidden;
 
   &__header {
     text-align: center;

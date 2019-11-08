@@ -1,8 +1,17 @@
 /* ============================================================================
 #Footer
 ============================================================================== */
-footer {
+.site-footer {
+  background: $COLOR_PRIMARY;
   padding-top: 30px;
+
+  h4 {
+    color: $COLOR_WHITE;
+  }
+
+  p, a {
+    color: $COLOR_WHITE;
+  }
 
   ul {
     list-style: none;
@@ -11,8 +20,10 @@ footer {
   }
 
   .copyright {
+    color: $COLOR_WHITE;
     padding-bottom: 30px;
     padding-top: 30px;
+    text-align: right;
   }
 
   .social-links {

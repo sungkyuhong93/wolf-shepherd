@@ -17,7 +17,7 @@ body {
   top: 0;
   transition: $MOBILE_TRANSITION;
   width: 100%;
-  z-index: 1000;
+  z-index: 10000;
 
   &.is-active {
     left: 300px;

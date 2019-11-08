@@ -1,0 +1,30 @@
+<section 
+  class="newsletter">
+
+  <h3 class="newsletter__title">{{ section.settings.newsletter-title }}</h3>
+  <p class="newsletter__text">{{ section.settings.newsletter-text }}</p>
+
+  {% form 'customer' %}
+    {{ form.errors | default_errors }}
+    {% if form.posted_successfully? %}
+      <p class="form--success">Success</p>
+    {% else %}
+
+      <div class="inline-form password__input-group">
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input type="email"
+          name="contact[email]"
+          id="Email"
+          class="newsletter__input"
+          value="{% if customer %}{{ customer.email }}{% endif %}"
+          placeholder="Email"
+          autocorrect="off"
+          autocapitalize="off">
+        <button type="submit" class="button button--white" name="commit" id="Subscribe">
+          Sign Up
+        </button>
+      </div>
+    {% endif %}
+  {% endform %}
+
+</section>

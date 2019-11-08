@@ -2,15 +2,88 @@
 #Testimonials
 ============================================================================== */
 .testimonials {
-  &__slider {
+  align-items: center;
+  background: $COLOR_GREY;
+  display: flex;
+  height: 380px;
+  justify-content: center;
+  overflow: hidden;
+
+  blockquote {
+    border: 0;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+  }
+
+  &__header {
 
   }
 
-  &__slide {
-
+  &__container {
+    margin-bottom: 40px;
   }
 
-  &__slide-text {
-    
+  &__slider-text {
+    font-family: $FONT_HEADING;
+    font-size: 24px;
+    text-align: center;
+
+    @include media-query($medium-up) {
+      font-size: 24px;
+      margin: 0 auto;
+      max-width: 790px;
+    }
+  }
+
+  &__images {
+    display: none;
+  }
+
+  .slick-arrow {
+    left: -5px;
+    position: absolute;
+    top: calc(50% + 50px);
+    transform: translateY(-140%);
+    z-index: 5000;
+  }
+
+  .slick-next {
+    background-position: calc(50% + 1px) calc(50% - 1px);
+    left: initial;
+    right: -15px;
+  }
+
+  @media (max-width: 1300px) {
+    .page-width {
+      max-width: 100%;
+    }
+  }
+
+  @include media-query($medium-up) {
+    .slick-prev {
+      left: -50px;
+    }
+
+    .slick-next {
+      right: -50px;
+    }
+
+    &__slide {
+      img {
+        display: none;
+      }
+    }
+
+    &__images {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+
+      img {
+        height: 38px;
+        margin: 0 25px;
+      }
+    }
   }
 }

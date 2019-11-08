@@ -8,6 +8,7 @@
 import Instafeed from 'instafeed.js';
 import $ from 'jquery';
 import _ from 'slick-carousel';
+import jsWidth from '../helpers/screenWidths';
 
 /**
  * DOM selectors.
@@ -86,6 +87,12 @@ export default () => {
       infinite: true,
       dots: false,
       responsive: [
+        {
+          breakpoint: jsWidth.mac13,
+          settings: {
+            arrows: false,
+          },
+        },
         {
           breakpoint: 1024,
           settings: {

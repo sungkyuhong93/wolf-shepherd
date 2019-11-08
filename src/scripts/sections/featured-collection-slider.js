@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import {register} from '@shopify/theme-sections';
 import _ from 'slick-carousel';
+import jsWidth from '../helpers/screenWidths';
 
 register('featured-collection-section', {
   onLoad() {
@@ -26,6 +27,12 @@ register('featured-collection-section', {
       infinite: true,
       dots: false,
       responsive: [
+        {
+          breakpoint: jsWidth.mac13,
+          settings: {
+            arrows: false,
+          },
+        },
         {
           breakpoint: 1024,
           settings: {

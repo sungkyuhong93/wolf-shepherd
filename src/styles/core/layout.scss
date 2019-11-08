@@ -23,6 +23,10 @@ html {
   @include media-query( $medium-up ) {
     padding: 0 $gutter;
   }
+
+  @media (min-width: 1280px ) {
+    padding: 0 80px;
+  }
 }
 
 .page-content {

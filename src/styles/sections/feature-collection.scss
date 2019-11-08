@@ -20,10 +20,11 @@
 }
 
 .feature-collection {
-  padding: 12px 0 0;
+  overflow: hidden;
 
   &--dark {
     background: $COLOR_GREY;
+    padding: 12px 0 0;
   }
 
   &__button-row {
