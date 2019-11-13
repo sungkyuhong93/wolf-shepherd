@@ -160,3 +160,23 @@ $BUTTON_LETTER_SPACING: 0.25px;
   padding: 0;
   width: 40px;
 }
+
+.button-text-and-arrow {
+  align-items: center;
+  display: flex;
+  font-family: $FONT_BODY;
+  font-size: 10px;
+  justify-content: center;
+  letter-spacing: $LETTER_SPACING_BASE;
+  text-transform: uppercase;
+
+  .wolf-arrow {
+    background-image: $ICON_ARROW_RIGHT;
+    background-position: calc(50%) calc(50% - 1px);
+    background-size: 9px 12px;
+    height: 28px;
+    margin-left: 12px;
+    padding: 0;
+    width: 28px;
+  }
+}

@@ -1,3 +1,4 @@
+Collection Filter
 {% for block in section.blocks %}
 	{% if block.settings.filter-group-title != blank %}
 	<h4>{{block.settings.filter-group-title}}</h4>
@@ -9,7 +10,6 @@
 		{% assign taglist = block.settings.tag-list %}
 		{% assign taglistsplit = taglist | split:"," %}
 
-
 		{% assign stop_adding = false %}
 
 		{% for tag in current_tags %}
@@ -19,13 +19,13 @@
 			{% endif %}
 		{% endfor %}
 
-		  	{% for tag in taglistsplit %}
-				{% if stop_adding %}
-				  <li>{{ tag | link_to_tag: tag }}</li>
-				{% else %}
-				  <li>{{ tag | link_to_add_tag: tag }}</li>
-				{% endif %}
-		  	{% endfor %}
+    {% for tag in taglistsplit %}
+    {% if stop_adding %}
+      <li>{{ tag | link_to_tag: tag }}</li>
+    {% else %}
+      <li>{{ tag | link_to_add_tag: tag }}</li>
+    {% endif %}
+    {% endfor %}
 		</ul>
 
 	{% endif %}
@@ -33,5 +33,5 @@
 {% endfor %}
 
 {% if collection.handle %}
-	<a href="/collections/{{ collection.handle }}">Clear All</a>
+	{% comment %} <a href="/collections/{{ collection.handle }}">Clear All</a> {% endcomment %}
 {% endif %}

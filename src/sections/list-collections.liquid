@@ -1,0 +1,93 @@
+{% comment %}
+  This page represents the /collections and /products pages.
+{% endcomment %}
+
+{%- capture collectionCounterClass -%}
+  grid__item small--one-half medium-up--one-third
+{%- endcapture -%}
+
+<div data-section-id="{{ section.id }}" data-section-type="list-collections">
+  {% if section.settings.linklist != blank %}
+    <div class="collection-navigation">
+      <div class="page-width">
+        <ul>
+        {% for link in linklists[section.settings.linklist].links %}
+          <li class="collection-navigation__item {% if link.active %}collection-navigation__link--active{% endif %}">
+            <a class="collection-navigation__link" href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="collection-wrapper">
+    <div class="page-width">
+
+      <div class="grid">
+        <div class="grid__item medium-up--one-quarter">
+          {% include 'collection-sidebar' %}
+        </div>
+
+        <div class="grid__item medium-up--three-quarters">
+
+          <div class="grid">
+            {% for collection in collections %}
+              {% unless collection.handle == 'frontpage' or collection.handle == 'all' %}
+                <div class="list-collections">
+                  <div class="grid__item small--one-whole">
+                    <header class="list-collections__header">
+                      <h3>
+                        <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">{{ collection.title }}</a>
+                      </h3>
+
+                      <a href="{{ collection.url }}" class="button-text-and-arrow" title="{{ 'collections.general.link_title' | t: title: title }}">
+                        View All <div class="wolf-arrow wolf-arrow--right"></div>
+                      </a>
+
+                    </header>
+                  </div>
+                  <div class="list-collections__collection">
+                    {% for product in collection.products limit: 3 %}
+                      {% include 'collection-grid-product' with gridWidth: collectionCounterClass  %}
+                    {% endfor %}
+                  </div>
+                </div>
+
+              {% endunless %}
+
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Collection Layout",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Collection Settings"
+      },
+      {
+        "type": "link_list",
+        "id": "linklist",
+        "label": "Navigation"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_excerpt",
+        "label": "Show product excerpt",
+        "default": true
+      }
+    ]
+  }
+
+{% endschema %}

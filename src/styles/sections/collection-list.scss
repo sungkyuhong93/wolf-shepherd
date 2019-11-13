@@ -34,3 +34,33 @@
     }
   }
 }
+
+.list-collections {
+  border-bottom: 1px solid $COLOR_GREY;
+  display: inline-block;
+  margin-bottom: 36px;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__collection.slick-initialized {
+    margin-right: -20px;
+  }
+
+  .collection-grid-item__match-height {
+    &:nth-child(n+4) {
+      display: none!important;
+    }
+  }
+
+  @include media-query($small) {
+    &__header {
+      h3 {
+        font-size: 18px;
+      }
+    }
+  }
+}

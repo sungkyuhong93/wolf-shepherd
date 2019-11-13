@@ -52,7 +52,6 @@
           {% include 'collection-sidebar' %}
         </div>
         <div class="grid__item medium-up--three-quarters">
-
         <div class="grid">
           {% for product in collection.products %}
 
@@ -72,9 +71,8 @@
             
           {% endfor %}
         </div>
-
-        </div></div>
-
+        </div>
+      </div>
     </div>
   </div>
 
@@ -198,37 +196,15 @@
         "default": "hero-image--black",
         "options": [
           {
-            "label": "White",
+            "label": "Light",
             "value": "hero-image--white"
           },
           {
-            "label": "Black",
+            "label": "Dark",
             "value": "hero-image--black"
           }
         ]
       },
-      {
-        "type": "header",
-        "content": "Mobile only settings"
-      },
-      {
-        "type": "select",
-        "id": "mobile_text_position",
-        "label": "Mobile text position",
-        "default": "hero-image--mobile-text-overlay",
-        "options": [
-          {
-            "label": "Text under",
-            "value": "hero-image--mobile-text-under"
-          },
-          {
-            "label": "Text overlay",
-            "value": "hero-image--mobile-text-overlay"
-          }
-        ]
-      },
-
-
       {
         "type": "header",
         "content": "Collection Settings"
@@ -260,94 +236,6 @@
           {
             "value": "4",
             "label": "4"
-          }
-        ]
-      },
-      {
-        "type": "checkbox",
-        "id": "show_excerpt",
-        "label": "Show product excerpt",
-        "default": true
-      },
-      {
-        "type": "select",
-        "id": "product-text-alignment",
-        "label": "Product text alignment",
-        "default": "center",
-        "options": [
-          {
-            "value": "left",
-            "label": "Left"
-          },
-          {
-            "value": "center",
-            "label": "Center"
-          },
-          {
-            "value": "right",
-            "label": "Right"
-          }
-        ]
-      },
-
-      
-
-      {
-        "type": "header",
-        "content": "Collection Newsletter"
-      },
-       {
-        "type": "checkbox",
-        "id": "show_newsletter",
-        "label": "Show newsletter signup",
-        "default": true
-      },
-      {
-        "type": "image_picker",
-        "id": "newsletter-image",
-        "label": "Newsletter Image Background"
-      },
-      {
-        "type": "text",
-        "id": "newsletter-title",
-        "label": "Newsletter title"
-      },
-      {
-        "type": "text",
-        "id": "newsletter-text",
-        "label": "Newsletter text"
-      },
-      {
-        "type": "select",
-        "id": "newsletter_text_color",
-        "label": "Text colour",
-        "default": "black",
-        "options": [
-          {
-            "label": "White",
-            "value": "white"
-          },
-          {
-            "label": "Black",
-            "value": "black"
-          }
-        ]
-      }
-    ],
-    "blocks": [
-      {
-        "type": "filter-group",
-        "name": "Filter Group",
-        "settings": [
-          {
-            "label": "Title for filter group",
-            "id": "filter-group-title",
-            "type": "text"
-          },
-          {
-            "label": "Comma separated tag list",
-            "id": "tag-list",
-            "type": "textarea"
           }
         ]
       }

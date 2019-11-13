@@ -27,6 +27,7 @@ import '../sections/features';
 import '../sections/sticky-nav';
 import '../sections/emoji';
 import '../sections/search-hero';
+import '../sections/list-collections';
 
 import '../components/type';
 import '../components/quantity';
