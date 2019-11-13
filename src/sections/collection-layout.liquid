@@ -28,15 +28,31 @@
     </div>
   {% endif %}
 
+  {% if section.settings.linklist != blank %}
+    <div class="collection-navigation">
+      <div class="page-width">
+        <ul>
+        {% for link in linklists[section.settings.linklist].links %}
+          <li class="collection-navigation__item {% if link.active %}collection-navigation__link--active{% endif %}">
+            <a class="collection-navigation__link" href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+
   <div class="collection-wrapper">
     <div class="page-width">
-      {% if section.blocks.size > 0 %}
+
       <div class="grid">
         <div class="grid__item medium-up--one-quarter">
           {% include 'collection-sidebar' %}
         </div>
         <div class="grid__item medium-up--three-quarters">
-      {% endif %}
+
         <div class="grid">
           {% for product in collection.products %}
 
@@ -56,9 +72,9 @@
             
           {% endfor %}
         </div>
-      {% if section.blocks.size > 0 %}
+
         </div></div>
-      {% endif %}
+
     </div>
   </div>
 
@@ -217,6 +233,11 @@
         "type": "header",
         "content": "Collection Settings"
       },
+      {
+        "type": "link_list",
+        "id": "linklist",
+        "label": "Navigation"
+      }, 
       {
         "type": "number",
         "id": "product_per_page",

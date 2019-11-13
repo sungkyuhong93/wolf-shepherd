@@ -23,7 +23,24 @@
     margin-bottom: 20px;
 
     p {
+      font-size: 14px;
       margin: 0;
+    }
+  }
+
+  @include media-query($medium-up) {
+    &__text {
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+
+  @include media-query($large-up) {
+    &__text {
+      p {
+        font-size: 20px;
+      }
     }
   }
 }

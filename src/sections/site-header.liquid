@@ -41,7 +41,8 @@
     <header class="site-header__header" role="banner">
       
       <div js-mobile-nav="toggle" class="site-header__hamburger-container">
-        <div class="site-header__hamburger"></div>
+        {% comment %} <div class="site-header__hamburger"></div> {% endcomment %}
+        {% include 'icons' with icon: 'hamburger-wolf' %}
       </div>
 
       {{logohtml}}
@@ -66,7 +67,7 @@
     <div class="site-header__misc">
       <ul>
 
-        <li class="site-header__mobile-hide">
+        <li>
           <a href="#"  class="site-header__search-icon {% if section.settings.enable_full_screen_search %}full-screen-search{% endif %}">
           {% include 'icons' with icon: 'search-wolf' %}
             {% unless section.settings.enable_full_screen_search %}

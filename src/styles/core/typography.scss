@@ -36,11 +36,19 @@ html, body {
 }
 
 .d2 {
-  @include ms-respond(font-size, 10);
   font-family: $FONT_DISPLAY;
+  font-size: 32px;
   font-weight: $WEIGHT_NORMAL;
   letter-spacing: $LETTER_SPACING_DISPLAY;
   line-height: $LINE_HEIGHT_DISPLAY;
+
+  @include media-query($medium-up) {
+    font-size: 40px;
+  }
+
+  @include media-query($large-up) {
+    font-size: 56px;
+  }
 }
 
 .d3 {
