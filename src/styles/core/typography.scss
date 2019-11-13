@@ -55,11 +55,19 @@ html, body {
  * Basic headers.
  */
 h1, .h1 {
-  @include ms-respond(font-size, 9);
   font-family: $FONT_HEADING;
+  font-size: 24px;
   font-weight: $WEIGHT_NORMAL;
   line-height: $LINE_HEIGHT_DISPLAY;
-  margin: 0 0 $SPACING_XL;
+  margin: 0;
+
+  @include media-query($medium-up) {
+    font-size: 32px;
+  }
+
+  @include media-query($large-up) {
+    font-size: 40px;
+  }
 }
 
 h2, .h2 {

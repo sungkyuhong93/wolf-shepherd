@@ -113,22 +113,21 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
     min-width: 100%;
   }
 
-  @include media-query($medium-up) {
-    @include flexbox;
+  @include flexbox;
 
-    input {
-      background: none;
-      border: 0;
-      flex: 1;
-      padding: 10px 20px;
-      text-align: left;
-    }
-
-    .button {
-      border: 0;
-      min-width: auto;
-    }
+  input {
+    background: none;
+    border: 0;
+    flex: 1;
+    padding: 10px 20px;
+    text-align: left;
   }
+
+  .button {
+    border: 0;
+    min-width: auto;
+  }
+
 }
 
 .form-vertical {

@@ -1,8 +1,8 @@
 <section 
   class="newsletter">
 
-  <h3 class="newsletter__title">{{ section.settings.newsletter-title }}</h3>
-  <p class="newsletter__text">{{ section.settings.newsletter-text }}</p>
+  <h3 class="newsletter__title">{{ block.settings.footer_title }}</h3>
+  <p class="newsletter__text">{{ block.settings.newsletter-text }}</p>
 
   {% form 'customer' %}
     {{ form.errors | default_errors }}
@@ -20,8 +20,7 @@
           placeholder="Email"
           autocorrect="off"
           autocapitalize="off">
-        <button type="submit" class="button button--white" name="commit" id="Subscribe">
-          Sign Up
+        <button type="submit" class="button-arrow" name="commit" id="Subscribe">
         </button>
       </div>
     {% endif %}

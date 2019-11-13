@@ -24,6 +24,7 @@ $color-success-bg: rgb(0, 0, 0);
 
 $ICON_ARROW_LEFT: var(--icon-arrow-left);
 $ICON_ARROW_RIGHT: var(--icon-arrow-right);
+$ICON_ARROW_RIGHT--WHITE: var(--icon-arrow-right-white);
 
 // Transitions
 $transition-duration: 250ms;
@@ -74,5 +75,5 @@ $breakpoint-has-widths: ($small, $medium-up);
 $breakpoint-has-push: ($small, $medium-up, $large-up);
 
 /* ================ Sizing Variables ================ */
-$width-site: 1340px;
+$width-site: 1440px;
 $gutter: 30px;

@@ -3,14 +3,19 @@
 ============================================================================== */
 .site-footer {
   background: $COLOR_PRIMARY;
-  padding-top: 30px;
+  padding-top: 62px;
 
   h4 {
     color: $COLOR_WHITE;
+    font-size: 12px;
+    letter-spacing: $LETTER_SPACING_BASE;
+    text-transform: uppercase;
   }
 
   p, a {
     color: $COLOR_WHITE;
+    font-size: 12px;
+    letter-spacing: $LETTER_SPACING_BASE;
   }
 
   ul {
@@ -21,15 +26,71 @@
 
   .copyright {
     color: $COLOR_WHITE;
+    font-size: 12px;
     padding-bottom: 30px;
     padding-top: 30px;
     text-align: right;
   }
 
   .social-links {
+    text-align: right;
+
     li {
       display: inline-block;
-      margin-right: 10px;
+      margin-left: 10px;
+    }
+
+    .icon {
+      height: 14px;
+      width: 14px;
+    }
+  }
+
+  .inline-form {
+    border: 0;
+    border-bottom: 1px solid $COLOR_WHITE;
+
+    input, input::placeholder {
+      color: $COLOR_WHITE;
+      font-size: 10px;
+      letter-spacing: $LETTER_SPACING_BASE;
+      padding-left: 0;
+      text-transform: uppercase;
+    }
+  }
+
+  @include media-query($small) {
+    .grid {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .medium-up--one-half {
+      order: -1;
+    }
+
+    .newsletter {
+      padding: 0 0 22px;
+    }
+
+    .social-links {
+      text-align: left;
+    }
+
+    .copyright {
+      text-align: left;
+    }
+  }
+
+  @include media-query($medium-up) {
+    .newsletter {
+      padding-left: 30px;
+    }
+  }
+
+  @include media-query($large-up) {
+    .newsletter {
+      padding-left: 50px;
     }
   }
 }
@@ -40,22 +101,23 @@ Newsletter
 .newsletter {
   background-position: center;
   background-size: cover;
-  padding: 50px 20px 70px;
-  text-align: center;
+  padding: 0 0 50px;
+  text-align: left;
 
   .inline-form {
     margin: 0 auto;
-    max-width: 600px;
   }
 
   &__title {
+    color: $COLOR_WHITE;
+    font-size: 24px;
     margin-top: 0;
   }
 
   &__text {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 560px;
+    font-size: 12px;
+    letter-spacing: 0.9px;
+    max-width: 280px;
   }
 
   &--white {

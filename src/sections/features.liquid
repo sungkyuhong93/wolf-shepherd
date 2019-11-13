@@ -1,0 +1,77 @@
+<div class="page-width {{ section.settings.margin_bottom }}" data-section-id="{{ section.id }}" data-section-type="features">
+  <div class="features">
+    <h1 class="features__title">{{ section.settings.features__main-header }}</h1>
+    <div class="features__wrapper features__wrapper--{{section.id}}">
+      {% for block in section.blocks %}
+        {% assign iconText = 'features__icon--text' %}
+        {% assign iconImage = 'features__icon--image' %}
+          <div class="features__block">
+              <div class="features__icon">
+                  <img src="{{block.settings[iconImage] | img_url: '190x'}}" alt="">
+              </div>
+              <div class="features__text">
+                  <p>{{ block.settings[iconText] }}</p>
+              </div>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Features Table",
+    "max_blocks": 4,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Table of features"
+      },
+      {
+        "type": "text",
+        "id": "features__main-header",
+        "label": "Features Main Header"      
+      },
+      {
+        "type": "select",
+        "id": "margin_bottom",
+        "label": "Margin bottom",
+        "default": "no-margin",
+        "options": [
+          {
+            "label": "Margin bottom",
+            "value": "section-margin-bottom"
+          },
+          {
+            "label": "No margin",
+            "value": "no-margin"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "footer_menu",
+        "name": "Footer menu",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "features__icon--image",
+            "label": "Image"
+          },
+          {
+            "type": "richtext",
+            "id": "features__icon--text",
+            "label": "Text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Misc",
+        "category": "Features"
+      }
+    ]
+  }
+{% endschema %}

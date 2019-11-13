@@ -5,9 +5,9 @@
   align-items: center;
   background: $COLOR_GREY;
   display: flex;
-  height: 380px;
   justify-content: center;
   overflow: hidden;
+  padding: 62px 0;
 
   blockquote {
     border: 0;
@@ -21,12 +21,22 @@
   }
 
   &__container {
-    margin-bottom: 40px;
+    @include media-query($medium-up) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__slide {
+    img {
+      margin: 0 auto;
+      max-width: 110px;
+    }
   }
 
   &__slider-text {
     font-family: $FONT_HEADING;
     font-size: 24px;
+    margin-bottom: 24px;
     text-align: center;
 
     @include media-query($medium-up) {
@@ -54,6 +64,31 @@
     right: -15px;
   }
 
+  .slick-dots {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .slick-active {
+      button {
+        background: $COLOR_PRIMARY;
+      }
+    }
+
+    button {
+      border: 1px solid $COLOR_PRIMARY;
+      border-radius: 100%;
+      font-size: 0;
+      height: 8px;
+      margin: 0 4px;
+      padding: 0;
+      transition: 0.2s;
+      width: 8px;
+    }
+  }
+
   @media (max-width: 1300px) {
     .page-width {
       max-width: 100%;
@@ -61,6 +96,9 @@
   }
 
   @include media-query($medium-up) {
+    height: 380px;
+    padding: 0;
+
     .slick-prev {
       left: -50px;
     }

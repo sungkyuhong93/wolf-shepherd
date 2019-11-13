@@ -1,32 +1,7 @@
-{% comment %} {% include 'newsletter', width:"full"  %} {% endcomment %}
-
 <footer class="site-footer">
   <div class="page-width">
     <div class="grid">
-  
-      {% capture socialLinks %}
-        {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
 
-        {% include 'footer-newsletter' %}
-
-        <ul class="social-links">
-          {% for social in social_accounts %}
-            {%- assign social_handle = social | handleize -%}
-            {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
-            {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
-
-            {% if settings[social_link] != blank %}
-              <li>
-                <a target="_blank" href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
-                  {% include 'icons' with icon: social_handle  %}
-                  <span class="icon-fallback-text">{{ social }}</span>
-                </a>
-              </li>
-            {% endif %}
-
-          {% endfor %}
-        </ul>
-      {% endcapture %}
 
       {% if section.settings.logo-bottom-left %}
         <div class="grid__item medium-up--one-third">
@@ -36,40 +11,49 @@
           <div class="grid">
       {% endif %}
 
-      {%- assign blockSize = section.blocks.size -%} 
-      {%- capture blockSizeClass -%}
-        grid__item small--one-half
-        {% case blockSize %}
-          {% when 2 %}
-            medium-up--one-half
-          {% when 3 %}
-            medium-up--one-third
-          {% when 4 %}
-            medium-up--one-quarter
-          {% else %}
-            medium-up--one-whole
-        {% endcase %}
-      {%- endcapture -%}
 
       {% for block in section.blocks  %}
-        <div class="{{ blockSizeClass }}">
-          {% if block.settings.footer_title != blank %}
-            <h4>{{ block.settings.footer_title | escape }}</h4>
-          {% endif %}
 
           {% if block.type == 'footer_menu' %}
-            {%- assign footer_linklist = block.settings.footer_linklist -%}
-            {% if linklists[footer_linklist].links.size > 0 %}
-              <ul>
-                {% for link in linklists[footer_linklist].links %}
-                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            <div class="grid__item small--one-whole medium-up--one-quarter">
+              {% if block.settings.footer_title != blank %}
+                <h4>{{ block.settings.footer_title | escape }}</h4>
+              {% endif %}
+
+              {%- assign footer_linklist = block.settings.footer_linklist -%}
+              {% if linklists[footer_linklist].links.size > 0 %}
+                <ul>
+                  {% for link in linklists[footer_linklist].links %}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          {% else %}
+            <div class="grid__item small--one-whole medium-up--one-half">
+              {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+
+              {% include 'footer-newsletter' %}
+
+              <ul class="social-links">
+                {% for social in social_accounts %}
+                  {%- assign social_handle = social | handleize -%}
+                  {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
+                  {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
+
+                  {% if settings[social_link] != blank %}
+                    <li>
+                      <a target="_blank" href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
+                        {% include 'icons' with icon: social_handle  %}
+                        <span class="icon-fallback-text">{{ social }}</span>
+                      </a>
+                    </li>
+                  {% endif %}
+
                 {% endfor %}
               </ul>
-            {% endif %}
-          {% else %}
-            {{ socialLinks }}
+            </div>
           {% endif %}
-        </div>
       {% endfor %}
 
       {% if section.settings.logo-bottom-left %}
@@ -85,7 +69,7 @@
 
       <div class="grid__item">
         <div class="copyright">
-          <small>&copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}. All rights reversed.<span style="display:none">Designed and Built by <a href="https://karmoon.co.uk/" target="_blank">Karmoon</a></span></small>
+          &copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}. All rights reversed.<span style="display:none">Designed and Built by <a href="https://karmoon.co.uk/" target="_blank">Karmoon</a></span>
         </div>
 
         {% if section.settings.show_payment_icons %}
@@ -147,8 +131,8 @@
         "name": "Newsletter / Social links",
         "settings": [
           {
-            "id": "footer_title",
             "type": "text",
+            "id": "footer_title",
             "label": "Menu Title"
           },
           {

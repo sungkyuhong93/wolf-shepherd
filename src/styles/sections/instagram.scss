@@ -69,6 +69,21 @@ Instagram
     text-overflow: ellipsis;
   }
 
+  &__link {
+    align-items: center;
+    display: flex;
+    font-family: $FONT_BODY;
+    font-size: 11px;
+    justify-content: center;
+    letter-spacing: $LETTER_SPACING_BASE;
+    text-transform: uppercase;
+
+    .icon {
+      margin-right: 6px;
+      width: 11px;
+    }
+  }
+
   .slick-arrow {
     left: -50px;
     position: absolute;
