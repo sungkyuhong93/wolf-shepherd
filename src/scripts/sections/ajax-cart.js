@@ -97,6 +97,10 @@ export default () => {
     selectors.$cartClose.on('click', () => {
       cartClose();
     });
+
+    $('.cart-ajax__background').on('click', () => {
+      cartClose();
+    });
   }
 
 

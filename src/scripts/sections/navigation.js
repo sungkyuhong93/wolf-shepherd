@@ -45,7 +45,7 @@ export default () => {
     // add a "PAN" recognizer to it (all directions)
     slideOut.add(new Hammer.Pan({direction: Hammer.DIRECTION_ALL, threshold: 0 }));
     slideOut.on('pan', handleDrag);
-    slideOutBackground.on('swipeleft touch', removeActiveState);
+    slideOutBackground.on('swiperight touch', removeActiveState);
   }
 
   function handleDrag(ev) {
@@ -57,7 +57,7 @@ export default () => {
     // and keep track of the fact that we're dragging
     if (!isDragging) {
       isDragging = true;
-      lastPosX = elem.offsetLeft;
+      lastPosX = elem.offsetRight;
       elem.style.transition = '0s';
     }
 
@@ -67,7 +67,7 @@ export default () => {
 
     // move our element to that position
     if (posX < 0 && posX > -300) {
-      elem.style.left = `${posX}px`;
+      elem.style.right = `${posX}px`;
     }
 
     // DRAG ENDED
@@ -98,13 +98,13 @@ export default () => {
   }
 
   function removeActiveState() {
-    nodeSelectors.mobileNav.style.left = `${-300}px`;
+    nodeSelectors.mobileNav.style.right = `${-300}px`;
     nodeSelectors.siteHeaderOverlay.classList.remove(cssClasses.active);
     document.querySelector('body').style.overflowY = 'initial';
   }
 
   function addActiveState() {
-    nodeSelectors.mobileNav.style.left = `${0}px`;
+    nodeSelectors.mobileNav.style.right = `${0}px`;
     nodeSelectors.siteHeaderOverlay.classList.add(cssClasses.active);
     document.querySelector('body').style.overflowY = 'hidden';
   }

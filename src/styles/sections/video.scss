@@ -72,11 +72,6 @@ Video Section
   }
 
   .play {
-
-    @include media-query($medium-up) {
-      height: 100px;
-      width: 100px;
-    }
     background-color: rgba($COLOR_WHITE, 0.4);
     border-radius: 50%;
     height: 80px;
@@ -102,6 +97,11 @@ Video Section
       transform: translateX(-50%) translateY(50%);
       transition: 0.4s;
       width: 0;
+    }
+
+    @include media-query($medium-up) {
+      height: 100px;
+      width: 100px;
     }
   }
 

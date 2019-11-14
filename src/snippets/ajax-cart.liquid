@@ -17,8 +17,8 @@
     </a>
 
     <div class="cart-ajax__header">
-      <h3 class="cart-ajax__title">My cart</h3>
-      <p class="cart-ajax__subtitle">You have <span class="cart-ajax__subtitle-counter">{{ cart.item_count }}</span> items</p>
+      <h3 class="cart-ajax__title">Shopping Bag</h3>
+      {% comment %} <p class="cart-ajax__subtitle">You have <span class="cart-ajax__subtitle-counter">{{ cart.item_count }}</span> items</p> {% endcomment %}
     </div>
 
     {% if settings.freeshipping_enable == true %}
@@ -67,9 +67,12 @@
         {% endif %}
       {% endif %}
 
-      {% comment %} <a href="/collections/all" class="cart-ajax__continue-shopping cart-ajax__link">Continue Shopping</a> {% endcomment %}
-      <a href="/cart" class="button">Cart</a>
-      <a href="/checkout" class="button button--checkout">{{ 'cart.general.checkout' | t }} <span class="cart-ajax--total-price"></span></a>
+      <div class="cart-ajax__footer">
+        <div class="cart-ajax__footer-text">
+          Subtotal <span class="cart-ajax--total-price"></span>
+        </div>
+        <a href="/checkout" class="button button--checkout">{{ 'cart.general.checkout' | t }}</a>
+      </div>
 
     </div>
 

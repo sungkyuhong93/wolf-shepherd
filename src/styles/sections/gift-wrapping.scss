@@ -3,7 +3,12 @@ Gift wrapping
 ============================================================================== */
 .giftwrapping {
   $parent: &;
-  padding-bottom: 10px;
+  border: 1px solid $COLOR_GREY;
+  border-left: 0;
+  border-right: 0;
+  font-size: 12px;
+  margin-bottom: 12px;
+  padding: 12px 0;
 
   &__remove {
     cursor: pointer;

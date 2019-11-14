@@ -213,14 +213,14 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
 /* =============== Quantity Selector =============== */
 .quantity-wrapper {
   position: relative;
-  width: 100px;
+  width: 92px;
 
   &__minus, &__plus {
     border: 0;
     cursor: pointer;
-    height: 40px;
+    height: 33px;
     left: 0;
-    line-height: 36px;
+    line-height: 33px;
     position: absolute;
     text-align: center;
     top: 0;
@@ -233,7 +233,8 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
   }
 
   input {
-    height: 40px;
+    border: 1px solid $COLOR_PRIMARY_LIGHT;
+    height: 33px;
     padding: 10px 32px;
     text-align: center;
     width: 100%;

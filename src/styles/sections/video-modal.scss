@@ -91,6 +91,64 @@ Video modal Section
     }
   }
 
+  .play_text {
+    position: relative;
+
+    &::before {
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid $COLOR_PRIMARY;
+      border-top: 4px solid transparent;
+      content: '';
+      float: right;
+      height: 0;
+      margin-left: 9px;
+      pointer-events: none;
+      position: absolute;
+      right: 25px;
+      top: 0;
+      transform: translateX(0%) translateY(15px);
+      transition: 0.4s;
+      width: 0;
+    }
+  }
+
+  .play {
+    background-color: rgba($COLOR_WHITE, 0);
+    border: 1px solid rgba($COLOR_WHITE, 0.4);
+    border-radius: 50%;
+    height: 56px;
+    left: 50%;
+    pointer-events: none;
+    transform: translateY(-10px) translateX(0);
+    transition: 0.3s;
+    width: 56px;
+    z-index: 10;
+
+    &::before {
+      border-bottom: 5px solid transparent;
+      border-left: 9px solid $COLOR_WHITE;
+      border-top: 5px solid transparent;
+      bottom: 50%;
+      content: '';
+      height: 0;
+      left: 50%;
+      pointer-events: none;
+      position: absolute;
+      transform: translateX(-50%) translateY(50%);
+      transition: 0.4s;
+      width: 0;
+    }
+
+    &:hover {
+      border: 1px solid rgba($COLOR_WHITE, 1);
+    }
+
+    @include media-query($medium-up) {
+      // height: 100px;
+      // width: 100px;
+    }
+  }
+
   @media only screen and (min-width: 1200px) {
     padding-bottom: 660px;
   }

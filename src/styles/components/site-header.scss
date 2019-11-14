@@ -66,24 +66,24 @@ body {
   &__navigation {
     background-color: $COLOR_WHITE;
     height: 100%;
-    left: -300px;
     padding: 20px 20px 0;
     position: fixed;
+    right: -300px;
     top: 0;
     transition: $MOBILE_TRANSITION;
     width: 300px;
-    z-index: 1011;
+    z-index: 99999;
 
     &.is-active {
-      left: 0;
+      right: 0;
     }
 
     &::before {
       background: transparent;
       content: '';
       height: 100%;
+      left: -20px;
       position: absolute;
-      right: -20px;
       top: 0;
       width: 20px;
     }

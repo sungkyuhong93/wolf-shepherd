@@ -62,20 +62,21 @@
   {% assign sectionButtonColor = 'white' %}
 {% else %}
   {% assign sectionId = block.id %}
-  {% assign sectionEnable = block.settings.enable %}
+  {% assign sectionEnable = block.settings.enable | default: true %}
   {% assign sectionAlign = block.settings.alignment %}
   {% assign sectionPositionX = block.settings.positionX %}
   {% assign sectionPositionY = block.settings.positionY %}   
   {% assign sectionImage = block.settings.image | img_url: 'master'  %}
-  {% if section.settings.mobile_image != blank %}
+  {% if block.settings.mobile_image != blank %}
     {% assign sectionImageMobile = block.settings.mobile_image | img_url: 'master'  %}
   {% else %}
     {% assign sectionImageMobile = block.settings.image | img_url: 'master'  %}
   {% endif %}
-  {% assign sectionFullWidth = block.settings.full-width %}
+  {% assign sectionHeight = block.settings.height %}
+  {% assign sectionFullWidth = block.settings.full-width | default: 'full-width' %}
   {% assign sectionMarginBottom = block.settings.margin_bottom %}
   {% assign sectionTextColor = block.settings.text_color %}
-  {% assign sectionTextSize = 'd2' %}
+  {% assign sectionTextSize = block.settings.text_size | default: 'd2' %}
   {% assign sectionTitle = block.settings.title  %}
   {% assign sectionText = block.settings.text %}
   {% assign sectionButtonLabel = block.settings.button_label %}
