@@ -1,5 +1,5 @@
 <div class="page-width" data-section-id="{{ section.id }}" data-section-type="collection-list">
-  <div class="{% if section.settings.margin_bottom == 'margin' %}section-margin-bottom{% endif %}">
+  <div class="{{ section.settings.margin_bottom }}">
 
     <div class="collection-list__header">
       {% if section.settings.title != blank %}
@@ -17,11 +17,11 @@
 
               {%- capture image_url -%}
                 {% if block.settings.image != blank %}
-                  {{ block.settings.image | img_url: '480x480' }}
+                  {{ block.settings.image | img_url: '680x' }}
                 {% elsif collection.image != blank %}
-                  {{ collection | img_url: '480x480'  }}
+                  {{ collection | img_url: '680x'  }}
                 {% elsif collection.products.first != blank %}
-                  {{ collection.products.first | img_url: '480x480' }}
+                  {{ collection.products.first | img_url: '680x' }}
                 {% endif %}
               {%- endcapture -%}
 

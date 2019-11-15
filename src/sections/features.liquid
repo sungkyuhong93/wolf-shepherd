@@ -7,7 +7,7 @@
         {% assign iconImage = 'features__icon--image' %}
           <div class="features__block">
               <div class="features__icon">
-                  <img src="{{block.settings[iconImage] | img_url: '190x'}}" alt="">
+                  <img src="{{block.settings[iconImage] | img_url: '140x'}}" alt="">
               </div>
               <div class="features__text">
                   <p>{{ block.settings[iconText] }}</p>
@@ -51,8 +51,8 @@
     ],
     "blocks": [
       {
-        "type": "footer_menu",
-        "name": "Footer menu",
+        "type": "feature",
+        "name": "Feature",
         "settings": [
           {
             "type": "image_picker",

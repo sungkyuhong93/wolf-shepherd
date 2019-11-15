@@ -1,4 +1,17 @@
 {% if swatchShow %}
+<h6 class="swatch__header">
+  {{ option.name }}
+
+  {% for value in option.values %}  
+    {% if optionName == 'color' or optionName == 'colour' %}
+      {% if option.selected_value == value %}
+        <span>{{ value }}</span>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+</h6>
+
 <div class="swatch__wrapper">
   {% for value in option.values %}  
 
@@ -10,9 +23,11 @@
     {% endif%}
 
     <div class="swatch swatch-product swatch-product--{{ value | handleize }}
-    {% if option.selected_value == value %}swatch-product--active{% endif %}" 
+    {% if option.selected_value == value %}swatch-product--active{% endif %}
+    {% if optionName == 'color' or optionName == 'colour' %}swatch-product--color{% endif %}" 
     data-swatch-value="{{ value | escape }}"
     style="background-color: {{swatchBackground}};"
+    {% if optionName == 'color' or optionName == 'colour' %}data-slider="product-images__container--{{swatchBackground}}"{% endif%}
     >
       {% unless optionName == 'color' or optionName == 'colour' %}
         {{ value | escape }}

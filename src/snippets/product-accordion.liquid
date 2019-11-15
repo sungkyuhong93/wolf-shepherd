@@ -31,14 +31,14 @@
       
       {% if product.description contains titleSplitTrigger %}
       <li class="accordion__link {% if i == 1%} accordion__item--is-active {% endif %}">
-        <h5 class="accordion__title" data-toggle="accordion-{{i}}">
+        <h6 class="accordion__title" data-toggle="accordion-{{i}}">
           {{ titleSplit[0] | strip_html }} 
-          <span class="arrow-up arrow">{% include 'icons' with icon: 'minus' %}</span>
-          <span class="arrow arrow-down">{% include 'icons' with icon: 'plus' %}</span>
-        </h5>
+          <span class="arrow-up arrow"></span>
+          <span class="arrow arrow-down"></span>
+        </h6>
         {% if product.description contains textSplitTrigger %}
           <div id="accordion-{{i}}" class="accordion__content {% if i == 1%} accordion__content--is-active {% endif %}">
-              {{ textSplit[0] }}
+              {{ textSplit[0] | strip_html | escape }}
           </div>
         {% endif %}
       </li>

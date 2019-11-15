@@ -52,7 +52,6 @@
     </header>
 
     {% if section.settings.enable_usp %}
-      
       <div class="site-header__usp">
         {% if section.settings.usp_image != blank %}
           <img src="{{ section.settings.usp_image | img_url: '100x' }}" alt="{{ section.settings.usp_image.alt }}"/>

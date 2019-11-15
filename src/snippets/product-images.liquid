@@ -1,49 +1,73 @@
-{% assign productImages =  %}
-{% assign loopCounter  = 0 %}
-
-{% for image in product.images %}
-
-  	{% assign productImage    = image.src | img_url: 'master'  %}
-
-  	{% for variant in product.variants %}
-	  	{% assign variantImage = variant.image.src | img_url: 'master'  %}
-	  	{% if variantImage == productImage %}
-	  		{% assign productImage = variantImage  %}
-	  		{% assign productData = 'data-slick-variant="' | append: variant.id | append: '"'  %}
-	  		{% if variant.selected %}
-		  		{% assign slickStart = loopCounter  %}
-	  		{% endif %}
-	  	{% endif %}
+{% assign colours = '' %}
+{% for option in product.options_with_values %}
+  {% if option.name == 'Color' or option.name == 'color' %}
+    {% assign selectColour = option.selected_value | downcase  %}
+    {% for value in option.values %}
+      {% assign colours = colours | append: value | append: ',' %}
     {% endfor %}
-
-    {% capture productImages %}
-    	{{ productImages }}
-	    <img src="{{ productImage }}" alt="{{ image.alt | escape }}" {{productData}} {{productDataSelected}}>
-    {% endcapture %}
-
-	{% assign loopCounter = loopCounter | plus: 1 %}
-
+  {% endif %}
 {% endfor %}
 
-<div class="product-images">
-	{% if product.images.size > 1 %}
-	
-		<div class="main-product-slider" data-slick='{"initialSlide": {{slickStart}} }'>
-			{{ productImages }}
-		</div>
+{% assign colours = colours | split: ',' %}
 
-		<div class="product-slider-nav">
-			{% for image in product.images %}
-				{% assign productThumbnail    = image.src | img_url: '240x'  %}
-				<div class="product-slider-nav__image">
-			        <img src="{{ productThumbnail }}" alt="{{ image.alt | escape }}">
-			    </div>
-		  	{% endfor %}
-		</div>
+{% for color in colours %}
+  {% assign loopCounter  = 0 %}
+  {% assign productImage = '' %}
+  {% assign colorClean = color | downcase %}
 
-	{% else %}
-		{% if featured_image != blank %}
-			<img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
-		{% endif %}
-	{% endif %}
-</div>
+  <div id="product-images__container--{{colorClean}}" 
+    class="product-images__container
+    {% if selectColour == colorClean %} is-active {% endif %}" 
+    data-slider="product-slider--{{colorClean}}"
+    data-nav="product-nav--{{colorClean}}">
+
+    <div class="product-images">
+      {% if product.images.size > 1 %}
+      
+        <div class="main-product-slider" id="product-slider--{{colorClean}}">
+          {% for image in product.images %}
+            {% assign varColor = image.alt | downcase %}
+            {% if varColor == colorClean %}
+              {% assign productImage    = image.src | img_url: 'master'  %}
+
+              {% for variant in product.variants %}
+                {% assign variantImage = variant.image.src | img_url: 'master'  %}
+                {% if variantImage == productImage %}
+                  {% assign productImage = variantImage  %}
+                  {% assign productData = 'data-slick-variant="' | append: variant.id | append: '"'  %}
+                  {% if variant.selected %}
+                    {% assign slickStart = loopCounter  %}
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+
+              <img src="{{ productImage }}" alt="{{ image.alt | escape }}" {{productData}}>
+
+              {% assign loopCounter = loopCounter | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        <div class="product-slider-nav" id="product-nav--{{colorClean}}">
+          {% for image in product.images %}
+            {% assign varColor = image.alt | downcase %}
+            {% if varColor contains colorClean %}
+              {% assign productThumbnail = image.src | img_url: '240x'  %}
+              <div class="product-slider-nav__image">
+                <img src="{{ productThumbnail }}" alt="{{ image.alt | escape }}">
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+      {% else %}
+        {% if featured_image != blank %}
+          <img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+        {% endif %}
+      {% endif %}
+    </div>
+
+
+  </div>
+{% endfor %}
+

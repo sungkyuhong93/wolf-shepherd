@@ -71,21 +71,53 @@ Swatches Styles
 }
 
 .product-meta {
+  .selector-wrapper {
+    margin-bottom: 0;
+  }
+
+  .swatch__header {
+    margin-bottom: 16px;
+    text-align-last: left;
+    width: 100%;
+  }
+
+  .swatch__wrapper {
+    flex-flow: wrap;
+    justify-content: left;
+    margin-bottom: 8px;
+    margin-left: -8px;
+  }
+
+  .swatch-product {
+    border: 1px solid $COLOR_PRIMARY_LIGHT;
+    border-radius: 0;
+    font-family: $FONT_BASE;
+    font-size: 12px;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 8px 16px;
+    min-width: 32px;
+    width: 32px;
+
+    &.swatch-product--active, &:hover {
+      border: 1px solid $COLOR_PRIMARY;
+      box-shadow: none;
+    }
+  }
+
   .selector-wrapper--color, .selector-wrapper--colour {
-    margin: -20px 0 30px;
-
     .swatch-product {
-      border: 2px solid rgba($COLOR_BLACK, 0.3);
-      border-radius: 0;
-      font-weight: 600;
-      height: 25px;
-      margin: 0 5px;
-      min-width: 25px;
-      width: 25px;
+      // border: 2px solid rgba($COLOR_BLACK, 0.3);
+      // border-radius: 0;
+      // font-weight: 600;
+      // height: 25px;
+      // margin: 0 5px;
+      // min-width: 25px;
+      // width: 25px;
 
-      &.swatch-product--active, &:hover {
-        box-shadow: 0 0 0 1px #000;
-      }
+      // &.swatch-product--active, &:hover {
+      //   box-shadow: 0 0 0 1px #000;
+      // }
     }
   }
 }

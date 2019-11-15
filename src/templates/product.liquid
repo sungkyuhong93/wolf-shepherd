@@ -1,8 +1,10 @@
 {% section 'product' %}
 
+{% include 'reviews' %}
+
 {% section 'swatch' %}
 
-{% include 'recently-viewed-products' %}
+{% section 'related-products' %}
 
 <script type="application/ld+json">
 {
@@ -16,7 +18,7 @@
       "https:{{ product.featured_image.src | img_url: image_size }}"
     ],
   {% endif %}
-  "description": "{{ product.description | strip_html | escape }}",
+  "description": "{{ product.description | split: '%title' | first | strip_html | escape }}",
   {% if current_variant.sku != blank %}
     "sku": "{{ current_variant.sku }}",
   {% endif %}

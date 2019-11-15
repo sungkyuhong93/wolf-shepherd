@@ -5,3 +5,55 @@
     border-color: $color-border;
   }
 }
+
+.product-header {
+  margin-bottom: 24px;
+
+  &__title {
+    margin-bottom: 4px;
+  }
+
+  &__price {
+    font-family: $FONT_BODY;
+    font-size: 12px;
+    letter-spacing: 0.35px;
+  }
+}
+
+.product-form {
+  margin-bottom: 24px;
+}
+
+.product-description {
+  font-size: 12px;
+
+  &__plain {
+    margin-bottom: 18px;
+  }
+
+  &__usp {
+    align-items: center;
+    display: flex;
+    left: 50%;
+    padding-bottom: 2px;
+
+    img {
+      margin-right: 12px;
+      width: 30px;
+    }
+
+    span {
+      font-family: $FONT_BODY;
+      font-size: 10px;
+      letter-spacing: $LETTER_SPACING_BASE;
+      padding-top: 7px;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.product-meta {
+  @include media-query($large-up) {
+    padding-left: 60px;
+  }
+}

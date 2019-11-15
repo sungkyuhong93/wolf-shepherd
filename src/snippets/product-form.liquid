@@ -1,8 +1,10 @@
-<form action="/cart/add" method="post" enctype="multipart/form-data">
+<form class="product-form" action="/cart/add" method="post" enctype="multipart/form-data">
   {% if section.settings.additional_label %}
+    {% comment %} 
     <div class="additional_label text-center uppercase">
       {{section.settings.additional_label}}
-    </div>
+    </div> 
+    {% endcomment %}
   {% endif %}
 
   {% unless product.has_only_default_variant %}
@@ -54,23 +56,8 @@
     {% endfor %}
   </select>
 
-  {% if section.settings.show_quantity %}
-    <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
-    <input type="number" id="Quantity" name="quantity" value="1" min="1">
-  {% endif %}
-
-  {% if product.compare_at_price_max > product.price %}
-    <div class="compare_at_price" data-compare-price>
-      {% if current_variant.compare_at_price > current_variant.price %}
-        {{ current_variant.compare_at_price | money }}
-      {% endif %}
-    </div>
-    <div class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</div>
-  {% endif %}
-
-  <div data-product-price>
-    {{ current_variant.price | money }}
-  </div>
+  {% comment %} <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+  <input type="number" id="Quantity" name="quantity" value="1" min="1"> {% endcomment %}
 
   <button class="button button--full"
     type="submit"
@@ -88,3 +75,10 @@
 
   <div class="error error--hide"></div>
 </form>
+
+<!-- affirm price -->
+{% if product.type == 'Seconds' or product.type == 'Shoes' %}
+{% unless product.tags contains 'accessories'%}
+	<p class="affirm-as-low-as" data-page-type="product" data-amount="{{variant.price}}" data-affirm-color="black"></p>
+{% endunless %}
+{% endif %}

@@ -3,30 +3,40 @@ import _ from 'slick-carousel';
 
 export default () => {
 
-  function slickRender() {
-    $('.main-product-slider').slick({
+  function slickRender(slider, nav) {
+    slider.slick({
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: false,
       fade: true,
-      asNavFor: '.product-slider-nav',
+      asNavFor: nav,
     });
 
-    $('.product-slider-nav').slick({
-      slidesToShow: 3,
+    nav.slick({
+      slidesToShow: 10,
       slidesToScroll: 1,
-      asNavFor: '.main-product-slider',
+      asNavFor: slider,
       dots: false,
       arrows: true,
-      centerMode: true,
+      centerMode: false,
       focusOnSelect: true,
       vertical: false,
       verticalSwiping: false,
     });
   }
 
+  function slickLoop() {
+    $.each($('.product-images__container'), function() {
+      const slider = $(this).attr('data-slider');
+      const nav = $(this).attr('data-nav');
+      const $slider = $(`#${slider}`);
+      const $nav = $(`#${nav}`);
+      slickRender($slider, $nav);
+    });
+  }
+
   function init() {
-    slickRender();
+    slickLoop();
   }
 
   /**
