@@ -1,0 +1,18 @@
+<div data-section-id="{{ section.id }}" data-section-type="product-miniform" data-enable-history-state="false">
+  {% include 'product-form-mini' %}
+  {% unless product == empty %}
+      <script type="application/json" data-product-json>
+        {{ product | json }}
+      </script>
+    {% endunless %}
+</div>
+
+
+{% schema %}
+  {
+    "name": "Product Miniform",
+    "settings": [
+      
+    ]
+  }
+{% endschema %}

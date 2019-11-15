@@ -24,6 +24,7 @@ const selectors = {
   productPrice: '[data-product-price]',
   productThumbs: '[data-product-single-thumbnail]',
   singleOptionSelector: '[data-single-option-selector]',
+  $miniForm: $('.product-form-mini'),
 };
 
 const cssClasses = {
@@ -41,7 +42,7 @@ const keyboardKeys = {
  * @param {string} container - selector for the section container DOM element
  */
 
-register('product', {
+register('product-miniform', {
   onLoad() {
     this.$container = $(this.container);
     this.namespace = `.${this.id}`;
@@ -72,79 +73,29 @@ register('product', {
       `variantChange${this.namespace}`,
       this.updateAddToCartState.bind(this),
     );
+
     this.$container.on(
       `variantPriceChange${this.namespace}`,
       this.updateProductPrices.bind(this),
     );
 
-    if (this.$featuredImage.length > 0) {
-      this.$container.on(
-        `variantImageChange${this.namespace}`,
-        this.updateImages.bind(this),
-      );
-    }
+    this.scrollLoad();
 
-    this.initImageSwitch();
   },
 
-  initImageSwitch() {
-    const $productThumbs = $(selectors.productThumbs, this.$container);
-
-    if (!$productThumbs.length) {
-      return;
-    }
-
-    $productThumbs
-      .on('click', (evt) => {
-        evt.preventDefault();
-        const imageId = $(evt.currentTarget).data('thumbnail-id');
-        this.switchImage(imageId);
-        this.setActiveThumbnail(imageId);
-      })
-      .on('keyup', this.handleImageFocus.bind(this));
+  scrollLoad() {
+    $(window).on('scroll', this.stickyToggle);
   },
 
-  handleImageFocus(evt) {
-    if (evt.keyCode !== keyboardKeys.ENTER) {
-      return;
+  stickyToggle() {
+    const scrollTarget = 600;
+    const scrollHeight = $(window).scrollTop();
+
+    if (scrollHeight > scrollTarget) {
+      selectors.$miniForm.addClass('is-active');
+    } else {
+      selectors.$miniForm.removeClass('is-active');
     }
-
-    this.$featuredImage.filter(':visible').focus();
-  },
-
-  setActiveThumbnail(imageId) {
-    let newImageId = imageId;
-
-    // If "imageId" is not defined in the function parameter, find it by the current product image
-    if (typeof newImageId === 'undefined') {
-      newImageId = $(
-        `${selectors.productImageWrapper}:not('.${cssClasses.hide}')`,
-      ).data('image-id');
-    }
-
-    const $thumbnail = $(
-      `${selectors.productThumbs}[data-thumbnail-id='${newImageId}']`,
-    );
-
-    $(selectors.productThumbs)
-      .removeClass(cssClasses.activeThumbnail)
-      .removeAttr('aria-current');
-
-    $thumbnail.addClass(cssClasses.activeThumbnail);
-    $thumbnail.attr('aria-current', true);
-  },
-
-  switchImage(imageId) {
-    const $newImage = $(
-      `${selectors.productImageWrapper}[data-image-id='${imageId}']`,
-      this.$container,
-    );
-    const $otherImages = $(
-      `${selectors.productImageWrapper}:not([data-image-id='${imageId}'])`,
-      this.$container,
-    );
-    $newImage.removeClass(cssClasses.hide);
-    $otherImages.addClass(cssClasses.hide);
   },
 
   /**
@@ -175,13 +126,6 @@ register('product', {
     }
   },
 
-  updateImages(evt) {
-    const variant = evt.variant;
-    const imageId = variant.featured_image.id;
-
-    this.switchImage(imageId);
-    this.setActiveThumbnail(imageId);
-  },
 
   /**
    * Updates the DOM with specified prices

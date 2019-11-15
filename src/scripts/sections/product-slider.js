@@ -16,7 +16,7 @@ export default () => {
       slidesToShow: 10,
       slidesToScroll: 1,
       asNavFor: slider,
-      dots: false,
+      dots: true,
       arrows: true,
       centerMode: false,
       focusOnSelect: true,

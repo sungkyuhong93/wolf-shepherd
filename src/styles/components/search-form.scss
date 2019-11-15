@@ -27,6 +27,27 @@ Search Form
   &.search-form--is-active {
     .search-form {
       display: block;
+      width: 100%;
+      position: fixed;
+      padding: 20px;
+      background: #fff;
+      top: 64px;
+
+      input {
+        border: 1px solid $COLOR_PRIMARY_LIGHT;
+        color: $COLOR_PRIMARY;
+        font-family: $FONT_BASE;
+
+        &:placeholder {
+          color: $COLOR_PRIMARY;
+        }
+      }
+
+      button[type=submit] {
+        bottom: 20px;
+        right: 25px;
+        top: 20px;
+      }
     }
   }
 

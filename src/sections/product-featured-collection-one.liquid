@@ -1,7 +1,7 @@
 {% comment %}
   modules/feature-collection.scss
 {% endcomment %}
-<div class="product-featured-collection">
+<div class="product-featured-collection {% if section.settings.background_light == false %}product-featured-collection--dark{% endif %}">
 {% if section.settings.title %}
   <div class="page-width">
     <div class="grid">

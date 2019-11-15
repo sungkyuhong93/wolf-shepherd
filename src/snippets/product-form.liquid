@@ -7,54 +7,56 @@
     {% endcomment %}
   {% endif %}
 
-  {% unless product.has_only_default_variant %}
-    {% for option in product.options_with_values %}
-      
-      {% assign swatchShow = false %}      
-      {% if settings.show_swatches %}
-
-        {% assign optionName = option.name | downcase | handleize  %}
-        {% assign swatchShow = true %}
-
-      {% endif %}
-
-      <div class="selector-wrapper js selector-wrapper--{{optionName}} {% if option.values.size == 1 %} selector-wrapper--hide {% endif %}">
-        <div class="{% if swatchShow %}visually-hidden{% endif %}">
-          <label for="SingleOptionSelector-{{ forloop.index0 }}">
-            {{ option.name }}
-          </label>
-    
-          <select
-            id="SingleOptionSelector-{{ forloop.index0 }}"
-            data-single-option-selector
-            data-index="option{{ option.position }}"
-            class="">
-            {% for value in option.values %}
-              <option
-                value="{{ value | escape }}"
-                {% if option.selected_value == value %}selected="selected"{% endif %}>
-                  {{ value }}
-              </option>
-            {% endfor %}
-          </select>
-        </div>
+  <div class="product-swatches">
+    {% unless product.has_only_default_variant %}
+      {% for option in product.options_with_values %}
         
-        {% include 'swatch-product'  %}
+        {% assign swatchShow = false %}      
+        {% if settings.show_swatches %}
 
-      </div>
-    {% endfor %}
-  {% endunless %}
+          {% assign optionName = option.name | downcase | handleize  %}
+          {% assign swatchShow = true %}
 
-  <select name="id" class="no-js" data-product-select>
-    {% for variant in product.variants %}
-      <option
-        {% if variant == current_variant %}selected="selected"{% endif %}
-        {% unless variant.available %}disabled="disabled"{% endunless %}
-        value="{{ variant.id }}">
-          {{ variant.title }}
-      </option>
-    {% endfor %}
-  </select>
+        {% endif %}
+
+        <div class="selector-wrapper js selector-wrapper--{{optionName}} {% if option.values.size == 1 %} selector-wrapper--hide {% endif %}">
+          <div class="{% if swatchShow %}visually-hidden{% endif %}">
+            <label for="SingleOptionSelector-{{ forloop.index0 }}">
+              {{ option.name }}
+            </label>
+      
+            <select
+              id="SingleOptionSelector-{{ forloop.index0 }}"
+              data-single-option-selector
+              data-index="option{{ option.position }}"
+              class="">
+              {% for value in option.values %}
+                <option
+                  value="{{ value | escape }}"
+                  {% if option.selected_value == value %}selected="selected"{% endif %}>
+                    {{ value }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+          
+          {% include 'swatch-product'  %}
+
+        </div>
+      {% endfor %}
+    {% endunless %}
+
+    <select name="id" class="no-js" data-product-select>
+      {% for variant in product.variants %}
+        <option
+          {% if variant == current_variant %}selected="selected"{% endif %}
+          {% unless variant.available %}disabled="disabled"{% endunless %}
+          value="{{ variant.id }}">
+            {{ variant.title }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
 
   {% comment %} <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
   <input type="number" id="Quantity" name="quantity" value="1" min="1"> {% endcomment %}

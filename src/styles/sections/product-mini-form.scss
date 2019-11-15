@@ -1,0 +1,43 @@
+/* ============================================================================
+  #Product mini form
+============================================================================== */
+.product-form-mini {
+  background: $COLOR_WHITE;
+  bottom: 0;
+  opacity: 0;
+  padding: 16px;
+  position: fixed;
+  transform: translateY(100%);
+  transition: 0.6s;
+  width: 100%;
+  z-index: 10;
+
+  &.is-active {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  &__details {
+    
+  }
+
+  &__footer {
+    display: flex;
+  }
+
+  &__form-toggle {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-width: 50%;
+    text-align: center;
+
+    span {
+      padding: 0 10px;
+    }
+  }
+
+  @include media-query($medium-up) {
+    display: none;
+  }
+}

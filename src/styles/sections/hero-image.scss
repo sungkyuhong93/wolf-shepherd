@@ -90,6 +90,9 @@ Hero image
 
   @include media-query( $medium-down ) {
     &--mobile-text-under {
+      height: 380px;
+      min-height: 0;
+
       #{$parent}__wrapper {
         display: none;
       }

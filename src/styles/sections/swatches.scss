@@ -75,7 +75,6 @@ Swatches Styles
   }
 }
 
-
 .swatch-product {
   background: $COLOR_WHITE;
   border: 1px solid $COLOR_SWATCH_BORDER;
@@ -98,7 +97,7 @@ Swatches Styles
   opacity: 0.4;
 }
 
-.product-meta {
+.product-swatches {
   .selector-wrapper {
     margin-bottom: 0;
   }
@@ -132,20 +131,37 @@ Swatches Styles
       box-shadow: none;
     }
   }
+}
 
-  .selector-wrapper--color, .selector-wrapper--colour {
-    .swatch-product {
-      // border: 2px solid rgba($COLOR_BLACK, 0.3);
-      // border-radius: 0;
-      // font-weight: 600;
-      // height: 25px;
-      // margin: 0 5px;
-      // min-width: 25px;
-      // width: 25px;
+.selector-wrapper--size {
+  @include media-query($small) {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-bottom: 18px !important;
 
-      // &.swatch-product--active, &:hover {
-      //   box-shadow: 0 0 0 1px #000;
-      // }
+    .visually-hidden {
+      height: auto;
+      position: static!important;
+      clip: initial;
+      width: 100%;
+
+      label {
+        display: none;
+      }
+
+      select {
+        background: $ICON_ARROW_DOWN;
+        background-position: calc(100% - 20px) center;
+        background-repeat: no-repeat;
+        border: 1px solid $COLOR_PRIMARY_LIGHT;
+        color: $COLOR_PRIMARY;
+        font-family: $FONT_BODY;
+        width: 100%;
+      }
+    }
+
+    .swatch__wrapper {
+      display: none;
     }
   }
 }

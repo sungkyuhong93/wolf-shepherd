@@ -1,0 +1,27 @@
+<div class="product-header">
+  <h1 class="product-header__title h3">{{ product.title }}</h1>
+
+  <div class="product-header__price">
+    {% if product.compare_at_price_max > product.price %}
+      <div class="compare_at_price" data-compare-price>
+        {% if current_variant.compare_at_price > current_variant.price %}
+          {{ current_variant.compare_at_price | money }}
+        {% endif %}
+      </div>
+      <div class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</div>
+    {% endif %}
+
+    <div data-product-price>
+      {{ current_variant.price | money }}
+    </div>
+
+    {% unless product.metafields.stamped.reviews_count == blank %}
+    <div class="review-info">
+      <a id="readTheReviews">
+        <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
+      </a>
+    </div>
+    {% endunless %}
+
+  </div>
+</div>
