@@ -1,12 +1,45 @@
 <div class="product-reviews">
-  <div id="stamped-main-widget" 
-    data-widget-style="standard"
-    data-product-id="{{ product.id }}" 
-    data-name="{{ product.title | escape }}" 
-    data-url="{{ shop.url }}{{ product.url }}" 
-    data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" 
-    data-description="{{ product.description | escape }}" 
-    data-product-sku="{{product.handle}}"> 
-    {{ product.metafields.stamped.reviews }} 
+
+  {% unless product.metafields.stamped.reviews_count == blank %}
+
+    <div class="page-width">
+      <div class="grid">
+        <div class="grid__item small--one-whole">
+
+          <div class="product-reviews__header">
+            <h2 class="product-reviews__title">The Results are In</h2>
+
+            <div class="review-info show sm-down--hide">
+              <a id="stamped-main-widget" class="product-reviews__stars">
+                <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
+              </a>
+
+              <a id="stamped-main-widget" class="product-reviews__based-on">
+                Based on <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  {% endunless %}
+
+  <div class="page-width">
+    <div class="grid">
+      <div class="grid__item small--one-whole">
+        <div id="stamped-main-widget" 
+          data-widget-style="standard"
+          data-product-id="{{ product.id }}" 
+          data-name="{{ product.title | escape }}" 
+          data-url="{{ shop.url }}{{ product.url }}" 
+          data-image-url="{{ product.featured_image | product_img_url: "large" |replace: '?', '%3F' | replace: '&','%26'}}" 
+          data-description="{{ product.description | escape }}" 
+          data-product-sku="{{product.handle}}"> 
+          {{ product.metafields.stamped.reviews }} 
+        </div>
+      </div>
+    </div>
   </div>
 </div>

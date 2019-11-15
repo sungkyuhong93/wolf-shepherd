@@ -46,7 +46,35 @@ Swatches Styles
       transition: 0.4s;
     }
   }
+
+  &__header {
+    @include clearfix;
+    align-items: center;
+    display: flex;
+    position: relative;
+  }
+
+  &__header__color {
+    font-family: $FONT_BASE;
+    font-size: 12px;
+    margin-left: 10px;
+    text-transform: capitalize;
+  }
+
+  &__header__size {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    float: right;
+    position: absolute;
+    right: 0;
+
+    svg {
+      margin-right: 10px;
+    }
+  }
 }
+
 
 .swatch-product {
   background: $COLOR_WHITE;

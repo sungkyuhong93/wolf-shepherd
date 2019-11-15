@@ -1,15 +1,16 @@
 {% if swatchShow %}
 <h6 class="swatch__header">
   {{ option.name }}
-
-  {% for value in option.values %}  
-    {% if optionName == 'color' or optionName == 'colour' %}
+  {%- for value in option.values -%}  
+    {%- if optionName == 'color' or optionName == 'colour' -%}
       {% if option.selected_value == value %}
-        <span>{{ value }}</span>
+        <span class="swatch__header__color">{{ value }}</span>
       {% endif %}
-    {% endif %}
-  {% endfor %}
-
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if option.name == 'Size' or option.name == 'size' -%}
+    <span class="swatch__header__size">{% include 'icons' with icon: 'ruler' %} What size am I?</span>
+  {%- endif -%}
 </h6>
 
 <div class="swatch__wrapper">

@@ -7,6 +7,12 @@
 }
 
 #shopify-section-product {
+  margin-bottom: 32px;
+
+  @include media-query($medium-up) {
+    padding-top: 24px;
+  }
+
   @include media-query($large-up) {
     margin-bottom: 56px;
   }
@@ -20,9 +26,25 @@
   }
 
   &__price {
+    display: flex;
     font-family: $FONT_BODY;
     font-size: 12px;
+    justify-content: space-between;
     letter-spacing: 0.35px;
+
+    .review-info {
+      font-family: $FONT_BASE;
+      font-size: 12px;
+      text-transform: capitalize;
+
+      .stamped-fa-star:before {
+        font-size: 14px;
+      }
+
+      .stamped-badge-starrating {
+        margin: 0 7px 0 0!important;
+      }
+    }
   }
 }
 
@@ -59,8 +81,19 @@
 }
 
 .product-meta {
+  margin: 0 auto;
+  max-width: 560px;
+
   @include media-query($large-up) {
-    padding-left: 60px;
+    padding-left: 0;
+    margin: 0 0 0 auto;
+    max-width: 425px;
+  }
+}
+
+.product-featured-collection {
+  &__title {
+    text-align: center;
   }
 }
 

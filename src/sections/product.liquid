@@ -29,11 +29,10 @@
               </div>
 
               {% unless product.metafields.stamped.reviews_count == blank %}
-              <div class="review-info show sm-down--hide">
+              <div class="review-info">
                 <a id="readTheReviews">
-                  <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span> Reviews
-                </a> 
-                <a id="writeANewReview_new" class="hide" href="#stamped-main-widget">Write a review</a>
+                  <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
+                </a>
               </div>
               {% endunless %}
 

@@ -30,7 +30,7 @@
     height: 0;
     margin-bottom: 15px;
     overflow: hidden;
-    padding-top: 110%;
+    padding-top: 75%;
     position: relative;
 
     img {
@@ -64,20 +64,52 @@
   &__price {
     font-family: $FONT_BASE;
     font-size: 12px;
-    margin: 0;
+    margin: 0 0 8px;
   }
 
   .swatch__wrapper {
     margin: 0;
   }
 
+  &__review {
+    display: none!important;
+    height: 0;
+    margin: 0 0 8px !important;
+    opacity: 0;
+    text-align: center;
+    transition: 0.8s;
+
+    i:before {
+      font-size: 12px;
+    }
+
+    .stamped-badge-starrating {
+      border-right: 1px solid $COLOR_PRIMARY;
+      margin-right: 10px !important;
+      padding-right: 10px;
+    }
+
+    .stamped-badge-caption {
+      font-family: $FONT_BASE;
+      font-size: 10px;
+      letter-spacing: 0.4px;
+      text-transform: capitalize;
+    }
+  }
+
   @include media-query( $tablet-up ) {
-    padding: 32px 23px;
+    padding: 0 32px 23px;
     transition: 0.2s;
 
     &:hover {
       background: $COLOR_WHITE;
       box-shadow: 0 2px 16px rgba($COLOR_BLACK, 0.1);
+
+      #{$parent}__review {
+        // display: block;
+        height: 29px;
+        opacity: 1;
+      }
 
       #{$parent}__first-image {
         opacity: 0;

@@ -2,12 +2,6 @@
   #Product--details
 ============================================================================== */
 
-@include media-query($medium-up) {
-  #shopify-section-product {
-    padding-top: 50px;
-  }
-}
-
 .accordion {
   border-top: 1px solid $COLOR_GREY;
   margin: 0 0 16px;

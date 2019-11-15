@@ -2,6 +2,38 @@
   #Product--reviews
 ============================================================================== */
 .product-reviews {
+  &__header {
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__stars {
+    .stamped-badge-caption {
+      display: none;
+    }
+  }
+
+  &__based-on {
+    font-family: $FONT_BODY;
+    font-size: 10px;
+    text-transform: uppercase;
+
+    .stamped-starrating {
+      display: none;
+    }
+  }
+
+  div.stamped-container[data-widget-style], div[data-widget-style] div.stamped-container {
+    margin: 0 0 30px !important;
+  }
+
+  #stamped-main-widget {
+    margin: 15px 0;
+  }
+
   .stamped-summary {
     .summary-overview {
       display: none;

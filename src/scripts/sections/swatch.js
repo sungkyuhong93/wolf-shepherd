@@ -25,7 +25,7 @@ theme.Swatch = (function() {
     $('.product-images__container').removeClass('is-active');
     $(`#${swatchValue}`).addClass('is-active');
     
-    $('.swatch__header span').html(swatchColor);
+    $('.swatch__header__color').html(swatchColor);
     // $this.parent().find('.swatch-product').removeClass('swatch-product--active');
     // $this.addClass('swatch-product--active');
     // $this.parent().parent().find('select').val(swatchValue).trigger('change');
