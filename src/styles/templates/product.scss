@@ -6,6 +6,12 @@
   }
 }
 
+#shopify-section-product {
+  @include media-query($large-up) {
+    margin-bottom: 56px;
+  }
+}
+
 .product-header {
   margin-bottom: 24px;
 
@@ -55,5 +61,27 @@
 .product-meta {
   @include media-query($large-up) {
     padding-left: 60px;
+  }
+}
+
+.product-instagram {
+  .instafeed__contianer {
+    display: block!important;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  .instafeed__img {
+    border: 0;
+    display: block;
+    overflow: hidden;
+  }
+}
+
+.product-collection {
+  margin-bottom: 56px;
+
+  @include media-query($large-up) {
+    margin-bottom: 0;
   }
 }

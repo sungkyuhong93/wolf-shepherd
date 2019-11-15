@@ -76,7 +76,7 @@
           background: $COLOR_PRIMARY;
           content: '';
           height: 4px;
-          left: -300px;
+          left: -600px;
           position: absolute;
           right: 0;
           top: 50%;
@@ -89,7 +89,7 @@
           height: 4px;
           left: 0;
           position: absolute;
-          right: -300px;
+          right: -600px;
           top: 50%;
           transform: translateY(-50%);
           z-index: -1;
@@ -200,6 +200,7 @@
     .stamped-review-body {
       margin-bottom: 24px;
       margin-top: -50px;
+      padding-left: 24px;
     }
 
     .stamped-review-footer {
@@ -260,6 +261,114 @@
       .stamped-review-reply {
         display: none;
       }
+    }
+  }
+
+  .stamped-pagination {
+    border-top: 1px solid $COLOR_GREY;
+    padding-top: 56px;
+
+    .page {
+      a {
+        border-radius: 100%;
+        color: $COLOR_PRIMARY;
+        display: block;
+        font-family: $FONT_BASE;
+        font-size: 12px;
+        height: 34px;
+        line-height: 34px;
+        margin: 0 5px;
+        padding: 0;
+        transition: 0.2s;
+        width: 34px;
+
+        &:hover {
+          background: $COLOR_PRIMARY;
+          color: $COLOR_WHITE;
+        }
+      }
+
+      &.active a {
+        background: $COLOR_PRIMARY;
+        color: $COLOR_WHITE;
+      }
+    }
+
+    .next {
+      float: right;
+
+      a {
+        background-image: $ICON_ARROW_RIGHT;
+        background-position: calc(50% + 1px) calc(50% - 1px);
+        background-repeat: no-repeat;
+        background-size: 10px 13px;
+        border: 1px solid $COLOR_SECONDARY;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 0;
+        padding: 17px;
+        transition: 0.2s;
+        z-index: 5;
+
+        &:hover {
+          background-color: $COLOR_SECONDARY;
+        }
+      }
+    }
+  }
+
+  @include media-query($small) {
+    .stamped-content .stamped-review .stamped-review-content {
+      flex-wrap: wrap;
+    }
+
+    .stamped-content .stamped-review .stamped-review-content .stamped-review-options {
+      min-width: 100%;
+      width: 100%;
+    }
+
+    .stamped-content .stamped-review-body {
+      margin-top: 0;
+      padding-left: 0;
+    }
+
+    .stamped-content .stamped-review .stamped-review-header-title {
+      font-size: 18px;
+    }
+
+    .stamped-pagination {
+      padding-top: 36px;
+      text-align: left;
+
+      .page a {
+        height: 24px;
+        line-height: 24px;
+        margin: 0 2px;
+        text-align: center;
+        width: 24px;
+      }
+
+      .next {
+        margin-top: -6px;
+      }
+    }
+
+    .stamped-header {
+      .stamped-review-options ul li {
+        margin-right: 0;
+        padding: 14px 20px;
+      }
+
+      .stamped-review-option-title {
+        font-size: 18px;
+        text-align: left;
+      }
+    }
+  }
+
+  @media (max-width: 400px) {
+    .stamped-pagination .next {
+      display: none;
     }
   }
 }

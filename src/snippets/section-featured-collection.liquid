@@ -1,0 +1,79 @@
+<div class="feature-collection feature-collection--{{section.id}} 
+  {% if section.settings.background_light == false %}feature-collection--dark{% endif %}
+  {{ section.settings.margin_bottom }}" 
+  id="featured-collection-section" 
+  data-section-id="{{ section.id }}" 
+  data-section-type="featured-collection-section">
+  <div class="page-width">
+    <div class="grid">
+      <div class="grid__item medium-up--one-whole">
+        <div class="feature-collection__container">
+          
+          {%- assign collection = collections[section.settings.collection] -%}
+          {%- assign collectionCounter = section.settings.product_count -%}   
+
+          {%- capture collectionCounterClass -%}
+            grid__item small--one-half
+            {% case collectionCounter %}
+              {% when '2' %}
+                medium-up--one-half
+              {% when '3' %}
+                medium-up--one-third
+              {% when '4' %}
+                medium-up--one-quarter
+              {% when '5' %}
+                medium-up--one-fifth          
+              {% when '6' %}
+                medium-up--one-third
+              {% when '8' %}
+                medium-up--one-quarter
+              {% else %}
+                medium-up--one-whole
+            {% endcase %}
+          {%- endcapture -%}
+
+          {% if section.settings.show_carousel %}
+            {% assign slidesToShow = collectionCounter %}
+            {% assign collectionCounter = collectionCounter | times:3 %}
+            {% assign collectionCounterClass = '' %}
+            <div class="collection-carousel--{{section.id}}">
+          {% endif %}
+
+          {% for product in collection.products limit: collectionCounter %}
+
+            {% include 'collection-grid-product' with gridWidth: collectionCounterClass  %}
+            
+          {% else %}
+            {% for i in (1..collectionCounter) %}
+              <div class="item grid__item {% unless section.settings.show_carousel %}{{ collectionCounterClass }}{% endunless %}" >
+                  <a href="#" class="product-link">
+                    {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                    {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+
+                    <p>
+                      {{ 'homepage.onboarding.product_title' | t }}
+                    </p>
+                  </a>
+
+                  <p>{{ 1999 | money }}</p>
+              </div>
+            {% endfor %}
+          {% endfor %}
+
+          {% if section.settings.show_carousel %}
+            </div>
+          {% endif %}
+
+          {% if section.settings.show_button %}
+            <div class="grid__item">
+              <div class="feature-collection__button-row">
+                <a href="{{collection.url}}" class="button--white">{{ section.settings.button_text  }}</a>
+              </div>
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
