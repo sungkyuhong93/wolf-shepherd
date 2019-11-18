@@ -83,6 +83,17 @@ $BUTTON_LETTER_SPACING: 0.25px;
     border-color: $BUTTON_WHITE_HOVER_COLOR;
     color: $BUTTON_WHITE_TEXT_COLOR;
   }
+
+  @include media-query($small) {
+    &--compress {
+      border-left: 0;
+      border-right: 0;
+      border-top: 0;
+      min-width: initial;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 }
 
 .button--primary {

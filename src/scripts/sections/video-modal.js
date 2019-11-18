@@ -6,6 +6,10 @@ import cssClasses from '../helpers/cssClasses';
  */
 export default () => {
 
+  if (!document.querySelector('#modal-video')) {
+    return false;
+  };
+
   // Selectors
   const selectors = {
     trigger: document.querySelectorAll('[js-video-modal="trigger"]'),
@@ -14,7 +18,7 @@ export default () => {
     _html: document.documentElement,
   };
 
-  const player = new Player('modal');
+  const player = new Player('modal-video');
 
   function init() {
     setEventListeners();

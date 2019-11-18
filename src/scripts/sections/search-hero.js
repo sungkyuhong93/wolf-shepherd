@@ -27,7 +27,6 @@ theme.SearchPopup = (function() {
     $searchForm.on('click', () => {
       $searchForm.addClass('search-form--is-active');
       $searchFocus.focus();
-      return false;
     });
 
     $searchFocus.on('blur', () => {

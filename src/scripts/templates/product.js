@@ -5,7 +5,6 @@ import '../sections/product-miniform';
 import '../sections/swatch';
 import ProductSlider from '../sections/product-slider';
 import '../sections/size-guide';
-import '../sections/testimonials';
 
 import '../components/accordion';
 

@@ -23,8 +23,8 @@ Swatches Styles
       position: relative;
 
       &:hover #{$parent}__tooltip-info {
-        bottom: -30px;
         opacity: 1;
+        top: 20px;
       }
     }
 
@@ -32,7 +32,6 @@ Swatches Styles
       background: $COLOR_WHITE;
       border: 1px solid $COLOR_SWATCH_BORDER;
       border-radius: 2px;
-      bottom: -40px;
       color: $COLOR_PRIMARY;
       display: block;
       font-size: 10px;
@@ -42,6 +41,7 @@ Swatches Styles
       padding: 3px 12px;
       position: absolute;
       text-transform: capitalize;
+      top: 30px;
       transform: translateX(-50%);
       transition: 0.4s;
     }

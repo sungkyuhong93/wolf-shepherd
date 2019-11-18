@@ -32,12 +32,13 @@ Video modal Section
     z-index: 1;
 
     video {
-      left: 0;
+      left: 50%;
+      min-height: 100%;
       position: absolute;
       right: 0;
       top: 50%;
-      transform: translateY(-50%);
-      width: 100%;
+      transform: translateY(-50%) translateX(-50%);
+      width: 120%;
       z-index: 2;
     }
   }
@@ -64,14 +65,16 @@ Video modal Section
     flex-direction: column;
     height: 100%;
     justify-content: center;
-    left: 0;
-    max-width: 100%;
+    left: 50%;
+    margin: 0 auto;
+    max-width: 600px;
     opacity: 1;
     overflow: hidden;
     padding: 20px;
     position: absolute;
     text-align: center;
     top: 0;
+    transform: translateX(-50%);
     transition: 0.3s;
     width: 100%;
     z-index: 4;
@@ -118,7 +121,6 @@ Video modal Section
     border-radius: 50%;
     height: 56px;
     left: 50%;
-    pointer-events: none;
     transform: translateY(-10px) translateX(0);
     transition: 0.3s;
     width: 56px;
@@ -144,7 +146,73 @@ Video modal Section
     }
   }
 
+  @include media-query( $medium-down ) {
+    padding-bottom: 58%;
+
+    .page-width & {
+      margin-left: -20px;
+      width: calc(100% + 40px);
+    }
+
+    &__mobile-text {
+      padding-top: 28px;
+      text-align: center;
+
+      #{$parent}__title {
+        margin-bottom: 16px;
+      }
+
+      #{$parent}__text {
+        display: none;
+      }
+    }
+
+    &__text-area {
+      #{$parent}__title {
+        display: none;
+      }
+    
+      #{$parent}__text {
+        display: none;
+      }
+    
+      #{$parent}__buttons {
+        display: none;
+      }
+    }
+  }
+
+  @include media-query( $medium-up ) {
+    &__mobile-text {
+      display: none;
+    }
+
+    &__text-area {
+      #{$parent}__title {
+        display: block;
+      }
+    
+      #{$parent}__text {
+        display: block;
+      }
+    
+      #{$parent}__buttons {
+        display: block;
+      }
+    }
+  }
+
   @media only screen and (min-width: 1200px) {
     padding-bottom: 660px;
+  }
+}
+
+
+@include media-query( $medium-down ) {
+  .page-width {
+    .video-modal {
+      // margin-left: -20px;
+      // width: calc(100% + 40px);
+    }
   }
 }

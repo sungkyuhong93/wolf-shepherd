@@ -2,11 +2,14 @@
   #Collection navigation
 ============================================================================== */
 .collection-navigation {
+  $parent: &;
   background-color: $COLOR_GREY;
   margin-bottom: 42px;
   overflow: auto;
 
   ul {
+    align-items: center;
+    display: flex;
     height: 42px;
     list-style: none;
     margin: 0;
@@ -23,7 +26,7 @@
       font-family: $FONT_BODY;
       font-size: 10px;
       letter-spacing: $LETTER_SPACING_BASE;
-      padding: 3px 6px;
+      padding: 3px 15px;
       position: relative;
       text-transform: uppercase;
 
@@ -33,11 +36,21 @@
           bottom: 0;
           content: '';
           height: 1px;
-          left: 6px;
+          left: 15px;
           position: absolute;
-          right: 6px;
+          right: 15px;
         }
       }
+    }
+
+    #{$parent}__link--active a::after {
+      background: $COLOR_PRIMARY;
+      bottom: 0;
+      content: '';
+      height: 1px;
+      left: 15px;
+      position: absolute;
+      right: 15px;
     }
   }
 
@@ -55,7 +68,7 @@
 
   @include media-query($medium-up) {
     ul {
-      
+      display: block;
     }
   }
 }

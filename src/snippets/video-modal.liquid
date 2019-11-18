@@ -28,25 +28,50 @@
 
 {% if sectionEnable %}
 
-  {% if sectionFullWidth != 'full-width' %}<div class="page-width">{% endif %}
+  <div class="{% if sectionMarginBottom == 'margin' %}section-margin-bottom{% endif %}">
+    {% if sectionFullWidth != 'full-width' %}<div class="page-width">{% endif %}
 
-    <div class="video-modal {{textColor}} 
-      {% if sectionMarginBottom == 'margin' %}section-margin-bottom{% endif %}" >
+      <div class="video-modal {{textColor}}">
 
-      <div class="video-modal__video">
-        <video autoplay muted loop poster="{{ videoSectionBackground }}">
-          <source src="{{mp4}}" type="video/mp4">
-          <source src="{{ogg}}" type="video/ogg">
-          Your browser does not support HTML5 video.
-        </video>
+        <div class="video-modal__video">
+          <video autoplay muted loop poster="{{ videoSectionBackground }}">
+            <source src="{{mp4}}" type="video/mp4">
+            <source src="{{ogg}}" type="video/ogg">
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+
+        <div js-video-modal="overlay" class="video-modal__overlay"></div>
+
+        <div class="video-modal__text-area">
+
+          <div class="play" js-video-modal="trigger" js-video-target="#modal-{{sectionID}}"></div>
+
+          {% if sectionTitle != blank %}
+            <h2 class="d2 video-modal__title">{{ sectionTitle | escape }}</h2>
+          {% endif %}
+          
+          <div class="video-modal__text ">
+            {% if sectionText != blank %}{{ sectionText }}{% endif %}
+          </div>
+
+          <div class="video-modal__buttons">
+            {% if sectionButtonLabel != blank and sectionButtonLink != blank %}
+              <a href="{{ sectionButtonLink }}" class="{{ sectionButtonColor }}">
+                {{ sectionButtonLabel }}
+              </a>
+            {% endif %}
+            <div js-video-modal="trigger" js-video-target="#modal-{{sectionID}}" class="play_text {{ sectionButtonColor }}">
+              {{ sectionButtonLabelTwo }}
+            </div>
+          </div>
+        </div>
+
       </div>
+    {% if sectionFullWidth != 'full-width' %}</div>{% endif %}
 
-      <div js-video-modal="overlay" class="video-modal__overlay"></div>
-
-      <div class="video-modal__text-area">
-
-        <div class="play" js-video-modal="trigger"></div>
-
+    <div class="page-width">
+      <div class="video-modal__mobile-text">
         {% if sectionTitle != blank %}
           <h2 class="d2 video-modal__title">{{ sectionTitle | escape }}</h2>
         {% endif %}
@@ -57,28 +82,26 @@
 
         <div class="video-modal__buttons">
           {% if sectionButtonLabel != blank and sectionButtonLink != blank %}
-            <a href="{{ sectionButtonLink }}" class="{{ sectionButtonColor }}">
+            <a href="{{ sectionButtonLink }}" class="button--white button--white--compress">
               {{ sectionButtonLabel }}
             </a>
           {% endif %}
-          <div js-video-modal="trigger" js-video-target="#modal-{{sectionID}}" class="play_text {{ sectionButtonColor }}">
-            {{ sectionButtonLabelTwo }}
-          </div>
         </div>
       </div>
-
-    </div>
-  {% if sectionFullWidth != 'full-width' %}</div>{% endif %}
-
-  <div id="modal-{{sectionID}}" class="modal">
-    <div class="modal__video" >
-      {% assign videoSectionUrlReady = videoSectionUrlReady | split: "https://vimeo.com/" %}
-      <iframe id="modal" src="https://player.vimeo.com/video/{{ videoSectionUrlReady[1] }}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    
-      <a class="modal__close modal__close--white" href="#" js-video-modal="close" js-video-target="#modal-{{sectionID}}">
-        {% include 'icons' with icon: 'close' %}
-      </a>
     </div>
   </div>
+
+  {% if videoSectionUrlReady != blank %}
+    {% assign videoSectionUrlReady = videoSectionUrlReady | split: "https://vimeo.com/" %}
+    <div id="modal-{{sectionID}}" class="modal">
+      <div class="modal__video" >
+        <iframe id="modal-video" src="https://player.vimeo.com/video/{{ videoSectionUrlReady[1] }}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      
+        <a class="modal__close modal__close--white" href="#" js-video-modal="close" js-video-target="#modal-{{sectionID}}">
+          {% include 'icons' with icon: 'close' %}
+        </a>
+      </div>
+    </div>
+  {% endif %}
 
 {% endif %}
