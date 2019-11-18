@@ -2,6 +2,7 @@
   #Product mini form
 ============================================================================== */
 .product-form-mini {
+  $parent: &;
   background: $COLOR_WHITE;
   bottom: 0;
   opacity: 0;
@@ -15,25 +16,134 @@
   &.is-active {
     opacity: 1;
     transform: translateY(0%);
+
+    #{$parent}__details {
+      pointer-events: all;
+    }
+  }
+
+  &__header {
+    align-items: flex;
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+      font-size: 18px;
+    }
+
+    #{$parent}__price {
+      font-size: 12px;
+    }
   }
 
   &__details {
-    
+    background: $COLOR_WHITE;
+    bottom: 70px;
+    display: none;
+    left: 0;
+    padding: 15px 15px 0;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+
+    &.is-active {
+      display: block;
+    }
+
+    &__tab {
+      align-items: center;
+      background: $COLOR_WHITE;
+      border: 1px solid $COLOR_PRIMARY_LIGHT;
+      border-top: 0;
+      bottom: -55px;
+      display: flex;
+      font-family: $FONT_BODY;
+      font-size: 10px;
+      height: 56px;
+      justify-content: center;
+      left: 15px;
+      position: absolute;
+      text-transform: uppercase;
+      width: calc(50% - 21px);
+
+      svg {
+        position: absolute;
+        right: 20px;
+
+        @media (max-width: 360px) {
+          right: 10px;
+        }
+      }
+    }
+  }
+
+  &__container {
+    border: 1px solid $COLOR_PRIMARY_LIGHT;
+    padding: 20px 0 0 20px;
+
+    .selector-wrapper--size {
+      padding-right: 20px;
+    }
+
+    .selector-wrapper--color .swatch__wrapper {
+      flex-wrap: nowrap;
+      margin-left: 0;
+      margin-right: 0;
+      overflow: auto;
+      white-space: nowrap;
+      width: 100%;
+
+      .swatch-product {
+        border-radius: 50%;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
   }
 
   &__footer {
     display: flex;
+    justify-content: space-between;
+
+    .button {
+      max-width: calc(50% - 6px);
+      min-width: calc(50% - 6px);
+    }
   }
 
   &__form-toggle {
     align-items: center;
+    border: 1px solid $COLOR_PRIMARY_LIGHT;
     display: flex;
     justify-content: center;
-    min-width: 50%;
+    max-width: calc(50% - 6px);
+    min-width: calc(50% - 6px);
+    position: relative;
     text-align: center;
+
+    [js-swatch="color"] {
+      border-radius: 50%;
+      height: 21px;
+      order: 2;
+      overflow: hidden;
+      text-indent: -1000px;
+      width: 21px;
+    }
 
     span {
       padding: 0 10px;
+    }
+
+    svg {
+      position: absolute;
+      right: 20px;
+
+      @media (max-width: 360px) {
+        right: 10px;
+      }
     }
   }
 

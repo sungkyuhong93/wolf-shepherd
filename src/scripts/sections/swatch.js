@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import cssClasses from '../helpers/cssClasses';
 
 theme.Swatch = (function() {
 
@@ -6,11 +7,15 @@ theme.Swatch = (function() {
   const $swatchColor = $('.product-form .swatch-product--color');
   const $swatchColorMini = $('.product-form-mini .swatch-product--color');
   const $swatchSize = $('.swatch-product--size');
+  const $miniSwatchOpen = $('.product-form-mini__form-toggle');
+  const $miniSwatchClose = $('.product-form-mini__details__tab');
 
   $swatch.on('click', swatchChange);
   $swatchColor.on('click', updateSlider);
   $swatchSize.on('click', updateSize);
   $swatchColorMini.on('click', updateColor);
+  $miniSwatchOpen.on('click', openMiniSwatch);
+  $miniSwatchClose.on('click', closeMiniSwatch);
 
   function swatchChange() {
     const $this = $(this);
@@ -26,8 +31,8 @@ theme.Swatch = (function() {
     const swatchValue = $this.attr('data-slider');
     const swatchColor = $this.attr('data-swatch-value');
 
-    $('.product-images__container').removeClass('is-active');
-    $(`#${swatchValue}`).addClass('is-active');
+    $('.product-images__container').removeClass(cssClasses.active);
+    $(`#${swatchValue}`).addClass(cssClasses.active);
 
     $('.product-form [js-swatch="color"]').html(swatchColor);
   }
@@ -35,7 +40,11 @@ theme.Swatch = (function() {
   function updateColor() {
     const $this = $(this);
     const swatchColor = $this.attr('data-swatch-value');
+    const swatchColorLower = $this.attr('data-swatch-value').toLowerCase();
+
     $('.product-form-mini [js-swatch="color"]').html(swatchColor);
+    $('.product-form-mini__form-toggle [js-swatch="color"]').removeClass();
+    $('.product-form-mini__form-toggle [js-swatch="color"]').addClass(`product-form-mini--${swatchColorLower}`);
   }
 
   function updateSize() {
@@ -43,6 +52,16 @@ theme.Swatch = (function() {
     const swatchColor = $this.attr('data-swatch-value');
 
     $('[js-swatch="size"]').html(swatchColor);
+  }
+
+  function openMiniSwatch() {
+    const $details = $('.product-form-mini__details');
+    $details.addClass(cssClasses.active);
+  }
+
+  function closeMiniSwatch() {
+    const $details = $('.product-form-mini__details');
+    $details.removeClass(cssClasses.active);
   }
 
 })();

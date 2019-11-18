@@ -113,6 +113,7 @@ Swatches Styles
     justify-content: left;
     margin-bottom: 8px;
     margin-left: -8px;
+    width: calc(100% + 16px);
   }
 
   .swatch-product {
@@ -133,7 +134,7 @@ Swatches Styles
   }
 }
 
-.selector-wrapper--size {
+.product-form .selector-wrapper--size {
   @include media-query($small) {
     display: flex;
     flex-direction: column-reverse;

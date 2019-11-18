@@ -53,7 +53,6 @@ export default () => {
   }
 
   function mouseChaser(ev) {
-    console.log(ev);
     cursor.classList.remove('cursor--hide');
 
     cursor.setAttribute('style', `top: ${ev.pageY}px; left: ${ev.pageX}px;`);

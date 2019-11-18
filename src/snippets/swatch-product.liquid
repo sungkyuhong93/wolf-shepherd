@@ -29,7 +29,10 @@
     {% if optionName == 'size' or optionName == 'Size' %}swatch-product--size{% endif %}" 
     data-swatch-value="{{ value | escape }}"
     style="background-size: {{swatchBackground}};"
-    {% if optionName == 'color' or optionName == 'colour' %}data-slider="product-images__container--{{swatchBackground}}"{% endif%}
+    {% if optionName == 'color' or optionName == 'colour' %}
+      data-slider="product-images__container--{{swatchBackground}}"
+      data-swatch-color="{{swatchBackground}}"
+    {% endif%}
     >
       {% unless optionName == 'color' or optionName == 'colour' %}
         {{ value | escape }}

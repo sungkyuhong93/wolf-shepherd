@@ -14,8 +14,8 @@ import {register} from '@shopify/theme-sections';
 const selectors = {
   addToCart: '[data-add-to-cart]',
   addToCartText: '[data-add-to-cart-text]',
-  comparePrice: '[data-compare-price]',
-  comparePriceText: '[data-compare-text]',
+  comparePrice: '[data-compare-mini-price]',
+  comparePriceText: '[data-compare-mini-text]',
   originalSelectorId: '[data-product-select]',
   priceWrapper: '[data-price-wrapper]',
   productImageWrapper: '[data-product-image-wrapper]',

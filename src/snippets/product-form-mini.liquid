@@ -1,67 +1,101 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
 <div class="product-swatches">
   <form class="product-form-mini" action="/cart/add" method="post" enctype="multipart/form-data">
+    <div class="product-form-mini__header">
+      <h3 class="product-form-mini__title">{{ product.title }}</h3>
 
-    <div class="product-form-mini__details">  
-      {% unless product.has_only_default_variant %}
-        {% for option in product.options_with_values %}
-          
-          {% assign swatchShow = false %}      
-          {% if settings.show_swatches %}
-
-            {% assign optionName = option.name | downcase | handleize  %}
-            {% assign swatchShow = true %}
-
-          {% endif %}
-
-          <div class="selector-wrapper js selector-wrapper--{{optionName}} {% if option.values.size == 1 %} selector-wrapper--hide {% endif %}">
-            <div class="{% if swatchShow %}visually-hidden{% endif %}">
-              <label for="SingleOptionSelector-{{ forloop.index0 }}">
-                {{ option.name }}
-              </label>
-        
-              <select
-                id="SingleOptionSelector-{{ forloop.index0 }}"
-                data-single-option-selector
-                data-index="option{{ option.position }}"
-                class="">
-                {% for value in option.values %}
-                  <option
-                    value="{{ value | escape }}"
-                    {% if option.selected_value == value %}selected="selected"{% endif %}>
-                      {{ value }}
-                  </option>
-                {% endfor %}
-              </select>
-            </div>
-            
-            {% include 'swatch-product'  %}
-
+      <div class="product-form-mini__price">
+        {% if product.compare_at_price_max > product.price %}
+          <div class="compare_at_price" data-compare-mini-price>
+            {% if current_variant.compare_at_price > current_variant.price %}
+              {{ current_variant.compare_at_price | money }}
+            {% endif %}
           </div>
-        {% endfor %}
-      {% endunless %}
+          <div class="visually-hidden" data-compare-mini-text>{{ 'products.product.regular_price' | t }}</div>
+        {% endif %}
 
-      <select name="id" class="no-js" data-product-select>
-        {% for variant in product.variants %}
-          <option
-            {% if variant == current_variant %}selected="selected"{% endif %}
-            {% unless variant.available %}disabled="disabled"{% endunless %}
-            value="{{ variant.id }}">
-              {{ variant.title }}
-          </option>
-        {% endfor %}
-      </select>
+        <div data-product-mini-price>
+          {{ current_variant.price | money }}
+        </div>
+      </div>
+
+    </div>
+
+    <div class="product-form-mini__details">
+      <div class="product-form-mini__container">
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
+            
+            {% assign swatchShow = false %}      
+            {% if settings.show_swatches %}
+              {% assign optionName = option.name | downcase | handleize  %}
+              {% assign swatchShow = true %}
+            {% endif %}
+
+            <div class="selector-wrapper js selector-wrapper--{{optionName}} {% if option.values.size == 1 %} selector-wrapper--hide {% endif %}">
+              <div class="{% if swatchShow %}visually-hidden{% endif %}">
+                <label for="SingleOptionSelector-{{ forloop.index0 }}">
+                  {{ option.name }}
+                </label>
+          
+                <select
+                  id="SingleOptionSelector-{{ forloop.index0 }}"
+                  data-single-option-selector
+                  data-index="option{{ option.position }}"
+                  class="">
+                  {% for value in option.values %}
+                    {% if optionName == 'color' or optionName == 'Color' %}
+                      {% if option.selected_value == value %}
+                        {% assign currentColor = value | handleize %}
+                      {% endif %}
+                    {% endif %}
+                    <option
+                      value="{{ value | escape }}"
+                      {% if option.selected_value == value %}selected="selected"{% endif %}>
+                        {{ value }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+              
+              {% include 'swatch-product'  %}
+
+            </div>
+          {% endfor %}
+        {% endunless %}
+
+        <select name="id" class="no-js" data-product-select>
+          {% for variant in product.variants %}
+            <option
+              {% if variant == current_variant %}selected="selected"{% endif %}
+              {% unless variant.available %}disabled="disabled"{% endunless %}
+              value="{{ variant.id }}">
+                {{ variant.title }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="product-form-mini__details__tab">
+        Color & Size
+
+        {% include 'icons' with icon: 'arown-up-wolf' %}
+      </div>
     </div>
 
     <div class="product-form-mini__footer">
       <div class="product-form-mini__form-toggle">
         {%- for option in product.options_with_values -%}
           {%- if option.name == 'color' or option.name == 'Color' -%}
-            <span js-swatch="color">{{option.selected_value}}</span>
+            <span js-swatch="color" class="product-form-mini--{{currentColor}}">{{option.selected_value}}</span>
           {%- endif -%}
           {%- if option.name == 'size' or option.name == 'Size' -%}
             <span js-swatch="size">{{option.selected_value}}</span>
           {%- endif -%}
         {%- endfor -%}
+
+        {% include 'icons' with icon: 'arown-down-wolf' %}
       </div>
 
       <button class="button button--full"
