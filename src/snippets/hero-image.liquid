@@ -60,6 +60,30 @@
   {% assign sectionButtonLabel = 'Read more' %}
   {% assign sectionButtonLink = article.url %}
   {% assign sectionButtonColor = 'white' %}
+{% elsif type == "Two blocks" %}
+  {% assign sectionId = block.id %}
+  {% assign sectionEnable = true %}
+  {% assign sectionAlign = block.settings.alignment %}
+  {% assign sectionPositionX = block.settings.positionX %}
+  {% assign sectionPositionY = block.settings.positionY %}   
+  {% assign sectionImage = block.settings.image | img_url: 'master'  %}
+  {% if block.settings.mobile_image != blank %}
+    {% assign sectionImageMobile = block.settings.mobile_image | img_url: 'master'  %}
+  {% else %}
+    {% assign sectionImageMobile = block.settings.image | img_url: 'master'  %}
+  {% endif %}
+  {% assign sectionHeight = section.settings.height %}
+  {% assign sectionFullWidth = 'full-width' %}
+  {% assign sectionMarginBottom = '' %}
+  {% assign sectionTextColor = block.settings.text_color %}
+  {% assign sectionTextSize = block.settings.text_size | default: 'd2' %}
+  {% assign sectionTitle = block.settings.title  %}
+  {% assign sectionText = block.settings.text %}
+  {% assign sectionButtonLabel = block.settings.button_label %}
+  {% assign sectionButtonLink = block.settings.button_link %}
+  {% assign sectionButtonColor = block.settings.button_color %}
+  {% assign sectionMobileTextPosition = block.settings.mobile_text_position %}
+  {% assign sectionMobileEnable = block.settings.mobile_enable %}
 {% else %}
   {% assign sectionId = block.id %}
   {% assign sectionEnable = block.settings.enable | default: true %}
@@ -102,7 +126,7 @@
       {% endif %}
     </div>
   {% endcapture %}
-   
+
   <div class="hero-image hero-image--{{ sectionId }} 
     {{ sectionHeight }}
     {{ sectionPositionX }}
@@ -110,7 +134,8 @@
     {{ sectionAlign }} 
     {{ sectionTextColor }}
     {{ sectionMarginBottom }} 
-    {{ sectionMobileTextPosition }} lazyload" 
+    {{ sectionMobileTextPosition }}
+    {{ sectionMobileEnable }} lazyload" 
     data-bgset="{{sectionImageMobile}} [(max-width: 749px)] | {{sectionImage}}">
 
     <div class="hero-image__wrapper">

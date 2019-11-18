@@ -88,6 +88,10 @@ Hero image
     min-height: 720px;
   }
 
+  &--mobile-hide {
+    display: none;
+  }
+
   @include media-query( $medium-down ) {
     &--mobile-text-under {
       height: 380px;
@@ -206,6 +210,10 @@ Hero image
         margin-right: auto;
       }
     }
+
+    &--mobile-hide {
+      display: flex;
+    }
   }
 
   @include media-query( $large-up ) {
@@ -218,47 +226,17 @@ Hero image
   }
 }
 
-.hero-main__one, .hero-main__two {
-  @include media-query( $medium-up ) {
-    background-position: center;
-    background-size: cover;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    right: 50%;
-    top: 0;
-  }
-}
-
-.hero-main__two {
-  @include media-query( $medium-up ) {
-    left: 50%;
-    right: 0;
-  }
-}
-
 /* ============================================================================
 Two Column
 ============================================================================== */
 @include media-query( $medium-up ) {
-  .hero-main--two-column-wrapper {
-    @include clearfix;
-  }
+  .hero-image--50-50 {
+    display: flex;
 
-  .hero-main--two-column {
-    float: left;
-    width: 50%;
-
-    .hero-title {
-    }
-
-    &.hero-main--center {
-      text-align: center;
-    }
-
-    &.hero-main--right {
-      @include justify-content(flex-start);
-      text-align: right;
+    .hero-image {
+      max-width: 50%;
+      min-width: 50%;
+      width: 50%;
     }
   }
 }

@@ -23,8 +23,8 @@ const selectors = {
  * Instagram API key and UserID
  */
 const api = {
-  userID: '477921807',
-  accessToken: '477921807.bc6d9e2.d0c8c34bbe464ef9b3fd1b34a8dfc502',
+  userID: '1531501131',
+  accessToken: '1531501131.1677ed0.8e62334cb415450a9b4d6b3b768f4282',
 };
 
 export default () => {
