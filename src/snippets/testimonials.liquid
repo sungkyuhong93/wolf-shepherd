@@ -1,0 +1,32 @@
+<div class="testimonials {{section.settings.margin_bottom}}">
+  <div {% if section.settings.full-width != 'full-width' %}class="page-width"{% endif %} data-section-id="{{ section.id }}" data-section-type="testimonials">
+    {% if section.blocks.size > 0 %}
+      <div class="testimonials__container">
+        <div class="testimonials__slider testimonials__slider--{{section.id}}" data-count="{{ section.blocks.size }}">
+          {% for block in section.blocks %}
+            <div class="testimonials__slide testimonials__slide--{{ block.id }}" data-slide-count="{{forloop.index | minus: 1 }}" {{ block.shopify_attributes }}>
+              <blockquote class="testimonials__slider-text">
+                {% if block.settings.quote != blank %}
+                  <div class="testimonials__slider-text">‘‘{{ block.settings.quote | strip_html | escape }}’’</div>
+                {% endif %}
+              </blockquote>
+              <img src="{{ block.settings.image | img_url: '250x' }}">
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="testimonials__images testimonials__images--{{section.id}}">
+      {% if section.blocks.size > 0 %}
+         {% for block in section.blocks %}
+        <img data-slide-id="{{forloop.index}}" src="{{ block.settings.image | img_url: '250x' }}">
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {% if section.blocks.size == 0 %}
+      {% include 'no-blocks' %}
+    {% endif %}
+  </div>
+</div>

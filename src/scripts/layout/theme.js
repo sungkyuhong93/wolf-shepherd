@@ -24,10 +24,12 @@ import '../sections/notification-bar';
 import '../sections/site-header';
 import '../sections/featured-collection-slider';
 import '../sections/features';
+import '../sections/reviews';
 import '../sections/sticky-nav';
 import '../sections/emoji';
 import '../sections/search-hero';
 import '../sections/list-collections';
+import '../sections/testimonials';
 
 import '../components/type';
 import '../components/quantity';

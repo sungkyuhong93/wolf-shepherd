@@ -45,7 +45,7 @@
 
       <div class="video-modal__text-area">
 
-        <div class="play"></div>
+        <div class="play" js-video-modal="trigger"></div>
 
         {% if sectionTitle != blank %}
           <h2 class="d2 video-modal__title">{{ sectionTitle | escape }}</h2>
@@ -67,26 +67,18 @@
         </div>
       </div>
 
-
-
     </div>
   {% if sectionFullWidth != 'full-width' %}</div>{% endif %}
 
-  <div id="modal-{{sectionID}}"
-  class="modal">
-
+  <div id="modal-{{sectionID}}" class="modal">
     <div class="modal__video" >
-
       {% assign videoSectionUrlReady = videoSectionUrlReady | split: "https://vimeo.com/" %}
-      <iframe src="https://player.vimeo.com/video/{{ videoSectionUrlReady[1] }}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <iframe id="modal" src="https://player.vimeo.com/video/{{ videoSectionUrlReady[1] }}" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
     
       <a class="modal__close modal__close--white" href="#" js-video-modal="close" js-video-target="#modal-{{sectionID}}">
         {% include 'icons' with icon: 'close' %}
       </a>
-
-
     </div>
-  
   </div>
 
 {% endif %}

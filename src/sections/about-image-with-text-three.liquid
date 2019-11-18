@@ -38,7 +38,7 @@
         <div>{{ section.settings.text }}</div>
       {% endif %}
       {% if section.settings.button_label != blank and section.settings.button_link != blank %}
-        <a href="{{ section.settings.button_link }}">
+        <a href="{{ section.settings.button_link }}" class="button--white">
           {{ section.settings.button_label | escape }}
         </a>
       {% endif %}
@@ -49,7 +49,7 @@
 
 {% schema %}
   {
-    "name": "Image with text",
+    "name": "About image with text",
     "settings": [
       {
         "type": "select",
@@ -109,12 +109,6 @@
         "type": "url",
         "id": "button_link",
         "label": "Button link"
-      }
-    ],
-    "presets": [
-      {
-        "name": "Image with text",
-        "category": "Image"
       }
     ]
   }
