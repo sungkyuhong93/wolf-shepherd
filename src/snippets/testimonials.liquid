@@ -7,7 +7,7 @@
             <div class="testimonials__slide testimonials__slide--{{ block.id }}" data-slide-count="{{forloop.index | minus: 1 }}" {{ block.shopify_attributes }}>
               <blockquote class="testimonials__slider-text">
                 {% if block.settings.quote != blank %}
-                  <div class="testimonials__slider-text">‘‘{{ block.settings.quote | strip_html | escape }}’’</div>
+                  <div class="testimonials__slider-text">‘‘{{ block.settings.quote | strip_html  }}’’</div>
                 {% endif %}
               </blockquote>
               <img src="{{ block.settings.image | img_url: '250x' }}">

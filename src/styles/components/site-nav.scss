@@ -61,32 +61,101 @@ site nav
 
     &__item {
       a {
+        background: $COLOR_GREY;
+        border-bottom: 1px solid $COLOR_WHITE;
         display: block;
-        padding: 10px 20px;
+        font-family: $FONT_BODY;
+        font-size: 10px;
+        padding: 18px 20px;
         position: relative;
+        text-transform: uppercase;
       }
     }
 
     &__link-toggle {
       align-items: center;
+      background-image: $ICON_ARROW_DOWN;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 10px 10px;
       bottom: 0;
       display: flex;
+      font-size: 0;
       justify-content: flex-end;
       padding-right: 20px;
       position: absolute;
       right: 0;
       text-align: right;
       top: 0;
-      width: 80px;
+      width: 70px;
+
+      &.is-active {
+        background-image: $ICON_PLUS;
+      }
     }
 
     &__dropdown {
+      border-bottom: 1px solid $COLOR_WHITE;
       display: none;
       list-style: none;
       padding: 0;
 
       &.is-active {
         display: block;
+      }
+    }
+
+    &__dropdown--level-2 {
+      li {
+        border-bottom: 1px solid $COLOR_GREY;
+
+        &:last-child, li {
+          border-bottom: 0;
+        }
+      }
+
+      a {
+        background: $COLOR_WHITE;
+      }
+    }
+
+    &__dropdown--level-3 {
+      padding-bottom: 5px;
+      padding-left: 20px;
+      padding-top: 5px;
+
+      a {
+        background: $COLOR_WHITE;
+        font-family: $FONT_BASE;
+        font-size: 12px;
+        padding: 13px 20px;
+        text-transform: none;
+      }
+    }
+
+    &__helpful-links {
+      display: flex;
+
+      img {
+        margin-bottom: 10px;
+      }
+      
+      a {
+        align-items: center;
+        background: $COLOR_GREY;
+        display: flex;
+        flex-direction: column;
+        font-family: $FONT_BODY;
+        font-size: 10px;
+        justify-content: center;
+        min-width: 50%;
+        padding: 20px;
+        text-align: center;
+        text-transform: uppercase;
+
+        &:first-child {
+          border-right: 1px solid $COLOR_WHITE;
+        }
       }
     }
   }
@@ -137,9 +206,11 @@ site nav
       background: $COLOR_WHITE;
       display: none;
       left: 0;
-      padding: 10px 20px 20px;
+      margin: 0 0 0 -10px !important;
+      // border: 1px solid;
+      padding: 15px 30px 30px !important;
       position: absolute;
-      top: 50px;
+      top: 45px;
       width: 200px;
       z-index: 1;
 
@@ -150,7 +221,7 @@ site nav
       a {
         display: inline-block;
         margin: 0 auto;
-        padding: 5px 15px;
+        padding: 5px 0;
         width: auto;
 
         &::after {

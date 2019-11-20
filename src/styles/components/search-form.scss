@@ -26,15 +26,18 @@ Search Form
 
   &.search-form--is-active {
     .search-form {
-      display: block;
-      width: 100%;
-      position: fixed;
-      padding: 20px;
       background: #fff;
+      display: block;
+      padding: 20px 80px;
+      position: fixed;
       top: 64px;
+      width: 100%;
 
       input {
-        border: 1px solid $COLOR_PRIMARY_LIGHT;
+        border: 1px solid $COLOR_PRIMARY;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
         color: $COLOR_PRIMARY;
         font-family: $FONT_BASE;
 
@@ -45,7 +48,7 @@ Search Form
 
       button[type=submit] {
         bottom: 20px;
-        right: 25px;
+        right: 75px;
         top: 20px;
       }
     }

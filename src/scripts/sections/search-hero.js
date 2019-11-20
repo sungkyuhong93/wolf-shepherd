@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Navigation from '../sections/navigation';
 
 /* ================= Search Popup ================= */
 theme.SearchPopup = (function() {
@@ -25,6 +26,7 @@ theme.SearchPopup = (function() {
     const $searchForm = $('.site-header__search-icon');
     const $searchFocus = $('.site-header__search-icon .search-form input');
     $searchForm.on('click', () => {
+      Navigation().removeActiveState();
       $searchForm.addClass('search-form--is-active');
       $searchFocus.focus();
     });

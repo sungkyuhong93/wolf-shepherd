@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   AjaxCart().init();
   GiftWrap().init();
   QuickAdd().init();
-  Navigation();
+  Navigation().init();
   ExitIntent();
   Instafeed();
   VideoModal();

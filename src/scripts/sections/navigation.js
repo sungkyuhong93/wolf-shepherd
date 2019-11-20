@@ -43,9 +43,9 @@ export default () => {
     document.documentElement.addEventListener('keydown', handleKeydown);
 
     // add a "PAN" recognizer to it (all directions)
-    slideOut.add(new Hammer.Pan({direction: Hammer.DIRECTION_ALL, threshold: 0 }));
-    slideOut.on('pan', handleDrag);
-    slideOutBackground.on('swiperight touch', removeActiveState);
+    // slideOut.add(new Hammer.Pan({direction: Hammer.DIRECTION_ALL, threshold: 0 }));
+    // slideOut.on('pan', handleDrag);
+    // slideOutBackground.on('swiperight touch', removeActiveState);
   }
 
   function handleDrag(ev) {
@@ -98,14 +98,12 @@ export default () => {
   }
 
   function removeActiveState() {
-    nodeSelectors.mobileNav.style.right = `${-300}px`;
-    nodeSelectors.siteHeaderOverlay.classList.remove(cssClasses.active);
+    nodeSelectors.mobileNav.classList.remove(cssClasses.active);
     document.querySelector('body').style.overflowY = 'initial';
   }
 
   function addActiveState() {
-    nodeSelectors.mobileNav.style.right = `${0}px`;
-    nodeSelectors.siteHeaderOverlay.classList.add(cssClasses.active);
+    nodeSelectors.mobileNav.classList.add(cssClasses.active);
     document.querySelector('body').style.overflowY = 'hidden';
   }
 
@@ -119,5 +117,8 @@ export default () => {
   /**
    * Expose public interface.
    */
-  return init();
+  return Object.freeze({
+    init,
+    removeActiveState,
+  });
 };

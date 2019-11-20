@@ -2,14 +2,11 @@
 
   <div class="mobile-navigation">
 
-    <div class="mobile-navigation__search">
-      {% include 'search-form--basic' %}
-    </div>
-
     <div class="mobile-navigation__list">
 
       <ul class="site-nav">
-        {% for link in linklists[section.settings.main_linklist].links %}
+        {% for link in linklists[section.settings.main_linklist_mobile].links %}
+
           {% assign meganav = false %}
           {% comment %}
           ------------------------------------------------------------------------------
@@ -52,7 +49,7 @@
                 <span class="site-nav__link-toggle" js-open="dropdown" data-open=".site-nav__dropdown--{{forloop.index}}">open</span>
               </a>
 
-              <ul class="site-nav__dropdown site-nav__dropdown--{{forloop.index}} navlist navlist--block">
+              <ul class="site-nav__dropdown site-nav__dropdown--level-2 site-nav__dropdown--{{forloop.index}} navlist navlist--block">
                 {% for child_link in link.links %}
                   <li class="navlist__item">
                     <a class="navlist__link" href="{{ child_link.url }}">
@@ -62,11 +59,49 @@
                 {% endfor %}
               </ul>
             </li>
+          
+          {% comment %}
+          ------------------------------------------------------------------------------
+            2 level
+          ------------------------------------------------------------------------------
+          {% endcomment %}
+          {% elsif link.levels == 2 and meganav != true %}
+            <li class="site-nav__item site-nav__item--has-dropdown" data-meganav-parent="{{ link.title | handle }}">
+              <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" href="{{ link.url }}">
+                {{ link.title }}
+                <span class="site-nav__link-toggle" js-open="dropdown" data-open=".site-nav__dropdown--{{forloop.index}}">open</span>
+              </a>
+
+              <ul class="site-nav__dropdown site-nav__dropdown--level-2 site-nav__dropdown--{{forloop.index}} navlist navlist--block">
+                {% for child_link in link.links %}
+                  <li class="navlist__item">
+                    <a class="navlist__link" href="{{ child_link.url }}">
+                      {{ child_link.title }}
+                      
+                      {% if child_link.links != blank %}
+                        <span class="site-nav__link-toggle" js-open="dropdown" data-open=".site-nav__dropdown-2--{{forloop.index}}">open</span>
+                      {% endif %}
+                    </a>
+
+                    <ul class="site-nav__dropdown site-nav__dropdown--level-3 site-nav__dropdown-2--{{forloop.index}} navlist navlist--block">
+                      {% for gran_child_link in child_link.links %}
+                        <li class="navlist__item">
+                          <a class="navlist__link" href="{{ gran_child_link.url }}">
+                            {{ gran_child_link.title }}
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
           {% endif %}
         {% endfor %}
 
         {% if shop.customer_accounts_enabled %}
-          <li class="site-nav__item" data-meganav-parent="{{ link.title | handle }}">
+          <li class="site-nav__item">
 
             {% if customer %}
               <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" href="/account">
@@ -79,6 +114,25 @@
             {% endif %}
           </li>
         {% endif %}
+
+        {% if shop.customer_accounts_enabled %}
+          <li class="site-nav__helpful-links">
+
+          <a href="#">
+            <img src="{{ 'icon-box-wolf.svg' | asset_url }}">
+            returns &<br>exchanges
+          </a>
+
+          <a href="#">
+            <img src="{{ 'icon-help-wolf.svg' | asset_url }}">
+            Customer<br>service
+          </a>
+
+            
+          </li>
+        {% endif %}
+
+
 
       </ul>
     </div>

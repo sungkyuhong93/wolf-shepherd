@@ -4,6 +4,7 @@ import $ from 'jquery';
 import {formatMoney} from '@shopify/theme-currency';
 import {misc as icons} from '../helpers/svg-map';
 import FreeShipping from '../sections/free-shipping';
+import Navigation from '../sections/navigation';
 
 /**
  * Export default AjaxCart.
@@ -174,7 +175,7 @@ export default () => {
       getCartJSON(updateLineItems);
     } else {
       getCartJSON(cartBuild);
-      if (cartOpened !== true ) {
+      if (cartOpened !== true) {
         cartOpen();
       }
     }
@@ -184,6 +185,7 @@ export default () => {
 
   // Ajax Cart Open
   function cartOpen() {
+    Navigation().removeActiveState();
     selectors.$cartBody.addClass('cart-ajax--show');
     cartOpened = true;
   }

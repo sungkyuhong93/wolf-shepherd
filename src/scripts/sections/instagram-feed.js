@@ -55,22 +55,23 @@ export default () => {
   }
 
   function setObserver() {
-    if (('IntersectionObserver' in window)) {
-      const observer = new IntersectionObserver((entries, observer) => { 
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            createFeed();
-            observer.unobserve(entry.target);
-            return false;
-          } else {
-            return false;
-          }
-        });
-      }, {rootMargin: '0px 0px -200px 0px'});
-      document.querySelectorAll('.instafeed').forEach((instagram) => { observer.observe(instagram)});
-    } else {
-      createFeed();
-    }
+    createFeed();
+    // if (('IntersectionObserver' in window)) {
+    //   const observer = new IntersectionObserver((entries, observer) => { 
+    //     entries.forEach((entry) => {
+    //       if (entry.isIntersecting) {
+    //         createFeed();
+    //         observer.unobserve(entry.target);
+    //         return false;
+    //       } else {
+    //         return false;
+    //       }
+    //     });
+    //   }, {rootMargin: '0px 0px -200px 0px'});
+    //   document.querySelectorAll('.instafeed').forEach((instagram) => { observer.observe(instagram)});
+    // } else {
+      
+    // }
   }
 
   /**

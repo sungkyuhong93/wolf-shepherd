@@ -15,6 +15,7 @@ register('site-header-section', {
     $('[js-open="dropdown"]').on('click', function(ev) {
       ev.preventDefault();
       const target = $(this).attr('data-open');
+      $(this).toggleClass(cssClasses.active);
       $(target).toggleClass(cssClasses.active);
       return false;
     });

@@ -46,32 +46,15 @@ body {
     width: 44px;
   }
 
-  // &__hamburger {
-  //   border-bottom: 3px solid $COLOR_BLACK;
-  //   border-top: 3px solid $COLOR_BLACK;
-  //   height: 11px;
-  //   position: relative;
-  //   width: 100%;
-
-  //   &::after {
-  //     border-bottom: 3px solid $COLOR_BLACK;
-  //     bottom: -11px;
-  //     content: '';
-  //     display: block;
-  //     position: absolute;
-  //     width: 100%;
-  //   }
-  // }
-
   &__navigation {
     background-color: $COLOR_WHITE;
     height: 100%;
     padding: 20px 20px 0;
     position: fixed;
-    right: -300px;
-    top: 0;
+    right: -100%;
+    top: 64px;
     transition: $MOBILE_TRANSITION;
-    width: 300px;
+    width: 100%;
     z-index: 99999;
 
     &.is-active {
