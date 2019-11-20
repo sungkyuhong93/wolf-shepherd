@@ -1,4 +1,8 @@
-<form class="product-form" action="/cart/add" method="post" enctype="multipart/form-data">
+<form class="product-form" 
+  action="/cart/add" 
+  method="post" 
+  enctype="multipart/form-data" 
+  onclick="_tfa.push({notify: 'event', name: 'Add_to_Bag', id: 1065515});">
   {% if section.settings.additional_label %}
     {% comment %} 
     <div class="additional_label text-center uppercase">

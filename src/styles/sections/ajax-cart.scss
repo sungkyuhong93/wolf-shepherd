@@ -67,19 +67,6 @@ $CART_HEIGHT: calc(100vh - 280px);
   z-index: 99999;
 
   &__tools {
-    bottom: 15px;
-    left: 15px;
-    margin-top: 20px;
-    position: fixed;
-    right: 15px;
-
-    .ie9 &,
-    html[data-useragent*='MSIE 10.0'] &,
-    html[data-useragent*='rv:11.0'] & {
-      position: absolute;
-      width: 370px;
-    }
-
     .button {
       margin-bottom: 10px;
       width: 100%;
@@ -142,11 +129,8 @@ $CART_HEIGHT: calc(100vh - 280px);
 
   /* =============== Ajax main body/rows of product =============== */
   &__list {
-    border-bottom: rgba(#000, 0.3) 1px solid;
-    height: $CART_HEIGHT;
-    max-height: $CART_HEIGHT;
     overflow-y: auto;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
   }
 
   &__row {
@@ -211,9 +195,12 @@ $CART_HEIGHT: calc(100vh - 280px);
   }
 
   &__row__money {
+    bottom: 0;
     display: block;
     font-size: 12px;
     margin-bottom: 12px;
+    position: absolute;
+    right: 0;
   }
 
   &__row__unit-price {
@@ -232,7 +219,10 @@ $CART_HEIGHT: calc(100vh - 280px);
 
   &__row__variant {
     display: block;
-    margin: 0 0 5px;
+    font-family: $FONT_BASE;
+    font-size: 12px;
+    margin: 6px 0 10px;
+    text-transform: none;
   }
 
   &__remove {

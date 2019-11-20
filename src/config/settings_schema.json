@@ -254,13 +254,13 @@
       {
         "type": "checkbox",
         "id": "freeshipping_enable",
-        "label": "Enable Freeshipping",
+        "label": "Enable free gift",
         "default": false
       },
       {
         "type": "number",
         "id": "freeshipping_threshold",
-        "label": "Freeshipping Threshold"
+        "label": "Free gift threshold"
       },
       {
         "type": "checkbox",

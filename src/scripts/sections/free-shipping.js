@@ -30,10 +30,10 @@ export default () => {
     const valueUntilFree = freeShippingTheshold - cartTotal;
     const percentUntilFree = `${cartTotal / freeShippingTheshold * 100}%`;
     const formatValueUntilFree = formatMoney(valueUntilFree, theme.moneyFormat);
-    const freeShippingText = `You are ${formatValueUntilFree} away from free shipping`;
+    const freeShippingText = `You are ${formatValueUntilFree} away from the free gift`;
 
     if (valueUntilFree <= 0) {
-      selectors.$freeShipping.html('Free shipping on this order');
+      selectors.$freeShipping.html('Free gift on this order');
       selectors.$freeShippingBar.css('width', percentUntilFree);
     } else {
       selectors.$freeShipping.html(freeShippingText);

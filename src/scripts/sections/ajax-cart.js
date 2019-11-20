@@ -261,7 +261,6 @@ export default () => {
                 ${cart.product_title}
                 <small class="cart-ajax__row__variant">${cartVariantTitle}</small>
               </a>
-              <span class="cart-ajax__row__unit-price">${cartVariantPrice}/un</span>
               <span class="cart-ajax__row__money">${cartLinePrice}</span>
               <div class="quantity-wrapper">
                 <div class="quantity-wrapper__minus js--quantity" data-increment="false">-</div>
