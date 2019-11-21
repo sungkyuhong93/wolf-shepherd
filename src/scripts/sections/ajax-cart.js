@@ -5,6 +5,7 @@ import {formatMoney} from '@shopify/theme-currency';
 import {misc as icons} from '../helpers/svg-map';
 import FreeShipping from '../sections/free-shipping';
 import Navigation from '../sections/navigation';
+import cssClasses from '../helpers/cssClasses';
 
 /**
  * Export default AjaxCart.
@@ -224,11 +225,25 @@ export default () => {
     const items = cart.items;
     selectors.$cartList.html('');
 
-    $.each(items, (i, item) => {
-      const cartRow = createMarkup(item, i);
-      selectors.$cartList.append(cartRow);
-    });
-
+    if (items.length) {
+      $.each(items, (i, item) => {
+        const cartRow = createMarkup(item, i);
+        selectors.$cartList.append(cartRow);
+      });
+      $('.cart-ajax__footer').show();
+      $('.cart-ajax__giftwrapping').show();
+    } else {
+      $('.cart-ajax__footer').hide();
+      $('.cart-ajax__giftwrapping').hide();
+      const emptyCart = `
+        <div class="cart-ajax__empty">
+          <h3>Your bag is empty…</h3>
+          <a ahref="/collections/shoes" class="button">shop shoes</a>
+          <a ahref="/collections/accessories" class="button">Shop accessories</a>
+        </div>
+      `;
+      selectors.$cartList.append(emptyCart);
+    }
     if (theme.ajaxCart.upsellEnable !== false) {
       relateProducts(cart);
     }
@@ -281,8 +296,7 @@ export default () => {
       return false;
     }
 
-    $.each(cartUpsell, (i, item) => {
-
+    $.each(cartUpsell.slice(0,3), (i, item) => {
       const collectionItem = item;
       const collectionItemVar = collectionItem.variants[0].id;
       var relateBoo = false;
@@ -291,23 +305,34 @@ export default () => {
         if (cartItem.id === collectionItemVar) {
           relateBoo = true;
         }
+        return i<2;
       });
 
       if (relateBoo === false) {
-        const relatedProductImage = `<div class="cart-ajax__related__product-image" style="background-image:url(${collectionItem.featured_image})"></div>`;
-        const relatedProductTitle = `<h5 class="cart-ajax__related__product-title">${collectionItem.title}</h5><p class="cart-ajax__related__product-price">${formatMoney(collectionItem.price, theme.moneyFormat)}</p>`;
-        const relatedProduct = `<a href="/products/${collectionItem.handle}" class="cart-ajax__related__product-wrapper">${relatedProductImage}${relatedProductTitle}</a>`;
-        relateProductsArray.push(relatedProduct);
+        const relatedProductImage = `<div class="ajax-related__product-image" style="background-image:url(${collectionItem.featured_image})"></div>`;
+        const relatedProductTitle = `
+          <div class="ajax-related__text">
+            <h5 class="ajax-related__product-title">${collectionItem.title}</h5>
+            <p class="ajax-related__product-price">${formatMoney(collectionItem.price, theme.moneyFormat)}</p>
+            <div class="button ajax-related__button">VIEW NOW</div>
+          </div>`;
+        const relatedProductNode = `
+          <a href="/products/${collectionItem.handle}" class="ajax-related__product-wrapper">
+            ${relatedProductImage}
+            ${relatedProductTitle}
+          </a>`;
+
+        relateProductsArray.push(relatedProductNode);
       }
     });
 
-    if (relateProducts.length === 0) {
-      $('.cart-ajax__related-title').addClass('cart-ajax__related-title--hide');
+    if (relateProductsArray.length === 0) {
+      $('.ajax-related').removeClass(cssClasses.active);
     } else {
-      $('.cart-ajax__related-title').removeClass('cart-ajax__related-title--hide');
+      $('.ajax-related').addClass(cssClasses.active);
     }
 
-    $('.cart-ajax__related').html(relateProducts);
+    $('.ajax-related__container').html(relateProductsArray);
     return;
   }
 

@@ -102,18 +102,18 @@
         <p class="collection-grid-item__price">
           {% if product.compare_at_price > product.price %}
             {% if product.price_varies %}
-              {%- assign sale_price = product.price | money -%}
+              {%- assign sale_price = product.price | money_without_trailing_zeros -%}
               {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
             {% else %}
               {{ 'products.product.on_sale' | t }}
-              {{ product.price | money }}
+              {{ product.price | money_without_trailing_zeros }}
             {% endif %}
           {% else %}
             {% if product.price_varies %}
-              {%- assign price = product.price | money -%}
+              {%- assign price = product.price | money_without_trailing_zeros -%}
               {{ 'products.product.from_text_html' | t: price: price }}
             {% else %}
-              {{ product.price | money }}
+              {{ product.price | money_without_trailing_zeros }}
             {% endif %}
           {% endif %}
         </p>

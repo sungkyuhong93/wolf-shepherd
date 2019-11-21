@@ -9,14 +9,14 @@
         {% if product.compare_at_price_max > product.price %}
           <div class="compare_at_price" data-compare-mini-price>
             {% if current_variant.compare_at_price > current_variant.price %}
-              {{ current_variant.compare_at_price | money }}
+              {{ current_variant.compare_at_price | money_without_trailing_zeros }}
             {% endif %}
           </div>
           <div class="visually-hidden" data-compare-mini-text>{{ 'products.product.regular_price' | t }}</div>
         {% endif %}
 
         <div data-product-mini-price>
-          {{ current_variant.price | money }}
+          {{ current_variant.price | money_without_trailing_zeros }}
         </div>
       </div>
 
