@@ -30,6 +30,7 @@ import '../sections/emoji';
 import '../sections/search-hero';
 import '../sections/list-collections';
 import '../sections/testimonials';
+import '../sections/collection-page';
 
 import '../components/type';
 import '../components/quantity';

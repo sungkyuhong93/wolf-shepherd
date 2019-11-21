@@ -1,43 +1,13 @@
-{% include 'hero-image' with type: 'blog' %}
-
-{% include 'sub-menu' %}
-
-{% paginate blog.articles by 8 %}
-  {% comment %}
-  Article Previews
-  ====================
-  {% endcomment %}
-  <div class="blog">
-    <div class="page-width blog__width">
-      <div class="grid">
-        {% for article in blog.articles %}
-
-          {%- capture postCounterClass -%}
-            grid__item small--one-whole medium-up--one-half
-          {%- endcapture -%}
-
-          {% include 'featured-posts'  with gridWidth: postCounterClass %}
-
-        {% endfor %}
-      </div>
-    </div>
-
-    <div class="page-width">
-    {% if paginate.pages > 1 %}
-      {% include 'pagination' %}
-    {% endif %}
-    </div>
-  </div>
-
-{% endpaginate %}
-
+{% include 'hero-image' type: 'section' %}
+ 
 {% schema %}
   {
-    "name": "Blog Layout",
+    "name": "Contact hero",
     "settings": [
       {
-        "type": "header",
-        "content": "Blog hero image"
+        "type": "checkbox",
+        "id": "enable",
+        "label": "Show section"
       },
       {
         "type": "select",
@@ -70,6 +40,36 @@
             "value": "wrapper"
           }
         ]
+      },
+      {
+        "type": "select",
+        "id": "height",
+        "label": "Block height",
+        "default": "hero-image--small",
+        "options": [
+          {
+            "label": "Small",
+            "value": "hero-image--small"
+          },
+          {
+            "label": "Medium",
+            "value": "hero-image--medium"
+          },
+          {
+            "label": "Large",
+            "value": "hero-image--large"
+          },
+          {
+            "label": "X-Large",
+            "value": "hero-image--xlarge"
+          }
+        ]
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Desktop Image",
+        "info": "Advised size:"
       },
       {
         "type": "select",
@@ -148,29 +148,42 @@
         ]
       },
       {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Desktop image"
+        "type": "select",
+        "id": "text_size",
+        "label": "Text size",
+        "default": "d1",
+        "options": [
+          {
+            "label": "XLarge",
+            "value": "d1"
+          },
+          {
+            "label": "Large",
+            "value": "d2"
+          }
+        ]
       },
       {
+        "type": "richtext",
+        "id": "title",
+        "label": "Heading",
+        "default": "<p>Contact Us</p>"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text"
+      },     
+      {
         "type": "header",
-        "content": "Mobile Settings"
+        "content": "Mobile only settings"
       },
       {
         "type": "image_picker",
         "id": "mobile_image",
-        "label": "Mobile image"
-      },
-      {
-        "type": "header",
-        "content": "Blog Settings"
-      },
-      {
-        "type": "link_list",
-        "id": "linklist",
-        "label": "Navigation"
+        "label": "Mobile Image",
+        "info": "Advised size:"
       }
     ]
   }
-
 {% endschema %}

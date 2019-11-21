@@ -2,32 +2,13 @@
   {% paginate search.results by 16 %}
   <div class="grid search-header">
     <div class="grid__item medium-up--one-whole text-center">
-      <h1 class="h4">
-        {% if search.performed %}
-          {% if search.results_count == 0 %}
-            {{ 'general.search.no_results_html' | t: terms: search.terms }}
-          {% else %}
-            {{ 'general.search.results_for_html' | t: terms: search.terms }}
-          {% endif %}
-        {% else %}
-          {{ 'general.search.title' | t }}
-        {% endif %}
-      </h1>
+      {% if search.performed %}
+        <h1>Your search for “{{search.terms}}” revealed the following:</h1>
+      {% else %}
+        <h1>{{ 'general.search.title' | t }}</h1>
+      {% endif %}
 
-      <form action="/search" method="get" role="search" class="relative">
-        <label for="Search" class="label-hidden">
-          {{ 'general.search.placeholder' | t }}
-        </label>
-        <input type="search"
-               name="q"
-               id="Search"
-               value="{{ search.terms | escape }}"
-               placeholder="{{ 'general.search.placeholder' | t }}">
-        <button type="submit" class="btn">
-          {% include 'icons' with icon: 'search' %}
-          <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
-        </button>
-      </form>
+      {% include 'search-form--basic' %}
     </div>
   </div>
 
@@ -36,7 +17,7 @@
         {% for item in search.results %}
           {% if item.object_type == 'product' %}
             {% assign product = item %}
-            {% include 'collection-grid-product'  with gridWidth: "grid__item medium-up--one-quarter" %}
+            {% include 'collection-grid-product'  with gridWidth: "grid__item small--one-half medium-up--one-quarter" %}
           {% else %}
             <div class="grid__item medium-up--one-quarter"><h2><a href="{{item.url}}">{{ item.title }}</a></h2></div>
           {% endif %}

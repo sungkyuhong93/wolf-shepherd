@@ -22,21 +22,7 @@
 
   {% include 'hero-image' with type: 'collection' %}
 
-  {% if section.settings.linklist != blank %}
-    <div class="collection-navigation">
-      <div class="page-width">
-        <ul>
-        {% for link in linklists[section.settings.linklist].links %}
-          <li class="collection-navigation__item {% if link.active %}collection-navigation__link--active{% endif %}">
-            <a class="collection-navigation__link" href="{{ link.url }}">
-              {{ link.title }}
-            </a>
-          </li>
-        {% endfor %}
-        </ul>
-      </div>
-    </div>
-  {% endif %}
+  {% include 'sub-menu' %}
 
   <div class="collection-wrapper">
     <div class="page-width">

@@ -7,4 +7,29 @@ Search Page
   h1 {
     margin: 0 0 30px;
   }
+
+  form {
+    margin: 0 auto;
+    max-width: 400px;
+    position: relative;
+  }
+
+  .search-form {
+    input {
+      border: 1px solid $COLOR_PRIMARY_LIGHT;
+
+      &:focus {
+        border: 1px solid $COLOR_PRIMARY;
+      }
+    }
+
+    button[type=submit] {
+      background: $COLOR_PRIMARY;
+
+      g, path {
+        color: $COLOR_WHITE;
+        stroke: $COLOR_WHITE;
+      }
+    }
+  }
 }
