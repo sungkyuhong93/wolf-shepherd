@@ -13,7 +13,7 @@
   {% assign sectionButtonLabel = section.settings.button_1 %}
   {% assign sectionButtonLink = section.settings.button_link_1 %}
   {% assign sectionButtonLabelTwo = section.settings.play_text %}
-  {% if section.settings.text_color contains '--white' %}
+  {% if section.settings.text_color contains '--black' %}
     {% assign sectionButtonColor = 'button' %}
   {% else %}
     {% assign sectionButtonColor = 'button button--white' %}
@@ -45,7 +45,7 @@
 
         <div class="video-modal__text-area">
 
-          <div class="play" js-video-modal="trigger" js-video-target="#modal-{{sectionID}}"></div>
+          {% comment %} <div class="play" js-video-modal="trigger" js-video-target="#modal-{{sectionID}}"></div> {% endcomment %}
 
           {% if sectionTitle != blank %}
             <h2 class="d2 video-modal__title">{{ sectionTitle | escape }}</h2>

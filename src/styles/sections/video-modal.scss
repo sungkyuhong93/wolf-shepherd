@@ -8,9 +8,9 @@ Video modal Section
   pointer-events: all;
   position: relative;
 
-  &--black {
+  &--white {
     #{$parent}__overlay {
-      background: rgba($COLOR_BLACK, 0.6);
+      background: rgba($COLOR_PRIMARY, 0.6);
     }
 
     #{$parent}__text, #{$parent}__text *, #{$parent}__title {
@@ -95,24 +95,24 @@ Video modal Section
   }
 
   .play_text {
-    position: relative;
+    // position: relative;
 
-    &::before {
-      border-bottom: 5px solid transparent;
-      border-left: 7px solid $COLOR_PRIMARY;
-      border-top: 4px solid transparent;
-      content: '';
-      float: right;
-      height: 0;
-      margin-left: 9px;
-      pointer-events: none;
-      position: absolute;
-      right: 25px;
-      top: 0;
-      transform: translateX(0%) translateY(15px);
-      transition: 0.4s;
-      width: 0;
-    }
+    // &::before {
+    //   border-bottom: 5px solid transparent;
+    //   border-left: 7px solid $COLOR_PRIMARY;
+    //   border-top: 4px solid transparent;
+    //   content: '';
+    //   float: right;
+    //   height: 0;
+    //   margin-left: 9px;
+    //   pointer-events: none;
+    //   position: absolute;
+    //   right: 25px;
+    //   top: 0;
+    //   transform: translateX(0%) translateY(15px);
+    //   transition: 0.4s;
+    //   width: 0;
+    // }
   }
 
   .play {
