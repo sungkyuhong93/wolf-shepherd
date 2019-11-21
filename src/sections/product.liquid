@@ -17,8 +17,6 @@
 
           {% include 'product-form' %}
 
-          {% comment %} <a href="#!" class="product-form__size-guide js--size-guide">Size Guide</a> {% endcomment %}
-
           <div class="product-description">
             {% if product.description contains '%title-' %}
               {% include 'product-accordion' %}
@@ -52,10 +50,7 @@
   </div>
 </div>
 
-{% if section.settings.show_size_guide %} 
-  {% include 'size-guide' %}
-{% endif %}
-
+{% include 'size-guide' %}
 
 {% schema %}
   {

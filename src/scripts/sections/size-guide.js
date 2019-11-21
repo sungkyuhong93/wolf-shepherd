@@ -1,17 +1,19 @@
 import $ from 'jquery';
 
-theme.SizeGuide =  new function(){
+theme.SizeGuide = (function() {
 
-  var selectors = {
-    $sizeGuideTrigger  : $('.js--size-guide'),
-    $sizeGuideClose    : $('.size-guide__close, .size-guide__background'),
-    $sizeGuidePanel    : $('.size-guide__wrapper'),
-    activeClass        : 'size-guide--show',
-    $mesurementsToggle : $('.size-guide__toggle')
+  console.log('size guide')
+  const selectors = {
+    $sizeGuideTrigger: $('.js--size-guide'),
+    $sizeGuideClose: $('.size-guide__close, .size-guide__background'),
+    $sizeGuidePanel: $('.size-guide__wrapper'),
+    activeClass: 'size-guide--show',
+    $mesurementsToggle: $('.size-guide__toggle'),
   };
 
   selectors.$sizeGuideTrigger.on('click', function(event){
     event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+    console.log('click it')
     openSizeGuide();
   });
 
@@ -25,15 +27,16 @@ theme.SizeGuide =  new function(){
     mesurementsToggle($(this));
   });
 
-  var openSizeGuide = function(){
+  function openSizeGuide() {
+    console.log('open')
     selectors.$sizeGuidePanel.addClass(selectors.activeClass);
   }
 
-  var closeSizeGuide = function(){
+  function closeSizeGuide(){
     selectors.$sizeGuidePanel.removeClass(selectors.activeClass);
   }
 
-  var mesurementsToggle = function(x){
+  function mesurementsToggle(x){
     var $this = x,
         size = $this.attr('data-size');
 
@@ -43,5 +46,4 @@ theme.SizeGuide =  new function(){
     $('.size-guide__measurement').hide();
     $('.' + size).show();
   }
-
-}();  
+})();  
