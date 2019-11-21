@@ -238,8 +238,8 @@ export default () => {
       const emptyCart = `
         <div class="cart-ajax__empty">
           <h3>Your bag is empty…</h3>
-          <a ahref="/collections/shoes" class="button">shop shoes</a>
-          <a ahref="/collections/accessories" class="button">Shop accessories</a>
+          <a href="/collections/shoes" class="button">shop shoes</a>
+          <a href="/collections/accessories" class="button">Shop accessories</a>
         </div>
       `;
       selectors.$cartList.append(emptyCart);

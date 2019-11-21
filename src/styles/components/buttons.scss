@@ -92,6 +92,10 @@ $BUTTON_LETTER_SPACING: 0.25px;
       min-width: initial;
       padding-left: 0;
       padding-right: 0;
+
+      &:hover {
+        background: $BUTTON_WHITE_COLOR;
+      }
     }
   }
 }

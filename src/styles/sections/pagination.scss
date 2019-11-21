@@ -5,12 +5,20 @@ pagination
   @include flexbox;
   @include align-items(center);
   @include justify-content(center);
-
-  padding-left: 40px;
+  margin-bottom: 64px;
+  padding-left: 0;
 
   li {
-    display: inline-block;
     list-style: none;
+  }
+
+  .wolf-arrow {
+    display: block;
+
+    &--disabled {
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 
   .pagination-nav {
@@ -29,16 +37,45 @@ pagination
     }
   }
 
+  &__pages {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
   .page {
-    line-height: 20px;
-    padding: 0 5px;
+    align-items: center;
+    background: $COLOR_WHITE;
+    border-radius: 100%;
+    color: $COLOR_PRIMARY;
+    display: flex;
+    font-size: 13px;
+    height: 24px;
+    justify-content: center;
+    line-height: 24px;
+    margin: 0 5px;
+    transition: 0.2s;
+    width: 24px;
 
     &:hover {
-      font-weight: 600;
+      background: $COLOR_PRIMARY;
+      color: $COLOR_WHITE;
     }
 
     &.current {
-      font-weight: 600;
+      background: $COLOR_PRIMARY;
+      color: $COLOR_WHITE;
+    }
+
+  }
+
+  @include media-query($medium-up) {
+    justify-content: space-between;
+
+    .page {
+      height: 34px;
+      line-height: 34px;
+      width: 34px;
     }
   }
 }

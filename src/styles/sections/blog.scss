@@ -1,7 +1,18 @@
 /* ============================================================================
 Blog page
 ============================================================================== */
+.blog {
+  &__width {
+    margin-bottom: 40px;
+    max-width: 1080px;
+  }
+}
+
 .blog-grid-item {
+  &__meta {
+    margin-bottom: 35px;
+  }
+
   &__image-container {
     background-position: center;
     background-repeat: no-repeat;
@@ -10,7 +21,19 @@ Blog page
     height: 0;
     margin-bottom: 20px;
     overflow: hidden;
-    padding-top: 90%;
+    padding-top: 60%;
+  }
+
+  &__title {
+    @include media-query($small) {
+      font-size: 18px;
+      margin-bottom: 3px;
+    }
+  }
+
+  &__date {
+    color: #8C8C8C;
+    margin-bottom: 6px;
   }
 }
 

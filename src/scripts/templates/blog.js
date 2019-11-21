@@ -6,6 +6,8 @@
  * @namespace blog
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+import '../snippets/blog';
 
+document.addEventListener('DOMContentLoaded', () => {
+  
 });

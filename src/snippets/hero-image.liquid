@@ -52,6 +52,31 @@
   {% assign sectionMobileTextPosition = section.settings.mobile_text_position %}
   {% assign mp4 = section.settings.mp4 %}
   {% assign ogg = section.settings.ogg %}
+{% elsif type == "blog" %}
+  {% assign sectionId = section.id %}
+  {% assign sectionEnable = true %}
+  {% assign sectionAlign = section.settings.alignment %}
+  {% assign sectionPositionX = section.settings.positionX %}
+  {% assign sectionPositionY = section.settings.positionY %}
+  {% assign sectionImage = section.settings.image | img_url: 'master'  %}
+  {% if section.settings.mobile_image != blank %}
+    {% assign sectionImageMobile = section.settings.mobile_image | img_url: 'master'  %}
+  {% else %}
+    {% assign sectionImageMobile = section.settings.image | img_url: 'master'  %}
+  {% endif %}
+  {% assign sectionHeight = 'hero-image--small hero-image--collection' %}
+  {% assign sectionFullWidth = section.settings.full-width %}
+  {% assign sectionMarginBottom = section.settings.margin_bottom %}
+  {% assign sectionTextColor = section.settings.text_color %}
+  {% assign sectionTextSize = section.settings.text_size | default: 'd2' %}
+  {% assign sectionTitle = blog.title %}
+  {% assign sectionText = '' %}
+  {% assign sectionButtonLabel = blank %}
+  {% assign sectionButtonLink = blank %}
+  {% assign sectionButtonColor = blank %}
+  {% assign sectionMobileTextPosition = section.settings.mobile_text_position %}
+  {% assign mp4 = section.settings.mp4 %}
+  {% assign ogg = section.settings.ogg %}
 {% elsif type == "article" %}
   {% assign sectionId = 'null' %}
   {% assign sectionEnable = true %}

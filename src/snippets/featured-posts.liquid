@@ -14,23 +14,19 @@
 
   <div class="blog-grid-item__meta">
 
+    <h6 class="blog-grid-item__date">
+      {{ article.published_at | time_tag: format: 'month_day_year' }}
+    </h6>
+
     <a href="{{ article.url }}">
-      <h2 class="h5 blog-grid-item__title">
+      <h3 class="blog-grid-item__title">
         {{ article.title }}
-      </h2>
+      </h3>
     </a>
 
-    <p class="rte blog-grid-item__excerpt">
-      {% if article.excerpt.size > 0 %}
-        {{ article.excerpt | strip_html | truncate: 100 | escape }}
-      {% else %}
-        {{ article.content | strip_html | truncate: 100 | escape }}
-      {% endif %}
-    </p>
-
-    {% comment %}<a href="{{ article.url }}" class="">
+    <a href="{{ article.url }}" class="button--white button--white--compress">
       {{ 'blogs.article.read_more' | t }}
-    </a>{% endcomment %}
+    </a>
 
   </div>
 </div>
