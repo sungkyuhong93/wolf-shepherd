@@ -23,11 +23,20 @@ const selectors = {
  * Instagram API key and UserID
  */
 const api = {
-  userID: '1531501131',
-  accessToken: '1531501131.1677ed0.8e62334cb415450a9b4d6b3b768f4282',
+  userID: $('#instafeed-section').attr('data-user-key'),
+  accessToken: $('#instafeed-section').attr('data-api'),
 };
 
+// const api = {
+//   userID: '1531501131',
+//   accessToken: '1531501131.1677ed0.8e62334cb415450a9b4d6b3b768f4282',
+// };
+
 export default () => {
+
+
+  console.log(api.accessToken)
+
   function createFeed() {
     const userFeed = new Instafeed({
       get: 'user',

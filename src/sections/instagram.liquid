@@ -5,10 +5,11 @@
 ------------------------------------------------------------------------------
 {% endcomment %}
 <section 
-  id="instafeed-section" 
+  id="instafeed-section"
+  data-api="{{section.settings.api}}"
+  data-user-key="{{section.settings.userkey}}"
   class="instafeed {{ alignContent }} {% if template != 'index' %} instafeed--load-more {% endif %} {% if section.settings.margin_bottom == 'margin' %}section-margin-bottom{% endif %}" data-section-id="{{ section.id }}" data-section-type="instafeed">
   {% if section.settings.full-width != 'full-width' %}<div class="page-width">{% endif %}
-
 
   <div class="instafeed__header">
 
@@ -84,6 +85,16 @@
         "id": "title",
         "label": "Heading",
         "default": "Instagram"
+      },
+      {
+        "type": "text",
+        "id": "api",
+        "label": "API Key"
+      },
+      {
+        "type": "text",
+        "id": "userkey",
+        "label": "User Key"
       }
     ],
     "presets": [
