@@ -34,9 +34,6 @@ const api = {
 
 export default () => {
 
-
-  console.log(api.accessToken)
-
   function createFeed() {
     const userFeed = new Instafeed({
       get: 'user',

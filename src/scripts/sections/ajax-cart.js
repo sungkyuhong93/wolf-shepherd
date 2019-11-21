@@ -217,7 +217,7 @@ export default () => {
   }
 
   function updateAjaxCartTotal(cart) {
-    const cartTotal = formatMoney(cart.total_price, theme.moneyFormat);
+    const cartTotal = formatMoney(cart.total_price, theme.moneyFormat).replace('.00','');
     selectors.$cartTotalPrice.html(`<span class=money>${cartTotal}</span>`);
   }
 
@@ -261,8 +261,8 @@ export default () => {
   function createMarkup(cart, loopCount) {
 
     const cartVariantTitle = cart.variant_title === null ? '' : cart.variant_title ;
-    const cartVariantPrice = formatMoney(cart.price, theme.moneyFormat);
-    const cartLinePrice = formatMoney(cart.line_price, theme.moneyFormat);
+    const cartVariantPrice = formatMoney(cart.price, theme.moneyFormat).replace('.00','');
+    const cartLinePrice = formatMoney(cart.line_price, theme.moneyFormat).replace('.00','');
     const loopCounter = loopCount + 1;
     const isGiftWrap = isGiftWrapCheck(cart);
 
@@ -313,7 +313,7 @@ export default () => {
         const relatedProductTitle = `
           <div class="ajax-related__text">
             <h5 class="ajax-related__product-title">${collectionItem.title}</h5>
-            <p class="ajax-related__product-price">${formatMoney(collectionItem.price, theme.moneyFormat)}</p>
+            <p class="ajax-related__product-price">${formatMoney(collectionItem.price, theme.moneyFormat).replace('.00','')}</p>
             <div class="button ajax-related__button">VIEW NOW</div>
           </div>`;
         const relatedProductNode = `

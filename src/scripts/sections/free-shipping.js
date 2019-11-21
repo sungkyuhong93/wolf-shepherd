@@ -29,7 +29,7 @@ export default () => {
     const cartTotal = cart.total_price;
     const valueUntilFree = freeShippingTheshold - cartTotal;
     const percentUntilFree = `${cartTotal / freeShippingTheshold * 100}%`;
-    const formatValueUntilFree = formatMoney(valueUntilFree, theme.moneyFormat);
+    const formatValueUntilFree = formatMoney(valueUntilFree, theme.moneyFormat).replace('.00','');
     const freeShippingText = `You are ${formatValueUntilFree} away from the free gift`;
 
     if (valueUntilFree <= 0) {

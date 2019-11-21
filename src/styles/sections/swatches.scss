@@ -77,19 +77,30 @@ Swatches Styles
 
 .swatch-product {
   background: $COLOR_WHITE;
-  border: 1px solid $COLOR_SWATCH_BORDER;
+  // border: 1px solid $COLOR_SWATCH_BORDER;
   border-radius: 50%;
+  box-shadow: 0 0 0 1px $COLOR_SWATCH_BORDER;
   color: $COLOR_BLACK;
   height: 14px;
   line-height: 14px;
   margin: 0 4px;
   min-width: 14px;
   padding: 0;
+  position: relative;
   transition: all 0.6s ease;
   width: 14px;
 
+  // &:before {
+  //   background: red;
+  //   content: '';
+  //   position: absolute;
+  //   height: 100px ;
+  //   width: 100px ;
+  // }
+
   &:hover, &.swatch-product--active {
-    box-shadow: 0 0 0 1px $COLOR_BLACK;
+    box-shadow: 0 0 0 1px $COLOR_SWATCH_BORDER, 0 0 0 2px $COLOR_BLACK;
+    // box-shadow: 0 0 0 1px $COLOR_BLACK;
   }
 }
 
@@ -119,6 +130,7 @@ Swatches Styles
   .swatch-product {
     border: 1px solid $COLOR_PRIMARY_LIGHT;
     border-radius: 0;
+    box-shadow: none;
     font-family: $FONT_BASE;
     font-size: 12px;
     height: 32px;
