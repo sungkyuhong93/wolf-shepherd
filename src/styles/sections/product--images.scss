@@ -81,11 +81,20 @@
 .product-slider-nav {
   overflow: hidden;
 
+  .slick-track {
+    margin-left: 0;
+  }
+
+  .slick-current {
+    border: 1px solid $COLOR_PRIMARY;
+  }
+
   @include media-query($medium-down) {
     .slick-track {
       align-items: center;
       display: flex;
       justify-content: center;
+      margin-left: auto;
       padding: 20px 0;
     }
 

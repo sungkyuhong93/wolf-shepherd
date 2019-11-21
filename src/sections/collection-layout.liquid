@@ -20,13 +20,7 @@
 
 {% paginate collection.products by collectionCount %}
 
-  {% if section.settings.enable and collection.image %}
-    {% include 'hero-image' with type: 'collection' %}
-  {% else %}
-    <div class="page-width">
-      <h1 class="collection__header text-center">{{ collection.title }}</h1>
-    </div>
-  {% endif %}
+  {% include 'hero-image' with type: 'collection' %}
 
   {% if section.settings.linklist != blank %}
     <div class="collection-navigation">
@@ -91,12 +85,6 @@
       {
         "type": "header",
         "content": "Collection hero image"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable",
-        "label": "Show section",
-        "default": true
       },
       {
         "type": "select",
@@ -205,6 +193,11 @@
             "value": "hero-image--black"
           }
         ]
+      },
+      {
+        "type": "image_picker",
+        "id": "default_image",
+        "label": "Default image"
       },
       {
         "type": "header",

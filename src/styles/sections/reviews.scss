@@ -15,10 +15,14 @@
     }
   }
 
-  // &__paragraph {
-  //   font-size: 12px;
-  //   margin: 20px;
-  // }
+  .stamped-starrating {
+    display: block;
+    margin: 0 0 10px!important;
+
+    .stamped-fa:before {
+      font-size: 14px;
+    }  
+  }
 
   &__block {
     align-items: center;

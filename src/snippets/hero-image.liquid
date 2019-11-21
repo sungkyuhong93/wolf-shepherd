@@ -23,7 +23,7 @@
   {% assign sectionMobileTextPosition = section.settings.mobile_text_position %}
 {% elsif type == "collection" %}
   {% assign sectionId = section.id %}
-  {% assign sectionEnable = section.settings.enable %}
+  {% assign sectionEnable = true %}
   {% assign sectionAlign = section.settings.alignment %}
   {% assign sectionPositionX = section.settings.positionX %}
   {% assign sectionPositionY = section.settings.positionY %}
@@ -31,8 +31,13 @@
     {% assign sectionImage = collection.metafields.collection['alternate-image']  %}
     {% assign sectionImageMobile = collection.metafields.collection['alternate-image'] %}
   {% else %}
-    {% assign sectionImage = collection.image | img_url: 'master'  %}
-    {% assign sectionImageMobile = collection.image | img_url: 'master'  %}
+    {% if collection.image == blank %}
+      {% assign sectionImage = section.settings.default_image | img_url: 'master'  %}
+      {% assign sectionImageMobile = section.settings.default_image | img_url: 'master'  %}
+    {% else %}
+      {% assign sectionImage = collection.image | img_url: 'master'  %}
+      {% assign sectionImageMobile = collection.image | img_url: 'master'  %}
+    {% endif %}
   {% endif %}
   {% assign sectionHeight = 'hero-image--small hero-image--collection' %}
   {% assign sectionFullWidth = section.settings.full-width %}
