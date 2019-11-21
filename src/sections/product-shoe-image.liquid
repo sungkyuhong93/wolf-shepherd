@@ -1,0 +1,84 @@
+{% assign sectionId = section.id %}
+{% assign sectionEnable = section.settings.enable %}   
+{% assign sectionImage = section.settings.image | img_url: 'master'  %}
+{% assign sectionImageTablet = section.settings.image_tablet | img_url: 'master'  %}
+{% assign sectionImageMobile = section.settings.image_mobile | img_url: 'master'  %}
+{% assign sectionFullWidth = section.settings.full-width %}
+{% assign sectionMarginBottom = section.settings.margin_bottom %}
+
+{% if sectionEnable %}
+  {% if sectionFullWidth != 'full-width' %}<div class="page-width">{% endif %}
+
+  <div class="product-shoe-image {{ sectionMarginBottom }}">
+    <img class="product-shoe-image__mobile" src="{{sectionImageMobile}}"/>
+    <img class="product-shoe-image__tablet" src="{{sectionImageTablet}}"/>
+    <img class="product-shoe-image__desktop" src="{{sectionImage}}"/>
+  </div>
+
+  {% if sectionFullWidth != 'full-width' %}</div>{% endif %}
+  
+{% endif %}
+ 
+{% schema %}
+  {
+    "name": "Performance Shoe",
+    "class": "index-section index-section--flush",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable",
+        "label": "Show section"
+      },
+      {
+        "type": "select",
+        "id": "margin_bottom",
+        "label": "Margin bottom",
+        "default": "no-margin",
+        "options": [
+          {
+            "label": "Margin bottom",
+            "value": "section-margin-bottom"
+          },
+          {
+            "label": "No margin",
+            "value": "no-margin"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "full-width",
+        "label": "Full width",
+        "default": "full-width",
+        "options": [
+          {
+            "label": "Full width",
+            "value": "full-width"
+          },
+          {
+            "label": "Within wrapper",
+            "value": "wrapper"
+          }
+        ]
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Desktop image",
+        "info": "Advised size:"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_tablet",
+        "label": "Tablet image",
+        "info": "Advised size:"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Mobile image",
+        "info": "Advised size:"
+      }
+    ]
+  }
+{% endschema %}

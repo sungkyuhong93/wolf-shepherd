@@ -3,12 +3,14 @@
 ============================================================================== */
 .product-images {
   display: inline-block;
+  position: relative;
   width: 100%;
 
   &__container {
     height: 0;
     opacity: 0;
     overflow: hidden;
+    position: relative;
     width: 100%;
 
     &.is-active {
@@ -46,6 +48,20 @@
       }
     }
   }
+
+  &__zoom-pane {
+    bottom: 80px;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .drift-zoom-pane {
+    background-color: $COLOR_WHITE;
+  }
 }
 
 .main-product-slider:not(.slick-initialized) {
@@ -57,6 +73,7 @@
 }
 
 .main-product-slider {
+  cursor: zoom-in;
   overflow: hidden;
   position: relative;
 }

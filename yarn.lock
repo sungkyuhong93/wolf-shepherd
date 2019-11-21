@@ -3998,6 +3998,11 @@ download@^6.2.2:
     p-event "^1.0.0"
     pify "^3.0.0"
 
+drift-zoom@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/drift-zoom/-/drift-zoom-1.4.0.tgz#5ad459320ae825ee67b38368716a52719f1d0565"
+  integrity sha512-hmMntkIEqXI+HrbSsgL0i3onAsESXHagEXUU/EiXuD8ksPpQtCy962AA6IEgNWvtnf+IzXUHEBcdopLPOPFoTw==
+
 duplexer2@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.0.2.tgz#c614dcf67e2fb14995a91711e5a617e8a60a31db"
@@ -7270,12 +7275,19 @@ jquery-match-height@^0.7.2:
   resolved "https://registry.yarnpkg.com/jquery-match-height/-/jquery-match-height-0.7.2.tgz#f8d9f3ba5314daab109cf07408674be204be5f0e"
   integrity sha1-+NnzulMU2qsQnPB0CGdL4gS+Xw4=
 
+jquery-zoom@^1.7.21:
+  version "1.7.21"
+  resolved "https://registry.yarnpkg.com/jquery-zoom/-/jquery-zoom-1.7.21.tgz#9c8cbb40cefaeba288e9dd05a67e5f0f8dcec4f3"
+  integrity sha512-C3aDEt0c4TkPrOPqIs5VAOwBMgitf1I7jEakO15G3QfxdVEivBvUlkiCjfcGQM+FyXdvshpbiEJKDbEdPz2/pw==
+  dependencies:
+    jquery ">=1.7"
+
 jquery.cookie@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/jquery.cookie/-/jquery.cookie-1.4.1.tgz#d63dce209eab691fe63316db08ca9e47e0f9385b"
   integrity sha1-1j3OIJ6raR/mMxbbCMqeR+D5OFs=
 
-jquery@^3.2.1:
+jquery@>=1.7, jquery@^3.2.1:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
   integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==

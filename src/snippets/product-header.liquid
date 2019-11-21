@@ -17,7 +17,7 @@
 
     {% unless product.metafields.stamped.reviews_count == blank %}
     <div class="review-info">
-      <a id="readTheReviews">
+      <a href="#readTheReviewsContainer" id="readTheReviews" class="slide-to">
         <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
       </a>
     </div>

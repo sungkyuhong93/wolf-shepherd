@@ -33,6 +33,7 @@ import '../sections/testimonials';
 
 import '../components/type';
 import '../components/quantity';
+import '../components/slide-to';
 
 document.addEventListener('DOMContentLoaded', () => {
   AjaxCart().init();

@@ -15,6 +15,7 @@
   {% assign productImage = '' %}
   {% assign colorClean = color | downcase %}
 
+
   <div id="product-images__container--{{colorClean}}" 
     class="product-images__container
     {% if selectColour == colorClean %} is-active {% endif %}" 
@@ -24,6 +25,8 @@
     <div class="product-images">
       {% if product.images.size > 1 %}
       
+        <div class="product-images__zoom-pane" js-product-gallery="zoomPane"></div>
+
         <div class="main-product-slider" id="product-slider--{{colorClean}}">
           {% for image in product.images %}
             {% assign varColor = image.alt | downcase %}
@@ -40,8 +43,10 @@
                   {% endif %}
                 {% endif %}
               {% endfor %}
-
-              <img src="{{ productImage }}" alt="{{ image.alt | escape }}" {{productData}}>
+              
+              <div js-product-gallery="zoom">
+                <img src="{{ productImage }}" alt="{{ image.alt | escape }}" {{productData}} data-zoom="{{ image.src | img_url: '1024x1024', scale: 2 }}">
+              </div>
 
               {% assign loopCounter = loopCounter | plus: 1 %}
             {% endif %}

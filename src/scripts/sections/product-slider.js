@@ -1,7 +1,33 @@
 import $ from 'jquery';
 import _ from 'slick-carousel';
+import Drift from 'drift-zoom';
+import jsWidth from '../helpers/screenWidths';
+
+const selectors = {
+  zoomImage: '[js-product-gallery="zoom"]',
+  zoomPane: '[js-product-gallery="zoomPane"]',
+};
 
 export default () => {
+
+  const nodeSelectors = {
+    zoomImage: document.querySelectorAll(selectors.zoomImage),
+    zoomPane: document.querySelector(selectors.zoomPane),
+  };
+
+   /**
+   * Options for Drift zoom.
+   */
+  const zoomOptions = {
+    touchBoundingBox: true,
+    paneContainer: nodeSelectors.zoomPane,
+    zoomFactor: 2,
+  };
+
+  /**
+   * Instance globals.
+   */
+  const zoomImages = {};
 
   function slickRender(slider, nav) {
     slider.slick({
@@ -37,6 +63,19 @@ export default () => {
 
   function init() {
     slickLoop();
+
+    setZoomEvents();
+  }
+
+  function setZoomEvents() {
+    const windowWidth = $(window).width();
+
+    if (windowWidth >= jsWidth.tablet) {
+      [...nodeSelectors.zoomImage].forEach((element, index) => {
+        // console.log(element);
+        zoomImages[index] = new Drift(element.querySelector('img'), zoomOptions);
+      });
+    }
   }
 
   /**

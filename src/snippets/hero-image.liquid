@@ -45,6 +45,8 @@
   {% assign sectionButtonLink = blank %}
   {% assign sectionButtonColor = blank %}
   {% assign sectionMobileTextPosition = section.settings.mobile_text_position %}
+  {% assign mp4 = section.settings.mp4 %}
+  {% assign ogg = section.settings.ogg %}
 {% elsif type == "article" %}
   {% assign sectionId = 'null' %}
   {% assign sectionEnable = true %}
@@ -109,6 +111,8 @@
   {% assign sectionButtonLink = block.settings.button_link %}
   {% assign sectionButtonColor = block.settings.button_color %}
   {% assign sectionMobileTextPosition = block.settings.mobile_text_position %}
+  {% assign mp4 = block.settings.mp4 %}
+  {% assign ogg = block.settings.ogg %}
 {% endif %}
 
 {% if sectionEnable %}
@@ -116,7 +120,11 @@
 
   {% capture textCapture %}
     {% if sectionTitle != blank %}
-      <h2 class="{{ sectionTextSize }} hero-image__title">{{ sectionTitle }}</h2>
+      {% if type contains 'collection' %}
+        <h1 class="{{ sectionTextSize }} hero-image__title">{{ sectionTitle }}</h1>
+      {% else %}
+        <h2 class="{{ sectionTextSize }} hero-image__title">{{ sectionTitle }}</h2>
+      {% endif %}
     {% endif %}
     
     <div class="rte-setting hero-image__text">

@@ -12,7 +12,9 @@ width='0' height='0' style='display:none'/>
 
 {% section 'product-mini-form' %}
 
-{% section 'hero-image' %}
+{% if product.type != 'Belt' %}
+  {% section 'product-shoe-image' %}
+{% endif %}
 
 <div class="product-instagram">
   {% section 'product-instagram' %}
