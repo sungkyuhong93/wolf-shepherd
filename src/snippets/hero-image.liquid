@@ -84,6 +84,8 @@
   {% assign sectionButtonColor = block.settings.button_color %}
   {% assign sectionMobileTextPosition = block.settings.mobile_text_position %}
   {% assign sectionMobileEnable = block.settings.mobile_enable %}
+  {% assign mp4 = block.settings.mp4 %}
+  {% assign ogg = block.settings.ogg %}
 {% else %}
   {% assign sectionId = block.id %}
   {% assign sectionEnable = block.settings.enable | default: true %}
@@ -137,6 +139,16 @@
     {{ sectionMobileTextPosition }}
     {{ sectionMobileEnable }} lazyload" 
     data-bgset="{{sectionImageMobile}} [(max-width: 749px)] | {{sectionImage}}">
+
+    {% if mp4 != blank %}
+      <div class="hero-image__video">
+        <video autoplay muted loop poster="{{ sectionImage }}">
+          <source src="{{mp4}}" type="video/mp4">
+          <source src="{{ogg}}" type="video/ogg">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+    {% endif %}
 
     <div class="hero-image__wrapper">
       {{ textCapture }}

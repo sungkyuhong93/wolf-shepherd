@@ -92,6 +92,20 @@ Hero image
     display: none;
   }
 
+  &__video video {
+    left: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__wrapper {
+    position: relative;
+    z-index: 1;
+  }
+
   @include media-query( $medium-down ) {
     &--mobile-text-under {
       height: 380px;
