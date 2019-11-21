@@ -2,5 +2,13 @@
 Contact
 ============================================================================== */
 .contact {
-  
+  .rte {
+    text-align: left !important;
+
+    p {
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+  }
 }

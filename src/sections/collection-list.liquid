@@ -41,7 +41,7 @@
                 {% endif %}
               </h3>
 
-              <div class="button--white">Shop Now</div>
+              <div class="button--white">{{block.settings.button_title}}</div>
             </a>
           </div>
         {% endfor %}
@@ -57,7 +57,7 @@
 {% schema %}
   {
     "name": "Collection list",
-    "max_blocks": 12,
+    "max_blocks": 3,
     "settings": [
       {
         "type": "text",
@@ -96,6 +96,11 @@
             "label": "Image",
             "id": "image",
             "type": "image_picker"
+          },
+          {
+            "type": "text",
+            "id": "button_title",
+            "label": "Button text"
           }
         ]
       }
