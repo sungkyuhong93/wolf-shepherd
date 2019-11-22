@@ -135,13 +135,57 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
 
   label[for] {
     cursor: pointer;
+    font-size: 12px;
     display: inline-block;
-    margin-bottom: 8px;
+    margin-bottom: 0;
+    position: relative;
+    top: 25px;
+    transition: 0.2s;
+
+    &.is-active {
+      top: 0;
+    }
+  }
+
+  label[for="ContactFormMessage"] {
+    top: 0;
   }
 
   input, select, textarea {
     display: block;
     margin-bottom: 10px;
+  }
+
+  input[type=email], input[type=text], input[type=tel], input[type=email] {
+    border: 0;
+    border-bottom: 1px solid rgba($COLOR_PRIMARY, 0.5);
+    color: $COLOR_PRIMARY;
+    font-family: $FONT_BODY;
+    font-size: 12px;
+    padding-bottom: 8px;
+    padding-left: 0;
+    padding-top: 6px;
+    text-transform: uppercase;
+
+    &::placeholder {
+      opacity: 0;
+    }
+    
+    &:focus {
+      border-bottom: 1px solid rgba($COLOR_PRIMARY, 1);
+    }
+  }
+
+  textarea {
+    border: 1px solid rgba($COLOR_PRIMARY, 0.5);
+
+    &::placeholder {
+      opacity: 0;
+    }
+
+    &:focus {
+      border: 1px solid rgba($COLOR_PRIMARY, 1);
+    }
   }
 }
 
@@ -254,16 +298,18 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
 /* =============== error =============== */
 .error {
   background: $COLOR_ERROR;
-  border: 1px solid darken($COLOR_ERROR, 10%);
-  border-radius: 2px;
   color: $COLOR_WHITE;
   cursor: default;
   display: inline-block;
-  font-size: ms(1);
   margin-bottom: 10px;
-  padding: 8px;
+  padding: 6px;
   text-align: center;
   width: 100%;
+
+  font-family: $FONT_BODY;
+  font-size: 10px;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
 
   &.error--hide {
     display: none;

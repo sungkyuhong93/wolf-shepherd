@@ -35,6 +35,7 @@ import '../sections/collection-page';
 import '../components/type';
 import '../components/quantity';
 import '../components/slide-to';
+import '../components/form';
 
 document.addEventListener('DOMContentLoaded', () => {
   AjaxCart().init();
