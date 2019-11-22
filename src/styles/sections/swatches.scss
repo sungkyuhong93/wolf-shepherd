@@ -75,9 +75,35 @@ Swatches Styles
   }
 }
 
+.collection-grid-item {
+  .swatch__wrapper {
+    .swatch-product {
+      cursor: none!important;
+
+      &:nth-child(n+6) {
+        background-color: transparent;
+        background-image: $ICON_ARROW_RIGHT;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 5px 10px;
+        border-radius: 0;
+        box-shadow: none !important;
+        cursor: pointer !important;
+
+        .swatch__tooltip-info {
+          display: none;
+        }
+      }
+
+      &:nth-child(n+7) {
+        display: none;
+      }
+    }
+  }
+}
+
 .swatch-product {
   background: $COLOR_WHITE;
-  // border: 1px solid $COLOR_SWATCH_BORDER;
   border-radius: 50%;
   box-shadow: 0 0 0 1px $COLOR_SWATCH_BORDER;
   color: $COLOR_BLACK;
@@ -90,17 +116,8 @@ Swatches Styles
   transition: all 0.6s ease;
   width: 14px;
 
-  // &:before {
-  //   background: red;
-  //   content: '';
-  //   position: absolute;
-  //   height: 100px ;
-  //   width: 100px ;
-  // }
-
   &:hover, &.swatch-product--active {
     box-shadow: 0 0 0 1px $COLOR_SWATCH_BORDER, 0 0 0 2px $COLOR_BLACK;
-    // box-shadow: 0 0 0 1px $COLOR_BLACK;
   }
 }
 

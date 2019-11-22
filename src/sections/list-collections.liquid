@@ -20,31 +20,44 @@
         </div>
 
         <div class="grid__item medium-up--three-quarters">
-
           <div class="grid">
+            {% assign excludedCollections = section.settings.exclude_collections | split: ',' %}
+            <h1>{{exclude_collections}}</h1>
+
             {% for collection in collections %}
-              {% unless collection.handle == 'frontpage' or collection.handle == 'all' %}
-                <div class="list-collections">
-                  <div class="grid__item small--one-whole">
-                    <header class="list-collections__header">
-                      <h3>
-                        <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">{{ collection.title }}</a>
-                      </h3>
+              {% assign excluded = false %}
+              {% for i in excludedCollections %}
+                {% assign handle = i | handleize %}
+                {% if collection.handle == handle %}
+                  {% assign excluded = true %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
 
-                      <a href="{{ collection.url }}" class="button-text-and-arrow" title="{{ 'collections.general.link_title' | t: title: title }}">
-                        View All <div class="wolf-arrow wolf-arrow--right"></div>
-                      </a>
+              {% if excluded == false %}
+                {% unless collection.handle == 'frontpage' or collection.handle == 'all' %}
+                  <div class="list-collections">
+                    <div class="grid__item small--one-whole">
+                      <header class="list-collections__header">
+                        <h3>
+                          <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">{{ collection.title }}</a>
+                        </h3>
 
-                    </header>
+                        <a href="{{ collection.url }}" class="button-text-and-arrow" title="{{ 'collections.general.link_title' | t: title: title }}">
+                          View All <div class="wolf-arrow wolf-arrow--right"></div>
+                        </a>
+
+                      </header>
+                    </div>
+                    <div class="list-collections__collection">
+                      {% for product in collection.products limit: 3 %}
+                        {% include 'collection-grid-product' with gridWidth: collectionCounterClass  %}
+                      {% endfor %}
+                    </div>
                   </div>
-                  <div class="list-collections__collection">
-                    {% for product in collection.products limit: 3 %}
-                      {% include 'collection-grid-product' with gridWidth: collectionCounterClass  %}
-                    {% endfor %}
-                  </div>
-                </div>
 
-              {% endunless %}
+                {% endunless %}
+              {% endif %}
 
             {% endfor %}
           </div>
@@ -68,7 +81,17 @@
         "type": "link_list",
         "id": "linklist",
         "label": "Navigation"
+      },
+      {
+        "type": "textarea",
+        "id": "exclude_collections",
+        "label": "Exclude collections",
+        "default": "color-brown,size-10-ee,size-6,size-7,size-7.5,size-8,size-8.5,size-9,size-9.5,size-10,size-10.5,size-10-5-ee,size-11,size-11.5,size-12,size-12.5,size-13,size-14,size-15,size-30,size-32,size-34,size-36,size-38,size-40,size-42,size-S,size-M,size-L,size-XL,color-Bullet,color-Burnt Orange,color-Chili,color-Chocolate,color-Chocolate Suede,color-Cognac,color-Honey,color-Maple,color-Midnight,color-Navy,color-Oak,color-Onyx,color-Onyx Patent,color-Onyx Suede,color-Onyx White,color-Pine,color-Slate,color-Smoke,color-Spanish Red,color-Stone,color-White,"
       }
     ]
   }
 {% endschema %}
+
+
+
+

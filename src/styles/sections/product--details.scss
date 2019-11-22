@@ -61,6 +61,20 @@
   display: none;
   font-size: 12px;
   padding-bottom: 15px;
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  ul, ol {
+    padding-left: 25px;
+    margin-bottom: 10px;
+    
+    li {
+      font-size: 12px;
+      list-style: disc;
+    }
+  }
 }
 
 .accordion__content--is-active {

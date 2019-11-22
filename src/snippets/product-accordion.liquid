@@ -1,50 +1,44 @@
 <div class="accordion_section">      
   <ul class="accordion">
 
-    {% comment %}
-      Examaple Description:
-      %title-1-start%
-      Title 1 Here 
-      %title-1-end%
-      %text-1-start%
-      Text 1 Here
-      %text-1-end%
-      %title-2-start% 
-      Title 2 here
-      %title-2-end%
-      %text-2-start%
-      Text 2 Here
-      %text-2-end%
-    {% endcomment %}
-
-    {% for i in (1..10) %}
-
-      {% assign titleSplitTrigger = '%title-' | append: i | append: '-start%' %}
-      {% assign titleSplitend = '%title-' | append: i | append: '-end%' %}
-      {% assign titleSplit = product.description | split: titleSplitTrigger %}
-      {% assign titleSplit = titleSplit[1] | split: titleSplitend %}
-
-      {% assign textSplitTrigger = '%text-' | append: i | append: '-start%' %}
-      {% assign textSplitend = '%text-' | append: i | append: '-end%' %}
-      {% assign textSplit = product.description | split: textSplitTrigger %}
-      {% assign textSplit = textSplit[1] | split: textSplitend %}
-      
-      {% if product.description contains titleSplitTrigger %}
-      <li class="accordion__link {% if i == 2%} accordion__item--is-active {% endif %}">
-        <h6 class="accordion__title" data-toggle="accordion-{{i}}">
-          {{ titleSplit[0] | strip_html }} 
+    {% unless product.description == blank %}
+      <li class="accordion__link">
+        <h6 class="accordion__title" data-toggle="accordion--story">
+          Story
           <span class="arrow-up arrow"></span>
           <span class="arrow arrow-down"></span>
         </h6>
-        {% if product.description contains textSplitTrigger %}
-          <div id="accordion-{{i}}" class="accordion__content {% if i == 2%} accordion__content--is-active {% endif %}">
-              {{ textSplit[0] | strip_html | escape }}
+          <div id="accordion--story" class="accordion__content">
+            {{ product.description }}
           </div>
-        {% endif %}
       </li>
-      {% endif %}
+    {% endunless %}
 
-    {% endfor %}
+    {% unless product.metafields.details.product_details == blank %}
+      <li class="accordion__link accordion__item--is-active">
+        <h6 class="accordion__title" data-toggle="accordion--details">
+          Details
+          <span class="arrow-up arrow"></span>
+          <span class="arrow arrow-down"></span>
+        </h6>
+        <div id="accordion--details" class="accordion__content accordion__content--is-active ">
+          {{ product.metafields.details.product_details }}
+        </div>
+      </li>
+    {% endunless %}
+
+    {% unless product.metafields.fit.product_fit == blank %}
+      <li class="accordion__link">
+        <h6 class="accordion__title" data-toggle="accordion--fit">
+          Fit
+          <span class="arrow-up arrow"></span>
+          <span class="arrow arrow-down"></span>
+        </h6>
+        <div id="accordion--fit" class="accordion__content ">
+          {{ product.metafields.fit.product_fit }}
+        </div>
+      </li>
+    {% endunless %}
 
   </ul>
 </div>

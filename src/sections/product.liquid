@@ -18,11 +18,11 @@
           {% include 'product-form' %}
 
           <div class="product-description">
-            {% if product.description contains '%title-' %}
               {% include 'product-accordion' %}
+            {% if product.description contains '%title-' %}
             {% else %}
-              {% include 'product-description' %}
             {% endif %}
+              {% comment %} {% include 'product-description' %} {% endcomment %}
           </div>
 
           {% if section.settings.enable_usp %}
