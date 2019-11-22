@@ -1,0 +1,14 @@
+<svg width="8px" height="12px" viewBox="0 0 8 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-130.000000, -428.000000)">
+            <g transform="translate(63.000000, 429.000000)">
+                <g transform="translate(67.000000, 0.000000)">
+                    <path d="M1.5,9.66666667 L1.5,0.333333333" stroke="#032540" stroke-linecap="square"></path>
+                    <path d="M6.5,9.66666667 L6.5,0.333333333" stroke="#032540" stroke-linecap="square"></path>
+                    <circle fill="#032540" cx="1.5" cy="3.5" r="1.5"></circle>
+                    <circle fill="#032540" cx="6.5" cy="6.5" r="1.5"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
