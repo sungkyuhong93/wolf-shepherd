@@ -4,6 +4,17 @@
   id="featured-collection-section" 
   data-section-id="{{ section.id }}" 
   data-section-type="featured-collection-section">
+
+  {% if section.settings.cart-title %}
+    <div class="page-width feature-collection__title">
+      <div class="grid">
+        <div class="grid__item medium-up--one-whole">
+          <h4>{{section.settings.cart-title}}</h4>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
   <div class="page-width">
     <div class="grid">
       <div class="grid__item medium-up--one-whole">

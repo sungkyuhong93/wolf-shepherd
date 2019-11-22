@@ -123,7 +123,9 @@ export default () => {
   }
 
   function init() {
-    setObserver();
+    if ($('#instafeed-section').length) {
+      setObserver();
+    }
   }
 
   return init();

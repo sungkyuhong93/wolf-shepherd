@@ -194,4 +194,16 @@ $BUTTON_LETTER_SPACING: 0.25px;
     padding: 0;
     width: 28px;
   }
+
+  &--reverse {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+
+    .wolf-arrow {
+      background-image: $ICON_ARROW_LEFT;
+      background-position: calc(50% + -1px) calc(50%);
+      margin-left: 0;
+      margin-right: 12px;
+    }
+  }
 }

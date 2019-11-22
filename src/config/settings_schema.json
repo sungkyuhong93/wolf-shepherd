@@ -230,12 +230,6 @@
         "content": "Cart Page"
       },
       {
-        "type": "checkbox",
-        "id": "cart_notes_enable",
-        "label": "Enable cart notes",
-        "default": true
-      },
-      {
         "type": "header",
         "content": "Ajax Cart settings"
       },

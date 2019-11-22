@@ -144,8 +144,8 @@ h6, .h6 {
  * Other styles.
  */
 p {
-  @include ms-respond(font-size, 0);
   font-family: $FONT_BASE;
+  font-size: 12px;
   font-weight: $WEIGHT_NORMAL;
   line-height: $LINE_HEIGHT_BODY;
   margin: 0 0 $SPACING_L;
@@ -153,6 +153,7 @@ p {
 
 a, .text-link {
   color: inherit;
+  font-size: 12px;
   text-decoration: none;
 
   &:hover {

@@ -22,6 +22,12 @@
 .feature-collection {
   overflow: hidden;
 
+  &__title {
+    font-size: 14px;
+    padding-top: 34px;
+    text-align: center;
+  }
+
   &--dark {
     background: $COLOR_GREY;
     padding: 12px 0 0;

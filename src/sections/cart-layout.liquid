@@ -1,278 +1,208 @@
-{%- capture alignContent -%}
-  {% case section.settings.alignment %}
-    {% when 'left' %}
-      text-left
-    {% when 'right' %}
-      text-right
-    {% else %}
-      text-center
-  {% endcase %}
-{%- endcapture -%}
+<div class="page-width ">
 
-{% if section.settings.enable_banner_image %}
-  {% if section.settings.full-width != 'full-width' %}<div class="page-width">{% endif %}
-    <div class="banner-image
-      {% if section.settings.text_color == 'white' %}banner-image--white{% endif %}" 
-      style="background-image: url({{ section.settings.image | img_url: 'master' }})">
+  <div class="cart__header">
+    <h1>My Cart</h1>
+  </div>
 
-      {% if section.settings.full-width == 'full-width' %}<div class="page-width">{% endif %}
-        
-        <header class="{{ alignContent }}" role="banner">
-          <h1 class="header__title hero-title">{{ section.settings.title }}</h1>
-          {% if section.settings.text != blank %}
-            <p class="header__text rte">
-              {{ section.settings.text }}
-            </p>
-          {% endif %}
-        </header>
-
-      {% if section.settings.full-width == 'full-width' %}</div>{% endif %}
-
-    </div>
-  {% if section.settings.full-width != 'full-width' %}</div>{% endif %}
-{% endif %}
-
-
-<div class="page-width">
-{% if cart.item_count > 0 %}
-
-  <form action="/cart" method="post" novalidate>
-    <div class="grid">
-      <div class="grid__item medium-up--eight-twelfths">
-        
-        <main id="Cart">
+  {% if cart.item_count > 0 %}
+    <div class="cart">
+      <form action="/cart" method="post" novalidate>
+        <div class="grid">
+          <div class="grid__item medium-up--one-whole large-up--ten-twelfths large-up--push-one-twelfth">
             
-            <h1 class="cart__title">{{ 'cart.general.title' | t }}</h1>
+            <main id="Cart">
 
-            <div class="cart__body">
+              <table>
+                
+                <thead class="cart__title">
+                  <tr>
+                    <th class="cart__title-product">
+                      Product
+                    </th>
 
-              {% for item in cart.items %}
+                    <th class="cart__title-quantity">
+                      Quanity
+                    </th>
 
-                <div class="cart__row cart__row--{{item.id}}">
+                    <th class="cart__title-total">
+                      Total
+                    </th>
+                  </tr>
+                </thead>
 
-                {% if item.image != blank %}
-                  <div class="cart__image">
-                    <a href="{{ item.url | within: collections.all }}">
-                      {{ item | img_url: '400x' | img_tag: item.title }}
-                    </a>
-                  </div>
-                {% endif %}
+                <tbody class="cart__body">
 
-                  <div class="cart__content">
+                  {% for item in cart.items %}
 
+                    <tr class="cart__row cart__row--{{item.id}}">
 
-                    <a href="{{ item.url }}">
-                      <h5 class="cart-item__title">{{ item.product.title }}</h5>
-                      <p class="cart-item__price">
-                        <span class="cart__line-total">{{ item.line_price | money }}</span>
-                        <span class="cart-item__price-per-unit">
-                          {% if item.original_line_price != item.line_price %}
-                            <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
-                            {{ item.price | money }}/un
-                            <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
-                            <s>{{ item.original_price | money }}</s>
-                          {% else %}
-                            {% if item.line_price != item.price %}
-                              {{ item.price | money }}/un
+                      {% if item.image != blank %}
+                        <td class="cart__image">
+                          <a href="{{ item.url | within: collections.all }}">
+                            {{ item | img_url: '400x' | img_tag: item.title }}
+                          </a>
+
+                          <div class="cart-item__text-wrapper">
+                            <h5 class="cart-item__title">{{ item.product.title }}</h5>
+
+                            {% unless item.product.has_only_default_variant %}
+                              <p class="cart-item__variant">{{ item.variant.title }}</p>
+                              {% if item.variant.option1 %}
+                              {% comment %} <p class="cart-item__variant">{{ item.variant | json }}</p> {% endcomment %}
+                              {% endif %}
+                            {% endunless %}
+
+                            {%- assign property_size = item.properties | size -%}
+
+                            {% if property_size > 0 %}
+                              {% for p in item.properties %}
+                                {% unless p.last == blank %}
+                                {{ p.first }}:
+
+                                {% if p.last contains '/uploads/' %}
+                                  <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                                {% else %}
+                                  {{ p.last }}
+                                {% endif %}
+
+                                {% endunless %}
+                              {% endfor %}
                             {% endif %}
-                          {% endif %}
-                        </span>
-                      </p>
-                    </a>
+                          </div>
 
-                    {% unless item.product.has_only_default_variant %}
-                      <p class="cart-item__variant">{{ item.variant.title }}</p>
-                    {% endunless %}
 
-                    {% comment %}<p>{{ item.vendor }}</p>{% endcomment %}
+                        </td>
+                      {% endif %}
 
-                    {%- assign property_size = item.properties | size -%}
+                      <td class="cart-item__quanity cart-data" data-line="{{ forloop.index }}" data-id="{{ item.id }}">
 
-                    {% if property_size > 0 %}
-                      {% for p in item.properties %}
-                        {% unless p.last == blank %}
-                        {{ p.first }}:
+                        <div class="cart-item__quanity-wrapper">
+                          <div class="quantity-wrapper">
+                            <div class="quantity-wrapper__minus js--quantity" data-increment="false">-</div>
+                            <input type="number"
+                                    name="updates[]"
+                                    id="updates_{{ item.key }}"
+                                    value="{{ item.quantity }}"
+                                    class="cart-ajax__quantity__input"
+                                    min="0"
+                                    aria-label="{{ 'cart.general.item_quantity' | t }}">
+                            <div class="quantity-wrapper__plus js--quantity" data-increment="true">+</div>
+                          </div>
 
-                        {% if p.last contains '/uploads/' %}
-                          <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
-                        {% else %}
-                          {{ p.last }}
-                        {% endif %}
+                          <div class="cart-item__remove cart-data" data-line="{{ forloop.index }}" data-id="{{ item.id }}">
+                            {{ 'cart.general.remove' | t }}
+                          </div>
+                        </div>
 
-                        {% endunless %}
-                      {% endfor %}
+                      </td>
+
+                      <td class="cart__content">
+
+                        <a href="{{ item.url }}">
+                          
+                          <p class="cart-item__price">
+                            <span class="cart__line-total">{{ item.line_price | money_without_trailing_zeros }}</span>
+                            <span class="cart-item__price-per-unit">
+                              {% if item.original_line_price != item.line_price %}
+                                <span class="visually-hidden">{{ 'cart.label.discounted_price' | t }}</span>
+                                {{ item.price | money_without_trailing_zeros }}
+                                <span class="visually-hidden">{{ 'cart.label.original_price' | t }}</span>
+                                <s>{{ item.original_price | money_without_trailing_zeros }}</s>
+                              {% else %}
+                                {% if item.line_price != item.price %}
+                                  {{ item.price | money_without_trailing_zeros }}
+                                {% endif %}
+                              {% endif %}
+                            </span>
+                          </p>
+                        </a>                    
+                        
+                      </td>
+
+                    </tr>
+                  {% endfor %}
+                  
+                </tbody>
+
+              </table>
+
+            </main>
+            
+            {% if settings.cart_notes_enable %}
+              {% comment %} <div class="cart-notes">
+                <div class="cart__body">
+                    <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+                    <textarea name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+                </div>
+              </div> {% endcomment %}
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="grid__item medium-up--one-whole large-up--ten-twelfths large-up--push-one-twelfth">
+            <div class="grid cart-footer">
+              <div class="grid__item medium-up--four-twelfths">
+                <a href="/collections/all" class="button-text-and-arrow button-text-and-arrow--reverse">
+                  Continue Shopping <div class="wolf-arrow wolf-arrow--right"></div>
+                </a>
+              </div>
+              <div class="grid__item medium-up--five-twelfths medium-up--push-three-twelfths">
+
+                <div class="cart-summary">
+                  <h3 class="cart-summary__title">
+                    {{ 'cart.general.subtotal' | t }}
+                    <span class="cart-summary__title-subtitle js-cart-subtotal">
+                      {{ cart.total_price | money_without_trailing_zeros }}
+                    </span>
+                  </h3>
+                  <div class="cart-summary__body">
+                    {% comment %} <p>You have <span class="js-cart-item-count">{{ cart.item_count }}</span> {{ cart.item_count | pluralize: 'item', 'items' }} in your cart</p> {% endcomment %}
+                    {% if cart.total_discounts > 0 %}
+                      <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money_without_trailing_zeros }}</p>
                     {% endif %}
-
-                    <div class="cart-item__remove cart-data" data-line="{{ forloop.index }}" data-id="{{ item.id }}">
-                      {{ 'cart.general.remove' | t }}
-                    </div>
-                 
-                    
-                    
-                  </div>
-                  <div class="cart-item__quanity cart-data" data-line="{{ forloop.index }}" data-id="{{ item.id }}">
-                    <span>Quanity</span>
-                    
-                    <div class="quantity-wrapper">
-                      <div class="quantity-wrapper__minus js--quantity" data-increment="false">-</div>
-                      <input type="number"
-                               name="updates[]"
-                               id="updates_{{ item.key }}"
-                               value="{{ item.quantity }}"
-                               class="cart-ajax__quantity__input"
-                               min="0"
-                               aria-label="{{ 'cart.general.item_quantity' | t }}">
-                      <div class="quantity-wrapper__plus js--quantity" data-increment="true">+</div>
-                    </div>
-
-
+                    <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
+                    <input type="submit" name="checkout" class="button button--full" value="{{ 'cart.general.checkout' | t }}">
+                    <a class="cart-summary__link" href="https://wolfandshepherd.com/pages/international-checkout">International Checkout</a>
                   </div>
                 </div>
-              {% endfor %}
-              
-            </div>
 
 
-        </main>
-        
-        {% if settings.cart_notes_enable %}
-          <div class="cart-notes">
-            <div class="cart__body">
-                <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
-                <textarea name="note" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+              </div>
             </div>
           </div>
-        {% endif %}
+
+        </div>
+      </form>
+    </div>
+  {% else %}
+    <div class="page-content text-center">
+      <div class="h2">{{ 'cart.general.title' | t }}</div>
+
+      {% comment %}
+      Cart empty state
+      {% endcomment %}
+      <div class="supports-cookies">
+        <p>{{ 'cart.general.empty' | t }}</p>
+        <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
       </div>
 
-      <div class="grid__item medium-up--four-twelfths">
-        <aside class="cart-summary">
-          <h2 class="cart__title">
-            {{ 'cart.general.subtotal' | t }}
-            <span class="cart__title-subtitle js-cart-subtotal">
-              {{ cart.total_price | money }}
-            </span>
-          </h2>
-          <div class="cart__body">
-            <p>You have <span class="js-cart-item-count">{{ cart.item_count }}</span> {{ cart.item_count | pluralize: 'item', 'items' }} in your cart</p>
-            {% if cart.total_discounts > 0 %}
-              <p>{{ 'cart.general.savings' | t }} {{ cart.total_discounts | money }}</p>
-            {% endif %}
-            <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
-            <input type="submit" name="checkout" class="button button--full" value="{{ 'cart.general.checkout' | t }}">
-          </div>
-        </aside>
-
+      {% comment %}
+      Cart no cookies state
+      ---------------------
+      Browser cookies are required to use the cart. If cookies aren't enabled in the
+      browser a message is displayed prompting the user to enable them.
+      {% endcomment %}
+      <div class="supports-no-cookies">
+        <p>{{ 'cart.general.cookies_required' | t }}</p>
       </div>
-
     </div>
-  </form>
-{% else %}
-  <div class="page-content text-center">
-    <h1 class="h2">{{ 'cart.general.title' | t }}</h1>
-
-    {% comment %}
-    Cart empty state
-    {% endcomment %}
-    <div class="supports-cookies">
-      <p>{{ 'cart.general.empty' | t }}</p>
-      <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
-    </div>
-
-    {% comment %}
-    Cart no cookies state
-    ---------------------
-    Browser cookies are required to use the cart. If cookies aren't enabled in the
-    browser a message is displayed prompting the user to enable them.
-    {% endcomment %}
-    <div class="supports-no-cookies">
-      <p>{{ 'cart.general.cookies_required' | t }}</p>
-    </div>
-  </div>
-{% endif %}
+  {% endif %}
 </div>
 
 
 {% schema %}
   {
-    "name": "Cart Layout",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Cart Hero image"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_banner_image",
-        "label": "Use image banner"
-      },
-      {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Banner Image"
-      },
-       {
-        "type": "text",
-        "id": "title",
-        "label": "Banner title"
-      },
-       {
-        "type": "text",
-        "id": "text",
-        "label": "Banner text"
-      },
-      {
-        "type": "select",
-        "id": "full-width",
-        "label": "Collection Banner Full width",
-        "default": "full-width",
-        "options": [
-          {
-            "label": "Full width",
-            "value": "full-width"
-          },
-          {
-            "label": "Within wrapper",
-            "value": "wrapper"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "text_color",
-        "label": "Text colour",
-        "default": "black",
-        "options": [
-          {
-            "label": "White",
-            "value": "white"
-          },
-          {
-            "label": "Black",
-            "value": "black"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "alignment",
-        "label": "Text alignment",
-        "default": "center",
-        "options": [
-          {
-            "value": "left",
-            "label": "Left"
-          },
-          {
-            "value": "center",
-            "label": "Center"
-          },
-          {
-            "value": "right",
-            "label": "Right"
-          }
-        ]
-      }
-    ]
+    "name": "Cart Layout"
   }
 {% endschema %}
