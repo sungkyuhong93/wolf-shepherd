@@ -182,7 +182,33 @@ site nav
 }
 
 @media only screen and (min-width: 1024px) {
+  .site-nav__item.site-nav__link--active {
+    .site-nav__link::before {
+      background: $COLOR_PRIMARY;
+      bottom: 15px;
+      content: '';
+      height: 1px;
+      left: 20px;
+      position: absolute;
+      right: 20px;
+    }
+  }
+
   .site-nav {
+    &__link {
+      position: relative;
+
+      &:hover:before {
+        background: $COLOR_PRIMARY;
+        bottom: 15px;
+        content: '';
+        height: 1px;
+        left: 20px;
+        position: absolute;
+        right: 20px;
+      }
+    }
+
     &__item--has-dropdown {
       position: relative;
 
@@ -207,7 +233,6 @@ site nav
       display: none;
       left: 0;
       margin: 0 0 0 -10px !important;
-      // border: 1px solid;
       padding: 15px 30px 30px !important;
       position: absolute;
       top: 45px;
@@ -247,6 +272,20 @@ site nav
           display: block;
         }
       }
+    }
+  }
+
+  .navlist__link {
+    position: relative;
+
+    &--active::before, &:hover::before {
+      background: $COLOR_PRIMARY;
+      bottom: 3px;
+      content: '';
+      height: 1px;
+      left: 0px;
+      position: absolute;
+      right: 0px;
     }
   }
 }

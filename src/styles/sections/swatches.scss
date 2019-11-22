@@ -144,6 +144,21 @@ Swatches Styles
       box-shadow: none;
     }
   }
+
+  .swatch-product--color {
+    border: 0;
+    border-radius: 100%;
+    box-shadow: 0 0 0 1px $COLOR_SWATCH_BORDER;
+    height: 24px;
+    min-height: 24px;
+    min-width: 24px;
+    width: 24px;
+
+    &.swatch-product--active, &:hover {
+      border: 0;
+      box-shadow: 0 0 0 1px $COLOR_SWATCH_BORDER, 0 0 0 2px $COLOR_WHITE, 0 0 0 3px $COLOR_BLACK;
+    }
+  }
 }
 
 .product-form .selector-wrapper--size {

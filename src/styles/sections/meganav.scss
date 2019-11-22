@@ -106,4 +106,18 @@ MegaNav
       margin-bottom: 20px;
     }
   }
+
+  &__link {
+    position: relative;
+
+    &--active::before, &:hover::before {
+      background: $COLOR_PRIMARY;
+      bottom: -6px;
+      content: '';
+      height: 1px;
+      left: 0px;
+      position: absolute;
+      right: 0px;
+    }
+  }
 }

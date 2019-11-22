@@ -12,7 +12,7 @@
           <ul>
             {% for link in linklists[childlist].links %}
               <li>
-                <a href="{{ link.url }}">{{ link.title }}</a>
+                <a class="meganav__link {% if link.active %}meganav__link--active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
               </li>
             {% endfor %}
           </ul>

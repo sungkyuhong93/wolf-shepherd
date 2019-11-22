@@ -45,7 +45,7 @@
           <ul class="site-nav__dropdown navlist navlist--block">
             {% for child_link in link.links %}
               <li class="navlist__item">
-                <a class="navlist__link" href="{{ child_link.url }}">
+                <a class="navlist__link {% if link.active %}navlist__link--active{% endif %}" href="{{ child_link.url }}">
                   {{ child_link.title }}
                 </a>
               </li>
