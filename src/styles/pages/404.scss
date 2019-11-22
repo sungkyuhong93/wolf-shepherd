@@ -1,0 +1,65 @@
+/* ============================================================================
+404
+============================================================================== */
+.four-zero-four {
+  background-position: center;
+  background-size: cover;
+
+  .page-width {
+    align-items: center;
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+
+    @include media-query($large-up) {
+      justify-content: flex-end;
+      min-height: 720px;
+    }
+  }
+
+
+  &__content {
+    text-align: center;
+    margin-top: -60px;
+
+    h1 {
+      color: $COLOR_WHITE;
+      font-size: 140px;
+      line-height: 1;
+      text-align: center;
+      
+      span {
+        display: block;
+        font-size: 44px;
+      }
+
+      @include media-query($medium-up) {
+        font-size: 160px;
+
+        span {
+          font-size: 54px;
+        }
+      }
+
+      @include media-query($large-up) {
+        font-size: 200px;
+
+        span {
+          font-size: 64px;
+        }
+      }
+    }
+
+    .rte {
+      color: $COLOR_WHITE;
+    }
+
+    .button--white {
+      width: 100%;
+
+      @include media-query($large-up) {
+        width: 360px;
+      }
+    }
+  }
+}

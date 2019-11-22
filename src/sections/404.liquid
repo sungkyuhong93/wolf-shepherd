@@ -1,0 +1,48 @@
+{% assign sectionImage = section.settings.image | img_url: 'master'  %}
+{% if section.settings.mobile_image != blank %}
+  {% assign sectionImageMobile = section.settings.mobile_image | img_url: 'master'  %}
+{% else %}
+  {% assign sectionImageMobile = section.settings.image | img_url: 'master'  %}
+{% endif %}
+
+<div class="four-zero-four lazyload" data-bgset="{{sectionImageMobile}} [(max-width: 749px)] | {{sectionImage}}">
+  <div class="page-width">
+    <div class="four-zero-four__content">
+      <h1 class="h2">
+        {{ 'general.404.title' | t  }}
+        <span>{{ 'general.404.subtitle' | t  }}</span>
+      </h1>
+      {% comment %} <div class="rte">
+        {{ 'general.404.subtext_html' | t }}
+      </div> {% endcomment %}
+      <a href="/collections/all" class="button--white">
+        Continue Shopping
+      </a>
+    </div>
+  </div>
+</div>
+
+ 
+{% schema %}
+  {
+    "name": "404",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Desktop Image",
+        "info": "Advised size:"
+      },
+      {
+        "type": "header",
+        "content": "Mobile only settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image",
+        "info": "Advised size:"
+      }
+    ]
+  }
+{% endschema %}
