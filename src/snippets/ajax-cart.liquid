@@ -47,6 +47,9 @@
 
             <div js-gift-wrap="container" class="giftwrapping {{giftWrapInCart}}">
               <div class="giftwrapping__add">
+
+                {% include 'icons' with icon: 'gift-box' %}
+
                 Gifting these items? <span js-gift-wrap="true" data-quantity="1" data-product-id="{{giftProduct}}" class="giftwrapping__link">Add gift wrap to my order</span>
               </div>
               <div class="giftwrapping__success">

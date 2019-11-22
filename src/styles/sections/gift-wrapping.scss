@@ -24,6 +24,16 @@ Gift wrapping
     text-decoration: underline;
   }
 
+  &__add {
+    align-items: flex;
+    display: flex;
+
+    svg {
+      margin-right: 10px;
+      margin-top: -2px;
+    }
+  }
+
   &.is-hidden {
     #{$parent}__add {
       display: none;
