@@ -1,7 +1,10 @@
 import $ from 'jquery';
 import cssClasses from '../helpers/cssClasses';
 
-theme.Swatch = (function() {
+/**
+ * Export default AjaxCart.
+ */
+export default () => {
 
   const $swatch = $('.swatch-product');
   const $swatchColor = $('.product-form .swatch-product--color');
@@ -10,12 +13,15 @@ theme.Swatch = (function() {
   const $miniSwatchOpen = $('.product-form-mini__form-toggle');
   const $miniSwatchClose = $('.product-form-mini__details__tab');
 
-  $swatch.on('click', swatchChange);
-  $swatchColor.on('click', updateSlider);
-  $swatchSize.on('click', updateSize);
-  $swatchColorMini.on('click', updateColor);
-  $miniSwatchOpen.on('click', openMiniSwatch);
-  $miniSwatchClose.on('click', closeMiniSwatch);
+  function init() {
+    $swatch.on('click', swatchChange);
+    $swatchColor.on('click', updateSlider);
+    $swatchSize.on('click', updateSize);
+    $swatchColorMini.on('click', updateColor);
+    $miniSwatchOpen.on('click', openMiniSwatch);
+    $miniSwatchClose.on('click', closeMiniSwatch);
+  }
+
 
   function swatchChange() {
     const $this = $(this);
@@ -24,6 +30,7 @@ theme.Swatch = (function() {
     $this.parent().find('.swatch-product').removeClass('swatch-product--active');
     $this.addClass('swatch-product--active');
     $this.parent().parent().find('select').val(swatchValue).trigger('change');
+    eventBus();
   }
 
   function updateSlider() {
@@ -64,6 +71,17 @@ theme.Swatch = (function() {
     $details.removeClass(cssClasses.active);
   }
 
-})();
+  function eventBus() {
+    $(document).trigger('Swatch:switch', [false]);
+  }
+
+  /**
+   * Return immutable object.
+   */
+  return Object.freeze({
+    init,
+    eventBus,
+  });
+};
 
 

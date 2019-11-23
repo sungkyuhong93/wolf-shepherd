@@ -10,7 +10,7 @@
                   <div class="testimonials__slider-text">‘‘{{ block.settings.quote | strip_html  }}’’</div>
                 {% endif %}
               </blockquote>
-              <img src="{{ block.settings.image | img_url: '250x' }}">
+              <img src="{{ block.settings.image | img_url: '250x' }}" alt="{{ block.settings.image.alt }}">
             </div>
           {% endfor %}
         </div>
@@ -20,7 +20,7 @@
     <div class="testimonials__images testimonials__images--{{section.id}}">
       {% if section.blocks.size > 0 %}
          {% for block in section.blocks %}
-        <img data-slide-id="{{forloop.index}}" src="{{ block.settings.image | img_url: '250x' }}">
+        <img data-slide-id="{{forloop.index}}" src="{{ block.settings.image | img_url: '250x' }}" alt="{{ block.settings.image.alt }}">
         {% endfor %}
       {% endif %}
     </div>

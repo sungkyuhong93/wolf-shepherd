@@ -1,0 +1,24 @@
+{% if swatchShow %}
+<div class="swatch__wrapper">
+  {% for value in option.values %}  
+
+    {% assign swatchValue = value | handleize | downcase %}
+    {% assign swatchBackground = 'transparent' %}
+
+    {% if optionName == 'color' or optionName == 'colour' %}
+      {% assign swatchBackground = value | handleize | downcase %}
+    {% endif%}
+
+    <div class="swatch swatch-product swatch-product--quick-add swatch-product--{{ value | handleize }}
+    {% if option.selected_value == value %}swatch-product--active{% endif %}
+    {% if optionName == 'color' or optionName == 'colour' %}swatch-product--color{% endif %}
+    {% if optionName == 'size' or optionName == 'Size' %}swatch-product--size{% endif %}" 
+    data-swatch-value="{{ value | escape }}"
+    style="background-size: {{swatchBackground}};">
+      {% unless optionName == 'color' or optionName == 'colour' %}
+        {{ value | escape }}
+      {% endunless %}
+    </div>
+  {% endfor %}
+</div>
+{% endif %}

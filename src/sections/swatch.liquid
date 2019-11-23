@@ -4,10 +4,16 @@
     {% assign swatchBackground = block.settings.hex-code %}      
     .swatch-product--{{blockColor}} {
       background-color: {{swatchBackground}} !important;
+      {% if block.settings.color_image != blank %}
+        background-image: url({{block.settings.color_image | img_url: '40x'}}) !important;
+      {% endif %}
     }
 
     .product-form-mini--{{blockColor}} {
       background-color: {{swatchBackground}} !important;
+      {% if block.settings.color_image != blank %}
+        background-image: url({{block.settings.color_image | img_url: '40x'}}) !important;
+      {% endif %} 
     }
   {%- endfor -%}
 </style>
@@ -29,6 +35,11 @@
             "type": "color",
             "id": "hex-code",
             "label":"Colour hex code"
+          },
+          {
+            "type": "image_picker",
+            "id": "color_image",
+            "label":"Swatch image"
           }
         ]
       }

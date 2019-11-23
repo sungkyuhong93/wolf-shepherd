@@ -6,13 +6,28 @@
  * @namespace quickView
  */
 import $ from 'jquery';
-import AjaxCart from '../sections/ajax-cart';
+import Variants from '@shopify/theme-variants';
+import {formatMoney} from '@shopify/theme-currency';
 
 /**
  * DOM selectors.
  */
 const selectors = {
+  container: '[js-quick-add="container"]',
   addToCart: '[js-quick-add="addToCart"]',
+  addToCartText: '[data-add-to-cart-text]',
+  originalSelectorId: '[data-product-select]',
+  productJson: '[data-product-json]',
+  singleOptionSelector: '[data-single-option-selector]',
+  comparePrice: '[data-compare-price]',
+  comparePriceText: '[data-compare-text]',
+  priceWrapper: '[data-price-wrapper]',
+  productPrice: '[data-product-price]',
+};
+
+const cssClasses = {
+  activeThumbnail: 'active-thumbnail',
+  hide: 'hide',
 };
 
 /**
@@ -25,8 +40,10 @@ export default () => {
    * DOM node selectors.
    */
   const nodeSelectors = {
+    container: document.querySelectorAll(selectors.container),
     addToCart: document.querySelectorAll(selectors.addToCart),
   };
+
 
   /**
    * Initialise component.
@@ -39,47 +56,90 @@ export default () => {
    * Set trigger listeners.
    */
   function setTriggerEvents() {
-    [...nodeSelectors.addToCart].forEach((item) => {
-      item.addEventListener('click', () => {
-        handleAddToCart(item);
-      }, false);
+    [...nodeSelectors.container].forEach((item) => {
+      createSelector(item);
     });
   }
 
+  function createSelector(item) {
+    const $item = $(item);
+    const productSingleObject = JSON.parse(
+      $(item).find(selectors.productJson).html(),
+    );
 
-  /**
-   * Remove loading state.
-   */
-  function removeAddState() {
-    // nodeSelectors.viewport.classList.remove(cssClasses.loading);
-  }
-
-  /**
-   * Remove loading state.
-   */
-  function addCompleteState() {
-    // nodeSelectors.viewport.classList.remove(cssClasses.loading);
-  }
-
-  /**
-   * Set loading state.
-   */
-  function setAddingState() {
-    // nodeSelectors.viewport.classList.add(cssClasses.loading);
-    // nodeSelectors.body.innerHTML = loaders.ballPulse;
-  }
-
-  /**
-   * Handle add to cart event and set loading state.
-   * @param {object} event - Click and key down event.
-   */
-  function handleAddToCart(item) {
-    const data = {
-      quantity: item.dataset.quantity,
-      id: item.dataset.productId,
+    const options = {
+      $container: $item,
+      enableHistoryState: false,
+      singleOptionSelector: $item.find(selectors.singleOptionSelector),
+      originalSelectorId: $item.find(selectors.originalSelectorId),
+      product: productSingleObject,
     };
-    const $error = $('.modal-quick-view__footer .error');
-    AjaxCart().addToCart(data, $error);
+
+    const variants = new Variants(options);
+
+    $item.on(
+      `variantChange`,
+      updateAddToCartState.bind(item, $item),
+    );
+
+    $item.on(
+      `variantPriceChange`,
+      updateProductPrices.bind(item, $item),
+    );
+  }
+
+  function updateAddToCartState(target, item) {
+    console.log('update');
+    const $target = $(target);
+    const variant = item.variant;
+    if (variant) {
+      $(selectors.priceWrapper, $target).removeClass(cssClasses.hide);
+    } else {
+      $(selectors.addToCart, $target).prop('disabled', true);
+      $(selectors.addToCartText, $target).html(
+        theme.strings.unavailable,
+      );
+      $(selectors.priceWrapper, $target).addClass(cssClasses.hide);
+      return;
+    }
+
+    if (variant.available) {
+      $(selectors.addToCart, $target).prop('disabled', false);
+      $(selectors.addToCartText, $target).html(theme.strings.addToCart);
+    } else {
+      $(selectors.addToCart, $target).prop('disabled', true);
+      $(selectors.addToCartText, $target).html(theme.strings.soldOut);
+    }
+  }
+
+  /**
+   * Updates the DOM with specified prices
+   *
+   * @param {string} productPrice - The current price of the product
+   * @param {string} comparePrice - The original price of the product
+   */
+  function updateProductPrices(target, item) {
+    const $target = $(target);
+    const variant = item.variant;
+    const $comparePrice = $(selectors.comparePrice, $target);
+    const $compareEls = $comparePrice.add(
+      selectors.comparePriceText,
+      $target,
+    );
+
+    $(selectors.productPrice, $target).html(
+      formatMoney(variant.price, theme.moneyFormat),
+    );
+
+    if (variant.compare_at_price > variant.price) {
+      $comparePrice.html(
+        `Was ${formatMoney(variant.compare_at_price, theme.moneyFormat)}`,
+      );
+      $compareEls.removeClass(cssClasses.hide);
+    } else {
+      $comparePrice.html('');
+      $compareEls.addClass(cssClasses.hide);
+    }
   }
 
   /**

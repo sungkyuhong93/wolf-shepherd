@@ -19,6 +19,7 @@ import VideoModal from '../sections/video-modal';
 import ExitIntent from '../sections/exit-intent';
 import GiftWrap from '../sections/giftwrapping';
 import QuickAdd from '../sections/quick-add';
+import Swatch from '../sections/swatch';
 
 import '../sections/notification-bar';
 import '../sections/site-header';
@@ -39,12 +40,13 @@ import '../components/form';
 
 document.addEventListener('DOMContentLoaded', () => {
   AjaxCart().init();
+  Swatch().init();
   GiftWrap().init();
   QuickAdd().init();
   Navigation().init();
   ExitIntent();
-  Instafeed();
   VideoModal();
+  Instafeed();
   load('*');
 });
 

@@ -1,7 +1,12 @@
+{% assign upsell = settings.collection | default: all %}
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
 {%- if settings.mini_cart == true or settings.ajax_cart == true -%}
 <div class="cart-ajax__wrapper {% if settings.mini_cart == true %}cart-ajax--mini-cart{% endif %}">
   <div class="cart-ajax__background">
   </div>
+
+
   <div id="cart" class="cart-ajax" data-cart-total="{{ cart.item_count }}" >
 
     <a href="#" class="cart-ajax__close">
@@ -10,7 +15,6 @@
 
     <div class="cart-ajax__header">
       <h3 class="cart-ajax__title">Shopping Bag</h3>
-      {% comment %} <p class="cart-ajax__subtitle">You have <span class="cart-ajax__subtitle-counter">{{ cart.item_count }}</span> items</p> {% endcomment %}
     </div>
 
     {% if settings.freeshipping_enable == true %}
@@ -70,7 +74,7 @@
           Subtotal <span class="cart-ajax--total-price"></span>
         </div>
         <a href="/checkout" class="button button--checkout">{{ 'cart.general.checkout' | t }}</a>
-        <a href="https://wolfandshepherd.com/pages/international-checkout">International Checkout</a>
+        <a class="cart-ajax__international" href="https://wolfandshepherd.com/pages/international-checkout">International Checkout</a>
       </div>
 
       {%- if settings.mini_cart != true %}
@@ -78,11 +82,24 @@
           <h5>
             Consider these items!
           </h5>
-        <div class="ajax-related__container"></div>
+          <div class="ajax-related__container">
+            {%- for product in collections[upsell].products -%}
+              <div class="ajax-related__product-wrapper">
+                <div class="ajax-related__product-image" style="background-image:url({{product.featured_image.src | img_url: '440x'}})"></div>
+
+                <div class="ajax-related__text">
+                  <h5 class="ajax-related__product-title">{{product.title}}</h5>
+                  {% include 'ajaxcart-product-form' %}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
         </div>
       {%- endif -%}
 
     </div>
+
+    
 
   </div>
 
@@ -90,7 +107,6 @@
 {%- endif -%}
 
 <script>
-  {% assign upsell = settings.collection | default: all %}
   // <![CDATA[
   var cartUpsell   = {{ collections[upsell].products | json }};
   // ]]>

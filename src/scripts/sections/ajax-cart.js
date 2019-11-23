@@ -245,7 +245,7 @@ export default () => {
       selectors.$cartList.append(emptyCart);
     }
     if (theme.ajaxCart.upsellEnable !== false) {
-      relateProducts(cart);
+      // relateProducts(cart);
     }
   }
 

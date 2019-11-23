@@ -5,7 +5,7 @@
 
       {% if section.settings.logo-bottom-left %}
         <div class="grid__item medium-up--one-third">
-          <img src="{{ section.settings.logo-bottom-left | img_url: '200x' }}"/>          
+          <img src="{{ section.settings.logo-bottom-left | img_url: '200x' }}" alt="{{section.settings.logo-bottom-left.alt}}"/>          
         </div>
         <div class="grid__item medium-up--two-thirds">
           <div class="grid">

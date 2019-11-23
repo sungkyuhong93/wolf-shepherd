@@ -64,7 +64,7 @@ $CART_HEIGHT: calc(100vh - 280px);
   right: 0;
   top: 0;
   transition: all 0.25s cubic-bezier(0.3, 0.6, 0.4, 1);
-  width: 400px;
+  width: 600px;
   z-index: 99999;
 
   &__empty {
@@ -136,6 +136,11 @@ $CART_HEIGHT: calc(100vh - 280px);
 
   &__subtitle {
     margin-top: 0;
+  }
+
+  &__international {
+    font-size: 12px;
+    text-decoration: underline;
   }
 
   /* =============== Ajax main body/rows of product =============== */
@@ -353,9 +358,14 @@ Related Products
     display: block;
   }
 
-  h5 {
-    font-size: 11px;
-    margin-bottom: 30px;
+  .product-form__price {
+    display: flex;
+    font-family: $FONT_BASE;
+    font-size: 12px;
+    margin-bottom: 5px;
+    div {
+      margin-right: 10px;
+    }
   }
 
   &__container {
@@ -368,7 +378,8 @@ Related Products
 
   &__product-image {
     background-position: center;
-    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: contain;
     display: block;
     height: 0;
     margin-bottom: 0;
@@ -385,13 +396,106 @@ Related Products
   }
 
   &__product-title {
-    margin-bottom: 6px !important;
+    font-size: 11px;
+    margin-bottom: 4px;
   }
 
   &__product-price {
     display: block;
     font-size: 12px;
     margin-bottom: 10px;
+  }
+
+  label {
+    display: none;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+
+  select {
+    background: $COLOR_WHITE;
+    background-image: $ICON_ARROW_DOWN;
+    background-position: calc(100% - 15px) center;
+    background-repeat: no-repeat;
+    border: 1px solid $COLOR_PRIMARY_LIGHT;
+    color: $COLOR_PRIMARY;
+    height: 40px;
+    margin-right: 20px;
+    width: 100%;
+
+  }
+
+  .selector-wrapper--size {
+    .visually-hidden {
+      clip: auto;
+      height: auto;
+      margin: 0;
+      padding: 0 20px 0 0;
+      position: static!important;
+      width: auto;
+    }
+
+    .swatch__wrapper {
+      display: none;
+    }
+  }
+
+  .product-swatches {
+    display: flex;
+    flex-wrap: wrap;
+
+    .swatch__wrapper {
+      margin-left: -5px;
+    }
+
+    .selector-wrapper--color {
+      width: 100%;
+    }
+
+    .swatch-product--color {
+      height: 20px;
+      margin: 0 6px 8px;  
+      min-height: 20px;
+      min-width: 20px;
+      width: 20px;
+    }
+
+    .selector-wrapper--size {
+      width: 50%;
+    }
+
+    .button {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 560px) {
+    &__product-image {
+      margin-right: 15px;
+      min-width: 90px;
+    }
+  }
+
+  @media (max-width: 490px) {
+    .selector-wrapper--size {
+      margin-bottom: 10px;
+      min-width: 100%;
+      width: 100%;
+
+      .visually-hidden {
+        padding-right: 0;
+      }
+    }
+
+    .button {
+      min-width: 100%;
+      width: 100%;
+    }
+    &__product-image {
+      margin-right: 15px;
+      min-width: 90px;
+    }
   }
 }
 

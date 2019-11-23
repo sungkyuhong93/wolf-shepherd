@@ -99,7 +99,7 @@
       "shipping_at_checkout": "Shipping & taxes calculated at checkout",
       "update": "Update Cart",
       "checkout": "Check Out",
-      "empty": "Your cart is currently empty.",
+      "empty": "Your bag is currently empty.",
       "cookies_required": "Enable cookies to use the shopping cart",
       "continue_browsing_html":
         "Continue browsing <a href=\"/collections/all\">here</a>.",
@@ -229,12 +229,13 @@
       "submit": "Reset Password"
     },
     "register": {
-      "title": "Create Account",
+      "title": "Create an Account",
+      "subtitle": "Welcome to the Wolf Den where you can track your orders and learn more",
       "first_name": "First Name",
       "last_name": "Last Name",
       "email": "Email",
       "password": "Password",
-      "submit": "Create",
+      "submit": "Create Account",
       "cancel": "Return to Store"
     }
   },
@@ -280,7 +281,7 @@
       "on_sale_from_html": "On Sale from {{ price }}",
       "from_text_html": "From {{ price }}",
       "quantity": "Quantity",
-      "add_to_cart": "Add to Cart"
+      "add_to_cart": "Add to Bag"
     }
   },
   "gift_cards": {

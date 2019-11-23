@@ -7,7 +7,7 @@
         {% assign iconImage = 'features__icon--image' %}
           <div class="features__block">
               <div class="features__icon">
-                  <img src="{{block.settings[iconImage] | img_url: '140x'}}" alt="">
+                  <img src="{{block.settings[iconImage] | img_url: '140x'}}" alt="{{block.settings[iconImage].alt}}">
               </div>
               <div class="features__text">
                   <p>{{ block.settings[iconText] }}</p>
