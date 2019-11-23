@@ -18,14 +18,14 @@ theme.Type = (function() {
     const input = e.target;
     const inputValue = e.target.value;
     const labelName = input.id;
-    const label = document.querySelector(`.contact label[for=${labelName}]`);
+    const label = document.querySelector(`.slick-form label[for=${labelName}]`);
     inputActive(inputValue, label);
   }
 
   function handleFocus(e) {
     const input = e.target;
     const labelName = input.id;
-    const label = document.querySelector(`.contact label[for=${labelName}]`);
+    const label = document.querySelector(`.slick-form label[for=${labelName}]`);
     label.classList.add(cssClasses.active);
   }
 

@@ -1,12 +1,13 @@
 <div class="login">
 
   <h1 class="login__title">{{ 'customer.register.title' | t }}</h1>
+  <p class="login__subtitle">{{ 'customer.register.subtitle' | t }}</p>
 
-  <div class="form-vertical">
+  <div class="form-vertical slick-form" js-form="true">
     {% form 'create_customer' %}
       {{ form.errors | default_errors }}
 
-      <label for="FirstName" class="label-hidden">
+      <label for="FirstName">
         {{ 'customer.register.first_name' | t }}
       </label>
       <input type="text"
@@ -16,7 +17,7 @@
         autofocus
         {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
 
-      <label for="LastName" class="label-hidden">
+      <label for="LastName">
         {{ 'customer.register.last_name' | t }}
       </label>
       <input type="text"
@@ -25,7 +26,7 @@
         placeholder="{{ 'customer.register.last_name' | t }}"
         {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
 
-      <label for="Email" class="label-hidden">
+      <label for="Email">
         {{ 'customer.register.email' | t }}
       </label>
       <input type="email"
@@ -38,7 +39,7 @@
         autocomplete="off"
         autocapitalize="off">
 
-      <label for="CreatePassword" class="label-hidden">
+      <label for="CreatePassword">
         {{ 'customer.register.password' | t }}
       </label>
       <input type="password"
@@ -49,7 +50,9 @@
       <button type="submit" value="" class="button button--pink button--full">
         {{ 'customer.register.submit' | t }}
       </button>
-      <a class="login__links" href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a>
+      <p class="login__link">
+        Already have an account? <a href="/account/login">Login</a>
+      </p>
     {% endform %}
   </div>
 </div>

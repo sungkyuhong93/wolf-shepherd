@@ -171,7 +171,8 @@
       "delete_confirm": "Are you sure you wish to delete this address?"
     },
     "login": {
-      "title": "Login",
+      "title": "Log in",
+      "subtitle": "Welcome to the Wolf Den where you can track your orders and learn more",
       "email": "Email",
       "password": "Password",
       "forgot_password": "Forgot your password?",

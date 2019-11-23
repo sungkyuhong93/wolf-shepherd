@@ -6,13 +6,54 @@ Login/account
 }
 
 .login {
-  margin: 0 auto 160px;
-  max-width: 95%;
-  width: 350px;
+  &__image-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: 1100px) {
+      align-items: flex-start;
+    }
+  }
+  
+  &__form-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 40px 40px 150px;
+    width: 50%;
+    
+    .form-vertical {
+      max-width: 400px;
+    }
+
+    @media (min-width: 1100px) {
+      padding-top: 150px;
+    }
+  }
+
+  &__image {
+    background-position: center;
+    background-size: cover;
+    padding-bottom: 74%;
+    width: 50%;
+  }
+
+  &__basic-wrapper {
+    margin: 0 auto 160px;
+    max-width: 95%;
+    width: 350px;
+  }
 
   &__title {
     margin-bottom: 15px;
     margin-top: 0;
+    text-align: center;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    margin-bottom: 20px;
     text-align: center;
   }
 
@@ -24,11 +65,14 @@ Login/account
     margin-bottom: 20px;
   }
 
-  &__links {
-    display: block;
+  &__link {
+    font-size: 14px;
     margin-bottom: 20px;
     text-align: center;
-    text-decoration: underline;
+
+    a {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -56,6 +100,13 @@ Login/account
   input {
     margin-bottom: 20px;
   }
+}
+
+/* ============================================================================
+Register
+============================================================================== */
+.template-register {
+
 }
 
 /* ============================================================================

@@ -177,6 +177,7 @@
     },
     "login": {
       "title": "Login",
+      "subtitle": "Welcome to the Wolf Den where you can track your orders and learn more",
       "email": "E-mail",
       "password": "Wachtwoord",
       "forgot_password": "Wachtwoord vergeten?",
@@ -237,6 +238,7 @@
     },
     "register": {
       "title": "Registeren",
+      "subtitle": "Welcome to the Wolf Den where you can track your orders and learn more",
       "first_name": "Voornaam",
       "last_name": "Achternaam",
       "email": "E-mail",
