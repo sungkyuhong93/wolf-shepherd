@@ -15,14 +15,14 @@ Login/account
       align-items: flex-start;
     }
   }
-  
+
   &__form-container {
     align-items: center;
     display: flex;
     justify-content: center;
     padding: 40px 40px 150px;
     width: 50%;
-    
+
     .form-vertical {
       max-width: 400px;
     }
@@ -40,15 +40,25 @@ Login/account
   }
 
   &__basic-wrapper {
-    margin: 0 auto 160px;
-    max-width: 95%;
-    width: 350px;
+    margin: 100px auto 160px;
+    max-width: 400px;
+    width: 100%;
+  }
+
+  &__wolf {
+    margin: 0 auto 12px;
+    text-align: center;
   }
 
   &__title {
+    font-size: 32px;
     margin-bottom: 15px;
     margin-top: 0;
     text-align: center;
+
+    @include media-query($medium-up) {
+      font-size: 40px;
+    }
   }
 
   &__subtitle {
@@ -63,6 +73,7 @@ Login/account
 
   .button {
     margin-bottom: 20px;
+    margin-top: 32px;
   }
 
   &__link {
@@ -72,6 +83,45 @@ Login/account
 
     a {
       text-decoration: underline;
+    }
+  }
+
+  &__recover {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 0;
+    text-align: right;
+  }
+
+  &__password {
+    position: relative;
+
+    label {
+      z-index: 1;
+    }
+  }
+
+  &__password-toggle {
+    position: absolute;
+    right: 0;
+    top: 32px;
+  }
+
+  @media (max-width: 880px) {
+    &__image {
+      display: none;
+    }
+
+    &__form-container {
+      padding: 40px 20px 50px;
+      width: 100%;
+    }
+
+    &__basic-wrapper {
+      margin-bottom: 0;
+      margin-top: 0;
+      padding: 40px 20px 50px;
+      width: 100%;
     }
   }
 }
@@ -84,6 +134,7 @@ Login/account
 }
 
 #HideRecoverPasswordLink {
+  font-size: 14px;
   border: 0;
   margin-top: 0;
 }

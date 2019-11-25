@@ -187,6 +187,40 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
       border: 1px solid rgba($COLOR_PRIMARY, 1);
     }
   }
+
+  .errors {
+    position: relative;
+    top: 22px;
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        color: $color-error;
+        font-size: 12px;
+        list-style: none;
+      }
+    }
+  }
+
+  @include media-query($medium-up) {
+    &__m2 {
+      display: flex;
+    }
+
+    &__cell {
+      width: 50%;
+
+      &:nth-child(1) {
+        padding-right: 8px;
+      }
+
+      &:nth-child(2) {
+        padding-left: 8px;
+      }
+    }
+  }
 }
 
 .list-inline {

@@ -11,16 +11,19 @@
 
 <div id="CustomerLoginForm" class="login">
   <div class="login__image-wrapper">
-    <div class="login__image hero-image--{{ sectionId }} lazyload" 
+    <div class="login__image lazyload" 
     data-bgset="{{sectionImageMobile}} [(max-width: 749px)] | {{sectionImage}}">
     </div>
     <div class="login__form-container">
       <div class="form-vertical slick-form" js-form="true">
         {% form 'customer_login' %}
+
+          <div class="login__wolf">
+            <img src="{{ 'wolf.png' | asset_url }}" alt="{{store.name}}">
+          </div>
+
           <h1 class="login__title">{{ 'customer.login.title' | t }}</h1>
           <p class="login__subtitle">{{ 'customer.login.subtitle' | t }}</p>
-
-          {{ form.errors | default_errors }}
 
           <label for="CustomerEmail">
             {{ 'customer.login.email' | t }}
@@ -36,69 +39,85 @@
                   autofocus>
 
           {% if form.password_needed %}
-            <label for="CustomerPassword">
-              {{ 'customer.login.password' | t }}
-            </label>
-            <input type="password"
-                    name="customer[password]"
-                    id="CustomerPassword"
-                    class="{% if form.errors contains 'password' %}input-error{% endif %}"
-                    placeholder="{{ 'customer.login.password' | t }}">
-            <a class="login__link" href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a>
+            <div class="login__password">
+              <label for="CustomerPassword">
+                {{ 'customer.login.password' | t }}
+              </label>
+              <input type="password"
+                      name="customer[password]"
+                      id="CustomerPassword"
+                      class="{% if form.errors contains 'password' %}input-error{% endif %}"
+                      placeholder="{{ 'customer.login.password' | t }}">
+              <div class="login__password-toggle" id="CustomerPasswordShow">
+                {% include 'icons' with icon: 'eye' %}
+              </div>
+            </div>
+            <a class="login__recover" href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a>
           {% endif %}
+
+          {{ form.errors | default_errors }}
 
           <button type="submit" class="button button--full">{{ 'customer.login.sign_in' | t }}</button>
 
-          <a class="login__link" href="/">{{ 'customer.login.cancel' | t }}</a>
+          {% comment %} <a class="login__link" href="/">{{ 'customer.login.cancel' | t }}</a> {% endcomment %}
 
-          <a class="login__link" href="/account/register">
-            {{ 'layout.customer.create_account' | t }}
-          </a>
+          <p class="login__link">New to Wolf & Shepherd? 
+          
+            <a class="login__link" href="/account/register">
+              {{ 'layout.customer.create_account' | t }}
+            </a>
+          </p>
 
         {% endform %}
       </div>
     </div>
+
   </div>
 </div>
 
 <div id="RecoverPasswordForm" class="hide login">
   <div class="login__image-wrapper">
-    <div class="login__image hero-image--{{ sectionId }} lazyload" 
+    <div class="login__image lazyload" 
     data-bgset="{{sectionImageMobile}} [(max-width: 749px)] | {{sectionImage}}">
     </div>
 
+    <div class="login__form-container">
+      <div class="form-vertical slick-form" js-form="true">
 
-    <div class="form-vertical">
-      
-      <h2 class="login__title">{{ 'customer.recover_password.title' | t }}</h2>
-      <p class="login__text">{{ 'customer.recover_password.subtext' | t }}</p>
+        <div class="login__wolf">
+          <img src="{{ 'wolf.png' | asset_url }}" alt="{{store.name}}">
+        </div>
 
-      {% form 'recover_customer_password' %}
-        {{ form.errors | default_errors }}
+        <h2 class="login__title">{{ 'customer.recover_password.title' | t }}</h2>
+        <p class="login__text">{{ 'customer.recover_password.subtext' | t }}</p>
 
-        {% if form.posted_successfully? %}
-          <span class="hide reset-password-success"></span>
-        {% endif %}
+        {% form 'recover_customer_password' %}
+          {{ form.errors | default_errors }}
 
-        <label for="RecoverEmail">
-          {{ 'customer.recover_password.email' | t }}
-        </label>
-        <input type="email"
-              name="email"
-              id="RecoverEmail"
-              placeholder="{{ 'customer.recover_password.email' | t }}"
-              spellcheck="false"
-              autocomplete="off"
-              autocapitalize="off">
+          {% if form.posted_successfully? %}
+            <span class="hide reset-password-success"></span>
+          {% endif %}
 
-        <button type="submit" class="button button--full button--pink">
-        {{ 'customer.recover_password.submit' | t }}
-        </button>
+          <label for="RecoverEmail">
+            {{ 'customer.recover_password.email' | t }}
+          </label>
+          <input type="email"
+                name="email"
+                id="RecoverEmail"
+                placeholder="{{ 'customer.recover_password.email' | t }}"
+                spellcheck="false"
+                autocomplete="off"
+                autocapitalize="off">
 
-        <button type="button button--full" id="HideRecoverPasswordLink">
-          {{ 'customer.recover_password.cancel' | t }}
-        </button>
-      {% endform %}
+          <button type="submit" class="button button--full button--pink">
+          {{ 'customer.recover_password.submit' | t }}
+          </button>
+
+          <button type="button button--full" id="HideRecoverPasswordLink">
+            {{ 'customer.recover_password.cancel' | t }}
+          </button>
+        {% endform %}
+      </div>
     </div>
   </div>
 </div>

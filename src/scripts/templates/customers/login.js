@@ -11,6 +11,7 @@ import $ from 'jquery';
 const selectors = {
   recoverPasswordForm: '#RecoverPassword',
   hideRecoverPasswordLink: '#HideRecoverPasswordLink',
+  passwordShow: '#CustomerPasswordShow',
 };
 
 function onShowHidePasswordForm(evt) {
@@ -36,6 +37,19 @@ function toggleRecoverPasswordForm() {
 }
 
 /**
+ *  Show/Hide password
+ */
+function toggleShowPassword() {
+  const password = document.getElementById('CustomerPassword');
+
+  if (password.type === 'password') {
+    password.type = 'text';
+  } else {
+    password.type = 'password';
+  }
+}
+
+/**
  *  Show reset password success message
  */
 function resetPasswordSuccess() {
@@ -54,6 +68,7 @@ if ($(selectors.recoverPasswordForm).length) {
   checkUrlHash();
   resetPasswordSuccess();
 
+  $(selectors.passwordShow).on('click', toggleShowPassword);
   $(selectors.recoverPasswordForm).on('click', onShowHidePasswordForm);
   $(selectors.hideRecoverPasswordLink).on('click', onShowHidePasswordForm);
 }
