@@ -167,31 +167,6 @@ account
   margin-bottom: 160px;
 }
 
-.account-sidebar {
-  list-style: none;
-  margin: 0 0 30px;
-  padding: 0;
-
-  li {
-    line-height: 1.8;
-  }
-
-  a {
-    font-size: 13px;
-    line-height: 2;
-    opacity: 0.6;
-
-    &:hover {
-      opacity: 1;
-    }
-
-    &.active {
-      opacity: 1;
-      text-decoration: underline;
-    }
-  }
-}
-
 .address-form {
   background: rgba($COLOR_BLACK, 0.6);
   bottom: 0;

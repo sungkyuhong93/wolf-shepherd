@@ -41,14 +41,14 @@
     margin-top: 10px;
     padding-top: $grid-gutter / 2;
 
-    &::after {
-      border-bottom: 1px solid $color-border;
-      content: '';
-      display: block;
-      left: $grid-gutter / 2;
-      position: absolute;
-      right: $grid-gutter / 2;
-      top: 0;
-    }
+    // &::after {
+    //   border-bottom: 1px solid $color-border;
+    //   content: '';
+    //   display: block;
+    //   left: $grid-gutter / 2;
+    //   position: absolute;
+    //   right: $grid-gutter / 2;
+    //   top: 0;
+    // }
   }
 }
