@@ -2,7 +2,6 @@ import $ from 'jquery';
 
 theme.SizeGuide = (function() {
 
-  console.log('size guide')
   const selectors = {
     $sizeGuideTrigger: $('.js--size-guide'),
     $sizeGuideClose: $('.size-guide__close, .size-guide__background'),
@@ -13,7 +12,6 @@ theme.SizeGuide = (function() {
 
   selectors.$sizeGuideTrigger.on('click', function(event){
     event.preventDefault ? event.preventDefault() : (event.returnValue = false);
-    console.log('click it')
     openSizeGuide();
   });
 
@@ -28,7 +26,6 @@ theme.SizeGuide = (function() {
   });
 
   function openSizeGuide() {
-    console.log('open')
     selectors.$sizeGuidePanel.addClass(selectors.activeClass);
   }
 

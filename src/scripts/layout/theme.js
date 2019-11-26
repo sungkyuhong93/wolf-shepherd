@@ -18,8 +18,12 @@ import Instafeed from '../sections/instagram-feed';
 import VideoModal from '../sections/video-modal';
 import ExitIntent from '../sections/exit-intent';
 import GiftWrap from '../sections/giftwrapping';
+
+import '../sections/product';
+import '../sections/product-miniform';
 import QuickAdd from '../sections/quick-add';
 import Swatch from '../sections/swatch';
+
 
 import '../sections/notification-bar';
 import '../sections/site-header';

@@ -85,7 +85,7 @@
           <div class="ajax-related__container">
             {%- for product in collections[upsell].products -%}
               <div class="ajax-related__product-wrapper">
-                <div class="ajax-related__product-image" style="background-image:url({{product.featured_image.src | img_url: '440x'}})"></div>
+                <a href="{{product.url}}" class="ajax-related__product-image" style="background-image:url({{product.featured_image.src | img_url: '440x'}})"></a>
 
                 <div class="ajax-related__text">
                   <h5 class="ajax-related__product-title">{{product.title}}</h5>

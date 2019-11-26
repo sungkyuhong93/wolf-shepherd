@@ -72,6 +72,7 @@ register('product', {
       `variantChange${this.namespace}`,
       this.updateAddToCartState.bind(this),
     );
+
     this.$container.on(
       `variantPriceChange${this.namespace}`,
       this.updateProductPrices.bind(this),
