@@ -1,0 +1,91 @@
+{% include 'sub-menu' %}
+
+{% include 'header' with title: page.title, text: page.content %}
+
+<div class="page-width">
+  <div class="grid">
+    <div class="grid__item medium-up--one-whole large-up--eight-twelfths large-up--push-two-twelfths">
+  
+      <ul class="accordion accordion--large">
+
+        {% for block in section.blocks %}
+          {% if block.type == 'accordion' %}
+            <li class="accordion__link">
+              <h6 class="accordion__title" data-toggle="accordion--{{forloop.index}}">
+                {{block.settings.title}}
+                <span class="arrow-up arrow"></span>
+                <span class="arrow arrow-down"></span>
+              </h6>
+                <div id="accordion--{{forloop.index}}" class="accordion__content">
+                  {{block.settings.text}}
+                </div>
+            </li>
+          {% else %}
+            <li class="accordion__section-title 
+              {% if block.settings.center %}accordion__section-title--center{% endif %}
+              {% if forloop.first%}accordion__section-title--first{% endif %}">
+              <h3>{{block.settings.title}}</h3>
+            </li>
+          {% endif %}
+        {% endfor %}
+
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "FAQs",
+    "settings": [
+      {
+        "type": "header",
+        "content": "FAQ settings"
+      },
+      {
+        "type": "link_list",
+        "id": "linklist",
+        "label": "Navigation"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "accordion",
+        "name": "Accordion",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>"
+          }
+        ]
+      },
+      {
+        "type": "title",
+        "name": "Title",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Title"
+          },
+          {
+            "type": "checkbox",
+            "id": "center",
+            "label": "Center text",
+            "default": false
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

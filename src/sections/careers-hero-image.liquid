@@ -1,0 +1,184 @@
+{% include 'hero-image' type: 'section' %}
+ 
+{% schema %}
+  {
+    "name": "Careers hero",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable",
+        "label": "Show section"
+      },
+      {
+        "type": "select",
+        "id": "margin_bottom",
+        "label": "Margin bottom",
+        "default": "no-margin",
+        "options": [
+          {
+            "label": "Margin bottom",
+            "value": "section-margin-bottom"
+          },
+          {
+            "label": "No margin",
+            "value": "no-margin"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "full-width",
+        "label": "Full width",
+        "default": "full-width",
+        "options": [
+          {
+            "label": "Full width",
+            "value": "full-width"
+          },
+          {
+            "label": "Within wrapper",
+            "value": "wrapper"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "height",
+        "label": "Block height",
+        "default": "hero-image--small",
+        "options": [
+          {
+            "label": "Small",
+            "value": "hero-image--small"
+          },
+          {
+            "label": "Medium",
+            "value": "hero-image--medium"
+          },
+          {
+            "label": "Large",
+            "value": "hero-image--large"
+          },
+          {
+            "label": "X-Large",
+            "value": "hero-image--xlarge"
+          }
+        ]
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Desktop Image",
+        "info": "Advised size:"
+      },
+      {
+        "type": "select",
+        "id": "positionX",
+        "label": "Text position horizontal",
+        "default": "hero-image--center",
+        "options": [
+          {
+            "value": "hero-image--left",
+            "label": "Left"
+          },
+          {
+            "value": "hero-image--center",
+            "label": "Center"
+          },
+          {
+            "value": "hero-image--right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "positionY",
+        "label": "Text position vertical",
+        "default": "hero-image--middle",
+        "options": [
+          {
+            "value": "hero-image--top",
+            "label": "Top"
+          },
+          {
+            "value": "hero-image--middle",
+            "label": "Middle"
+          },
+          {
+            "value": "hero-image--bottom",
+            "label": "Bottom"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Text alignment",
+        "default": "hero-image--text-center",
+        "options": [
+          {
+            "value": "hero-image--text-left",
+            "label": "Left"
+          },
+          {
+            "value": "hero-image--text-center",
+            "label": "Center"
+          },
+          {
+            "value": "hero-image--text-right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_color",
+        "label": "Text colour",
+        "default": "hero-image--black",
+        "options": [
+          {
+            "label": "Light",
+            "value": "hero-image--white"
+          },
+          {
+            "label": "Dark",
+            "value": "hero-image--black"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_size",
+        "label": "Text size",
+        "default": "d1",
+        "options": [
+          {
+            "label": "XLarge",
+            "value": "d1"
+          },
+          {
+            "label": "Large",
+            "value": "d2"
+          }
+        ]
+      },
+      {
+        "type": "richtext",
+        "id": "title",
+        "label": "Heading",
+        "default": "<p>Contact Us</p>"
+      },   
+      {
+        "type": "header",
+        "content": "Mobile only settings"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image",
+        "info": "Advised size:"
+      }
+    ]
+  }
+{% endschema %}

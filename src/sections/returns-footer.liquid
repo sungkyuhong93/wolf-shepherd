@@ -1,0 +1,85 @@
+<div class="page-width">
+  <div class="grid">
+    <div class="grid__item medium-up--one-whole large-up--eight-twelfths large-up--push-two-twelfths">
+
+      <div class="faqs-footer">
+        <div class="faqs-footer__title">
+          <h3>{{section.settings.title}}</h3>
+          <p>{{section.settings.text}}</p>
+        </div>
+
+        <div class="faqs-footer__link-wrapper">
+          <div class="faqs-footer__link">
+            <a href="{{section.settings.link_1}}">
+              <img src="{{section.settings.link_image_1 | img_url: '400x' }}" alt="{{section.settings.link_image_1.alt}}"/>
+              <h5>{{section.settings.link_title_1}}</h5>
+            </a>
+          </div>
+
+          <div class="faqs-footer__link">
+            <a href="{{section.settings.link_2}}">
+              <img src="{{section.settings.link_image_2 | img_url: '400x' }}" alt="{{section.settings.link_image_2.alt}}"/>
+              <h5>{{section.settings.link_title_2}}</h5>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Returns footer",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Returns footer"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+      },
+
+      {
+        "type": "url",
+        "id": "link_1",
+        "label": "Link one"
+      },
+      {
+        "type": "text",
+        "id": "link_title_1",
+        "label": "Link title one"
+      },
+      {
+        "type": "image_picker",
+        "id": "link_image_1",
+        "label": "Link image one"
+      },
+
+      {
+        "type": "url",
+        "id": "link_2",
+        "label": "Link two"
+      },
+      {
+        "type": "text",
+        "id": "link_title_2",
+        "label": "Link title two"
+      },
+      {
+        "type": "image_picker",
+        "id": "link_image_2",
+        "label": "Link image two"
+      }
+
+    ]
+  }
+{% endschema %}

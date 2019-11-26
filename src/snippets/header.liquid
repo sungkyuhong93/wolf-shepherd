@@ -20,19 +20,23 @@
 
 <header class="header header--{{sectionID}} {{ alignContent }} {{specialClass}}">
   <div class="page-width">
-    <div class="header__container {{marginBottom}}">
-      {% if title != blank %}
-        <h2 class="header__title">{{ title | escape }}</h2>
-      {% endif %}
-      {% if text != blank %}
-        <div class="header__text">{{ text }}</div>
-      {% endif %}
+    <div class="grid">
+      <div class="grid__item medium-up--one-whole large-up--eight-twelfths large-up--push-two-twelfths">
+        <div class="header__container {{marginBottom}}">
+          {% if title != blank %}
+            <h2 class="header__title">{{ title | escape }}</h2>
+          {% endif %}
+          {% if text != blank %}
+            <div class="header__text">{{ text }}</div>
+          {% endif %}
 
-      {% if button_label != blank and button_link != blank %}
-        <a href="{{ button_link }}" class="button">
-          {{ button_label }}
-        </a>
-      {% endif %}
+          {% if button_label != blank and button_link != blank %}
+            <a href="{{ button_link }}" class="button button--white">
+              {{ button_label }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
     </div>
   </div>
 </header>

@@ -24,7 +24,6 @@ import '../sections/product-miniform';
 import QuickAdd from '../sections/quick-add';
 import Swatch from '../sections/swatch';
 
-
 import '../sections/notification-bar';
 import '../sections/site-header';
 import '../sections/featured-collection-slider';
@@ -37,10 +36,11 @@ import '../sections/list-collections';
 import '../sections/testimonials';
 import '../sections/collection-page';
 
+import '../components/accordion';
+import '../components/form';
+import '../components/slide-to';
 import '../components/type';
 import '../components/quantity';
-import '../components/slide-to';
-import '../components/form';
 
 document.addEventListener('DOMContentLoaded', () => {
   AjaxCart().init();

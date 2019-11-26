@@ -101,3 +101,78 @@ Contact
     }
   }
 }
+
+/* ============================================================================
+FAQs
+============================================================================== */
+.faqs {
+  margin-bottom: 64px;
+
+  @include media-query($medium-up) {
+    margin-bottom: 100px;
+  }
+
+  .header {
+    margin-bottom: 40px;
+    margin-top: 40px;
+
+    a {
+      text-decoration: underline;
+    }
+
+    @include media-query($medium-up) {
+      margin-top: 64px;
+    }
+  }
+}
+
+.faqs-footer {
+  margin-top: 40px;
+
+  &__title {
+    text-align: center;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
+  &__link-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__link {
+    padding: 0 30px;
+
+    img {
+      width: 56px;
+    }
+  }
+
+  @include media-query($small) {
+    margin-top: 20px;
+
+    h3 {
+      font-size: 18px;
+    }
+  }
+}
+
+/* ============================================================================
+Pagelayout
+============================================================================== */
+.page-layout {
+  p {
+    font-size: 14px;
+  }
+
+  @include media-query($small) {
+    h3 {
+      font-size: 18px;
+    }
+  }
+}

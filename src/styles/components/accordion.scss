@@ -1,0 +1,136 @@
+/* ============================================================================
+  Accordion
+============================================================================== */
+$ACCORDION_PADDING: 16px;
+$ACCORDION_PADDING_LARGE: 22px;
+
+.accordion {
+  $parent: &;
+  border-top: 1px solid $COLOR_PRIMARY_LIGHT;
+  margin: 0 0 16px;
+  padding: 0;
+
+  &--large {
+    border-top: 0;
+
+    @include media-query($medium-up) {
+      #{$parent}__title {
+        font-size: 14px;
+        padding: $ACCORDION_PADDING_LARGE 0;
+      }
+
+      #{$parent}__content {
+        font-size: 14px;
+        padding-bottom: $ACCORDION_PADDING_LARGE;
+
+        p {
+          margin-bottom: 20px;
+        }
+
+        * {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  li {
+    list-style: none;
+  }
+
+  &__section-title {
+    padding-top: 40px;
+
+    &--first {
+      padding-top: 0;
+    }
+
+    &--center {
+      text-align: center;
+    }
+
+    @include media-query($small) {
+      h3 {
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__link {
+    border-bottom: 1px solid $COLOR_PRIMARY_LIGHT;
+  }
+
+  &__title {
+    cursor: pointer;
+    margin: 0;
+    padding: $ACCORDION_PADDING 0;
+  
+    .arrow-up {
+      display: none;
+    }
+  
+    .arrow {
+      float: right;
+      height: 11px;
+      line-height: 18px;
+      position: relative;
+      width: 11px;
+  
+      &::after {
+        background: $COLOR_PRIMARY;
+        content: '';
+        height: 1px;
+        position: absolute;
+        top: 5px;
+        width: 100%;
+      }
+    }
+  
+    .arrow-down {
+      &::before {
+        background: $COLOR_PRIMARY;
+        content: '';
+        height: 100%;
+        left: 50%;
+        position: absolute;
+        width: 1px;
+      }
+    }
+  }
+
+  &__content {
+    display: none;
+    font-size: 12px;
+    padding-bottom: $ACCORDION_PADDING;
+
+    ul, ol {
+      padding-left: 25px;
+      margin-bottom: 10px;
+
+      li {
+        font-size: 12px;
+        list-style: disc;
+      }
+    }
+  }
+
+  &__content--is-active {
+    border-top: 0;
+    display: block;
+    padding-top: 0;
+
+    // *:last-child {
+    //   margin-bottom: 0;
+    // }
+  }
+
+  &__item--is-active {
+    .arrow-down {
+      display: none;
+    }
+  
+    .arrow-up {
+      display: inline;
+    }
+  }
+}
