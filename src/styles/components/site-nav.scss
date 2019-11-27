@@ -1,58 +1,6 @@
 /* ============================================================================
 site nav
 ============================================================================== */
-// @include media-query($small) {
-//   .site-nav {
-//     padding-top: 10px;
-
-//     .has-mobile-menu {
-//       .dropdown-arrow {
-//         display: block;
-//         float: right;
-//       }
-
-//       .dropdown-close {
-//         display: none;
-//       }
-
-//       .site-nav--has-submenu {
-//         display: none;
-//         margin-left: -20px;
-//         margin-right: -20px;
-//         padding: 20px 20px 10px;
-
-//         ul {
-//           margin: 0 0 10px;
-//           padding: 0;
-
-//           h5, a {
-//             margin: 0;
-//             padding: 0;
-//           }
-//         }
-//       }
-
-//       &.site-nav__submenu--open {
-//         .dropdown-close {
-//           display:block;
-//         }
-
-//         .dropdown-open {
-//           display: none;
-//         }
-
-//         .site-nav--has-submenu, .mobile-submenu {
-//           display: block;
-//         }
-//       }
-//     }
-//   }
-
-//   .meganav {
-//     display: none!important;
-//   }
-// }
-
 .mobile-navigation {
   .site-nav {
     list-style: none;

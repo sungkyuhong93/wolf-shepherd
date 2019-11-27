@@ -258,16 +258,25 @@ export default () => {
     }
   }
 
+  // Gift wrapping product check
+  function isFreeGiftCheck(cart) {
+    if (cart.title.includes('Free Gift')) {
+      return 'cart-ajax__free-gift';
+    } else {
+      return '';
+    }
+  }
+
   function createMarkup(cart, loopCount) {
 
-    const cartVariantTitle = cart.variant_title === null ? '' : cart.variant_title ;
-    const cartVariantPrice = formatMoney(cart.price, theme.moneyFormat).replace('.00','');
+    const cartVariantTitle = cart.variant_title === null ? '' : cart.variant_title;
     const cartLinePrice = formatMoney(cart.line_price, theme.moneyFormat).replace('.00','');
     const loopCounter = loopCount + 1;
     const isGiftWrap = isGiftWrapCheck(cart);
+    const isFreeGift = isFreeGiftCheck(cart);
 
     const cartRow =  `
-          <div class="cart-ajax__row cart-data ${isGiftWrap}" data-line="${loopCounter}" data-id="${cart.id}">
+          <div class="cart-ajax__row cart-data ${isGiftWrap} ${isFreeGift}" data-line="${loopCounter}" data-id="${cart.id}">
             <div class="cart-ajax__row__column">
               <a href="${cart.url}" class="js-click-gtm cart-ajax__row__image" style="background-image: url(${cart.image})"></a>
             </div>
@@ -365,6 +374,7 @@ export default () => {
     init,
     eventBus,
     addToCart,
+    cartRender,
     updateTotals,
   });
 };

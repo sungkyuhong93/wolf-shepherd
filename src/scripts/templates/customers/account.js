@@ -21,17 +21,9 @@ function checkUrlHash() {
 
   // Allow deep linking to recover password form
   if (hash === '#accountOrders') {
-    $(selectors.orders).addClass('is-active');
-    $(selectors.account).removeClass('is-active');
-    $(selectors.showOrders).addClass('active');
-    $(selectors.showAccount).removeClass('active');
-    $('#shopify-section-account-featured-collection').addClass('is-active');
-  } else {
-    $(selectors.account).addClass('is-active');
-    $(selectors.orders).removeClass('is-active');
-    $(selectors.showOrders).removeClass('active');
-    $(selectors.showAccount).addClass('active');    
-    $('#shopify-section-account-featured-collection').removeClass('is-active');
+    showOrders();
+  } else if (hash === '#account') {
+    showAccount();
   }
 }
 
@@ -39,13 +31,14 @@ function checkUrlHash() {
  *  Show orders
  */
 function showOrders(evt) {
-  evt.preventDefault();
+  if (evt) {
+    // evt.preventDefault();
+  }
   $(selectors.orders).addClass('is-active');
   $(selectors.account).removeClass('is-active');
   $(selectors.showOrders).addClass('active');
   $(selectors.showAccount).removeClass('active');
   $('#shopify-section-account-featured-collection').addClass('is-active');
-
   addMobileClass();
 }
 
@@ -53,13 +46,14 @@ function showOrders(evt) {
  *  Show orders
  */
 function showAccount(evt) {
-  evt.preventDefault();
+  if (evt) {
+    // evt.preventDefault();
+  }
   $(selectors.account).addClass('is-active');
   $(selectors.orders).removeClass('is-active');
   $(selectors.showOrders).removeClass('active');
   $(selectors.showAccount).addClass('active');
   $('#shopify-section-account-featured-collection').removeClass('is-active');
-
   addMobileClass();
 }
 
@@ -82,5 +76,5 @@ if ($(selectors.accountOrders).length) {
 
   $(selectors.showOrders).on('click', showOrders);
   $(selectors.showAccount).on('click', showAccount);
-  $('.account__breadcrumb').on('click', showMobileNav)
+  $('.account__breadcrumb').on('click', showMobileNav);
 }

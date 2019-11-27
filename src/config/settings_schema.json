@@ -1211,12 +1211,6 @@
       },
       {
         "type": "checkbox",
-        "id": "mini_cart",
-        "label": "Enable mini cart",
-        "default": false
-      },
-      {
-        "type": "checkbox",
         "id": "freeshipping_enable",
         "label": "Enable free gift",
         "default": false
@@ -1225,6 +1219,11 @@
         "type": "number",
         "id": "freeshipping_threshold",
         "label": "Free gift threshold"
+      },
+      {
+        "type": "product",
+        "id": "frees_gift",
+        "label": "Free Gift"
       },
       {
         "type": "checkbox",

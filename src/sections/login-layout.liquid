@@ -46,7 +46,7 @@
               <input type="password"
                       name="customer[password]"
                       id="CustomerPassword"
-                      class="{% if form.errors contains 'password' %}input-error{% endif %}"
+                      class="input--password {% if form.errors contains 'password' %}input-error{% endif %}"
                       placeholder="{{ 'customer.login.password' | t }}">
               <div class="login__password-toggle" id="CustomerPasswordShow">
                 {% include 'icons' with icon: 'eye' %}

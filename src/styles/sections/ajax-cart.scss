@@ -276,6 +276,27 @@ $CART_HEIGHT: calc(100vh - 280px);
     }
   }
 
+  &__free-gift {
+    #{$parent}__remove {
+      display: none;
+    }
+
+    #{$parent}__row__money {
+      bottom: initial;
+      margin: 0;
+      top: 50%;
+      transform: translate(00%, -50%);
+    }
+
+    #{$parent}__row__variant {
+      margin: 0;
+    }
+
+    .quantity-wrapper {
+      display: none;
+    }
+  }
+
   &__footer {
     
   }

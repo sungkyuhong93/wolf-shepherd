@@ -65,9 +65,9 @@ MegaNav
   }
 
   &__images {
-    position: relative;
     background: $COLOR_GREY;
     height: 100%;
+    position: relative;
     width: 75%;
     z-index: 1;
 
@@ -104,6 +104,18 @@ MegaNav
 
     img {
       margin-bottom: 20px;
+    }
+
+    &:hover {
+      h6::before {
+        background: $COLOR_PRIMARY;
+        bottom: -3px;
+        content: '';
+        height: 1px;
+        left: 0;
+        position: absolute;
+        right: 0;
+      }
     }
   }
 

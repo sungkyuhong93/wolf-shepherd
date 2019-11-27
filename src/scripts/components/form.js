@@ -42,6 +42,7 @@ theme.Type = (function() {
       element.addEventListener('blur', handleBlur);
       element.addEventListener('focus', handleFocus);
     });
+
     nodeSelectors.textarea.forEach((element, index) => {
       // element.addEventListener('blur', handleBlur);
       // element.addEventListener('focus', handleFocus);
@@ -50,6 +51,9 @@ theme.Type = (function() {
 
   function init() {
     setEventListeners();
+    nodeSelectors.input.forEach((element, index) => {
+      element.addEventListener('load', handleFocus);
+    });
   }
 
   init();

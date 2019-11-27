@@ -5,6 +5,17 @@ Login/account
   @include clearfix;
 }
 
+.template-login {
+  .form-success {
+    background: $COLOR_PRIMARY;
+    color: $COLOR_WHITE;
+    font-size: 12px;
+    padding: 12px;
+    text-align: center;
+    width: 100%;
+  }
+}
+
 .login {
   &__image-wrapper {
     align-items: center;
@@ -47,6 +58,7 @@ Login/account
 
   &__wolf {
     margin: 0 auto 12px;
+    max-width: 64px;
     text-align: center;
   }
 
@@ -124,6 +136,10 @@ Login/account
       width: 100%;
     }
   }
+}
+
+.input--password {
+  text-transform: none!important;
 }
 
 #HideRecoverPasswordLink {

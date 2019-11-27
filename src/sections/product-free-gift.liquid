@@ -1,0 +1,75 @@
+<div class="page-width">
+  <div class="grid">
+    <div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+
+      {%- assign current_variant = product.selected_or_first_available_variant -%}
+      {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+      <div class="grid__item medium-up--one-half large-up--seven-twelfths product-images__mobile-container">
+        {% include 'product-header' %}
+        {% include 'product-images' %}
+      </div>
+
+      <div class="grid__item medium-up--one-half large-up--five-twelfths">
+        <div class="product-meta">
+          
+          {% include 'product-header' %}
+
+          <div class="product-description">
+            {% include 'product-accordion' %}
+          </div>
+
+          {% if section.settings.enable_usp %}
+            <div class="product-description__usp">
+              {% if section.settings.usp_image != blank %}
+                <img src="{{ section.settings.usp_image | img_url: '100x' }}" alt="{{ section.settings.usp_image.alt }}"/>
+              {% endif %}
+              {% if section.settings.usp_text %}
+                <span>{{ section.settings.usp_text }}</span>
+              {% endif %}
+            </div>
+          {% endif %}
+
+      </div>
+    </div>
+
+    {% unless product == empty %}
+      <script type="application/json" data-product-json>
+        {{ product | json }}
+      </script>
+    {% endunless %}
+
+    </div>
+
+  </div>
+</div>
+
+{% include 'size-guide' %}
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Form USP"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_usp",
+        "label": "Enable USP",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "usp_image",
+        "label": "USP Image"
+      },
+      {
+        "type": "text",
+        "id": "usp_text",
+        "label": "USP text"
+      }
+    ]
+  }
+{% endschema %}
