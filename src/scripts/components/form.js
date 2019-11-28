@@ -19,6 +19,7 @@ theme.Type = (function() {
     const inputValue = e.target.value;
     const labelName = input.id;
     const label = document.querySelector(`.slick-form label[for=${labelName}]`);
+    console.log(inputValue)
     inputActive(inputValue, label);
   }
 
@@ -33,7 +34,7 @@ theme.Type = (function() {
     if (input) {
       label.classList.add(cssClasses.active);
     } else {
-      label.classList.remove(cssClasses.active);        
+      label.classList.remove(cssClasses.active);
     }
   }
 
@@ -53,6 +54,13 @@ theme.Type = (function() {
     setEventListeners();
     nodeSelectors.input.forEach((element, index) => {
       element.addEventListener('load', handleFocus);
+
+      const labelName = element.id;
+      if (labelName !== '') {
+        const inputValue = element.value;
+        const label = document.querySelector(`.slick-form label[for=${labelName}]`);
+        inputActive(inputValue, label);
+      }
     });
   }
 

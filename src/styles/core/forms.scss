@@ -151,6 +151,10 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
     top: 0;
   }
 
+  label.is-dropdown {
+    top: 0;
+  }
+
   input, select, textarea {
     display: block;
     margin-bottom: 10px;
@@ -176,7 +180,9 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
     }
   }
 
-  textarea {
+
+
+  select, textarea {
     border: 1px solid rgba($COLOR_PRIMARY, 0.5);
 
     &::placeholder {
@@ -186,6 +192,19 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
     &:focus {
       border: 1px solid rgba($COLOR_PRIMARY, 1);
     }
+  }
+
+  select {
+    background: $COLOR_WHITE;
+    background-image: $ICON_ARROW_DOWN;
+    background-position: calc(100% - 15px) center;
+    background-repeat: no-repeat;
+    border: 1px solid $COLOR_PRIMARY_LIGHT;
+    border: 1px solid rgba($COLOR_PRIMARY, 1);
+    color: $COLOR_PRIMARY;
+    // height: 40px;
+    // margin-right: 20px;
+    width: 100%;
   }
 
   .errors {
@@ -256,6 +275,7 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
     font-size: ms(1);
     line-height: 1.8;
     margin-bottom: 0;
+    position: static;
     text-transform: none;
 
     &::before {

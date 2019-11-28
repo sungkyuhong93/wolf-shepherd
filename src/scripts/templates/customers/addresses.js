@@ -9,7 +9,47 @@
 
 import $ from 'jquery';
 
+const selectors = {
+  showAddress: '#accountAddressShow',
+  address: '#accountAddress',
+};
+
 const $newAddressForm = $('#AddressNewForm');
+
+/**
+ *  Show orders
+ */
+function showAddress(evt) {
+  if (evt) {
+    evt.preventDefault();
+  }
+  $(selectors.address).addClass('is-active');
+  $('#shopify-section-account-featured-collection').removeClass('is-active');
+  addMobileClass();
+}
+
+/**
+ *  Hide nav
+ */
+function addMobileClass() {
+  $('body').addClass('account-nav-hide');
+}
+
+/**
+ *  Show Nav
+ */
+function showMobileNav() {
+  $('body').removeClass('account-nav-hide');
+}
+
+function checkUrlHash() {
+  const hash = window.location.hash;
+
+  // Allow deep linking to recover password form
+  if (hash === '#addressShow') {
+    showAddress();
+  }
+}
 
 if ($newAddressForm.length) {
   // Initialize observers on address selectors, defined in shopify_common.js
@@ -59,4 +99,8 @@ if ($newAddressForm.length) {
       });
     }
   });
+
+  checkUrlHash();
+  $(selectors.showAddress).on('click', showAddress);
+  $('.account__breadcrumb').on('click', showMobileNav);
 }

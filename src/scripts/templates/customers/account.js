@@ -12,8 +12,10 @@ const selectors = {
   accountOrders: '#accountOrders',
   showAccount: '#accountDetailsShow',
   showOrders: '#accountOrdersShow',
+  showAdress: '#accountAddressShow',
   orders: '#accountOrders',
   account: '#accountDetails',
+  address: '#accountAddress',
 };
 
 function checkUrlHash() {
@@ -23,6 +25,8 @@ function checkUrlHash() {
   if (hash === '#accountOrders') {
     showOrders();
   } else if (hash === '#account') {
+    showAccount();
+  } else if ($(window).width() >= 750) {
     showAccount();
   }
 }
@@ -53,6 +57,18 @@ function showAccount(evt) {
   $(selectors.orders).removeClass('is-active');
   $(selectors.showOrders).removeClass('active');
   $(selectors.showAccount).addClass('active');
+  $('#shopify-section-account-featured-collection').removeClass('is-active');
+  addMobileClass();
+}
+
+/**
+ *  Show orders
+ */
+function showAddress(evt) {
+  if (evt) {
+    evt.preventDefault();
+  }
+  $(selectors.showAdress).addClass('active');
   $('#shopify-section-account-featured-collection').removeClass('is-active');
   addMobileClass();
 }

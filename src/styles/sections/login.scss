@@ -223,7 +223,7 @@ account
 
   &__footer {
     background: $COLOR_WHITE;
-    border-top: 3px solid $COLOR_BORDER;
+    border-top: 1px solid $COLOR_PRIMARY_LIGHT;
     bottom: 10px;
     left: 10px;
     padding: 0 20px 20px;
@@ -239,8 +239,7 @@ account
     margin-bottom: 160px;
     text-align: left;
 
-    .h4 {
-      color: $COLOR_SECONDARY;
+    h3 {
       text-align: center;
     }
   }
@@ -249,17 +248,17 @@ account
     margin-bottom: 10px;
   }
 
-  .button--secondary {
+  .button--white {
     margin-bottom: 0;
   }
 
   @include media-query($medium-up) {
     &__background {
-      padding: 40px;
+      padding: 32px;
     }
 
     &__footer {
-      padding: 20px 40px;
+      padding: 20px 32px;
     }
 
     &__footer-buttons {
@@ -269,7 +268,7 @@ account
         width: 50%;
       }
 
-      .button--secondary {
+      .button--white {
         margin-bottom: 0;
         margin-left: 20px;
       }
@@ -278,7 +277,61 @@ account
 }
 
 .address-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   margin-bottom: 30px;
+
+  &__address {
+    margin-bottom: 10px;
+
+    h3 {
+      margin: 0 0 6px;
+
+      @media (max-width: 749px){
+        font-size: 18px;
+      }
+    }
+
+    p {
+      font-family: $FONT_BASE;
+      font-size: 14px;
+      margin-bottom: 0px;
+    }
+  }
+
+  strong {
+    font-family: $FONT_BODY;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: $LETTER_SPACING_BASE;
+    text-transform: uppercase;
+
+    @media (max-width: 749px){
+      font-size: 10px;
+    }
+  }
+
+  &__footer {
+    align-items: center;
+    display: flex;
+
+    button {
+      background: transparent;
+      border: 0;
+      color: $COLOR_PRIMARY;
+      font-family: $FONT_BASE;
+      font-size: 12px;
+      padding: 0;
+    }
+
+    span {
+      color: $COLOR_PRIMARY;
+      font-family: $FONT_BASE;
+      // font-size: 12px;
+      padding: 0 6px;
+    }
+  }
 }
 
 @include media-query($medium-up) {
