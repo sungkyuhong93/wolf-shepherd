@@ -38,6 +38,7 @@ $transition-timing: ease-in-out;
 // Grid
 
 /* stylelint-disable */
+$grid-small: 749px;
 $grid-medium: 46.85em;
 $grid-large: 61.85em;
 $grid-widescreen: 87.5em;
@@ -47,6 +48,7 @@ $grid-gutter: 30px;
 
 // Breakpoints used with the media-query mixin
 $small: 'small';
+$smallPX: 'small-px';
 $medium: 'medium';
 $medium-down: 'medium-down';
 $medium-up: 'medium-up';
@@ -59,6 +61,7 @@ $tablet-up: 'tablet-up';
 
 $breakpoints: (
   $small '(max-width: #{$grid-medium - 1})',
+  $smallPX '(max-width: #{$grid-small})',
   $medium '(min-width: #{$grid-medium}) and (max-width: #{$grid-large - 1})',
   $medium-down '(max-width: #{$grid-large - 1})',
   $medium-up '(min-width: #{$grid-medium})',
@@ -76,7 +79,7 @@ $breakpoints: (
     - Default is no push classes
     - Will not work if `styles/global/grid.scss` is removed
 ============================================================================== */
-$breakpoint-has-widths: ($small, $medium-up, $large-up);
+$breakpoint-has-widths: ($small, $smallPX, $medium-up, $large-up);
 $breakpoint-has-push: ($small, $medium-up, $large-up);
 
 /* ================ Sizing Variables ================ */

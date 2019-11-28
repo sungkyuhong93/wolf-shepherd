@@ -32,7 +32,7 @@ theme.SearchPopup = (function() {
     });
 
     $searchFocus.on('blur', () => {
-      $searchForm.removeClass('search-form--is-active');
+      // $searchForm.removeClass('search-form--is-active');
     });
   }
 
