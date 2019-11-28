@@ -15,12 +15,12 @@ $ACCORDION_PADDING_LARGE: 22px;
 
     @include media-query($medium-up) {
       #{$parent}__title {
-        font-size: 14px;
+        font-size: $FONT_SIZE_SMALL;
         padding: $ACCORDION_PADDING_LARGE 0;
       }
 
       #{$parent}__content {
-        font-size: 14px;
+        font-size: $FONT_SIZE_SMALL;
         padding-bottom: $ACCORDION_PADDING_LARGE;
 
         p {
@@ -28,7 +28,7 @@ $ACCORDION_PADDING_LARGE: 22px;
         }
 
         * {
-          font-size: 14px;
+          font-size: $FONT_SIZE_SMALL;
         }
       }
     }
@@ -100,7 +100,7 @@ $ACCORDION_PADDING_LARGE: 22px;
 
   &__content {
     display: none;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     padding-bottom: $ACCORDION_PADDING;
 
     ul, ol {
@@ -108,7 +108,7 @@ $ACCORDION_PADDING_LARGE: 22px;
       margin-bottom: 10px;
 
       li {
-        font-size: 12px;
+        font-size: $FONT_SIZE_XSMALL;
         list-style: disc;
       }
     }

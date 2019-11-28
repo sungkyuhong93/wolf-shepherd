@@ -124,7 +124,7 @@ $CART_HEIGHT: calc(100vh - 280px);
   &__title {
     background: $COLOR_GREY;
     font-family: $FONT_BODY;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     height: 64px;
     line-height: 64px;
     margin-bottom: 20px;
@@ -139,7 +139,7 @@ $CART_HEIGHT: calc(100vh - 280px);
   }
 
   &__international {
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     text-decoration: underline;
   }
 
@@ -214,7 +214,7 @@ $CART_HEIGHT: calc(100vh - 280px);
   &__row__money {
     bottom: 0;
     display: block;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     margin-bottom: 12px;
     position: absolute;
     right: 0;
@@ -222,7 +222,7 @@ $CART_HEIGHT: calc(100vh - 280px);
 
   &__row__unit-price {
     display: block;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
   }
 
   &__row__title {
@@ -237,7 +237,7 @@ $CART_HEIGHT: calc(100vh - 280px);
   &__row__variant {
     display: block;
     font-family: $FONT_BASE;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     margin: 6px 0 10px;
     text-transform: none;
   }
@@ -382,7 +382,7 @@ Related Products
   .product-form__price {
     display: flex;
     font-family: $FONT_BASE;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     margin-bottom: 5px;
     div {
       margin-right: 10px;
@@ -423,7 +423,7 @@ Related Products
 
   &__product-price {
     display: block;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     margin-bottom: 10px;
   }
 
@@ -526,7 +526,7 @@ Free Shipping
   text-align: center;
 
   &__info {
-    font-size: 12px;      
+    font-size: $FONT_SIZE_XSMALL;      
     margin-bottom: 10px;
   }
 

@@ -20,7 +20,7 @@
     margin: 0 0 10px!important;
 
     .stamped-fa:before {
-      font-size: 14px;
+      font-size: $FONT_SIZE_SMALL;
     }  
   }
 
@@ -42,7 +42,7 @@
 
   &__text {
     p {
-      font-size: 14px;
+      font-size: $FONT_SIZE_SMALL;
       margin-bottom: 12px;
     }
   }

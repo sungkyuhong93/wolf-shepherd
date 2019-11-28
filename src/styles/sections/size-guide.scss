@@ -97,7 +97,7 @@ $panel-height: calc(100vh - 120px);
 .size-guide__table {
   border: 2px solid rbg(0, 0, 0);
   border-collapse: collapse;
-  font-size: 12px;
+  font-size: $FONT_SIZE_XSMALL;
   margin-bottom: 30px;
   width: 100%;
 
@@ -112,7 +112,7 @@ $panel-height: calc(100vh - 120px);
 
 .size-guide__table__cell {
   border: 1px solid $COLOR_GREY;
-  font-size: 12px;
+  font-size: $FONT_SIZE_XSMALL;
   font-weight: normal;
   padding: 12px 6px;
   

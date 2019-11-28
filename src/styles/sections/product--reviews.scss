@@ -177,14 +177,14 @@
       .stamped-verified-badge {
         color: $COLOR_PRIMARY;
         font-family: $FONT_BASE;
-        font-size: 12px;
+        font-size: $FONT_SIZE_XSMALL;
         font-weight: normal;  
       }
 
       .author {
         color: $COLOR_PRIMARY;
         font-family: $FONT_BODY;
-        font-size: 14px;
+        font-size: $FONT_SIZE_SMALL;
         font-weight: normal;
         text-transform: uppercase;
       }
@@ -204,7 +204,7 @@
       .created {
         color: $COLOR_PRIMARY;
         font-family: $FONT_BASE;
-        font-size: 12px;
+        font-size: $FONT_SIZE_XSMALL;
         font-weight: normal;
       }
     }
@@ -306,7 +306,7 @@
         color: $COLOR_PRIMARY;
         display: block;
         font-family: $FONT_BASE;
-        font-size: 12px;
+        font-size: $FONT_SIZE_XSMALL;
         height: 34px;
         line-height: 34px;
         margin: 0 5px;

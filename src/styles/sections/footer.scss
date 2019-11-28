@@ -7,14 +7,14 @@
 
   h4 {
     color: $COLOR_WHITE;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     letter-spacing: $LETTER_SPACING_BASE;
     text-transform: uppercase;
   }
 
   p, a {
     color: $COLOR_WHITE;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     letter-spacing: $LETTER_SPACING_BASE;
   }
 
@@ -26,7 +26,7 @@
 
   .copyright {
     color: $COLOR_WHITE;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     padding-bottom: 30px;
     padding-top: 30px;
     text-align: right;
@@ -115,7 +115,7 @@ Newsletter
   }
 
   &__text {
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     letter-spacing: 0.9px;
     max-width: 280px;
   }

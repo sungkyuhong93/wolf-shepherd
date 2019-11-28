@@ -35,7 +35,7 @@ $border-color: #dedede;
 
     thead th {
       font-family: $FONT_BASE;
-      font-size: 14px;
+      font-size: $FONT_SIZE_SMALL;
       font-weight: normal;
       text-transform: capitalize;
     }
@@ -152,7 +152,7 @@ $border-color: #dedede;
 .cart-item {
   &__remove {
     color: $COLOR_PRIMARY;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     text-decoration: underline;
   }
 
@@ -163,7 +163,7 @@ $border-color: #dedede;
   &__price {
     display: inline-block;
     font-family: $FONT_BODY;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     margin: 0;
   }
 
@@ -173,7 +173,7 @@ $border-color: #dedede;
 
   &__variant {
     @include opacity(0.8);
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     margin: 0 0 10px;
   }
 
@@ -218,7 +218,7 @@ $border-color: #dedede;
   }
 
   p {
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     margin-top: 0;
   }
 
@@ -227,7 +227,7 @@ $border-color: #dedede;
   }
 
   &__link {
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     text-decoration: underline;
   }
 }

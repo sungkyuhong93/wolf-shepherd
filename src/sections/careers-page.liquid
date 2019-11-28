@@ -6,65 +6,17 @@
   <div class="grid">
     <div class="grid__item small--one-whole medium-up--one-half large-up--five-twelfths large-up--push-one-twelfth">
       <div class="rte">
+        <h1 class="contact__main-title">{{ page.title }}</h1>
         {{ page.content }}
       </div>
     </div>
 
     <div class="grid__item small--one-whole medium-up--one-half large-up--five-twelfths large-up--push-one-twelfth contact__form">
-      <div js-form="true">
-        {% if section.settings.title %}
-          <h2 class="contact__title">
-            {{section.settings.title}}
-          </h2>
-        {% endif %}
-
-        {% if section.settings.body %}
-          <p class="contact__body">
-            {{section.settings.body }}
-          </p>
-        {% endif %}
-        <div class="form-vertical slick-form">
-          {% form 'contact' %}
-            {% if form.posted_successfully? %}
-              <p class="form-success">
-                {{ 'contact.form.post_success' | t }}
-              </p>
-            {% endif %}
-
-            {{ form.errors | default_errors }}
-
-            <label for="ContactFormName">{{ 'contact.form.name' | t }}</label>
-            <input type="text"
-              name="contact[name]"
-              id="ContactFormName"
-              placeholder="{{ 'contact.form.name' | t }}"
-              value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
-
-            <label for="ContactFormEmail">{{ 'contact.form.email' | t }}</label>
-            <input type="email"
-              name="contact[email]"
-              id="ContactFormEmail"
-              placeholder="{{ 'contact.form.email' | t }}"
-              value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-              spellcheck="false"
-              autocomplete="off"
-              autocapitalize="off">
-
-            <label for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
-            <textarea rows="10"
-              name="contact[body]"
-              id="ContactFormMessage"
-              placeholder="{{ 'contact.form.message' | t }}">
-              {%- if form.body -%}
-                {{- form.body -}}
-              {%- endif -%}
-            </textarea>
-
-            <input type="submit" class="button button--full" value="{{ 'contact.form.send' | t }}">
-
-          {% endform %}
-        </div>
-      </div>
+      {% for block in section.blocks %}
+        <h3 class="h3--ms">{{block.settings.title}}</h3>
+        <p>{{block.settings.text}}</p>
+        <a href="{{block.settings.button_url}}" target="_blank" class="button--white button--white--compress" title="{{block.settings.button_label}}">{{block.settings.button_label}}</a>
+      {% endfor %}
     </div>
   </div>
 </div>
@@ -91,6 +43,34 @@
         "type": "text",
         "id": "body",
         "label": "Text"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "job",
+        "name": "Job",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Body"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+          },
+          {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button url"
+          }
+        ]
       }
     ]
   }

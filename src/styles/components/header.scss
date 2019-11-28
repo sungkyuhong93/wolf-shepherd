@@ -22,14 +22,14 @@
     margin-bottom: 20px;
 
     p {
-      font-size: 14px;
+      font-size: $FONT_SIZE_SMALL;
       margin: 0;
     }
   }
 
   &--small-text {
     p {
-      font-size: 14px !important;
+      font-size: $FONT_SIZE_SMALL !important;
     }
   }
 

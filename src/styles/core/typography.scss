@@ -100,11 +100,17 @@ h3, .h3 {
   font-weight: $WEIGHT_NORMAL;
   line-height: $LINE_HEIGHT_DISPLAY;
   margin: 0 0 $SPACING_M;
+
+  @include media-query($small) {
+    &.h3--ms {
+      font-size: 18px;
+    }
+  }
 }
 
 h4, .h4 {
   font-family: $FONT_BODY;
-  font-size: 12px;
+  font-size: $FONT_SIZE_XSMALL;
   font-weight: $WEIGHT_NORMAL;
   line-height: $LINE_HEIGHT_DISPLAY;
   margin: 0 0 $SPACING_M;
@@ -113,7 +119,7 @@ h4, .h4 {
 
 h5, .h5 {
   font-family: $FONT_BODY;
-  font-size: 12px;
+  font-size: $FONT_SIZE_XSMALL;
   font-weight: $WEIGHT_NORMAL;
   line-height: $LINE_HEIGHT_DISPLAY;
   margin: 0 0 $SPACING_M;
@@ -145,7 +151,7 @@ h6, .h6 {
  */
 p {
   font-family: $FONT_BASE;
-  font-size: 12px;
+  font-size: $FONT_SIZE_XSMALL;
   font-weight: $WEIGHT_NORMAL;
   line-height: $LINE_HEIGHT_BODY;
   margin: 0 0 $SPACING_L;

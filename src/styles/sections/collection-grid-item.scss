@@ -63,7 +63,7 @@
 
   &__price {
     font-family: $FONT_BASE;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     margin: 0 0 8px;
   }
 
@@ -80,7 +80,7 @@
     transition: 0.8s;
 
     i:before {
-      font-size: 12px;
+      font-size: $FONT_SIZE_XSMALL;
     }
 
     .stamped-badge-starrating {

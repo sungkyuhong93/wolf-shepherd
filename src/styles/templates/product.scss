@@ -29,17 +29,17 @@
   &__price {
     display: flex;
     font-family: $FONT_BODY;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     justify-content: space-between;
     letter-spacing: 0.35px;
 
     .review-info {
       font-family: $FONT_BASE;
-      font-size: 12px;
+      font-size: $FONT_SIZE_XSMALL;
       text-transform: capitalize;
 
       .fa-star-half-o:before, .fa-star-o:before, .fa-star:before, .stamped-fa-star-half-o:before, .stamped-fa-star-o:before, .stamped-fa-star:before {
-        font-size: 14px;
+        font-size: $FONT_SIZE_SMALL;
       }
 
       .stamped-badge-starrating {
@@ -58,7 +58,7 @@
 }
 
 .product-description {
-  font-size: 12px;
+  font-size: $FONT_SIZE_XSMALL;
 
   &__plain {
     margin-bottom: 18px;

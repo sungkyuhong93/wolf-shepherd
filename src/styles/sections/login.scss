@@ -9,7 +9,7 @@ Login/account
   .form-success {
     background: $COLOR_PRIMARY;
     color: $COLOR_WHITE;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     padding: 12px;
     text-align: center;
     width: 100%;
@@ -74,7 +74,7 @@ Login/account
   }
 
   &__subtitle {
-    font-size: 14px;
+    font-size: $FONT_SIZE_SMALL;
     margin-bottom: 20px;
     text-align: center;
   }
@@ -89,7 +89,7 @@ Login/account
   }
 
   &__link {
-    font-size: 14px;
+    font-size: $FONT_SIZE_SMALL;
     margin-bottom: 20px;
     text-align: center;
 
@@ -100,7 +100,7 @@ Login/account
 
   &__recover {
     display: block;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     margin-bottom: 0;
     text-align: right;
   }
@@ -150,8 +150,8 @@ Login/account
 }
 
 #HideRecoverPasswordLink {
-  font-size: 14px;
   border: 0;
+  font-size: $FONT_SIZE_SMALL;
   margin-top: 0;
 }
 
@@ -295,14 +295,14 @@ account
 
     p {
       font-family: $FONT_BASE;
-      font-size: 14px;
+      font-size: $FONT_SIZE_SMALL;
       margin-bottom: 0px;
     }
   }
 
   strong {
     font-family: $FONT_BODY;
-    font-size: 14px;
+    font-size: $FONT_SIZE_SMALL;
     font-weight: normal;
     letter-spacing: $LETTER_SPACING_BASE;
     text-transform: uppercase;
@@ -321,14 +321,14 @@ account
       border: 0;
       color: $COLOR_PRIMARY;
       font-family: $FONT_BASE;
-      font-size: 12px;
+      font-size: $FONT_SIZE_XSMALL;
       padding: 0;
     }
 
     span {
       color: $COLOR_PRIMARY;
       font-family: $FONT_BASE;
-      // font-size: 12px;
+      // font-size: $FONT_SIZE_XSMALL;
       padding: 0 6px;
     }
   }

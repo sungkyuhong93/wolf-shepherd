@@ -8,10 +8,15 @@ Contact
     text-align: left !important;
 
     p {
-      font-size: 14px;
+      font-size: $FONT_SIZE_SMALL;
       line-height: 1.8;
       margin-bottom: 20px;
     }
+  }
+
+  &__main-title {
+    font-size: 32px;
+    margin-bottom: 24px;
   }
 
   &__title {
@@ -25,7 +30,7 @@ Contact
   }
 
   &__body {
-    font-size: 14px;
+    font-size: $FONT_SIZE_SMALL;
     margin-bottom: 0;
   }
 
@@ -103,6 +108,11 @@ Contact
 }
 
 /* ============================================================================
+Careers
+============================================================================== */
+
+
+/* ============================================================================
 FAQs
 ============================================================================== */
 .faqs {
@@ -134,7 +144,7 @@ FAQs
   }
 
   p {
-    font-size: 14px;
+    font-size: $FONT_SIZE_SMALL;
     margin-bottom: 28px;
   }
 
@@ -167,7 +177,7 @@ Pagelayout
 ============================================================================== */
 .page-layout {
   p {
-    font-size: 14px;
+    font-size: $FONT_SIZE_SMALL;
   }
 
   @include media-query($small) {
