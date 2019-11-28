@@ -13,9 +13,11 @@
 
     <div class="grid__item small--one-whole medium-up--one-half large-up--five-twelfths large-up--push-one-twelfth contact__form">
       {% for block in section.blocks %}
-        <h3 class="h3--ms">{{block.settings.title}}</h3>
-        <p>{{block.settings.text}}</p>
-        <a href="{{block.settings.button_url}}" target="_blank" class="button--white button--white--compress" title="{{block.settings.button_label}}">{{block.settings.button_label}}</a>
+        <div class="contact__careers-block">
+          <h3 class="h3--ms">{{block.settings.title}}</h3>
+          <p>{{block.settings.text}}</p>
+          <a href="{{block.settings.button_url}}" target="_blank" class="button--white button--white--compress" title="{{block.settings.button_label}}">{{block.settings.button_label}}</a>
+        </div>
       {% endfor %}
     </div>
   </div>

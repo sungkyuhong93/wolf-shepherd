@@ -48,8 +48,8 @@ Contact
   }
 
   .errors {
-    background: $COLOR_ERROR;
-    color: $COLOR_WHITE;
+    background: transparent;
+    color: $COLOR_ERROR ;
     cursor: default;
     display: inline-block;
     margin-bottom: 10px;
@@ -76,6 +76,14 @@ Contact
     }
   }
 
+  &__careers-block {
+    margin-bottom: 32px;
+
+    p {
+      margin-bottom: 12px;
+    }
+  }
+
   @include media-query($medium-up) {
     margin-bottom: 80px;
 
@@ -93,6 +101,12 @@ Contact
     &__title {
       border-top: 0;
       padding-top: 0;
+    }
+
+    &__careers-block {
+      p {
+        margin-bottom: 16px;
+      }
     }
   }
 
