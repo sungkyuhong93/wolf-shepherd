@@ -30,8 +30,6 @@ export default () => {
     $this.parent().find('.swatch-product').removeClass('swatch-product--active');
     $this.addClass('swatch-product--active');
     $this.parent().parent().find('select').val(swatchValue).trigger('change');
-
-    // eventBus();
   }
 
   function updateSlider() {

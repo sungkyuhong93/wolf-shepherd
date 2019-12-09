@@ -17,6 +17,10 @@
       height: 100%;
       opacity: 1;
     }
+
+    @media (max-width:749px) {
+      padding-right: 20px;
+    }
   }
 
   img {
@@ -87,6 +91,7 @@
 
   .slick-current {
     border: 1px solid $COLOR_PRIMARY;
+    margin-bottom: 1px;
   }
 
   @include media-query($medium-down) {
@@ -118,6 +123,8 @@
 }
 
 .product-slider-nav__image {
+  display: block !important;
+
   img {
     padding: 10px;
   }

@@ -81,8 +81,8 @@ Swatches Styles
       cursor: none!important;
 
       &:nth-child(n+6) {
-        background-color: transparent;
-        background-image: $ICON_ARROW_RIGHT;
+        background-color: transparent !important;
+        background-image: $ICON_ARROW_RIGHT !important;
         background-position: center;
         background-repeat: no-repeat;
         background-size: 5px 10px;
@@ -104,6 +104,7 @@ Swatches Styles
 
 .swatch-product {
   background: $COLOR_WHITE;
+  background-position: center;
   border-radius: 50%;
   box-shadow: 0 0 0 1px $COLOR_SWATCH_BORDER;
   color: $COLOR_BLACK;

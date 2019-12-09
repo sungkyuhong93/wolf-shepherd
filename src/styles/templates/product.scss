@@ -46,6 +46,10 @@
         margin: 0 7px 0 0!important;
       }
     }
+
+    [data-product-price] {
+      order: -1;
+    }
   }
 
   @include media-query($medium-up) {

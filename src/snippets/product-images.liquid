@@ -13,7 +13,8 @@
 {% for color in colours %}
   {% assign loopCounter  = 0 %}
   {% assign productImage = '' %}
-  {% assign colorClean = color | downcase %}
+  {% assign colorClean = color | split: '//' %}
+  {% assign colorClean = colorClean[0] | handleize %}
 
 
   <div id="product-images__container--{{colorClean}}" 
@@ -29,9 +30,11 @@
 
         <div class="main-product-slider" id="product-slider--{{colorClean}}">
           {% for image in product.images %}
-            {% assign varColor = image.alt | downcase %}
+            {% assign varColor = image.alt | split: '//' %}
+            {% assign varColor = varColor[0] | handleize %}
+
             {% if varColor == colorClean %}
-              {% assign productImage    = image.src | img_url: 'master'  %}
+              {% assign productImage = image.src | img_url: 'master'  %}
 
               {% for variant in product.variants %}
                 {% assign variantImage = variant.image.src | img_url: 'master'  %}
@@ -44,9 +47,17 @@
                 {% endif %}
               {% endfor %}
               
-              <div js-product-gallery="zoom">
-                <img src="{{ productImage }}" alt="{{ image.alt | escape }}" {{productData}} data-zoom="{{ image.src | img_url: '1024x1024', scale: 2 }}">
-              </div>
+              {% if image.alt contains '.mp4' %}
+                {% assign videoURL = image.alt | split: '//cdn' %}
+                {% assign videoURL = videoURL[1] %}
+                <video autoplay muted loop poster="{{ productImage }}">
+                  <source src="//cdn{{videoURL}}" type="video/mp4">
+                </video>
+              {% else %}
+                <div js-product-gallery="zoom">
+                  <img src="{{ productImage }}" alt="{{ image.alt | escape }}" {{productData}} data-zoom="{{ image.src | img_url: '1024x1024', scale: 2 }}">
+                </div>
+              {% endif %}
 
               {% assign loopCounter = loopCounter | plus: 1 %}
             {% endif %}
@@ -55,8 +66,9 @@
 
         <div class="product-slider-nav" id="product-nav--{{colorClean}}">
           {% for image in product.images %}
-            {% assign varColor = image.alt | downcase %}
-            {% if varColor contains colorClean %}
+            {% assign varColor = image.alt | split: '//' %}
+            {% assign varColor = varColor[0] | handleize %}
+            {% if varColor == colorClean %}
               {% assign productThumbnail = image.src | img_url: '240x'  %}
               <div class="product-slider-nav__image">
                 <img src="{{ productThumbnail }}" alt="{{ image.alt | escape }}">
