@@ -71,17 +71,17 @@ $ACCORDION_PADDING_LARGE: 22px;
   
     .arrow {
       float: right;
-      height: 11px;
-      line-height: 18px;
+      height: 12px;
       position: relative;
-      width: 11px;
+      width: 12px;
   
       &::after {
         background: $COLOR_PRIMARY;
         content: '';
         height: 1px;
         position: absolute;
-        top: 5px;
+        top: 50%;
+        transform: translate(0, -50%);
         width: 100%;
       }
     }
@@ -93,6 +93,7 @@ $ACCORDION_PADDING_LARGE: 22px;
         height: 100%;
         left: 50%;
         position: absolute;
+        transform: translate(-50%, 0);
         width: 1px;
       }
     }

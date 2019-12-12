@@ -3,12 +3,12 @@
 
     {% unless product.description == blank %}
       <li class="accordion__link accordion__item--is-active">
-        <h6 class="accordion__title" data-toggle="accordion--story">
-          Story
+        <h6 class="accordion__title" data-toggle="accordion--details">
+          Details
           <span class="arrow-up arrow"></span>
           <span class="arrow arrow-down"></span>
         </h6>
-        <div id="accordion--story" class="accordion__content accordion__content--is-active">
+        <div id="accordion--details" class="accordion__content accordion__content--is-active">
           {{ product.description }}
         </div>
       </li>
@@ -16,12 +16,12 @@
 
     {% unless product.metafields.details.product_details == blank %}
       <li class="accordion__link">
-        <h6 class="accordion__title" data-toggle="accordion--details">
-          Details
+        <h6 class="accordion__title" data-toggle="accordion--story">
+          Story
           <span class="arrow-up arrow"></span>
           <span class="arrow arrow-down"></span>
         </h6>
-        <div id="accordion--details" class="accordion__content">
+        <div id="accordion--story" class="accordion__content">
           {{ product.metafields.details.product_details }}
         </div>
       </li>
@@ -36,6 +36,19 @@
         </h6>
         <div id="accordion--fit" class="accordion__content ">
           {{ product.metafields.fit.product_fit }}
+        </div>
+      </li>
+    {% endunless %}
+
+    {% unless product.metafields.worn_with.best_worn_with == blank %}
+      <li class="accordion__link">
+        <h6 class="accordion__title" data-toggle="accordion--worn_with">
+          Best Worn With
+          <span class="arrow-up arrow"></span>
+          <span class="arrow arrow-down"></span>
+        </h6>
+        <div id="accordion--worn_with" class="accordion__content ">
+          {{ product.metafields.worn_with.best_worn_with }}
         </div>
       </li>
     {% endunless %}
