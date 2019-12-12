@@ -1,0 +1,75 @@
+<div class="page-layout">
+  <header class="stockist__header stockist__header--white">
+    <div class="page-width">
+      <div class="grid">
+        <div class="grid__item medium-up--one-whole large-up--eight-twelfths large-up--push-two-twelfths">
+          <div class="stockist__container">
+            <h1 class="stockist__title">
+              <span>{{ section.settings.supertitle | escape }}</span>
+              {{ section.settings.title | escape }}
+            </h1>
+            <p class="stockist__content">{{ section.settings.content | escape }}</p>
+
+            <ul class="stockist__locations">
+
+              <li class="stockist__location">
+                <img src="{{ section.settings.location_img_1 | img_url: 'master' }}" alt="{{section.settings.location_img_1.alt}}"/>
+                <h6>{{section.settings.location_title_1}}</h6>
+              </li>
+
+              <li class="stockist__location">
+                <img src="{{ section.settings.location_img_2 | img_url: 'master' }}" alt="{{section.settings.location_img_2.alt}}"/>
+                <h6>{{section.settings.location_title_2}}</h6>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+{% schema %}
+  {
+    "name": "Flagship header",
+    "settings": [
+      {
+        "type": "text",
+        "id": "supertitle",
+        "label": "Supertitle"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "content",
+        "label": "content"
+      },
+      {
+        "type": "image_picker",
+        "id": "location_img_1",
+        "label": "Location image one"
+      },
+      {
+        "type": "text",
+        "id": "location_title_1",
+        "label": "Location title one"
+      },
+
+      {
+        "type": "image_picker",
+        "id": "location_img_2",
+        "label": "Location image two"
+      },
+      {
+        "type": "text",
+        "id": "location_title_2",
+        "label": "Location title two"
+      }
+    ]
+  }
+{% endschema %}

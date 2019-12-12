@@ -1,0 +1,61 @@
+/* ============================================================================
+flagship
+============================================================================== */
+.flagship {
+  &__store {
+    border-bottom: 1px solid $COLOR_GREY;
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+  }
+
+  &__store-image {
+    margin-bottom: 21px;
+  }
+
+  &__store-info {
+
+  }
+
+  &__store-text {
+    margin-bottom: 21px;
+  }
+
+  &__store-content {
+    margin-bottom: 8px;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .button-text-and-arrow {
+    justify-content: flex-start;
+  }
+
+  @include media-query($medium-up) {
+    &__store-image {
+      margin-bottom: 40px;
+    }
+
+    &__store-info {
+      display: flex;
+
+      img {
+        width: 55%;
+      }
+    }
+  
+    &__store-text {
+      max-width: 45%;
+      min-width: 45%;
+    }
+
+    &__store-content {
+      margin-bottom: 24px;
+  
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

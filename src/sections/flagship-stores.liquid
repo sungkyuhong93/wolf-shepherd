@@ -1,0 +1,73 @@
+<div class="page-layout">
+  <div class="page-width">
+    <div class="grid">
+      <div class="grid__item medium-up--one-whole large-up--eight-twelfths large-up--push-two-twelfths">
+        <div class="flagship">
+          {%- for block in section.blocks -%}
+
+            <div class="flagship__store">
+              <div class="flagship__store-image">
+                <img src="{{block.settings.store | img_url: 'master' }}" alt="{{block.settings.store.alt}}"/>
+              </div>
+              <div class="flagship__store-info">
+                <div class="flagship__store-text">
+                  <h3>{{block.settings.title}}</h3>
+                  <div class="flagship__store-content">{{block.settings.text}}</div>
+                  <a href="{{block.settings.link}}" class="button-text-and-arrow" title="{{block.settings.link_text}}">
+                    {{block.settings.link_text}}
+                    <div class="wolf-arrow wolf-arrow--right"></div>
+                  </a>
+                </div>
+                <img src="{{block.settings.map | img_url: 'master' }}" alt="{{block.settings.store.alt}}"/>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Flagship Stores",
+    "blocks": [
+      {
+        "type": "newstore",
+        "name": "Store",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "store",
+            "label": "Menu Title"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Address"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link URL"
+          },
+          {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link text"
+          },
+          {
+            "type": "image_picker",
+            "id": "map",
+            "label": "Map"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
