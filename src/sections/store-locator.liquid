@@ -1,0 +1,60 @@
+<div class="page-layout">
+  <header class="stockist__header">
+    <div class="page-width">
+      <div class="grid">
+        <div class="grid__item medium-up--one-whole large-up--eight-twelfths large-up--push-two-twelfths">
+          <div class="stockist__container">
+            <h1 class="stockist__title">{{ page.title | escape }}</h1>
+
+            <ul class="stockist__locations">
+
+              <li class="stockist__location">
+                <img src="{{ section.settings.location_img_1 | img_url: 'master' }}" alt="{{section.settings.location_img_1.alt}}"/>
+                <h6>{{section.settings.location_title_1}}</h6>
+              </li>
+
+              <li class="stockist__location">
+                <img src="{{ section.settings.location_img_2 | img_url: 'master' }}" alt="{{section.settings.location_img_2.alt}}"/>
+                <h6>{{section.settings.location_title_2}}</h6>
+              </li>
+            </ul>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div>
+
+{{ page.content }}
+
+{% schema %}
+  {
+    "name": "Stockist",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "location_img_1",
+        "label": "Location image one"
+      },
+      {
+        "type": "text",
+        "id": "location_title_1",
+        "label": "Location title one"
+      },
+
+      {
+        "type": "image_picker",
+        "id": "location_img_2",
+        "label": "Location image two"
+      },
+      {
+        "type": "text",
+        "id": "location_title_2",
+        "label": "Location title two"
+      }
+    ]
+  }
+{% endschema %}
