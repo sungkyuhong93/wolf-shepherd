@@ -84,9 +84,9 @@
                       <td data-label="{{ 'customer.order.product' | t }}">
                         {{ line_item.title | link_to: line_item.product.url }}
                         {% if line_item.fulfillment %}
-                          <dl>
+                          <dl class="order__fulfilled">
                             <dt>{{ 'customer.order.fulfilled_at' | t }}</dt>
-                            <dd>{{ line_item.fulfillment.created_at | date: format: 'month_day_year' }}</dd>
+                            <dd><span>{{ line_item.fulfillment.created_at | date: format: 'month_day_year' }}</span></dd>
 
                             {% if line_item.fulfillment.tracking_url %}
                               <dt>{{ 'customer.order.tracking_url' | t }}</dt>
@@ -98,11 +98,11 @@
                             {% endif %}
 
                             <dt>{{ 'customer.order.tracking_company' | t }}</dt>
-                            <dd>{{ line_item.fulfillment.tracking_company }}</dd>
+                            <dd><span>{{ line_item.fulfillment.tracking_company }}</span></dd>
 
                             {% if line_item.fulfillment.tracking_number %}
                               <dt>{{ 'customer.order.tracking_number' | t }}</dt>
-                              <dd>{{ line_item.fulfillment.tracking_number }}</dd>
+                              <dd><span>{{ line_item.fulfillment.tracking_number }}</span></dd>
                             {% endif %}
                           </dl>
                         {% endif %}

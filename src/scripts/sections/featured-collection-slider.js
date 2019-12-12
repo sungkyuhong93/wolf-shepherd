@@ -26,6 +26,7 @@ register('featured-collection-section', {
       slidesToScroll: 1,
       infinite: true,
       dots: false,
+      adaptiveHeight: false,
       responsive: [
         {
           breakpoint: jsWidth.mac13,

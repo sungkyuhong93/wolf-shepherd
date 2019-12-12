@@ -1,7 +1,14 @@
+.feature-collection__container {
+  .collection-grid-item__match-height {
+    margin-bottom: 20px;
+  }
+}
+
 .featured-collection {
   display: flex;
   flex-wrap: wrap;
   max-width: $grid-max-width;
+
 }
 
 .featured-collection-item {

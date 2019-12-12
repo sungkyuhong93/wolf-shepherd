@@ -325,6 +325,16 @@ Order
       }
     }
   }
+
+  &__fulfilled {
+    dd {
+      margin-left: 10px;
+    }
+
+    span, a {
+      font-family: $FONT_BASE;
+    }
+  }
 }
 
 @media (max-width: 749px) {

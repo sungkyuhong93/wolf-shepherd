@@ -72,12 +72,9 @@
   }
 
   &__review {
-    display: none!important;
-    height: 0;
+    display: none;
     margin: 0 0 8px !important;
-    opacity: 0;
     text-align: center;
-    transition: 0.8s;
 
     i:before {
       font-size: $FONT_SIZE_XSMALL;
@@ -95,18 +92,38 @@
       letter-spacing: 0.4px;
       text-transform: capitalize;
     }
+
+    .stamped-badge {
+      height: 0;
+      opacity: 0;
+      transition: 0.8s;
+    }
+
+    [data-rating="0.0"] {
+      display: none!important;
+
+    }
+  }
+
+  .fa-star, .fa-star-checked, .fa-star-half-o, .fa-star-o, .stamped-fa-star, .stamped-fa-star-checked, .stamped-fa-star-half-o, .stamped-fa-star-o {
+    color: $COLOR_PRIMARY;
   }
 
   @include media-query( $tablet-up ) {
     padding: 0 32px 23px;
     transition: 0.2s;
 
+    #{$parent}__review {
+      align-items: center;
+      display: flex !important;
+      justify-content: center;
+    }
+
     &:hover {
       background: $COLOR_WHITE;
       box-shadow: 0 2px 16px rgba($COLOR_BLACK, 0.1);
 
-      #{$parent}__review {
-        // display: block;
+      .stamped-badge {
         height: 29px;
         opacity: 1;
       }
