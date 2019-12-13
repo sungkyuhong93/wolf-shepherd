@@ -11,11 +11,34 @@
   - Button label: label associated with the button
   - Button link: link of the button
 {%- endcomment -%}
+{% if type == "block" %}
+  {% assign sectionImage = block.settings.image %}
+  {% assign sectionMarginBottom = block.settings.margin_bottom %}
+  {% assign sectionLayout = block.settings.layout %}
+  {% assign sectionTitle = block.settings.title %}
+  {% assign sectionSupertitle = block.settings.supertitle %}
+  {% assign sectionSubtitle = block.settings.subtitle %}
+  {% assign sectionText = block.settings.text %}
+  {% assign sectionButtonLabel = block.settings.button_label %}
+  {% assign sectionButtonLink = block.settings.button_link %}
+{% else %}
+  {% assign sectionImage = section.settings.image %}
+  {% assign sectionMarginBottom = section.settings.margin_bottom %}
+  {% assign sectionLayout = section.settings.layout %}
+  {% assign sectionTitle = section.settings.title %}
+  {% assign sectionSupertitle = section.settings.supertitle %}
+  {% assign sectionSubtitle = section.settings.subtitle %}
+  {% assign sectionText = section.settings.text %}
+  {% assign sectionButtonLabel = section.settings.button_label %}
+  {% assign sectionButtonLink = section.settings.button_link %}
+{% endif %}
+
+{% comment %} <img src="{{section.image}}" {% endcomment %}
 {% capture image_layout %}
   <div class="image-with-text__image">
-    {% if section.settings.image != blank %}
+    {% if sectionImage != blank %}
       {% include 'responsive-image' with
-        image: section.settings.image,
+        image: sectionImage,
         max_width: 640,
         max_height: 580
       %}
@@ -26,20 +49,28 @@
 {% endcapture %}
 
 <div class="page-width">
-  <section class="image-with-text {% if section.settings.layout == 'right' %}image-with-text--right{% endif %} {{ section.settings.margin_bottom }}">
+  <section class="image-with-text  {% if sectionImage == blank %} image-with-text--texty {% endif %} {% if sectionLayout == 'right' %}image-with-text--right{% endif %} {{ sectionMarginBottom }}">
 
-    {{ image_layout }}
+    {% if sectionImage != blank %}
+      {{ image_layout }}
+    {% endif %}
 
     <div class="image-with-text__text">
-      {% if section.settings.title != blank %}
-        <h2>{{ section.settings.title | escape }}</h2>
+      {% if sectionSupertitle != blank %}
+        <h2>{{ sectionSupertitle | escape }}</h2>
       {% endif %}
-      {% if section.settings.text != blank %}
-        <div>{{ section.settings.text }}</div>
+      {% if sectionTitle != blank %}
+        <h2>{{ sectionTitle | escape }}</h2>
       {% endif %}
-      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
-        <a href="{{ section.settings.button_link }}" class="button--white button--white--compress">
-          {{ section.settings.button_label | escape }}
+      {% if sectionSubtitle != blank %}
+        <h2>{{ sectionSubtitle | escape }}</h2>
+      {% endif %}
+      {% if sectionText != blank %}
+        <div>{{ sectionText }}</div>
+      {% endif %}
+      {% if sectionButtonLabel != blank and sectionButtonLink != blank %}
+        <a href="{{ sectionButtonLink }}" class="button--white button--white--compress">
+          {{ sectionButtonLabel | escape }}
         </a>
       {% endif %}
     </div>

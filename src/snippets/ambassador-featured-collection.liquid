@@ -1,0 +1,32 @@
+<div class="feature-collection {{block.settings.margin_bottom}}" id="featured-collection-section">
+  
+  {%- if block.settings.title != blank -%}
+    <div class="page-width feature-collection__title">
+      <div class="grid">
+        <div class="grid__item medium-up--one-whole">
+          <h2>{{block.settings.title}}</h2>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="page-width">
+    <div class="grid">
+      <div class="grid__item medium-up--one-whole">
+        <div class="feature-collection__container">
+
+          {%- assign collection = collections[block.settings.collection] -%}
+
+          {%- assign collectionCounterClass = 'grid__item small--one-half medium-up--one-quarter' -%}
+
+          <div class="collection-carousel--article">
+            {% for product in collection.products limit: collectionCounter %}
+                {% include 'collection-grid-product' with gridWidth: collectionCounterClass  %}
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
