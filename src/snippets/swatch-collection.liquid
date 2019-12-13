@@ -10,6 +10,22 @@
     {% endif %}
 
     {% if swatchShow %}
+
+      {% assign colorCount = 0 %}
+      {% for value in option.values %}
+        {% for variant in product.variants %}     
+          {% if variant.option1 == value or variant.option2 == value or variant.option3 == value %}
+            {% assign color = value | handleize %}
+            {% if currentLoop contains color %}
+            {% else %}
+              {% assign colorCount = colorCount | plus: 1 %}
+            {% endif %}
+            {% assign currentLoop = currentLoop | append: ',' | append: color %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+      {% assign currentLoop = '' %}
+
       <div class="swatch__wrapper">
         {% for value in option.values %}
           {% for variant in product.variants %}     
@@ -20,6 +36,7 @@
                 <a href="{{ variant.url }}" class="swatch swatch__tooltip swatch-product swatch-product--{{color }}" 
                   style="background-color: {{ color }};">
                   <span class="swatch__tooltip-info">{{color}}</span>
+                  +{{colorCount | minus: 5}}
                 </a>
               {% endif %}
               {% assign currentLoop = currentLoop | append: ',' | append: color %}

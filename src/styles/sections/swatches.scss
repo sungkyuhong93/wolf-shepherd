@@ -79,16 +79,22 @@ Swatches Styles
   .swatch__wrapper {
     .swatch-product {
       cursor: none!important;
+      font-size: 0;
 
       &:nth-child(n+6) {
         background-color: transparent !important;
-        background-image: $ICON_ARROW_RIGHT !important;
+        background-image: none !important;
         background-position: center;
         background-repeat: no-repeat;
         background-size: 5px 10px;
         border-radius: 0;
         box-shadow: none !important;
         cursor: pointer !important;
+        font-size: 10px;
+        margin-left: 0;
+        position: relative;
+        pointer-events: none;
+        top: 1px;
 
         .swatch__tooltip-info {
           display: none;

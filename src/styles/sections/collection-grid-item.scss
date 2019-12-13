@@ -63,8 +63,8 @@
 
   &__price {
     font-family: $FONT_BASE;
-    font-size: $FONT_SIZE_XSMALL;
-    margin: 0 0 8px;
+    font-size: $FONT_SIZE_XSMALL !important;
+    margin: 0 0 4px;
   }
 
   .swatch__wrapper {
@@ -94,8 +94,10 @@
     }
 
     .stamped-badge {
-      height: 0;
-      opacity: 0;
+      height: 29px;
+      opacity: 1;
+      // height: 0;
+      // opacity: 0;
       transition: 0.8s;
     }
 
