@@ -1,0 +1,49 @@
+{% assign currentArticle = article.handle %}
+
+<div class="blog">
+  <div class="page-width blog__width">
+    <div class="grid">
+
+      <h2 class="article__related-title">{{section.settings.title}}</h2>
+
+      {% assign blogSection = section.settings.blog %}
+      {% assign blogNew = blogs[blogSection] %}
+      {% assign foundYou = false %}
+      {% for article in blogNew.articles limit: 3 %} 
+
+        {% if currentArticle == article.handle %}
+          {% assign foundYou = true %}
+        {% else %}
+          {% if forloop.index == 3 and foundYou == false %}
+            {% break %}
+          {% endif %}
+          {%- capture postCounterClass -%}
+            grid__item small--one-whole medium-up--one-half
+          {%- endcapture -%}
+
+          {% include 'featured-posts'  with gridWidth: postCounterClass %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Featured Blog",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Also in the den"
+      },
+      {
+        "type": "blog",
+        "id": "blog",
+        "label": "Choose Blog"
+      }
+    ]
+  }
+{% endschema %}

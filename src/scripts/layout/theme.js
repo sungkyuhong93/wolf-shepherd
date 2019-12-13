@@ -42,6 +42,9 @@ import '../components/slide-to';
 import '../components/type';
 import '../components/quantity';
 
+import Article from '../snippets/article-slider';
+import ArticleCollectionSlider from '../sections/article-collection-slider';
+
 document.addEventListener('DOMContentLoaded', () => {
   AjaxCart().init();
   Swatch().init();
@@ -52,6 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
   VideoModal();
   Instafeed();
   load('*');
+
+  Article().init();
+  ArticleCollectionSlider().init();
+
 });
 
 // Common a11y fixes

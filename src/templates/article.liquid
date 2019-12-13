@@ -93,6 +93,12 @@
     </div>
   </div>
 
+  {% include 'article-featured-collection' %}
+
+  {% section 'article-featured-posts' %}
+  
+  {% section 'instagram' %}
+
   {% if blog.comments_enabled? %}
     <h3>{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h3>
 

@@ -120,6 +120,7 @@
   }
 
   .social_sharing_header {
+    display: none;
     left: 20px;
     position: absolute;
 
@@ -160,6 +161,15 @@
     }
   }
 
+  .feature-collection h2 {
+    margin-bottom: 40px;
+  }
+
+  &__related-title {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
   @include media-query($medium-up) {
     &__hero {
       margin-bottom: 50px;
@@ -176,6 +186,10 @@
 
     .rte, p, meta {
       font-size: 14px;
+    }
+
+    .social_sharing_header {
+      display: block;
     }
 
     .social_sharing_footer {

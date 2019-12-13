@@ -1,0 +1,42 @@
+{% assign showCollectionSlider = false %}
+{% for i in (1..6) %}
+  {% assign relatedProduct = 'related_product_' | append: i %}
+  {% if article.metafields.article[relatedProduct] %}
+    {% assign showCollectionSlider = true %}
+  {% endif %}
+{% endfor %}
+
+{% if showCollectionSlider == true %}
+  <div class="feature-collection section-margin-bottom" id="featured-collection-section">
+    <div class="page-width feature-collection__title">
+      <div class="grid">
+        <div class="grid__item medium-up--one-whole">
+          <h2>Highlighted Products</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-width">
+      <div class="grid">
+        <div class="grid__item medium-up--one-whole">
+          <div class="feature-collection__container">
+
+            {%- assign collectionCounterClass = 'grid__item small--one-half medium-up--one-quarter' -%}
+
+            <div class="collection-carousel--article">
+              {% for i in (1..6) %}
+                {% assign relatedProduct = 'related_product_' | append: i %}
+                {% if article.metafields.article[relatedProduct] %}
+                  {% assign relatedProductField = article.metafields.article[relatedProduct] %}
+                  {% assign product = all_products[relatedProductField] %}
+                  {% include 'collection-grid-product' with gridWidth: collectionCounterClass  %}
+                {% endif %}
+              {% endfor %}
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
