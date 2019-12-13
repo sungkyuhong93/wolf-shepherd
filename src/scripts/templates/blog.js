@@ -9,5 +9,5 @@
 import '../snippets/blog';
 
 document.addEventListener('DOMContentLoaded', () => {
-  
+
 });

@@ -74,8 +74,8 @@
       },
       {
         "type": "checkbox",
-        "id": "share_pinterest",
-        "label": "Pin on Pinterest",
+        "id": "share_email",
+        "label": "Share on Email",
         "default": true
       },
       {
