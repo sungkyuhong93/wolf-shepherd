@@ -1,29 +1,4 @@
-<div class="article">
-  {%- for block in section.blocks -%}
-    {% if block.type == 'image_slider' %}
-      <div class="page-width {{block.settings.margin_bottom}}">
-        <div class="grid">
-          <div class="grid__item medium-up--one-whole large-up--ten-twelfths large-up--push-one-twelfth">
-            <div class="article__slider">
-              {% for i in (1..5) %}
-                {% assign image = 'image_' | append: i %}
-                {% if block.settings[image] %}
-                  <img src="{{block.settings[image] | img_url: 'master' }}">
-                {% endif %}
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-      </div>
-    {% elsif block.type == 'hero' %}
-      {% include 'hero-image' with type: 'block' %}
-    {% elsif block.type == 'image_with_text' %}
-      {% include 'image-and-text' with type: 'block' %}
-    {% elsif block.type == 'featured_collection' %}
-      {% include 'ambassador-featured-collection' %}
-    {% endif %}
-  {%- endfor -%}
-</div>
+{% include 'ambassador' %}
 
 {% schema %}
   {
@@ -225,6 +200,65 @@
         ]
       },
       {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "select",
+            "id": "margin_bottom",
+            "label": "Margin bottom",
+            "default": "no-margin",
+            "options": [
+              {
+                "label": "Margin bottom",
+                "value": "section-margin-bottom"
+              },
+              {
+                "label": "No margin",
+                "value": "no-margin"
+              }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "name": "Quote",
+        "settings": [
+          {
+            "type": "select",
+            "id": "margin_bottom",
+            "label": "Margin bottom",
+            "default": "no-margin",
+            "options": [
+              {
+                "label": "Margin bottom",
+                "value": "section-margin-bottom"
+              },
+              {
+                "label": "No margin",
+                "value": "no-margin"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "cite",
+            "label": "Cite"
+          }
+        ]
+      },
+      {
         "type": "image_with_text",
         "name": "Image with text",
         "settings": [
@@ -267,9 +301,19 @@
           },
           {
             "type": "text",
+            "id": "supertitle",
+            "label": "Supertitle"
+          },
+          {
+            "type": "text",
             "id": "title",
             "label": "Heading",
             "default": "Image with text"
+          },
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Subtitle"
           },
           {
             "type": "richtext",
@@ -306,7 +350,7 @@
           },
           {
             "type": "select",
-            "id": "margin_bcottom",
+            "id": "margin_bottom",
             "label": "Margin bottom",
             "default": "no-margin",
             "options": [

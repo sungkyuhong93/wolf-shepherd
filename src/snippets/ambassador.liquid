@@ -1,0 +1,28 @@
+<div class="article">
+  {%- for block in section.blocks -%}
+    {% if block.type == 'image_slider' %}
+      {% include 'ambassador-slider' %}
+    {% elsif block.type == 'hero' %}
+      {% include 'hero-image' with type: 'block', specialClass: 'hero-image--ambassador' %}
+    {% elsif block.type == 'image_with_text' %}
+      {% include 'image-and-text' with type: 'block' %}
+    {% elsif block.type == 'featured_collection' %}
+      {% include 'ambassador-featured-collection' %}
+    {% elsif block.type == 'image' %}
+      <div class="article__image {{block.settings.margin_bottom}}">
+        <img src="{{block.settings.image | img_url: 'master' }}" alt="{{block.settings.image.alt}}">
+      </div>
+    {% elsif block.type == 'quote' %}
+      <div class="article__quote {{block.settings.margin_bottom}}">
+        <div class="page-width">
+          <div class="grid">
+            <div class="grid__item medium-up--one-whole large-up--ten-twelfths large-up--push-one-twelfth">
+              <h3>{{block.settings.title}}</h3>
+              <h6>{{block.settings.cite}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {%- endfor -%}
+</div>

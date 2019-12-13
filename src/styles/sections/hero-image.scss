@@ -17,6 +17,39 @@ Hero image
   text-align: center;
   width: 100%;
 
+  &--ambassador {
+    #{$parent}__title {
+      font-size: 80px;
+      margin-bottom: 0;
+    }
+
+    #{$parent}__supertitle {
+      margin-bottom: -10px;
+    }
+
+    #{$parent}__text p, #{$parent}__text, #{$parent}__supertitle {
+      font-family: $FONT-BODY;
+      font-size: 14px;
+      letter-spacing: 0.35px;
+      text-transform: uppercase;
+    }
+
+    @include media-query($small) {
+      #{$parent}__title {
+        font-size: 56px;
+      }
+
+      #{$parent}__supertitle {
+        font-size: 12px;
+        margin-bottom: -10px;
+      }
+
+      #{$parent}__text {
+        display: none;
+      }
+    }
+  }
+
   &__title {
     margin-bottom: 25px;
 
@@ -26,6 +59,17 @@ Hero image
       line-height: 1;
       margin: 0 !important;
     }
+  }
+
+  &__supertitle {
+    // margin-bottom: 25px;
+
+    // p {
+    //   font-family: inherit;
+    //   font-size: inherit;
+    //   line-height: 1;
+    //   margin: 0 !important;
+    // }
   }
 
   &__text {
@@ -63,7 +107,7 @@ Hero image
   }
 
   &--white {
-    #{$parent}__title, #{$parent}__text {
+    #{$parent}__title, #{$parent}__text, #{$parent}__supertitle {
       color: $COLOR_WHITE;
     }
   }

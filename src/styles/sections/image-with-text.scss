@@ -11,6 +11,15 @@
   &__text {
     text-align: center;
 
+    h4 {
+      margin-bottom: 5px;
+    }
+
+    h6 {
+      margin-bottom: 24px;
+      margin-top: -10px;
+    }
+
     p {
       font-size: $FONT_SIZE_SMALL;
     }

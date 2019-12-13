@@ -57,13 +57,13 @@
 
     <div class="image-with-text__text">
       {% if sectionSupertitle != blank %}
-        <h2>{{ sectionSupertitle | escape }}</h2>
+        <h4>{{ sectionSupertitle | escape }}</h4>
       {% endif %}
       {% if sectionTitle != blank %}
         <h2>{{ sectionTitle | escape }}</h2>
       {% endif %}
       {% if sectionSubtitle != blank %}
-        <h2>{{ sectionSubtitle | escape }}</h2>
+        <h6>{{ sectionSubtitle | escape }}</h6>
       {% endif %}
       {% if sectionText != blank %}
         <div>{{ sectionText }}</div>

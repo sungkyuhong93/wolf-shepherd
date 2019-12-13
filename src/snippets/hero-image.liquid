@@ -135,6 +135,7 @@
   {% assign sectionMarginBottom = block.settings.margin_bottom %}
   {% assign sectionTextColor = block.settings.text_color %}
   {% assign sectionTextSize = block.settings.text_size | default: 'd2' %}
+  {% assign sectionSupertitle = block.settings.supertitle  %}
   {% assign sectionTitle = block.settings.title  %}
   {% assign sectionText = block.settings.text %}
   {% assign sectionButtonLabel = block.settings.button_label %}
@@ -149,6 +150,9 @@
   {% if sectionFullWidth != 'full-width' %}<div class="page-width">{% endif %}
 
   {% capture textCapture %}
+    {% if sectionSupertitle != blank %}
+      <p class="{{ sectionSupertitle }} hero-image__supertitle">{{ sectionSupertitle }}</p>
+    {% endif %}
     {% if sectionTitle != blank %}
       {% if type contains 'collection' %}
         <h1 class="{{ sectionTextSize }} hero-image__title">{{ sectionTitle }}</h1>
@@ -175,7 +179,8 @@
     {{ sectionTextColor }}
     {{ sectionMarginBottom }} 
     {{ sectionMobileTextPosition }}
-    {{ sectionMobileEnable }} lazyload" 
+    {{ sectionMobileEnable }} 
+    {{ specialClass }} lazyload" 
     data-bgset="{{sectionImageMobile}} [(max-width: 749px)] | {{sectionImage}}">
 
     {% if mp4 != blank %}

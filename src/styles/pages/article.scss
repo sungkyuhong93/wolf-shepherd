@@ -101,6 +101,37 @@
     }
   }
 
+  &__image {
+    img {
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+
+  &__quote {
+    background: $COLOR_GREY;
+    padding: 94px 0;
+    text-align: center;
+
+    h3 {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    h6 {
+      margin-bottom: 0;
+    }
+
+    @include media-query($small) {
+      padding: 64px 0;
+
+      h3 {
+        font-size: 14px;
+      }
+    }
+  }
+
   .slick-arrow {
     left: -60px;
     position: absolute;
