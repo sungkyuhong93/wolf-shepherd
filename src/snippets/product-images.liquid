@@ -1,7 +1,7 @@
 {% assign colours = '' %}
 {% for option in product.options_with_values %}
   {% if option.name == 'Color' or option.name == 'color' %}
-    {% assign selectColour = option.selected_value | downcase  %}
+    {% assign selectColour = option.selected_value | downcase | handleize %}
     {% for value in option.values %}
       {% assign colours = colours | append: value | append: ',' %}
     {% endfor %}
