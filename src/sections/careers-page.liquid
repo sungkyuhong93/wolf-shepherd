@@ -3,7 +3,7 @@
 {% include 'sub-menu' %}
 
 <div class="page-width">
-  <div class="grid">
+  <div class="grid {% if section.blocks.size == 0 %}contact__form-full{% endif %}">
     <div class="grid__item small--one-whole medium-up--one-half large-up--five-twelfths large-up--push-one-twelfth">
       <div class="rte">
         <h1 class="contact__main-title">{{ page.title }}</h1>
@@ -11,13 +11,15 @@
       </div>
     </div>
 
-    <div class="grid__item small--one-whole medium-up--one-half large-up--five-twelfths large-up--push-one-twelfth contact__form">
+    <div class="grid__item small--one-whole medium-up--one-half large-up--five-twelfths large-up--push-one-twelfth contact__form {% if section.blocks.size == 0 %}contact__form--empty{% endif %}">
       {% for block in section.blocks %}
         <div class="contact__careers-block">
           <h3 class="h3--ms">{{block.settings.title}}</h3>
           <p>{{block.settings.text}}</p>
           <a href="{{block.settings.button_url}}" target="_blank" class="button--white button--white--compress" title="{{block.settings.button_label}}">{{block.settings.button_label}}</a>
         </div>
+      {% else %}
+        <h3>{{section.settings.no_openings}}</h3>
       {% endfor %}
     </div>
   </div>
@@ -38,13 +40,9 @@
       },
       {
         "type": "text",
-        "id": "title",
-        "label": "Title"
-      },
-      {
-        "type": "text",
-        "id": "body",
-        "label": "Text"
+        "id": "no_openings",
+        "label": "No Openings text",
+        "default": "No openings at this time"
       }
     ],
     "blocks": [

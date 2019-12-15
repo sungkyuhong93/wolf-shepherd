@@ -34,9 +34,6 @@ Contact
     margin-bottom: 0;
   }
 
-  &__form {
-  }
-
   input[type=email] {
     margin-bottom: 30px;
   }
@@ -89,6 +86,16 @@ Contact
 
     .rte {
       padding-right: 40px;
+    }
+
+    &__form-full {
+      display: flex;
+    }
+
+    &__form--empty {
+      align-items: center;
+      display: flex;
+      justify-content: center;
     }
 
     &__form {
