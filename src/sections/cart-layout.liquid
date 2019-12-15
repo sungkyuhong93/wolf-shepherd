@@ -1,7 +1,15 @@
 <div class="page-width ">
 
   <div class="cart__header">
-    <h1>My Cart</h1>
+    {% if cart.item_count > 0 %}
+      <h1>My Cart</h1>
+    {% else %}
+      <div class="cart__empty">
+        <h1>Your bag is empty…</h1>
+        <a href="/collections/shoes" class="button">shop shoes</a>
+        <a href="/collections/accessories" class="button">Shop accessories</a>
+      </div>
+    {% endif %}
   </div>
 
   {% if cart.item_count > 0 %}
@@ -177,15 +185,13 @@
     </div>
   {% else %}
     <div class="page-content text-center">
-      <div class="h2">{{ 'cart.general.title' | t }}</div>
-
       {% comment %}
       Cart empty state
       {% endcomment %}
-      <div class="supports-cookies">
+      {% comment %} <div class="supports-cookies">
         <p>{{ 'cart.general.empty' | t }}</p>
         <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
-      </div>
+      </div> {% endcomment %}
 
       {% comment %}
       Cart no cookies state
@@ -193,9 +199,9 @@
       Browser cookies are required to use the cart. If cookies aren't enabled in the
       browser a message is displayed prompting the user to enable them.
       {% endcomment %}
-      <div class="supports-no-cookies">
+      {% comment %} <div class="supports-no-cookies">
         <p>{{ 'cart.general.cookies_required' | t }}</p>
-      </div>
+      </div> {% endcomment %}
     </div>
   {% endif %}
 </div>

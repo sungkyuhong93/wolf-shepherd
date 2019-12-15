@@ -6,20 +6,17 @@
           <div class="stockist__container">
             <h1 class="stockist__title">{{ page.title | escape }}</h1>
 
-            <ul class="stockist__locations">
+              <ul class="stockist__locations">
 
-              <li class="stockist__location">
-                <img src="{{ section.settings.location_img_1 | img_url: 'master' }}" alt="{{section.settings.location_img_1.alt}}"/>
-                <h6>{{section.settings.location_title_1}}</h6>
-              </li>
-
-              <li class="stockist__location">
-                <img src="{{ section.settings.location_img_2 | img_url: 'master' }}" alt="{{section.settings.location_img_2.alt}}"/>
-                <h6>{{section.settings.location_title_2}}</h6>
-              </li>
+              {%- for block in section.blocks -%}
+                <li class="stockist__location">
+                  {%- if block.settings.location_url != blank -%}<a href="{{block.settings.location_url}}">{%- endif -%}
+                    <img src="{{ block.settings.location_img | img_url: 'master' }}" alt="{{section.settings.location_img.alt}}"/>
+                    <h6>{{block.settings.location_title}}</h6>
+                  {%- if block.settings.location_url != blank -%}</a>{%- endif -%}
+                </li>
+              {%- endfor -%}
             </ul>
-
-
 
           </div>
         </div>
@@ -33,27 +30,27 @@
 {% schema %}
   {
     "name": "Stockist",
-    "settings": [
+    "blocks": [
       {
-        "type": "image_picker",
-        "id": "location_img_1",
-        "label": "Location image one"
-      },
-      {
-        "type": "text",
-        "id": "location_title_1",
-        "label": "Location title one"
-      },
-
-      {
-        "type": "image_picker",
-        "id": "location_img_2",
-        "label": "Location image two"
-      },
-      {
-        "type": "text",
-        "id": "location_title_2",
-        "label": "Location title two"
+        "type": "location",
+        "name": "Location",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "location_img",
+            "label": "Location image"
+          },
+          {
+            "type": "text",
+            "id": "location_title",
+            "label": "Location title"
+          },
+          {
+            "type": "url",
+            "id": "location_url",
+            "label": "Location URL"
+          }
+        ]
       }
     ]
   }

@@ -500,7 +500,7 @@
 
     .stamped-pagination {
       padding-top: 36px;
-      text-align: left;
+      text-align: center;
 
       .page a {
         height: 24px;
@@ -510,7 +510,7 @@
         width: 24px;
       }
 
-      .next {
+      .previous, .next {
         margin-top: -6px;
       }
     }
