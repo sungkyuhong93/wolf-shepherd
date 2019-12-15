@@ -44,6 +44,7 @@
   {% assign sectionMarginBottom = section.settings.margin_bottom %}
   {% assign sectionTextColor = section.settings.text_color %}
   {% assign sectionTextSize = section.settings.text_size | default: 'd2' %}
+
   {% assign sectionTitle = collection.title %}
   {% assign sectionText = collection.description %}
   {% assign sectionButtonLabel = blank %}
@@ -69,6 +70,7 @@
   {% assign sectionMarginBottom = section.settings.margin_bottom %}
   {% assign sectionTextColor = section.settings.text_color %}
   {% assign sectionTextSize = section.settings.text_size | default: 'd2' %}
+  {% assign sectionSupertitle = section.settings.supertitle  %}
   {% assign sectionTitle = blog.title %}
   {% assign sectionText = '' %}
   {% assign sectionButtonLabel = blank %}
