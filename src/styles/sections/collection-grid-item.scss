@@ -42,13 +42,15 @@
       right: 0;
       top: 0;
       transform: translate3d(0, 0, 0);
-      transition: ease-in-out 0.3s;
+      // transition: ease-in-out 0.3s;
       width: 100%;
     }
-
+    
     #{$parent}__second-image {
       opacity: 0;
       transition: ease-in-out 0.3s;
+      transition: all .4s cubic-bezier(.44,.13,.48,.87);
+      z-index: 1;
     }
   }
 
@@ -112,12 +114,23 @@
 
   @include media-query( $tablet-up ) {
     padding: 0 32px 23px;
-    transition: 0.2s;
+    transition: opacity .3s ease-in-out;
 
     #{$parent}__review {
       align-items: center;
       display: flex !important;
       justify-content: center;
+    }
+
+    #{$parent}__first-image {
+      // opacity: 0;
+      transition: .6s cubic-bezier(.44,.13,.48,.87);
+    }
+
+    #{$parent}__second-image {
+      // opacity: 1;
+      transition: ease-in-out 0.4s 0.1s;
+      transition: all .6s cubic-bezier(.44,.13,.48,.87) ;
     }
 
     &:hover {
@@ -131,12 +144,14 @@
 
       #{$parent}__first-image {
         opacity: 0;
-        transition: ease-in-out 0.4s;
+        // transition: ease-in-out 0.4s;
+        // transition: all .4s ease-in;
       }
 
       #{$parent}__second-image {
         opacity: 1;
-        transition: ease-in-out 0.4s 0.1s;
+        // transition: ease-in-out 0.4s 0.1s;
+        // transition: all .4s cubic-bezier(.44,.13,.48,.87) 0.2s;
       }
     }
   }

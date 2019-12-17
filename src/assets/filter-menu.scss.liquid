@@ -93,7 +93,7 @@
 
 
     + .filter-group h4 {
-      margin-top: 10px;
+      margin-top: 0;
       padding-top: 10px;
       border-top: 1px solid {{ settings.color_pt_header_top_border | default: 'transparent' }};
     }
@@ -837,14 +837,20 @@ i.check-icon {
 .filter-group .scroll-content,
 .pt-expand .filter-group .scroll-content,
 .filter-menu .filter-group .filter-clear {
-  display: none;
+  // display: none;
+  height: auto;
+  max-height: 0; 
+  overflow: hidden;
+  transition: 0.4s ease-in-out;
 }
 
 .filter-menu .has_group_selected .scroll-content,
 .pt-expand .pt-group-expanded .scroll-content,
 .filter-menu .refine-header .filter-clear,
 .pt-group-expanded .scroll-content  {
-  display: inherit;
+  // display: inherit;
+  height: auto;
+  max-height: 600px; 
 }
 
 .filter-menu .has_group_selected .filter-clear {

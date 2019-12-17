@@ -22,7 +22,7 @@ Collection filter
   }
 
   .filter-group+.filter-group h4 {
-    margin-top: 11px;
+    margin-top: 0px;
     padding-top: 18px;
   }
 
@@ -31,6 +31,10 @@ Collection filter
     font-size: $FONT_SIZE_XSMALL;
     margin: 0;
     padding-bottom: 10px;
+  }
+
+  .filter-group ul {
+    margin-bottom: 11px
   }
 
   .filter-group h4:after {
@@ -277,8 +281,10 @@ Collection filter
         .filter-group {
           display: none;
         }
+
         .filter-group-sort-orders {
           display: block;
+          max-height: 800px;
         }
 
         .filter-group + .filter-group h4 {

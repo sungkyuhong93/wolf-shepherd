@@ -14,15 +14,16 @@ theme.Accordion = (function() {
     const $this = $(this);
     const toggleData = $this.attr('data-toggle');
 
-    if ($(`#${toggleData}`).hasClass(activeClass)) {
-      $content.removeClass(activeClass);
-      $content.parent().removeClass(activeClassParent);
-    } else {
-      $content.removeClass(activeClass);
-      $content.parent().removeClass(activeClassParent);
-      $(`#${toggleData}`).addClass(activeClass);
-      $(`#${toggleData}`).parent().addClass(activeClassParent);
-    }
+    $(`#${toggleData}`).slideToggle();
+    // if ($(`#${toggleData}`).hasClass(activeClass)) {
+    //   $content.removeClass(activeClass);
+    //   $content.parent().removeClass(activeClassParent);
+    // } else {
+    //   $content.removeClass(activeClass);
+    //   $content.parent().removeClass(activeClassParent);
+    //   $(`#${toggleData}`).addClass(activeClass);
+    //   $(`#${toggleData}`).parent().addClass(activeClassParent);
+    // }
 
   }
 
