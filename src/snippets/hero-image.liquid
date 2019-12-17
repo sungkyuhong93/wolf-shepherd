@@ -155,22 +155,34 @@
     {% if sectionSupertitle != blank %}
       <p class="{{ sectionSupertitle }} hero-image__supertitle">{{ sectionSupertitle }}</p>
     {% endif %}
-    {% if sectionTitle != blank %}
-      {% if type contains 'collection' %}
-        <h1 class="{{ sectionTextSize }} hero-image__title">{{ sectionTitle }}</h1>
+
+    {% if template contains 'collection' %}
+      {% if collection.description != blank %}
+        <h1 class="visually-hidden">{{ collection.title }}</h1>
+        <span class="{{ sectionTextSize }} hero-image__title">{{ collection.description }}</h2>
       {% else %}
-        <h2 class="{{ sectionTextSize }} hero-image__title">{{ sectionTitle }}</h2>
+        <h1 class="{{ sectionTextSize }} hero-image__title">{{ collection.title }}</h1>
+      {% endif %}
+    {% else %}
+      {% if sectionTitle != blank %}
+        {% if type contains 'collection' %}
+          <h1 class="{{ sectionTextSize }} hero-image__title">{{ sectionTitle }}</h1>
+        {% else %}
+          <h2 class="{{ sectionTextSize }} hero-image__title">{{ sectionTitle }}</h2>
+        {% endif %}
       {% endif %}
     {% endif %}
     
-    <div class="rte-setting hero-image__text">
-      {% if sectionText != blank %}{{ sectionText }}{% endif %}
-      {% if sectionButtonLabel != blank and sectionButtonLink != blank %}
-        <a href="{{ sectionButtonLink }}" class="{{ sectionButtonColor }}">
-          {{ sectionButtonLabel }}
-        </a>
-      {% endif %}
-    </div>
+    {% unless template contains 'collection' %}
+      <div class="rte-setting hero-image__text">
+        {% if sectionText != blank %}{{ sectionText }}{% endif %}
+        {% if sectionButtonLabel != blank and sectionButtonLink != blank %}
+          <a href="{{ sectionButtonLink }}" class="{{ sectionButtonColor }}">
+            {{ sectionButtonLabel }}
+          </a>
+        {% endif %}
+      </div>
+    {% endunless %}
   {% endcapture %}
 
   <div class="hero-image hero-image--{{ sectionId }} 

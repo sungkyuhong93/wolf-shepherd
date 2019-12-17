@@ -360,7 +360,7 @@
       {%- endif -%}
       {%- endif -%}
       {%- unless displayed_collection_handles contains current_collection_handle_sep or current_collection_handle == 'all' -%}
-      <div class="filter-group filter-group-not-shown has_group_selected {% if settings.pt_force_dropdown or pt_force_dropdown %}pt-display-dropdown{% endif %}">
+      <div class="filter-group filter-group--{{ pt_collection_text | handlize }} filter-group-not-shown has_group_selected {% if settings.pt_force_dropdown or pt_force_dropdown %}pt-display-dropdown{% endif %}">
         <h4>{{ pt_collection_text }}</h4>
         <div class="scroll-content">
           <ul class="nav-not-shown">
