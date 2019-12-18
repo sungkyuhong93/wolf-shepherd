@@ -40,10 +40,11 @@
         {% assign swatchBackground = value | handleize | downcase %}
       {% endif%}
 
-      <div class="swatch swatch-product swatch-product--{{ value | handleize }}
+      <div class="swatch swatch-product is-loaded swatch-product--{{ value | handleize }}
       {% if option.selected_value == value %}swatch-product--active{% endif %}
       {% if optionName == 'color' or optionName == 'colour' %}swatch-product--color{% endif %}
-      {% if optionName == 'size' or optionName == 'Size' %}swatch-product--size {{specialClass}}{% endif %}" 
+      {% if optionName == 'size' or optionName == 'Size' %}swatch-product--size {{specialClass}}{% endif %}
+      {% if optionName == 'width' or optionName == 'Width' %}swatch-product--width {{specialClass}}{% endif %}" 
       data-swatch-value="{{ value | escape }}"
       style="background-size: {{swatchBackground}};"
       {% if optionName == 'color' or optionName == 'colour' %}
