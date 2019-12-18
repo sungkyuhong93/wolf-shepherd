@@ -71,7 +71,7 @@ Swatches Styles
     text-transform: lowercase;
 
     @include media-query($tablet-up) {
-      display: none;
+      // display: none;
     }
   }
 
@@ -82,6 +82,7 @@ Swatches Styles
     float: right;
     position: absolute;
     right: 0;
+    top: 0;
 
     svg {
       margin-right: 10px;
@@ -283,6 +284,10 @@ Swatches Styles
 
   @include media-query($tablet-up) {
     .swatch__size-toggle {
+      display: none;
+    }
+
+    .swatch__size-toggle__title {
       display: none;
     }
   }

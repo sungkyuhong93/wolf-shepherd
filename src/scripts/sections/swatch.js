@@ -29,15 +29,8 @@ export default () => {
     const $this = $(this);
     const swatchValue = $this.attr('data-swatch-value');
     
-    console.log('tap');
     $this.parent().find('.swatch-product').removeClass('swatch-product--active');
     $this.addClass('swatch-product--active');
-
-    if($this.hasClass('swatch-product--size') ) {
-      // $this.parent().parent().parent().parent().find('select').val(swatchValue).trigger('change');
-      console.log('tapping');
-    } else {
-    }
     $this.parent().parent().find('select').val(swatchValue).trigger('change');
   }
 

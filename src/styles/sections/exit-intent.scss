@@ -191,11 +191,12 @@
     background-size: cover;
     display: flex;
     flex-direction: column;
-    height: 680px;
+    height: calc(100% - 50px);
     justify-content: center;
     left: 50%;
+    margin: 20px 0;
+    max-height: 680px;
     max-width: 90%;
-    padding: 40px;
     position: absolute;
     text-align: center;
     top: 50%;

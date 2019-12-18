@@ -21,8 +21,18 @@ Search Form
 
 .site-header__search-icon {
   cursor: pointer;
+  display: inline-block;
   opacity: 1;
   position: relative;
+
+  svg {
+    pointer-events: none;
+  }
+
+  input {
+    -webkit-appearance: none;
+    border-radius: 0 !important;
+  }
 
   &.search-form--is-active {
     .search-form {
@@ -36,6 +46,7 @@ Search Form
       input {
         border: 1px solid $COLOR_PRIMARY;
         border-left: 0;
+        border-radius: 0 !important;
         border-right: 0;
         border-top: 0;
         color: $COLOR_PRIMARY;

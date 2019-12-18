@@ -33,6 +33,8 @@
 
     {% for value in option.values %}  
 
+      {{ value | json }}
+
       {% assign swatchValue = value | handleize | downcase %}
       {% assign swatchBackground = 'transparent' %}
 

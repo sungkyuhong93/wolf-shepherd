@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import {register} from '@shopify/theme-sections';
 import cssClasses from '../helpers/cssClasses';
+import Search from '../sections/search-hero';
 
 register('site-header-section', {
   onLoad() {
@@ -19,6 +20,11 @@ register('site-header-section', {
       $(target).toggleClass(cssClasses.active);
       return false;
     });
+
+    $('.site-nav__item').on('mouseover', function() {
+      console.log('hover');
+      Search().removeActiveState();
+    })
   },
 
   onBlockSelect: (blockId) => {

@@ -13,6 +13,7 @@ import {focusHash, bindInPageLinks} from '@shopify/theme-a11y';
 
 import {load} from '@shopify/theme-sections';
 import Navigation from '../sections/navigation';
+import Search from '../sections/search-hero';
 import AjaxCart from '../sections/ajax-cart';
 import Instafeed from '../sections/instagram-feed';
 import VideoModal from '../sections/video-modal';
@@ -31,7 +32,6 @@ import '../sections/features';
 import '../sections/reviews';
 import '../sections/sticky-nav';
 import '../sections/emoji';
-import '../sections/search-hero';
 import '../sections/list-collections';
 import '../sections/testimonials';
 import '../sections/collection-page';
@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   GiftWrap().init();
   QuickAdd().init();
   Navigation().init();
+  Search().init();
   ExitIntent();
   VideoModal();
   Instafeed();
