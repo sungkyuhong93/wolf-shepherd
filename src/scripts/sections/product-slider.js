@@ -21,7 +21,7 @@ export default () => {
   const zoomOptions = {
     touchBoundingBox: true,
     paneContainer: nodeSelectors.zoomPane,
-    zoomFactor: 2,
+    zoomFactor: 2.5,
   };
 
   /**
@@ -63,12 +63,13 @@ export default () => {
 
   function init() {
     slickLoop();
-
     setZoomEvents();
   }
 
   function setZoomEvents() {
     const windowWidth = $(window).width();
+    const navHeight = document.querySelector('.product-slider-nav').offsetHeight;
+    nodeSelectors.zoomPane.style.bottom = `${navHeight + 16}px`;
 
     if (windowWidth >= jsWidth.tablet) {
       [...nodeSelectors.zoomImage].forEach((element, index) => {

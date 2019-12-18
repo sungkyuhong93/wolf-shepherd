@@ -107,7 +107,6 @@ export default () => {
         const widthValue = width.dataset.swatchValue;
         if (currentColor === color) {
           if (currentWidth === widthValue) {
-            console.log(option)
             runSwatchUpdate(option, container);  
           }
         }

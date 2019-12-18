@@ -53,14 +53,22 @@
     }
   }
 
+  &__zoom-container {
+    position: relative;
+  }
+
   &__zoom-pane {
-    bottom: 80px;
+    bottom: 66px;
     pointer-events: none;
     position: absolute;
     right: 0;
     top: 0;
     width: 100%;
     z-index: 10;
+
+    * {
+      background-color: $COLOR_WHITE;
+    }
   }
 
   .drift-zoom-pane {
