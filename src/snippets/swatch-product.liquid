@@ -33,8 +33,6 @@
 
     {% for value in option.values %}  
 
-      {{ value | json }}
-
       {% assign swatchValue = value | handleize | downcase %}
       {% assign swatchBackground = 'transparent' %}
 
@@ -50,7 +48,7 @@
       style="background-size: {{swatchBackground}};"
       {% if optionName == 'color' or optionName == 'colour' %}
         data-slider="product-images__container--{{swatchBackground}}"
-        data-swatch-color="{{swatchBackground}}"
+        data-swatch-color="{{value}}"
       {% endif%}
       >
         {% unless optionName == 'color' or optionName == 'colour' %}

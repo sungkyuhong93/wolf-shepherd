@@ -69,10 +69,6 @@ Swatches Styles
     font-family: $FONT_BASE;
     font-size: 12px;
     text-transform: lowercase;
-
-    @include media-query($tablet-up) {
-      // display: none;
-    }
   }
 
   &__header__size {
@@ -174,14 +170,48 @@ Swatches Styles
     height: 32px;
     line-height: 32px;
     margin: 0 8px 16px;
-    min-width: 32px;
+    min-width: 34px;
     padding: 0 5px;
     width: auto;
 
     &.swatch-product--active, &:hover {
-      border: 1px solid $COLOR_PRIMARY;
+      // border: 1px solid $COLOR_PRIMARY;
+      background: $COLOR_PRIMARY_LIGHT;
       box-shadow: none;
     }
+  }
+
+  .swatch-product--size {
+    opacity: 0.5;
+
+    // &:hover, &.swatch-product--active {
+    //   background: #f0f0f0 !important;
+    //   border: 1px solid #f0f0f0;
+    //   color: #a3aeb7;
+    //   opacity: 1;
+    // }
+
+    &.is-loaded {
+      opacity: 1;
+
+      &.swatch-product--active, &:hover {
+        background: $COLOR_PRIMARY_LIGHT;
+        box-shadow: none;
+      }
+    }
+
+    &.is-disabled {
+      opacity: 0.5;
+
+      &:hover, &.swatch-product--active {
+        background: #f0f0f0 !important;
+        border: 1px solid #f0f0f0;
+        color: #a3aeb7;
+        opacity: 1;
+      }
+    }
+
+    
   }
 
   .swatch-product--color {
@@ -292,4 +322,3 @@ Swatches Styles
     }
   }
 }
-

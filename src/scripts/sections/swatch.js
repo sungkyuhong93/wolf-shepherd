@@ -22,6 +22,17 @@ export default () => {
     $miniSwatchOpen.on('click', openMiniSwatch);
     $miniSwatchClose.on('click', closeMiniSwatch);
     $sizeToggle.on('click', toggleSize);
+
+    runSoldout();
+  }
+
+  function runSoldout() {
+    if ($('.swatch-product--color').length) {
+      const swatchColor = $('.product-form .swatch-product--color.swatch-product--active').attr('data-swatch-color');
+      const swatchColorClean = swatchColor.replace('.', '-');
+      updateSoldOut(swatchColor, '.product-form');
+      updateSoldOut(swatchColor, '.product-form-mini');
+    } 
   }
 
 
@@ -38,11 +49,11 @@ export default () => {
     const $this = $(this);
     const swatchValue = $this.attr('data-slider');
     const swatchColor = $this.attr('data-swatch-value');
-
+    
     $('.product-images__container').removeClass(cssClasses.active);
     $(`#${swatchValue}`).addClass(cssClasses.active);
-
     $('.product-form [js-swatch="color"]').html(swatchColor);
+    updateSoldOut(swatchColor, '.product-form');
   }
 
   function updateColor() {
@@ -53,13 +64,37 @@ export default () => {
     $('.product-form-mini [js-swatch="color"]').html(swatchColor);
     $('.product-form-mini__form-toggle [js-swatch="color"]').removeClass();
     $('.product-form-mini__form-toggle [js-swatch="color"]').addClass(`product-form-mini--${swatchColorLower}`);
+    updateSoldOut(swatchColor, '.product-form-mini');
   }
 
   function updateSize() {
     const $this = $(this);
-    const swatchColor = $this.attr('data-swatch-value');
+    const swatchSize = $this.attr('data-swatch-value');
 
-    $('[js-swatch="size"]').html(swatchColor);
+    $('[js-swatch="size"]').html(swatchSize);
+  }
+
+  function updateSoldOut(color, container) {
+    const options = document.querySelectorAll(`${container} [data-product-select] option`);
+    const swatches = document.querySelectorAll(`${container} .swatch-product`);
+    swatches.forEach((swatch) => {
+      swatch.classList.remove(cssClasses.disabled);
+      swatch.classList.remove(cssClasses.loaded);
+    });
+
+    options.forEach((option) => {
+      const currentColor = option.dataset.color;
+      if (currentColor === color) {
+        const available = option.dataset.available;
+        const size = option.dataset.size.replace('.', '-');
+        const targetSwatch = document.querySelector(`${container} .swatch-product--${size}`);
+        targetSwatch.classList.add(cssClasses.loaded);
+
+        if (available !== 'true') {
+          targetSwatch.classList.add(cssClasses.disabled);
+        }
+      }
+    });
   }
 
   function openMiniSwatch() {

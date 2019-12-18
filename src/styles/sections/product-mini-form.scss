@@ -148,6 +148,14 @@
     }
   }
 
+  .swatch__header__color-count {
+    padding-right: 20px;
+  }
+
+  .swatch__size-toggle__title {
+    display: none;
+  }
+
   @include media-query($medium-up) {
     display: none;
   }
