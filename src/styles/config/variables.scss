@@ -25,6 +25,7 @@ $color-success-bg: rgb(0, 0, 0);
 $ICON_ARROW_LEFT: var(--icon-arrow-left);
 $ICON_ARROW_RIGHT: var(--icon-arrow-right);
 $ICON_ARROW_DOWN: var(--icon-arrow-down);
+$ICON_ARROW_UP: var(--icon-arrow-up);
 $ICON_PLUS: var(--icon-plus);
 $ICON_ARROW_RIGHT--WHITE: var(--icon-arrow-right-white);
 $ICON_FILTER: var(--icon-filter);
@@ -69,8 +70,8 @@ $breakpoints: (
   $large-down '(max-width: #{$grid-widescreen - 1})',
   $large-up '(min-width: #{$grid-large})',
   $widescreen '(min-width: #{$grid-widescreen})',
-  $tablet-down '(max-width: 1023px)',
-  $tablet-up '(min-width: 1024px)',
+  $tablet-down '(max-width: 1024px)',
+  $tablet-up '(min-width: 1025px)',
 );
 
 /* ============================================================================

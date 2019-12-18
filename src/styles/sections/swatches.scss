@@ -49,9 +49,12 @@ Swatches Styles
 
   &__header {
     @include clearfix;
-    align-items: center;
-    display: flex;
     position: relative;
+
+    &--flex {
+      align-items: center;
+      display: flex;
+    }
   }
 
   &__header__color {
@@ -59,6 +62,17 @@ Swatches Styles
     font-size: $FONT_SIZE_XSMALL;
     margin-left: 10px;
     text-transform: capitalize;
+  }
+
+  &__header__color-count {
+    float: right;
+    font-family: $FONT_BASE;
+    font-size: 12px;
+    text-transform: lowercase;
+
+    @include media-query($tablet-up) {
+      display: none;
+    }
   }
 
   &__header__size {
@@ -185,35 +199,92 @@ Swatches Styles
   }
 }
 
-.product-form .selector-wrapper--size {
-  @include media-query($small) {
-    display: flex;
-    flex-direction: column-reverse;
-    margin-bottom: 18px !important;
-
-    .visually-hidden {
-      height: auto;
-      position: static!important;
-      clip: initial;
+.product-form {
+  @include media-query($tablet-down) {
+    .swatch__wrapper--size {
+      background-image: $ICON_ARROW_DOWN;
+      background-position: calc(100% - 20px) 17px;
+      background-repeat: no-repeat;
+      border: 1px solid $COLOR_PRIMARY_LIGHT;
+      border-radius: 0;
+      color: $COLOR_PRIMARY;
+      font-family: $FONT_BODY;
+      font-size: 12px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      margin-left: 0;
+      max-width: 100%;
+      outline: none;
+      // padding: 10px 28px 10px 12px;
+      text-align: center;
+      text-transform: uppercase;
       width: 100%;
 
-      label {
+      .swatch__size-toggle__trigger {
+        padding: 10px 28px 10px 12px;
+        width: 100%;
+      }
+
+      .swatch {
         display: none;
       }
 
-      select {
-        background: $ICON_ARROW_DOWN;
-        background-position: calc(100% - 20px) center;
-        background-repeat: no-repeat;
-        border: 1px solid $COLOR_PRIMARY_LIGHT;
-        color: $COLOR_PRIMARY;
-        font-family: $FONT_BODY;
-        width: 100%;
+      &.is-active {
+        background-image: $ICON_ARROW_UP;
+        padding-bottom: 0;
+
+        .swatch__size-toggle__title {
+          margin-bottom: 12px;
+        }
+        
+        .swatch__size-toggle__trigger {
+          padding-bottom: 0;
+        }
+
+        .swatch {
+          display: block;
+        }
       }
     }
+  }
 
-    .swatch__wrapper {
+  .selector-wrapper--size {
+    @include media-query($small) {
+      // display: flex;
+      // flex-direction: column-reverse;
+      // margin-bottom: 18px !important;
+  
+      // .visually-hidden {
+      //   height: auto;
+      //   position: static!important;
+      //   clip: initial;
+      //   width: 100%;
+  
+      //   label {
+      //     display: none;
+      //   }
+  
+      //   select {
+      //     background: $ICON_ARROW_DOWN;
+      //     background-position: calc(100% - 20px) center;
+      //     background-repeat: no-repeat;
+      //     border: 1px solid $COLOR_PRIMARY_LIGHT;
+      //     color: $COLOR_PRIMARY;
+      //     font-family: $FONT_BODY;
+      //     width: 100%;
+      //   }
+      // }
+  
+      // .swatch__wrapper {
+      //   // display: none;
+      // }
+    }
+  }
+
+  @include media-query($tablet-up) {
+    .swatch__size-toggle {
       display: none;
     }
   }
 }
+

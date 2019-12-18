@@ -160,7 +160,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 1023px) {
+@include media-query($tablet-down) {
   .site-header {
     &__site-logo a {
       left: 20px;
@@ -183,7 +183,7 @@ body {
   }
 }
 
-@media only screen and (min-width: 1024px) {
+@include media-query($tablet-up) {
   .site-header {
     $parent: &;
 

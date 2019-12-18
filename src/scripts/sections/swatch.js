@@ -12,6 +12,7 @@ export default () => {
   const $swatchSize = $('.swatch-product--size');
   const $miniSwatchOpen = $('.product-form-mini__form-toggle');
   const $miniSwatchClose = $('.product-form-mini__details__tab');
+  const $sizeToggle = $('[js-size-toggle="trigger"]');
 
   function init() {
     $swatch.on('click', swatchChange);
@@ -20,15 +21,23 @@ export default () => {
     $swatchColorMini.on('click', updateColor);
     $miniSwatchOpen.on('click', openMiniSwatch);
     $miniSwatchClose.on('click', closeMiniSwatch);
+    $sizeToggle.on('click', toggleSize);
   }
 
 
   function swatchChange() {
     const $this = $(this);
     const swatchValue = $this.attr('data-swatch-value');
-
+    
+    console.log('tap');
     $this.parent().find('.swatch-product').removeClass('swatch-product--active');
     $this.addClass('swatch-product--active');
+
+    if($this.hasClass('swatch-product--size') ) {
+      // $this.parent().parent().parent().parent().find('select').val(swatchValue).trigger('change');
+      console.log('tapping');
+    } else {
+    }
     $this.parent().parent().find('select').val(swatchValue).trigger('change');
   }
 
@@ -72,6 +81,11 @@ export default () => {
 
   function eventBus() {
     $(document).trigger('Swatch:switch', [false]);
+  }
+
+  function toggleSize() {
+    $sizeToggle.toggleClass(cssClasses.active);
+    $('.product-form .swatch__wrapper--size').toggleClass(cssClasses.active);
   }
 
   /**

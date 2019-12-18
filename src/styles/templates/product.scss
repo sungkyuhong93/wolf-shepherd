@@ -68,7 +68,7 @@
     }
   }
 
-  @include media-query($medium-up) {
+  @include media-query($tablet-up) {
     display: block;
   }
 }
@@ -105,14 +105,20 @@
   }
 }
 
+.product-meta__container {
+  @include media-query($tablet-down) {
+    width: 100%;
+  }
+}
+
 .product-meta {
   margin: 0 auto;
   max-width: 560px;
 
-  @include media-query($large-up) {
-    padding-left: 0;
+  @include media-query($tablet-up) {
     margin: 0 0 0 auto;
     max-width: 425px;
+    padding-left: 0;
   }
 }
 

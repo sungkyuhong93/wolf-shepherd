@@ -29,10 +29,10 @@
   }
 
   &__mobile-container {
-    @media (max-width:749px) {
+    @include media-query($tablet-down) {
       background: $COLOR_GREY;
       margin-bottom: 18px;
-      width: calc(100% + 20px);
+      width: calc(100% + 30px);
 
       .product-header {
         display: block;
@@ -46,7 +46,7 @@
       }
     }
 
-    @include media-query($medium-up) {
+    @include media-query($tablet-up) {
       .product-header {
         display: none;
       }
@@ -94,7 +94,7 @@
     margin-bottom: 1px;
   }
 
-  @include media-query($medium-down) {
+  @include media-query($tablet-down) {
     .slick-track {
       align-items: center;
       display: flex;
