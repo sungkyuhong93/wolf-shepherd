@@ -36,7 +36,7 @@ import '../sections/list-collections';
 import '../sections/testimonials';
 import '../sections/collection-page';
 
-import '../components/accordion';
+import Accordion from '../components/accordion';
 import '../components/form';
 import '../components/slide-to';
 import '../components/type';
@@ -58,13 +58,22 @@ document.addEventListener('DOMContentLoaded', () => {
   Search().init();
   ExitIntent();
   VideoModal();
-  Instafeed();
-  load('*');
+
+  if (document.querySelector('.accordion') !== null ) {
+    Accordion('.accordion', {
+      singleOpen: true,
+    }).init();
+    Accordion('.accordion').showInitialItem();
+  }
 
   Article().init();
   ArticleCollectionSlider().init();
 
   stickyFilter().init();
+
+  Instafeed();
+
+  load('*');
 
 });
 

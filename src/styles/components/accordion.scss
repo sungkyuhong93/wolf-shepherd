@@ -14,14 +14,13 @@ $ACCORDION_PADDING_LARGE: 22px;
     border-top: 0;
 
     @include media-query($medium-up) {
-      #{$parent}__title {
+      #{$parent}__control {
         font-size: $FONT_SIZE_SMALL;
         padding: $ACCORDION_PADDING_LARGE 0;
       }
 
       #{$parent}__content {
         font-size: $FONT_SIZE_SMALL;
-        padding-bottom: $ACCORDION_PADDING_LARGE;
 
         p {
           margin-bottom: 20px;
@@ -29,6 +28,13 @@ $ACCORDION_PADDING_LARGE: 22px;
 
         * {
           font-size: $FONT_SIZE_SMALL;
+        }
+      }
+
+      &__item.is-active {
+        #{$parent}__content {
+          font-size: $FONT_SIZE_SMALL;
+          padding-bottom: $ACCORDION_PADDING_LARGE;
         }
       }
     }
@@ -60,16 +66,22 @@ $ACCORDION_PADDING_LARGE: 22px;
     border-bottom: 1px solid $COLOR_PRIMARY_LIGHT;
   }
 
-  &__title {
+  &__control {
+    border: 0;
+    border-radius: 0;
+    color: $COLOR_PRIMARY;
     cursor: pointer;
     margin: 0;
+    outline: none;
     padding: $ACCORDION_PADDING 0;
-  
-    .arrow-up {
+    text-align: left;
+    width: 100%;
+
+    #{$parent}__arrow-up {
       display: none;
     }
-  
-    .arrow {
+
+    #{$parent}__arrow {
       float: right;
       height: 12px;
       position: relative;
@@ -85,8 +97,8 @@ $ACCORDION_PADDING_LARGE: 22px;
         width: 100%;
       }
     }
-  
-    .arrow-down {
+
+    #{$parent}__arrow-down {
       &::before {
         background: $COLOR_PRIMARY;
         content: '';
@@ -100,9 +112,12 @@ $ACCORDION_PADDING_LARGE: 22px;
   }
 
   &__content {
-    display: none;
     font-size: $FONT_SIZE_XSMALL;
-    padding-bottom: $ACCORDION_PADDING;
+    height: auto;
+    max-height: 0;
+    overflow: hidden;
+    padding-bottom: 0;
+    transition: 0.2s;
 
     ul, ol {
       padding-left: 25px;
@@ -115,23 +130,24 @@ $ACCORDION_PADDING_LARGE: 22px;
     }
   }
 
-  &__content--is-active {
-    border-top: 0;
-    display: block;
-    padding-top: 0;
+  &__item {
+    border-bottom: 1px solid $COLOR_PRIMARY_LIGHT;
 
-    // *:last-child {
-    //   margin-bottom: 0;
-    // }
-  }
-
-  &__item--is-active {
-    .arrow-down {
-      display: none;
-    }
+    &.is-active {
+      #{$parent}__content {
+        border-top: 0;
+        max-height: 800px;
+        padding-bottom: $ACCORDION_PADDING;
+        padding-top: 0;
+      }
   
-    .arrow-up {
-      display: inline;
+      #{$parent}__arrow-down {
+        display: none;
+      }
+    
+      #{$parent}__arrow-up {
+        display: inline;
+      }
     }
   }
 }

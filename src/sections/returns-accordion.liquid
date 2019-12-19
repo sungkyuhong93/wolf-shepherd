@@ -15,15 +15,16 @@
 
         {% for block in section.blocks %}
           {% if block.type == 'accordion' %}
-            <li class="accordion__link">
-              <h6 class="accordion__title" data-toggle="accordion--{{forloop.index}}">
-                {{block.settings.title}}
-                <span class="arrow-up arrow"></span>
-                <span class="arrow arrow-down"></span>
-              </h6>
-                <div id="accordion--{{forloop.index}}" class="accordion__content">
-                  {{block.settings.text}}
-                </div>
+            <li class="accordion__item" js-accordion="item">
+              <button tabindex="0" class="accordion__control h6" js-accordion="control">
+                {{block.settings.title}} 
+                <span class="accordion__arrow-up accordion__arrow"></span>
+                <span class="accordion__arrow accordion__arrow-down"></span>
+              </button>
+
+              <div id="content-1" class="accordion__content" js-accordion="content">
+                {{block.settings.text}}
+              </div>
             </li>
           {% else %}
             <li class="accordion__section-title 
