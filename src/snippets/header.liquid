@@ -21,7 +21,7 @@
 <header class="header header--{{sectionID}} {{ alignContent }} {{specialClass}}">
   <div class="page-width">
     <div class="grid">
-      <div class="grid__item medium-up--one-whole large-up--eight-twelfths large-up--push-two-twelfths">
+      <div class="grid__item medium-up--one-whole {% if width != 'full-width' %}large-up--eight-twelfths large-up--push-two-twelfths{% endif %}">
         <div class="header__container {{marginBottom}}">
           {% if title != blank %}
             <h2 class="header__title">{{ title | escape }}</h2>

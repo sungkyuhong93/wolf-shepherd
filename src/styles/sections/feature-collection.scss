@@ -40,6 +40,8 @@
 
     .button--white {
       background: transparent;
+      position: relative;
+      z-index: 1;
 
       &:hover {
         background: #cee0f2;

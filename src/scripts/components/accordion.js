@@ -61,7 +61,6 @@ export default (selector, config) => {
    * Initialise component.
    */
   function init() {
-    console.log('started');
 
     if (binder.isSet()) {
       return;
@@ -91,7 +90,6 @@ export default (selector, config) => {
    * Set click events on items.
    */
   function setClickEvents() {
-    console.log('clicking');
     nodeSelectors.controls.forEach((item) => {
       on('click', item, (event) => onItemClick(event, item.parentNode));
     });

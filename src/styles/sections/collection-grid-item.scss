@@ -5,8 +5,13 @@
   $parent: &;
   display: block;
   margin: 0 0 40px;
+  outline: none;
   padding: 12px;
   position: relative;
+
+  * {
+    outline: none;
+  }
 
   &__badge {
     background-color: $COLOR_WHITE;

@@ -12,7 +12,8 @@
       {% form 'customer' %}
         {{ form.errors | default_errors }}
         {% if form.posted_successfully? %}
-          <p class="form--success">Success</p>
+          <h4>Congratulations</h4>
+          <p>You have now subscribed to our newsletter.</p>
         {% else %}
 
           <div class="inline-form password__input-group">

@@ -8,7 +8,7 @@ Ajaxt-cart
 }
 
 .cart-count {
-  background: $COLOR_BLACK;
+  background: $COLOR_PRIMARY;
   border-radius: 10px;
   color: $COLOR_WHITE;
   display: none;
@@ -255,8 +255,9 @@ $CART_HEIGHT: calc(100vh - 280px);
 
   &__remove {
     cursor: pointer;
+    padding: 8px 16px;
     position: absolute;
-    right: 0;
+    right: -10px;
     top: 0;
 
     .icon {

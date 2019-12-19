@@ -43,8 +43,10 @@ Instagram
     position: relative;
     width: 100%;
 
-    &:hover .instafeed__overlay {
-      opacity: 1;
+    @include media-query($tablet-up) {
+      &:hover .instafeed__overlay {
+        opacity: 1;
+      }
     }
   }
 

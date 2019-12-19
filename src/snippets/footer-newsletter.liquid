@@ -1,15 +1,18 @@
 <section 
   class="newsletter">
 
-  <h3 class="newsletter__title">{{ block.settings.footer_title }}</h3>
-  <p class="newsletter__text">{{ block.settings.newsletter-text }}</p>
 
   {% form 'customer' %}
+  {% if form.posted_successfully? %}
+    <h3 class="newsletter__title">Congratulations</h3>
+    <p lass="newsletter__text">You have now subscribed to our newsletter.</p>
+  {% else %}
+    <h3 class="newsletter__title">{{ block.settings.footer_title }}</h3>
+    <p class="newsletter__text">{{ block.settings.newsletter-text }}</p>
+  {% endif %}
     {{ form.errors | default_errors }}
     {% if form.posted_successfully? %}
-      <p class="form--success">Success</p>
     {% else %}
-
       <div class="inline-form password__input-group">
         <input type="hidden" name="contact[tags]" value="newsletter">
         <input type="email"

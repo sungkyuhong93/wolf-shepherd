@@ -17,6 +17,7 @@ export default () => {
   }
 
   const selectors = {
+    $body: $('body'),
     $form: $('form[action="/cart/add"]'),
     $cartCount: $('#CartCount, .cart-ajax__subtitle-counter'),
     $cartList: $('.cart-ajax__list'),
@@ -57,6 +58,7 @@ export default () => {
       cartValueTrigger($this, 'remove');
     });
 
+
     $(document).on('focusout', '.cart-ajax .quantity-wrapper input', function() {
       const $this = $(this);
       cartValueTrigger($this);
@@ -85,6 +87,8 @@ export default () => {
     /* ----------------------------------------------------
     Cart open and close functions
     -----------------------------------------------------*/
+    document.documentElement.addEventListener('keydown', handleKeydown);
+
     selectors.$cartToggleBtn.on('click', (event) => {
       event.preventDefault();
       cartRender();
@@ -116,6 +120,12 @@ export default () => {
       changeCart(lineNo, 0, variantId);
     } else {
       changeCart(lineNo, sendQuantity, variantId);
+    }
+  }
+
+  function handleKeydown(event) {
+    if (event.keyCode === 27) {
+      cartClose();
     }
   }
 
@@ -189,12 +199,14 @@ export default () => {
     Navigation().removeActiveState();
     selectors.$cartBody.addClass('cart-ajax--show');
     cartOpened = true;
+    scrollLockDown();
   }
 
   // Ajax Cart Close
   function cartClose() {
     selectors.$cartBody.removeClass('cart-ajax--show');
     cartOpened = false;
+    scrollUnlocked();
   }
 
   function updateTotals() {
@@ -268,7 +280,6 @@ export default () => {
   }
 
   function createMarkup(cart, loopCount) {
-
     const cartVariantTitle = cart.variant_title === null ? '' : cart.variant_title;
     const cartLinePrice = formatMoney(cart.line_price, theme.moneyFormat).replace('.00','');
     const loopCounter = loopCount + 1;
@@ -291,7 +302,7 @@ export default () => {
                 <input type="number" value="${cart.quantity}" min="0">
                 <div class="quantity-wrapper__plus js--quantity" data-increment="true">+</div>
               </div>
-              <div class="cart-ajax__remove">${icons.remove}</div>
+              <div class="cart-ajax__remove" tabindex="0">${icons.remove}</div>
             </div>
           </div>`;
 
@@ -361,6 +372,21 @@ export default () => {
       $(`.cart__row--${item.id} .cart-ajax__quantity__input`).val(lineQuantity);
       $(`.cart__row--${item.id} .cart-data`).attr('data-line', newLineData);
     });
+  }
+
+  /**
+   * Stop site from scrolling
+   */
+  function scrollLockDown() {
+    console.log('welcome to the trap')
+    selectors.$body.addClass('is-lockdown');
+  }
+
+  /**
+   * Remove site scrolling lock
+   */
+  function scrollUnlocked() {
+    selectors.$body.removeClass('is- lockdown');
   }
 
   function eventBus() {

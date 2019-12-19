@@ -6,10 +6,7 @@
   @include flex-direction(column);
   @include align-items(center);
   @include justify-content(center);
-  @include media-query($medium-up) {
-    padding-bottom: 40px;
-  }
-  background-color: rgb(0, 0, 0);
+  background-color: $COLOR_PRIMARY;
   bottom: -200px;
   height: 200px;
   left: 0;
@@ -45,5 +42,9 @@
         fill: rgb(255, 255, 255);
       }
     }
+  }
+
+  @include media-query($medium-up) {
+    padding-bottom: 40px;
   }
 }

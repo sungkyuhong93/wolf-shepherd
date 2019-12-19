@@ -1,6 +1,7 @@
 {% include 'header' with 
   sectionID: section.id
   marginBottom: section.settings.margin_bottom,
+  width: 'full-width'
   align: section.settings.alignment,
   maxWidth: section.settings.max_width,
   title: section.settings.title, 
@@ -55,7 +56,7 @@
         "id": "max_width",
         "min": 30,
         "max": 100,
-        "step": 10,
+        "step": 5,
         "label": "Desktop max width",
         "default": 100
       },
