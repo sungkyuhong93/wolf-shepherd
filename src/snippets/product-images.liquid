@@ -30,8 +30,6 @@
       <div class="product-images">
         {% if product.images.size > 1 %}
           
-            
-
           <div class="main-product-slider" id="product-slider--{{colorClean}}">
             {% for image in product.images %}
               {% assign varColor = image.alt | split: '//' %}
@@ -74,7 +72,7 @@
               {% assign varColor = varColor[0] | handleize %}
               {% if varColor == colorClean %}
                 {% assign productThumbnail = image.src | img_url: '240x'  %}
-                <div class="product-slider-nav__image">
+                <div class="product-slider-nav__image {% if image.alt contains '.mp4' %}product-slider-nav__image--video{% endif %}">
                   <img src="{{ productThumbnail }}" alt="{{ image.alt | escape }}">
                 </div>
               {% endif %}

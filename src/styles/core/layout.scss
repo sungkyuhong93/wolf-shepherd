@@ -33,3 +33,21 @@ html {
   margin-bottom: 60px;
   padding-top: 40px;
 }
+
+/**
+ * Page load
+ * -----------------------------------------------------------------------------
+ *
+ */
+#MainContent {
+  opacity: 0;
+  transition: 0.3s 0.4s ease-in;
+
+  .no-js & {
+    opacity: 1 !important;
+  }
+
+  &.is-loaded {
+    opacity: 1!important;
+  }
+}

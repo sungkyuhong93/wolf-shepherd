@@ -37,7 +37,6 @@
   {% include 'font-face' %}
   {% include 'style-tags', layout: 'theme' %}
   {% include 'css-variables' %} 
-  
   {% include 'theme-strings' %}
 
   {% if template.directory == 'customers' %}
@@ -70,9 +69,7 @@
     {% section 'notification-bar' %}
   {% endif %}
 
-  {% include 'search-form' %}
-
-  <main role="main" id="MainContent">
+  <main role="main" id="MainContent" style="opacity: 0">
     {{ content_for_layout }}
   </main>
 

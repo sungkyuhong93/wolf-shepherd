@@ -2,8 +2,10 @@
 Collection filter
 ============================================================================== */
 .collection-filter {
+  background-color: $COLOR_WHITE;
   border-bottom: 1px solid #eeeeee;
   border-top: 1px solid #eeeeee;
+  margin-bottom: 0!important;
   padding-top: 18px;
 
   .filter-menu {
@@ -124,11 +126,14 @@ Collection filter
     }
   }
 
-  @media only screen and (max-width: 767px) {
-    margin: -42px -20px 20px;
+  @include media-query($small) {
     padding: 0;
+    margin-left: -20px;
+    margin-right: -20px;
 
     .filter-menu {
+      max-height: calc(100vh - 64px);
+      overflow: scroll;
 
       .pt-mobile-header{
         position: relative;
@@ -282,6 +287,10 @@ Collection filter
           display: none;
         }
 
+        .filter-group .scroll-content {
+          max-height: 100px;
+        }
+
         .filter-group-sort-orders {
           display: block;
           max-height: 800px;
@@ -292,5 +301,29 @@ Collection filter
         }
       }
     }
+  }
+}
+
+.collection-filter__container {
+  display: block;
+  height: 54px;
+  margin: 0 0 20px;
+  position: relative;
+  width: 100%;
+  z-index: 100;
+
+  &.is-active {
+    .collection-filter {
+      left: 0;
+      margin: 0;
+      position: fixed;
+      right: 0;
+      top: 64px;
+      z-index: 100;
+    }
+  }
+
+  @include media-query($small) {
+    margin-top: -42px;
   }
 }

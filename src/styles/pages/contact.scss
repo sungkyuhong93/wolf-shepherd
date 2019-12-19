@@ -201,6 +201,10 @@ Pagelayout
     font-size: $FONT_SIZE_SMALL;
   }
 
+  li {
+    font-size: $FONT_SIZE_SMALL;
+  }
+
   @include media-query($small) {
     h3 {
       font-size: 18px;

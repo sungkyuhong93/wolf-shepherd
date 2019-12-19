@@ -1,12 +1,12 @@
+import '../../styles/theme.scss';
+import '../../styles/theme.scss.liquid';
+
 import 'lazysizes/plugins/object-fit/ls.object-fit';
 import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import 'lazysizes/plugins/rias/ls.rias';
 import 'lazysizes/plugins/bgset/ls.bgset';
 import 'lazysizes';
 import 'lazysizes/plugins/respimg/ls.respimg';
-
-import '../../styles/theme.scss';
-import '../../styles/theme.scss.liquid';
 
 import {focusHash, bindInPageLinks} from '@shopify/theme-a11y';
 // import {cookiesEnabled} from '@shopify/theme-cart';
@@ -41,11 +41,15 @@ import '../components/form';
 import '../components/slide-to';
 import '../components/type';
 import '../components/quantity';
+import Loadpage from '../components/loadpage';
+
+import stickyFilter from '../sections/sticky-filter';
 
 import Article from '../snippets/article-slider';
 import ArticleCollectionSlider from '../sections/article-collection-slider';
 
 document.addEventListener('DOMContentLoaded', () => {
+  Loadpage().init();
   AjaxCart().init();
   Swatch().init();
   GiftWrap().init();
@@ -59,6 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   Article().init();
   ArticleCollectionSlider().init();
+
+  stickyFilter().init();
 
 });
 
