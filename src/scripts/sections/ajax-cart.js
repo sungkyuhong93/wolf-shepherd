@@ -166,9 +166,17 @@ export default () => {
           $(`.cart__row--${variantId}`).fadeOut().remove();
         }
       },
-      success: () => {
+      success: (x) => {
+        console.log(x)
         eventBus();
         cartRender();
+      },
+      error: (XMLHttpRequest) => {
+        console.log('error')
+        // const data = eval(`(${XMLHttpRequest.responseText})`);
+        // const response = data.description;
+
+        // $error.html(response).removeClass('error--hide');
       },
     });
   }

@@ -46,6 +46,10 @@
       }
     }
 
+    @include media-query($small) {
+      width: calc(100% + 20px);
+    }
+
     @include media-query($tablet-up) {
       .product-header {
         display: none;
@@ -165,6 +169,7 @@
       margin: 0 5px;
       width: 8px!important;
 
+
       img {
         display: none;
       }
@@ -174,5 +179,10 @@
       }
     }
 
+    &__image--video {
+      &::before, &::after {
+        display: none;
+      }
+    }
   }
 }

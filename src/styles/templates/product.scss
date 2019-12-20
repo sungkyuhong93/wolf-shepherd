@@ -9,7 +9,7 @@
 #shopify-section-product {
   margin-bottom: 32px;
 
-  @include media-query($medium-up) {
+  @include media-query($tablet-up) {
     padding-top: 24px;
   }
 
