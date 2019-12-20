@@ -101,7 +101,7 @@ export default () => {
           },
         },
         {
-          breakpoint: 1024,
+          breakpoint: jsWidth.tablet,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 1,

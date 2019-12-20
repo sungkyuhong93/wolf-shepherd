@@ -27,6 +27,8 @@ register('featured-collection-section', {
       infinite: true,
       dots: false,
       adaptiveHeight: false,
+      cssEase: 'ease-in-out',
+      speed: 800,
       responsive: [
         {
           breakpoint: jsWidth.mac13,
