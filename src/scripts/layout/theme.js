@@ -46,6 +46,7 @@ import Loadpage from '../components/loadpage';
 import stickyFilter from '../sections/sticky-filter';
 
 import Article from '../snippets/article-slider';
+import CopyLink from '../snippets/copy-link';
 import ArticleCollectionSlider from '../sections/article-collection-slider';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -68,8 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   Article().init();
   ArticleCollectionSlider().init();
-
   stickyFilter().init();
+  CopyLink().init();
 
   Instafeed();
 

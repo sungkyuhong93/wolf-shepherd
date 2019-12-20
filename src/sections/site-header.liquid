@@ -90,9 +90,9 @@
 
         <li>
           <a href="/cart" id="Cart-icon" class="site-header__cart-icon">
-            <div class="cart-icon__container">
-              <span id="CartCount" class="js-cart-item-count cart-count {% if cart.item_count != 0 %}cart-count--show{% endif %}">{{ cart.item_count }}</span>
+            <div class="cart-icon__container {% if cart.item_count != 0 %}is-active{% endif %}">
               {% include 'icons' with icon: 'cart-wolf' %}
+              <span class="js-cart-item-count cart-count">{{ cart.item_count }}</span>
             </div>
           </a>
         </li>

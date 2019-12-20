@@ -146,7 +146,7 @@ site nav
     &__link {
       position: relative;
 
-      &:hover:before {
+      &:hover::before {
         background: $COLOR_PRIMARY;
         bottom: 15px;
         content: '';

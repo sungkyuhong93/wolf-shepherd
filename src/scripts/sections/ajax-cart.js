@@ -20,7 +20,7 @@ export default () => {
   const selectors = {
     $body: $('body'),
     $form: $('form[action="/cart/add"]'),
-    $cartCount: $('#CartCount, .cart-ajax__subtitle-counter'),
+    $cartCount: $('.cart-icon__container, .cart-ajax__subtitle-counter'),
     $cartList: $('.cart-ajax__list'),
     $cartBody: $('.cart-ajax__wrapper'),
     $cartTotalPrice: $('.cart-ajax--total-price'),
@@ -166,17 +166,9 @@ export default () => {
           $(`.cart__row--${variantId}`).fadeOut().remove();
         }
       },
-      success: (x) => {
-        console.log(x)
+      success: () => {
         eventBus();
         cartRender();
-      },
-      error: (XMLHttpRequest) => {
-        console.log('error')
-        // const data = eval(`(${XMLHttpRequest.responseText})`);
-        // const response = data.description;
-
-        // $error.html(response).removeClass('error--hide');
       },
     });
   }
@@ -225,6 +217,7 @@ export default () => {
       getCartJSON(updateCartTotal);
     } else {
       getCartJSON(updateAjaxCartTotal);
+      getCartJSON(updateCartTotal);
     }
   }
 
@@ -232,9 +225,9 @@ export default () => {
     $('#CartCount, .cart-ajax__subtitle-counter').html(cart.item_count);
 
     if (cart.item_count === 0) {
-      selectors.$cartCount.removeClass('cart-count--show');
+      selectors.$cartCount.removeClass(cssClasses.active);
     } else {
-      selectors.$cartCount.addClass('cart-count--show');
+      selectors.$cartCount.addClass(cssClasses.active);
     }
   }
 
@@ -266,6 +259,8 @@ export default () => {
       `;
       selectors.$cartList.append(emptyCart);
     }
+
+    updateTotals();
     if (theme.ajaxCart.upsellEnable !== false) {
       // relateProducts(cart);
     }
@@ -368,8 +363,8 @@ export default () => {
 
   // Cart Page
   function updateCartTotal(cart) {
-    $('.js-cart-subtotal').html(formatMoney(cart.total_price));
     $('.js-cart-item-count').html(cart.item_count);
+    $('.js-cart-subtotal').html(formatMoney(cart.total_price));
   }
 
   function updateLineItems(cartdata) {

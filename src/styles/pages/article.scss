@@ -168,7 +168,7 @@
 
   .social_sharing_footer {
     margin-bottom: 64px;
-    
+
     .social-sharing {
       align-items: center;
       display: flex;
@@ -182,7 +182,7 @@
       width: 100%;
     }
 
-    a {
+    .copy, a {
       align-items: center;
       display: flex;
       justify-content: center;
@@ -219,10 +219,6 @@
       font-size: 14px;
     }
 
-    .social_sharing_header {
-      display: block;
-    }
-
     .social_sharing_footer {
       .social-sharing {
         justify-content: left;
@@ -236,9 +232,55 @@
     }
   }
 
+  @include media-query($tablet-up) {
+    .social_sharing_header {
+      display: block;
+    }
+  }
+
   @media (max-width: 989px) {
     .slick-arrow {
       display: none;
+    }
+  }
+}
+
+.copy {
+  $parent: &;
+  cursor: pointer;
+  position: relative;
+
+  &.is-active {
+    #{$parent}__tooltip {
+      opacity: 1;
+    }
+  }
+
+  &__tooltip {
+    background: $COLOR_WHITE;
+    border: 1px solid $COLOR_SWATCH_BORDER;
+    border-radius: 2px;
+    color: $COLOR_PRIMARY;
+    display: block;
+    font-size: 10px;
+    left: 50%;
+    line-height: 16px;
+    opacity: 0;
+    padding: 3px 12px;
+    pointer-events: none;
+    position: absolute;
+    text-transform: capitalize;
+    top: 30px;
+    transform: translateX(-50%);
+    transition: 0.4s ease-in-out;
+  }
+
+  @include media-query($medium-up) {
+    &__tooltip {
+      left: initial;
+      right: 0;
+      top: 40%;
+      transform: translate(calc(100% + 10px), -50%);
     }
   }
 }

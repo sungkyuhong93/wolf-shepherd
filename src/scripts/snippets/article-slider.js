@@ -9,6 +9,7 @@
 
 import $ from 'jquery';
 import _ from 'slick-carousel';
+import jsWidth from '../helpers/screenWidths';
 
 /**
  * Export default article slider
@@ -32,6 +33,14 @@ export default () => {
       dots: true,
       prevArrow: '<div class="slick-arrow slick-prev wolf-arrow"></div>',
       nextArrow: '<div class="slick-arrow slick-next wolf-arrow wolf-arrow--right"></div>',
+      responsive: [
+        {
+          breakpoint: jsWidth.tabletdown,
+          settings: {
+            arrows: false,
+          },
+        },
+      ],
     });
   }
 

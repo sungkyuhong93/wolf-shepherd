@@ -27,8 +27,7 @@ register('featured-collection-section', {
       infinite: true,
       dots: false,
       adaptiveHeight: false,
-      cssEase: 'ease-in-out',
-      speed: 300,
+      speed: 600,
       touchThreshold: 30,
       responsive: [
         {

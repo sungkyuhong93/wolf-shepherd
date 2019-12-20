@@ -40,7 +40,7 @@ body {
     height: 44px;
     padding: 11px 10px;
     position: absolute;
-    right: 0;
+    right: 5px;
     top: 33px;
     transform: translateY(-50%);
     width: 44px;
@@ -132,9 +132,11 @@ body {
     &__usp {
       align-items: center;
       display: flex;
+      height: 100%;
       left: 50%;
       padding-bottom: 2px;
       position: absolute;
+      top: 0;
       transform: translateX(-50%);
 
       img {
@@ -153,14 +155,6 @@ body {
   }
 }
 
-@media only screen and (max-width: 676px) {
-  .site-header {
-    &__search-icon {
-      top: 21px !important;
-    }
-  }
-}
-
 @include media-query($tablet-down) {
   .site-header {
     &__site-logo a {
@@ -168,18 +162,48 @@ body {
       transform: translateY(-50%) translateX(0%);
     }
 
-    &__cart-icon {
-      padding: 0;
-      position: absolute;
-      right: 51px;
-      top: 50%;
-      transform: translate(0, -50%);
-    }
+    &__misc {
+      float: right;
+      height: 64px;
+      margin: 0;
+      width: 50%;
 
-    &__search-icon {
-      position: absolute !important;
-      right: 84px !important;
-      top: 19px;
+      ul {
+        display: flex;
+        height: 100%;
+        justify-content: flex-end;
+        margin: 0;
+        padding: 0;
+        padding-right: 20px;
+        width: 100%;
+      }
+
+      li {
+        align-items: center;
+        display: flex;
+        float: right;
+        height: 100%;
+
+        a {
+          padding: 10px;
+          position: relative;
+          z-index: 1;
+        }
+      }
+
+      .site-header__mobile-hide {
+        display: none;
+      }
+    }
+  }
+}
+
+@include media-query($small) {
+  .site-header {
+    &__misc {
+      ul {
+        padding-right: 29px;
+      }
     }
   }
 }

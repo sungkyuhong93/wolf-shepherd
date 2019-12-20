@@ -4,25 +4,26 @@ Ajaxt-cart
 
 /* =============== Counter =============== */
 .cart-icon__container {
-  position: relative;
+  display: flex;
+
+  &.is-active {
+    .cart-count {
+      display: block;
+    }
+
+    svg.icon:not(.icon--full-color) rect, symbol.icon:not(.icon--full-color) rect {
+      fill: $COLOR_PRIMARY;
+    }
+  }
 }
 
 .cart-count {
-  background: $COLOR_PRIMARY;
-  border-radius: 10px;
-  color: $COLOR_WHITE;
+  color: $COLOR_PRIMARY;
   display: none;
-  font-size: 10px;
-  line-height: 18px;
-  min-width: 18px;
-  position: absolute;
-  right: -12px;
-  text-align: center;
-  top: -8px;
-
-  &--show {
-    display: block;
-  }
+  font-size: 12px;
+  padding-left: 6px;
+  position: relative;
+  top: 3px;
 }
 
 .cart-ajax__subtitle-counter {
