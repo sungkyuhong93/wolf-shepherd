@@ -1,5 +1,5 @@
 <div class="testimonials {{section.settings.margin_bottom}}">
-  <div {% if section.settings.full-width != 'full-width' %}class="page-width"{% endif %} data-section-id="{{ section.id }}" data-section-type="testimonials">
+  <div {% if section.settings.full-width != 'full-width' %}class="page-width page-width--slider"{% endif %} data-section-id="{{ section.id }}" data-section-type="testimonials">
     {% if section.blocks.size > 0 %}
       <div class="testimonials__container">
         <div class="testimonials__slider testimonials__slider--{{section.id}}" data-count="{{ section.blocks.size }}">

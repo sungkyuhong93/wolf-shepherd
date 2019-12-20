@@ -6,6 +6,6 @@
  */
 export default {
   tablet: '1024',
-  tableup: '1025',
+  tabletdown: '1025',
   mac13: '1279',
 };

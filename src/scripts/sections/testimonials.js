@@ -48,7 +48,7 @@ register('testimonials', {
       asNavFor: '.testimonials__images',
       responsive: [
         {
-          breakpoint: jsWidth.mac13,
+          breakpoint: jsWidth.tabletdown,
           settings: {
             arrows: false,
           },

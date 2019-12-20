@@ -10,6 +10,19 @@
   overflow: hidden;
   padding: 62px 0;
 
+  @include media-query($tablet-up) {
+    display: block;
+    position: relative;
+
+    .page-width {
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(0%, -50%);
+    }
+  }
+
   * {
     outline: none;
   }

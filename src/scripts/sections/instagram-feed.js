@@ -95,14 +95,9 @@ export default () => {
       dots: false,
       responsive: [
         {
-          breakpoint: jsWidth.mac13,
+          breakpoint: jsWidth.tabletdown,
           settings: {
             arrows: false,
-          },
-        },
-        {
-          breakpoint: jsWidth.tablet,
-          settings: {
             slidesToShow: 2,
             slidesToScroll: 1,
             centerMode: true,

@@ -27,6 +27,12 @@ html {
   @media (min-width: 1280px ) {
     padding: 0 80px;
   }
+
+  &--slider {
+    @include media-query( $tablet-up ) {
+      padding: 0 80px;
+    }
+  }
 }
 
 .page-content {
