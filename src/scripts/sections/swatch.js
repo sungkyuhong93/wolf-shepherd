@@ -174,6 +174,7 @@ export default () => {
   return Object.freeze({
     init,
     eventBus,
+    closeMiniSwatch,
   });
 };
 

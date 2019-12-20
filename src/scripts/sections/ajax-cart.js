@@ -6,6 +6,7 @@ import {misc as icons} from '../helpers/svg-map';
 import FreeShipping from '../sections/free-shipping';
 import Navigation from '../sections/navigation';
 import cssClasses from '../helpers/cssClasses';
+import swatch from '../sections/swatch';
 
 /**
  * Export default AjaxCart.
@@ -200,6 +201,7 @@ export default () => {
     selectors.$cartBody.addClass('cart-ajax--show');
     cartOpened = true;
     scrollLockDown();
+    swatch().closeMiniSwatch();
   }
 
   // Ajax Cart Close

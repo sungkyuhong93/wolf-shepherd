@@ -5,7 +5,6 @@ import _ from 'slick-carousel';
 register('reviews', {
 
   onLoad() {
-    console.log('listen')
     this.eventListeners();
   },
 

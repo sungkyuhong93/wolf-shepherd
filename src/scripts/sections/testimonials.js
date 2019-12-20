@@ -18,13 +18,7 @@ register('testimonials', {
     const slideshowName = `.testimonials__slider--${this.id}`;
     const $slideshow = $(slideshowName);
     $slideshow.slick(this.getSliderSettings());
-    // $('.slider-for').slick({
-    //   slidesToShow: 1,
-    //   slidesToScroll: 1,
-    //   arrows: false,
-    //   fade: true,
-    //   asNavFor: '.testimonials__images'
-    // });
+
     $('.testimonials__images').slick({
       slidesToShow: 4,
       slidesToScroll: 1,
@@ -43,7 +37,8 @@ register('testimonials', {
       prevArrow: '<div class="slick-arrow slick-prev wolf-arrow"></div>',
       nextArrow: '<div class="slick-arrow slick-next wolf-arrow wolf-arrow--right"></div>',
       fade: true,
-      speed: 1500,
+      cssEase: 'ease-in-out',
+      speed: 1000,
       dots: false,
       asNavFor: '.testimonials__images',
       responsive: [

@@ -31,7 +31,7 @@
             </div>
           {% else %}
             <div class="grid__item small--one-whole medium-up--one-half">
-              {%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+              {%- assign social_accounts = 'Twitter, Facebook, Vimeo, Pinterest, Instagram, Snapchat, Tumblr, YouTube,' | split: ', ' -%}
 
               {% include 'footer-newsletter' %}
 
@@ -49,8 +49,13 @@
                       </a>
                     </li>
                   {% endif %}
-
                 {% endfor %}
+                <li>
+                  <a target="_blank" href="mailto:help@wolfandshepherd.com" title="Email">
+                    {% include 'icons' with icon: 'email'  %}
+                    <span class="icon-fallback-text">Email</span>
+                  </a>
+                </li>
               </ul>
             </div>
           {% endif %}
