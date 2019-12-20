@@ -28,6 +28,8 @@ register('featured-collection-section', {
       dots: false,
       adaptiveHeight: false,
       cssEase: 'ease-in-out',
+      speed: 300,
+      touchThreshold: 30,
       responsive: [
         {
           breakpoint: jsWidth.tabletdown,

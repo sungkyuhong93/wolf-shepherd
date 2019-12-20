@@ -21,6 +21,7 @@ $ACCORDION_PADDING_LARGE: 22px;
 
       #{$parent}__content {
         font-size: $FONT_SIZE_SMALL;
+        
 
         p {
           margin-bottom: 20px;
@@ -119,6 +120,11 @@ $ACCORDION_PADDING_LARGE: 22px;
     padding-bottom: 0;
     transition: 0.2s;
 
+    max-height: 0;
+    overflow: hidden;
+    padding-bottom: 0;
+    transition: 0.6s ease-out;
+
     ul, ol {
       padding-left: 25px;
       margin-bottom: 10px;
@@ -136,9 +142,16 @@ $ACCORDION_PADDING_LARGE: 22px;
     &.is-active {
       #{$parent}__content {
         border-top: 0;
-        max-height: 800px;
-        padding-bottom: $ACCORDION_PADDING;
+        // max-height: 800px;
+        // padding-bottom: $ACCORDION_PADDING;
+        // padding-top: 0;
+
+        max-height: 200px;
+        margin-bottom: 16px;
         padding-top: 0;
+        overflow: auto;
+        transition: 0.9s ease-in;
+    
       }
   
       #{$parent}__arrow-down {

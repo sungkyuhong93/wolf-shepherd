@@ -36,6 +36,7 @@ export default () => {
       arrows: false,
       fade: true,
       asNavFor: nav,
+      touchThreshold: 30,
     });
 
     nav.slick({
