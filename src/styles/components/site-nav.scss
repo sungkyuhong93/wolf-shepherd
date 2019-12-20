@@ -160,7 +160,7 @@ site nav
     &__item--has-dropdown {
       position: relative;
 
-      &:hover {
+      &:hover, &:focus, &:focus-within {
         &::after {
           bottom: -40px;
           content: '';
@@ -206,7 +206,7 @@ site nav
     &__item--has-meganav {
       position: relative;
 
-      &:hover {
+      &:hover, &:focus, &:focus-within {
         &::after {
           bottom: -40px;
           content: '';

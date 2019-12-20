@@ -1,4 +1,4 @@
-<nav class="site-header__nav site-header__mobile-hide" role="navigation">
+<nav class="site-header__nav site-header__mobile-hide" role="navigation" aria-label="Main Navigation">
   <ul class="site-nav">
     {% for link in linklists[section.settings.main_linklist].links %}
       {% assign meganav = false %}
@@ -10,10 +10,14 @@
       {% for block in section.blocks %}
         {%- if block.settings.navlink_bind == link.title  -%}
           {% assign meganav = true %}
-          <li class="site-nav__item site-nav__item--has-meganav {% if link.active %}site-nav__link--active{% endif %}" js-mega-nav="desktop-nav">
-            <a class="site-nav__link" href="{{ link.url }}">
+          <li class="site-nav__item site-nav__item--has-meganav {% if link.active %}site-nav__link--active{% endif %}" 
+            js-mega-nav="desktop-nav">
+            <a class="site-nav__link" href="{{ link.url }}" tab-index="1" aria-expanded="false" aria-haspopup="true">
               {{ link.title }}
             </a>
+            {% comment %} <button type="button">
+              {{ link.title }}
+            </button> {% endcomment %}
             {% include 'meganav' %}
           </li>
         {%- endif -%}  
@@ -25,7 +29,7 @@
       ------------------------------------------------------------------------------
       {% endcomment %}
       {% if link.levels == 0 and meganav != true %}
-        <li class="site-nav__item" data-meganav-parent="{{ link.title | handle }}">
+        <li class="site-nav__item" data-meganav-parent="{{ link.title | handle }}" tab-index="1" aria-expanded="false" aria-haspopup="false">
           <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" href="{{ link.url }}">
             {{ link.title }}
           </a>
@@ -37,7 +41,7 @@
       ------------------------------------------------------------------------------
       {% endcomment %}
       {% elsif link.levels == 1 and meganav != true %}
-        <li class="site-nav__item site-nav__item--has-dropdown" data-meganav-parent="{{ link.title | handle }}">
+        <li class="site-nav__item site-nav__item--has-dropdown" data-meganav-parent="{{ link.title | handle }}" tab-index="1" aria-expanded="false" aria-haspopup="true">
           <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" href="{{ link.url }}">
             {{ link.title }}
           </a>
