@@ -2,12 +2,17 @@
 #Testimonials
 ============================================================================== */
 .testimonials {
+  $parent: &;
   align-items: center;
   background: $COLOR_GREY;
   display: flex;
   justify-content: center;
   overflow: hidden;
   padding: 62px 0;
+
+  * {
+    outline: none;
+  }
 
   blockquote {
     border: 0;
@@ -35,7 +40,7 @@
 
   &__slider-text {
     font-family: $FONT_HEADING;
-    font-size: 24px;
+    font-size: 16px;
     margin-bottom: 24px;
     text-align: center;
 
@@ -107,6 +112,12 @@
       right: -50px;
     }
 
+    .slick-current {
+      #{$parent}__image--two {
+        opacity: 1;
+      }
+    }
+
     &__slide {
       img {
         display: none;
@@ -114,14 +125,38 @@
     }
 
     &__images {
-      align-items: center;
-      display: flex;
-      justify-content: center;
+      display: block;
+      margin: 0 auto;
+      max-width: 720px;
+
+      * {
+        outline: none;
+      }
+    }
+
+    &__image-container {
+      cursor: pointer;
+      position: relative;
 
       img {
-        height: 38px;
-        margin: 0 25px;
+        margin: 0 auto;
+        width: 120px;
       }
+
+      &:hover {
+        #{$parent}__image--two {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__image--two {
+      left: 50%;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      transform: translate(-50%);
+      transition: 0.2s ease-in-out;
     }
   }
 }

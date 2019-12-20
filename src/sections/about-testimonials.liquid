@@ -2,9 +2,9 @@
 
 {% schema %}
   {
-    "name": "About testimonials",
+    "name": "Testimonials",
     "class": "index-section",
-    "max_blocks": 9,
+    "max_blocks": 4,
     "settings": [
       {
         "type": "select",
@@ -31,13 +31,37 @@
           {
             "type": "image_picker",
             "id": "image",
-            "label": "Image"
+            "label": "Image light",
+            "info": "Width 240px"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_dark",
+            "label": "Image dark",
+            "info": "Width 240px"
           },
           {
             "type": "richtext",
             "id": "quote",
             "label": "Text",
             "default": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonials",
+        "category": "Text",
+        "blocks": [
+          {
+            "type": "quote"
+          },
+          {
+            "type": "quote"
+          },
+          {
+            "type": "quote"
           }
         ]
       }

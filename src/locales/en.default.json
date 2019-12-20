@@ -42,7 +42,7 @@
     },
     "search": {
       "title": "Search for products on our site",
-      "placeholder": "Search our store",
+      "placeholder": "Search",
       "submit": "Search",
       "heading": {
         "one": "Search result",

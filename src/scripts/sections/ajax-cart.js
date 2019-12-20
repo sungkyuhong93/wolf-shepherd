@@ -378,7 +378,6 @@ export default () => {
    * Stop site from scrolling
    */
   function scrollLockDown() {
-    console.log('welcome to the trap')
     selectors.$body.addClass('is-lockdown');
   }
 
@@ -386,7 +385,7 @@ export default () => {
    * Remove site scrolling lock
    */
   function scrollUnlocked() {
-    selectors.$body.removeClass('is- lockdown');
+    selectors.$body.removeClass('is-lockdown');
   }
 
   function eventBus() {

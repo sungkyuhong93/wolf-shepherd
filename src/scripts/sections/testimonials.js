@@ -15,10 +15,26 @@ register('testimonials', {
   },
 
   slickRender() {
-    const $slideshow = $(`.testimonials__slider--${this.id}`);
+    const slideshowName = `.testimonials__slider--${this.id}`;
+    const $slideshow = $(slideshowName);
     $slideshow.slick(this.getSliderSettings());
+    // $('.slider-for').slick({
+    //   slidesToShow: 1,
+    //   slidesToScroll: 1,
+    //   arrows: false,
+    //   fade: true,
+    //   asNavFor: '.testimonials__images'
+    // });
+    $('.testimonials__images').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      asNavFor: slideshowName,
+      dots: true,
+      centerMode: false,
+      focusOnSelect: true,
+    });
   },
-
+  
   getSliderSettings() {
     return {
       slidesToShow: 1,
@@ -27,7 +43,9 @@ register('testimonials', {
       prevArrow: '<div class="slick-arrow slick-prev wolf-arrow"></div>',
       nextArrow: '<div class="slick-arrow slick-next wolf-arrow wolf-arrow--right"></div>',
       fade: true,
+      speed: 1500,
       dots: false,
+      asNavFor: '.testimonials__images',
       responsive: [
         {
           breakpoint: jsWidth.mac13,
@@ -47,17 +65,17 @@ register('testimonials', {
   },
 
   slickTriggers() {
-    const $nav = $(`.testimonials__images--${this.id} img`);
-    const sectionId = this.id;
+    // const $nav = $(`.testimonials__images--${this.id} .testimonials__image-container`);
+    // const sectionId = this.id;
 
-    $nav.on('click', function() {
-      const slideIndex = parseInt($(this).attr('data-slide-id')) - 1;
-      $(`.testimonials__slider--${sectionId}`).slick('goTo', slideIndex);
+    // $nav.on('click', function() {
+    //   const slideIndex = parseInt($(this).attr('data-slide-id')) - 1;
+    //   $(`.testimonials__slider--${sectionId}`).slick('goTo', slideIndex);
 
-      $nav.removeClass(cssClasses.active);
-      $(this).addClass(cssClasses.active);
+    //   $nav.removeClass(cssClasses.active);
+    //   $(this).addClass(cssClasses.active);
 
-    });
+    // });
 
     // $nav.slick(this.getNavSettings($slideshow));
 

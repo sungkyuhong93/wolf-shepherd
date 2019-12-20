@@ -4,6 +4,10 @@ Search Form
 
 /* =============== Standard search =============== */
 .search-form {
+  label {
+    display: none;
+  }
+
   input {
     padding-right: 50px;
   }
@@ -16,6 +20,15 @@ Search Form
     right: 0;
     top: 0;
     width: 40px;
+
+    .h6 {
+      color: $COLOR_PRIMARY;
+      display: none;
+    }
+  }
+
+  &__close {
+    display: none;
   }
 }
 
@@ -38,10 +51,16 @@ Search Form
     .search-form {
       background: #fff;
       display: block;
-      padding: 20px 80px;
+      padding: 20px;
       position: fixed;
       top: 64px;
       width: 100%;
+
+      .search-form__container {
+        margin: 0 auto;
+        max-width: 900px;
+        position: relative;
+      }
 
       input {
         border: 1px solid $COLOR_PRIMARY;
@@ -51,16 +70,146 @@ Search Form
         border-top: 0;
         color: $COLOR_PRIMARY;
         font-family: $FONT_BASE;
+        padding-left: 0;
 
-        &:placeholder {
-          color: $COLOR_PRIMARY;
+        &::-webkit-input-placeholder { /* Edge */
+          color: $COLOR_WHITE;
+          opacity: 0;
+        }
+        
+        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+          color: $COLOR_WHITE;
+          opacity: 0;
+        }
+        
+        &::placeholder {
+          color: $COLOR_WHITE;
+          opacity: 0;
         }
       }
 
       button[type=submit] {
-        bottom: 20px;
-        right: 75px;
-        top: 20px;
+        bottom: 0;
+        height: 100%;
+        right: 0;
+        top: 0;
+
+        .h6 {
+          display: none;
+        }
+      }
+    }
+
+    @include media-query($small) {
+      .search-form {
+        padding: 10px 20px;
+
+        input {
+          border-bottom: 0;
+          font-size: 16px;
+          padding-left: 60px;
+          padding-right: 40px;
+
+          &::-webkit-input-placeholder { /* Edge */
+            color: $COLOR_PRIMARY;
+            font-size: 16px;
+            opacity: 1;
+          }
+          
+          &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: $COLOR_PRIMARY;
+            font-size: 16px;
+            opacity: 1;
+          }
+          
+          &::placeholder {
+            color: $COLOR_PRIMARY;
+            font-size: 16px;
+            opacity: 1;
+          }
+        }
+
+        button[type=submit] {
+          left: 0;
+          padding-left: 0;
+          right: initial;
+
+          .h6 {
+            display: none;
+          }
+
+          &:after {
+            background: $COLOR_PRIMARY;
+            bottom: 10px;
+            content: '';
+            left: 40px;
+            position: absolute;
+            top: 10px;
+            width: 1px;
+          }
+        }
+
+        .search-form__close {
+          align-items: center;
+          bottom: 0;
+          display: flex;
+          height: 100%;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+      }
+    }
+
+    @include media-query($medium-up) {
+      .search-form {
+        input {
+          &::-webkit-input-placeholder { /* Edge */
+            color: $COLOR_WHITE;
+            opacity: 0;
+          }
+          
+          &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: $COLOR_WHITE;
+            opacity: 0;
+          }
+          
+          &::placeholder {
+            color: $COLOR_WHITE;
+            opacity: 0;
+          }
+        }
+
+        label[for] {
+          color: $COLOR_PRIMARY;
+          cursor: pointer;
+          display: inline-block;
+          float: left;
+          font-family: $FONT_BODY;
+          font-size: 10px;
+          left: 0;
+          margin-bottom: 0;
+          opacity: 0.5;
+          position: relative;
+          text-transform: uppercase;
+          top: 0;
+          transition: 0.2s;
+        }
+
+        button[type=submit] {
+          align-items: center;
+          display: flex;
+          height: auto;
+          justify-content: center;
+          top: 18px;
+          width: auto;
+
+          .h6 {
+            display: block;
+            margin-bottom: 0;
+            margin-right: 10px;
+          }
+        }
       }
     }
   }

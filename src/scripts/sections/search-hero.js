@@ -13,13 +13,15 @@ export default () => {
       if ($target.parents('.site-header__search-icon').length > 0 || $target.hasClass('site-header__search-icon')) {
         if ($target.hasClass('search-form--is-active')) {
           removeActiveState();
+        } else if ($target.hasClass('search-form__close')) {
+          removeActiveState();
         } else {
           Navigation().removeActiveState();
           $searchForm.addClass('search-form--is-active');
           $searchFocus.focus();
         }
       } else {
-        $searchForm.removeClass('search-form--is-active');
+        removeActiveState();
       }
     });
   }
