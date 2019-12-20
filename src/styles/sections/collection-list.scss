@@ -1,9 +1,16 @@
 .collection-list {
+  $parnet: &;
+  outline: none;
+
+  * {
+    outline: none;
+  }
+  
   &__image {
     background-position: center;
     background-size: cover;
     margin-bottom: 14px;
-    padding-top: 100%;
+    padding-top: 98%;
     width: 100%;
   }
 
@@ -31,6 +38,23 @@
     &__header h2 {
       margin-bottom: 24px;
       text-align: center;
+    }
+  }
+
+  @include media-query($tablet-up) {
+    &__image {
+      background-size: 100%;
+      transition: 0.4s ease-in-out;
+    }
+
+    &__item:hover {
+      #{$parnet}__image {
+        background-size: 102%;
+      }
+
+      .button--white {
+        background-color: $COLOR_PRIMARY_LIGHT;
+      }
     }
   }
 }

@@ -13,7 +13,7 @@
           <div {{ block.shopify_attributes }} class="grid__item medium-up--one-third">
             {%- assign collection = collections[block.settings.collection] -%}
 
-            <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}">
+            <a class="collection-list__item" href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}">
 
               {%- capture image_url -%}
                 {% if block.settings.image != blank %}
