@@ -8,7 +8,9 @@
 <div class="grid__item  {{ grid_item_width }}  blog-grid-item__match-height">
 
   <div class="blog-grid-item">
-    <a href="{{ article.url }}" class="blog-grid-item__image-container" style="background-image: url({{ article.image | img_url: '600x' }})">
+    <a href="{{ article.url }}" 
+    class="blog-grid-item__image-container lazyload" 
+    data-bgset="{{article.image | img_url: '600x'}}">
     </a>
   </div>
 
@@ -24,8 +26,12 @@
       </h3>
     </a>
 
-    <a href="{{ article.url }}" class="button--white button--white--compress">
+    <a href="{{ article.url }}" title="{{ 'blogs.article.read_more' | t }}" class="button--white button--white--compress">
       {{ 'blogs.article.read_more' | t }}
+    </a>
+
+    <a href="{{ article.url }}" class="button-text-and-arrow" title="{{ 'blogs.article.read_more' | t }}">
+      {{ 'blogs.article.read_more' | t }} <div class="wolf-arrow wolf-arrow--right"></div>
     </a>
 
   </div>

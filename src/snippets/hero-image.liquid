@@ -4,11 +4,11 @@
   {% assign sectionAlign = section.settings.alignment %}
   {% assign sectionPositionX = section.settings.positionX %}
   {% assign sectionPositionY = section.settings.positionY %}    
-  {% assign sectionImage = section.settings.image | img_url: 'master'  %}
+  {% assign sectionImage = section.settings.image | img_url: '1700x'  %}
   {% if section.settings.mobile_image != blank %}
-    {% assign sectionImageMobile = section.settings.mobile_image | img_url: 'master'  %}
+    {% assign sectionImageMobile = section.settings.mobile_image | img_url: '800x'  %}
   {% else %}
-    {% assign sectionImageMobile = section.settings.image | img_url: 'master'  %}
+    {% assign sectionImageMobile = section.settings.image | img_url: '800x'  %}
   {% endif %}
   {% assign sectionHeight = section.settings.height %}
   {% assign sectionFullWidth = section.settings.full-width %}
@@ -32,11 +32,11 @@
     {% assign sectionImageMobile = collection.metafields.collection['alternate-image'] %}
   {% else %}
     {% if collection.image == blank %}
-      {% assign sectionImage = section.settings.default_image | img_url: 'master'  %}
-      {% assign sectionImageMobile = section.settings.default_image | img_url: 'master'  %}
+      {% assign sectionImage = section.settings.default_image | img_url: '1700x'  %}
+      {% assign sectionImageMobile = section.settings.default_image | img_url: '800x'  %}
     {% else %}
-      {% assign sectionImage = collection.image | img_url: 'master'  %}
-      {% assign sectionImageMobile = collection.image | img_url: 'master'  %}
+      {% assign sectionImage = collection.image | img_url: '1700x'  %}
+      {% assign sectionImageMobile = collection.image | img_url: '800x'  %}
     {% endif %}
   {% endif %}
   {% assign sectionHeight = 'hero-image--small hero-image--collection' %}
@@ -59,11 +59,11 @@
   {% assign sectionAlign = section.settings.alignment %}
   {% assign sectionPositionX = section.settings.positionX %}
   {% assign sectionPositionY = section.settings.positionY %}
-  {% assign sectionImage = section.settings.image | img_url: 'master'  %}
+  {% assign sectionImage = section.settings.image | img_url: '1700x'  %}
   {% if section.settings.mobile_image != blank %}
-    {% assign sectionImageMobile = section.settings.mobile_image | img_url: 'master'  %}
+    {% assign sectionImageMobile = section.settings.mobile_image | img_url: '800x'  %}
   {% else %}
-    {% assign sectionImageMobile = section.settings.image | img_url: 'master'  %}
+    {% assign sectionImageMobile = section.settings.image | img_url: '800x'  %}
   {% endif %}
   {% assign sectionHeight = 'hero-image--small hero-image--collection' %}
   {% assign sectionFullWidth = section.settings.full-width %}
@@ -83,8 +83,8 @@
   {% assign sectionId = 'null' %}
   {% assign sectionEnable = true %}
   {% assign sectionAlign = 'center' %}
-  {% assign sectionImage = article.image | img_url: 'master' %}
-  {% assign sectionImageMobile = article.image | img_url: 'master' %}
+  {% assign sectionImage = article.image | img_url: '1700x' %}
+  {% assign sectionImageMobile = article.image | img_url: '800x' %}
   {% assign sectionFullWidth = 'wrapper' %}
   {% assign sectionMarginBottom = 'margin' %}
   {% assign sectionTextColor = 'white' %}
@@ -100,11 +100,11 @@
   {% assign sectionAlign = block.settings.alignment %}
   {% assign sectionPositionX = block.settings.positionX %}
   {% assign sectionPositionY = block.settings.positionY %}   
-  {% assign sectionImage = block.settings.image | img_url: 'master'  %}
+  {% assign sectionImage = block.settings.image | img_url: '900x'  %}
   {% if block.settings.mobile_image != blank %}
-    {% assign sectionImageMobile = block.settings.mobile_image | img_url: 'master'  %}
+    {% assign sectionImageMobile = block.settings.mobile_image | img_url: '800x'  %}
   {% else %}
-    {% assign sectionImageMobile = block.settings.image | img_url: 'master'  %}
+    {% assign sectionImageMobile = block.settings.image | img_url: '800x'  %}
   {% endif %}
   {% assign sectionHeight = section.settings.height %}
   {% assign sectionFullWidth = 'full-width' %}
@@ -126,11 +126,11 @@
   {% assign sectionAlign = block.settings.alignment %}
   {% assign sectionPositionX = block.settings.positionX %}
   {% assign sectionPositionY = block.settings.positionY %}   
-  {% assign sectionImage = block.settings.image | img_url: 'master'  %}
+  {% assign sectionImage = block.settings.image | img_url: '1700x'  %}
   {% if block.settings.mobile_image != blank %}
-    {% assign sectionImageMobile = block.settings.mobile_image | img_url: 'master'  %}
+    {% assign sectionImageMobile = block.settings.mobile_image | img_url: '800x'  %}
   {% else %}
-    {% assign sectionImageMobile = block.settings.image | img_url: 'master'  %}
+    {% assign sectionImageMobile = block.settings.image | img_url: '800x'  %}
   {% endif %}
   {% assign sectionHeight = block.settings.height %}
   {% assign sectionFullWidth = block.settings.full-width | default: 'full-width' %}

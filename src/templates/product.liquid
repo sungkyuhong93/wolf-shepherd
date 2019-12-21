@@ -29,6 +29,10 @@ width='0' height='0' style='display:none'/>
   {% section 'product-featured-collection-two' %}
 </div>
 
+{% for image in product.images %}
+  {% comment %} <link rel="preload" as="image" href="{{ image.src | img_url: '1024x1024', scale: 2 }}"> {% endcomment %}
+{% endfor %}
+
 
 <script type="application/ld+json">
 {

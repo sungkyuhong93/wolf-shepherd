@@ -27,7 +27,7 @@ register('featured-collection-section', {
       infinite: true,
       dots: false,
       adaptiveHeight: false,
-      speed: 600,
+      speed: 300,
       touchThreshold: 30,
       responsive: [
         {

@@ -47,27 +47,15 @@
 
   {{ content_for_header }}
 
-  {% include 'javascript-theme-includes' %}
-
-
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
 
   <a class="in-page-link visually-hidden skip-link" href="#MainContent"> {{ 'general.accessibility.skip_to_content' | t }} </a>
 
-  {% if settings.notification_position == "above" %}
-    {% section 'notification-bar' %}
-  {% endif %}
-
   {% if settings.stickynav_enable %}<div class="header-fixed">{% endif %}
     {% section 'site-header' %}
-    {% comment %} {% section 'meganav' %} {% endcomment %}
   {% if settings.stickynav_enable %}</div>{% endif %}
-
-  {% if settings.notification_position == "below" %}
-    {% section 'notification-bar' %}
-  {% endif %}
 
   <main role="main" id="MainContent" style="opacity: 0">
     {{ content_for_layout }}
@@ -77,17 +65,6 @@
   {% section 'exit-intent' %}
   {% include 'signup-success' %}
 
-  <!-- Affirm -->
-  <script type="text/javascript">
-    _affirm_config = {
-      public_api_key: "MML2M0I09DFJJ5VU",
-      script: "https://cdn1.affirm.com/js/v2/affirm.js"
-    };
-    (function(l,g,m,e,a,f,b){var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);a=0;for(b=["get","token","url","items"];a<b.length;a++)d[b[a]]=function(){};h.async=!0;h.src=g[f];n.parentNode.insertBefore(h,n);delete g[f];d(g);l[m]=c})(window,_affirm_config,"affirm","checkout","ui","script","ready");
-    // Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
-  </script>
-  <!-- End Affirm -->
-
   {% section 'swatch' %}
 
   {% section 'filter-menu-settings' %}
@@ -95,6 +72,8 @@
   {% if settings.enable_developer_mode %}
     {% include 'breadcrumbs-developer-mode' %}
   {% endif %}
+
+  {% include 'javascript-theme-includes' %}
 
 </body>
 </html>

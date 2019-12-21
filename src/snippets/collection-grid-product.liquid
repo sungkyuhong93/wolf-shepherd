@@ -68,8 +68,8 @@
             {% assign image_order = 'collection-grid-item__second-image' %}
           {% endif %}
 
-          {% assign image_url = image.src | img_url: '440x' %}
-          {% assign image_url_2x = image.src | img_url: '880x' %}
+          {% assign image_url = image.src | img_url: '250x' %}
+          {% assign image_url_2x = image.src | img_url: '500x' %}
 
           <img 
           data-src="{{ image_url }}"

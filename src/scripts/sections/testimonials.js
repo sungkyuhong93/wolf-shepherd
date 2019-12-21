@@ -11,7 +11,6 @@ register('testimonials', {
 
   init() {
     this.slickRender();
-    this.slickTriggers();
   },
 
   slickRender() {
@@ -41,6 +40,7 @@ register('testimonials', {
       speed: 1000,
       dots: false,
       asNavFor: '.testimonials__images',
+      touchThreshold: 30,
       responsive: [
         {
           breakpoint: jsWidth.tabletdown,
@@ -58,42 +58,6 @@ register('testimonials', {
       ]
     };
   },
-
-  slickTriggers() {
-    // const $nav = $(`.testimonials__images--${this.id} .testimonials__image-container`);
-    // const sectionId = this.id;
-
-    // $nav.on('click', function() {
-    //   const slideIndex = parseInt($(this).attr('data-slide-id')) - 1;
-    //   $(`.testimonials__slider--${sectionId}`).slick('goTo', slideIndex);
-
-    //   $nav.removeClass(cssClasses.active);
-    //   $(this).addClass(cssClasses.active);
-
-    // });
-
-    // $nav.slick(this.getNavSettings($slideshow));
-
-    // const $blockClass = $(`.testimonials__slide--${blockId}`).closest('.slick-slide');
-
-  },
-
-
-  // $('.slider-for').slick({
-  //   slidesToShow: 1,
-  //   slidesToScroll: 1,
-  //   arrows: false,
-  //   fade: true,
-  //   asNavFor: '.slider-nav'
-  // });
-  // $('.slider-nav').slick({
-  //   slidesToShow: 3,
-  //   slidesToScroll: 1,
-  //   asNavFor: '.slider-for',
-  //   dots: true,
-  //   centerMode: true,
-  //   focusOnSelect: true
-  // });
 
   onBlockSelect: (blockId) => {
     const $blockClass = $(`.testimonials__slide--${blockId}`).closest('.slick-slide');

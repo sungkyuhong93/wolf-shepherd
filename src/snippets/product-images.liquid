@@ -10,10 +10,6 @@
 
 {% assign colours = colours | split: ',' %}
 
-{% for image in product.images %}
-  <link rel="preload" as="image" href="{{ image.src | img_url: '1024x1024', scale: 2 }}">
-{% endfor %}
-
 <div class="product-images__zoom-container">
   <div class="product-images__zoom-pane" js-product-gallery="zoomPane"></div>
   {% for color in colours %}
@@ -57,7 +53,15 @@
                   </video>
                 {% else %}
                   <div js-product-gallery="zoom">
-                    <img src="{{ productImage }}" alt="{{ image.alt | escape }}" {{productData}} data-zoom="{{ image.src | img_url: '1024x1024', scale: 2 }}">
+                    {% if loopCounter == 1 %}
+                      <img src="{{ productImage }}" alt="{{ image.alt | escape }}" {{productData}} data-zoom="{{ image.src | img_url: '1024x1024', scale: 2 }}">
+                    {% else %}
+                      <img 
+                      class="lazyload" 
+                      data-src="{{ productImage }}"
+                      alt="{{ image.alt | escape }}" 
+                      {{productData}} data-zoom="{{ image.src | img_url: '1024x1024', scale: 2 }}">
+                    {% endif %}
                   </div>
                 {% endif %}
 

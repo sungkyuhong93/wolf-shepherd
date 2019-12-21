@@ -40,6 +40,8 @@ register('collection-list', {
             infinite: false,
             centerMode: true,
             centerPadding: '20%',
+            speed: 300,
+            touchThreshold: 30,
           },
         },
       ],

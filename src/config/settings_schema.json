@@ -132,22 +132,6 @@
         "id": "stickynav_enable",
         "label": "Enable Sticky navigation",
         "default": true
-      },
-      {
-        "type": "select",
-        "id": "notification_position",
-        "label": "Notification Position",
-        "default": "below",
-        "options": [
-          {
-            "label": "Above Header",
-            "value": "above"
-          },
-          {
-            "label": "Below Header",
-            "value": "below"
-          }
-        ]
       }
     ]
   },

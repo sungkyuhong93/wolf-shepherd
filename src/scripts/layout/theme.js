@@ -25,13 +25,12 @@ import '../sections/product-miniform';
 import QuickAdd from '../sections/quick-add';
 import Swatch from '../sections/swatch';
 
-import '../sections/notification-bar';
 import '../sections/site-header';
 import '../sections/featured-collection-slider';
 import '../sections/features';
 import '../sections/reviews';
 import '../sections/sticky-nav';
-import '../sections/emoji';
+// import '../sections/emoji';
 import '../sections/list-collections';
 import '../sections/testimonials';
 import '../sections/collection-page';
@@ -76,16 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   load('*');
 
+  if (Shopify.theme.role == 'unpublished') {
+    console.log(Shopify.theme);
+  }
+
 });
 
 // Common a11y fixes
 focusHash();
 bindInPageLinks();
-
-// Apply a specific class to the html element for browser support of cookies.
-// if (cookiesEnabled()) {
-//   document.documentElement.className = document.documentElement.className.replace(
-//     'supports-no-cookies',
-//     'supports-cookies',
-//   );
-// }

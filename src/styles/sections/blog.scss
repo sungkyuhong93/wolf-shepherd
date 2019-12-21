@@ -35,4 +35,20 @@ Blog page
     color: #8C8C8C;
     margin-bottom: 6px;
   }
+
+  .button-text-and-arrow {
+    display: none;
+  }
+}
+
+#shopify-section-article-featured-posts {
+  .blog-grid-item {
+    .button--white {
+      display: none;
+    }
+
+    .button-text-and-arrow {
+      display: block;
+    }
+  }
 }

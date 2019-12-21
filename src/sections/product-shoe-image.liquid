@@ -13,9 +13,9 @@
   {% if sectionFullWidth != 'full-width' %}<div class="page-width">{% endif %}
 
   <div class="product-shoe-image {{ sectionMarginBottom }}">
-    <img class="product-shoe-image__mobile" src="{{sectionImageMobile}}" alt="{{sectionImageMobileAlt}}"/>
-    <img class="product-shoe-image__tablet" src="{{sectionImageTablet}}" alt="{{sectionImageTabletAlt}}"/>
-    <img class="product-shoe-image__desktop" src="{{sectionImage}}" alt="{{sectionImageAlt}}"/>
+    <img class="product-shoe-image__mobile lazyload" data-src="{{ sectionImageMobile }}" alt="{{sectionImageMobileAlt}}"/>
+    <img class="product-shoe-image__tablet lazyload" data-src="{{ sectionImageTablet }}" alt="{{sectionImageTabletAlt}}"/>
+    <img class="product-shoe-image__desktop lazyload" data-src="{{ sectionImage }}" alt="{{sectionImageAlt}}"/>
   </div>
 
   {% if sectionFullWidth != 'full-width' %}</div>{% endif %}

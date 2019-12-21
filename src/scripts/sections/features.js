@@ -40,6 +40,7 @@ register('features', {
             slidesToScroll: 1,
             infinite: false,
             dots: true,
+            touchThreshold: 30,
           },
         },
       ],
