@@ -1,3 +1,4 @@
+{% assign preload = '' %}
 {% assign swatchShow = false %}      
 {% if settings.show_swatches_collection %}
   {% for option in product.options_with_values %}     
@@ -33,19 +34,52 @@
               {% assign color = value | handleize %}
               {% if currentLoop contains color %}
               {% else %}
-                <a href="{{ variant.url }}" class="swatch swatch__tooltip swatch-product swatch-product--{{color }}" 
+
+                {% assign imageCount = 0 %}
+                {% for image in product.images %}
+                  {% if imageCount == 2 %}
+                    {% break %}
+                  {% endif %}
+                  {% assign productImage = image.alt | handleize %}
+                  {% if productImage == color %}
+                    {% if imageCount == 0 %}
+                      {% assign productImageOne = image.src | img_url: '800x' %}
+                    {% else %}
+                      {% assign productImageTwo = image.src | img_url: '800x' %}
+                    {% endif %}
+                    {% assign imageCount = imageCount | plus: 1 %}
+                  {% endif %}
+                {% endfor %}
+
+                {% capture preload %}
+                  {{ preload }}
+                  <link rel="prefetch" as="image" href="{{ productImageOne }}">
+                  <link rel="prefetch" as="image" href="{{ productImageTwo }}">
+                {% endcapture %}
+
+                <div js-swatch-image="trigger"
+                  data-href="{{ variant.url }}"
+                  data-variant-image-one="{{productImageOne}}"
+                  data-variant-image-two="{{productImageTwo}}"
+                  class="swatch swatch__tooltip swatch-product swatch-product--{{color }}" 
                   style="background-color: {{ color }};">
+
                   <span class="swatch__tooltip-info">{{color}}</span>
                   +{{colorCount | minus: 5}}
-                </a>
+
+                </div>
+
               {% endif %}
               {% assign currentLoop = currentLoop | append: ',' | append: color %}
             {% endif %}
           {% endfor %}
         {% endfor %}
       </div>
+
     {% endif %}
   {% endfor %}
 {% endif %}
+
+{{ preload }}
 
 

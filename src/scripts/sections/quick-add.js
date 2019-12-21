@@ -89,7 +89,6 @@ export default () => {
   }
 
   function updateAddToCartState(target, item) {
-    console.log('update');
     const $target = $(target);
     const variant = item.variant;
     if (variant) {

@@ -47,15 +47,21 @@
       right: 0;
       top: 0;
       transform: translate3d(0, 0, 0);
-      // transition: ease-in-out 0.3s;
       width: 100%;
     }
-    
+
     #{$parent}__second-image {
       opacity: 0;
       transition: ease-in-out 0.3s;
       transition: all .4s cubic-bezier(.44,.13,.48,.87);
       z-index: 1;
+    }
+
+    &.is-loading {
+      img {
+        opacity: 0!important;
+        transition: all .4s cubic-bezier(.44,.13,.48,.87) ;
+      }
     }
   }
 
@@ -102,8 +108,6 @@
     .stamped-badge {
       height: 29px;
       opacity: 1;
-      // height: 0;
-      // opacity: 0;
       transition: 0.8s;
     }
 
@@ -131,13 +135,10 @@
     }
 
     #{$parent}__first-image {
-      // opacity: 0;
       transition: .6s cubic-bezier(.44,.13,.48,.87);
     }
 
     #{$parent}__second-image {
-      // opacity: 1;
-      transition: ease-in-out 0.4s 0.1s;
       transition: all .6s cubic-bezier(.44,.13,.48,.87) ;
     }
 
@@ -152,14 +153,10 @@
 
       #{$parent}__first-image {
         opacity: 0;
-        // transition: ease-in-out 0.4s;
-        // transition: all .4s ease-in;
       }
 
       #{$parent}__second-image {
         opacity: 1;
-        // transition: ease-in-out 0.4s 0.1s;
-        // transition: all .4s cubic-bezier(.44,.13,.48,.87) 0.2s;
       }
     }
   }

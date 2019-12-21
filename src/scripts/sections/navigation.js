@@ -1,4 +1,3 @@
-import Hammer from 'hammerjs';
 import cssClasses from '../helpers/cssClasses';
 
 /**
@@ -24,63 +23,12 @@ export default () => {
   };
 
   /**
-   * Global Variables
-   */
-  const slideOut = new Hammer(nodeSelectors.mobileNav);
-  const slideOutBackground = new Hammer(nodeSelectors.siteHeaderOverlay);
-  // setting up a few vars to keep track of things.
-  // at issue is these values need to be encapsulated
-  // in some scope other than global.
-  let lastPosX = 0;
-  let isDragging = false;
-
-  /**
    * Set click events on items.
    */
   function setClickEvents() {
     nodeSelectors.navTrigger.addEventListener('click', toggleActiveState);
     nodeSelectors.siteHeaderOverlay.addEventListener('click', removeActiveState);
     document.documentElement.addEventListener('keydown', handleKeydown);
-
-    // add a "PAN" recognizer to it (all directions)
-    // slideOut.add(new Hammer.Pan({direction: Hammer.DIRECTION_ALL, threshold: 0 }));
-    // slideOut.on('pan', handleDrag);
-    // slideOutBackground.on('swiperight touch', removeActiveState);
-  }
-
-  function handleDrag(ev) {
-    // for convience, let's get a reference to our object
-    const elem = ev.target;
-
-    // DRAG STARTED
-    // here, let's snag the current position
-    // and keep track of the fact that we're dragging
-    if (!isDragging) {
-      isDragging = true;
-      lastPosX = elem.offsetRight;
-      elem.style.transition = '0s';
-    }
-
-    // we simply need to determine where the x,y of this
-    // object is relative to where it's "last" known position is
-    const posX = ev.deltaX + lastPosX;
-
-    // move our element to that position
-    if (posX < 0 && posX > -300) {
-      elem.style.right = `${posX}px`;
-    }
-
-    // DRAG ENDED
-    // this is where we simply forget we are dragging
-    if (ev.isFinal) {
-      isDragging = false;
-      elem.style.transition = '0.2s';
-      if (posX > -150) {
-        addActiveState();
-      } else {
-        removeActiveState();
-      }
-    }
   }
 
   function toggleActiveState() {

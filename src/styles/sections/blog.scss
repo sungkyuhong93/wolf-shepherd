@@ -11,6 +11,10 @@ Blog page
 .blog-grid-item {
   &__meta {
     margin-bottom: 35px;
+
+    .button-text-and-arrow {
+      display: none;
+    }
   }
 
   &__image-container {
@@ -35,20 +39,17 @@ Blog page
     color: #8C8C8C;
     margin-bottom: 6px;
   }
-
-  .button-text-and-arrow {
-    display: none;
-  }
 }
 
 #shopify-section-article-featured-posts {
-  .blog-grid-item {
+  .blog-grid-item__meta {
     .button--white {
       display: none;
     }
 
     .button-text-and-arrow {
-      display: block;
+      display: flex;
+      justify-content: flex-start;
     }
   }
 }

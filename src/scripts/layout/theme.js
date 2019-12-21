@@ -24,13 +24,13 @@ import '../sections/product';
 import '../sections/product-miniform';
 import QuickAdd from '../sections/quick-add';
 import Swatch from '../sections/swatch';
+import SwatchCollectionImage from '../sections/swatch-collection-image';
 
 import '../sections/site-header';
 import '../sections/featured-collection-slider';
 import '../sections/features';
 import '../sections/reviews';
 import '../sections/sticky-nav';
-// import '../sections/emoji';
 import '../sections/list-collections';
 import '../sections/testimonials';
 import '../sections/collection-page';
@@ -58,8 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
   Search().init();
   ExitIntent();
   VideoModal();
+  SwatchCollectionImage().init();
 
-  if (document.querySelector('.accordion') !== null ) {
+  if (document.querySelector('.accordion') !== null) {
     Accordion('.accordion', {
       singleOpen: true,
     }).init();

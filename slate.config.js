@@ -6,7 +6,7 @@
 const path = require('path');
 
 module.exports = {
-  "cssVarLoaderEnable": true,
+  'cssVarLoaderEnable': true,
   'cssVarLoader.liquidPath': ['src/snippets/css-variables.liquid'],
   'webpack.extend': {
     resolve: {
