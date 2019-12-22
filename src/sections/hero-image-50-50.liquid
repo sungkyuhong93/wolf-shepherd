@@ -1,8 +1,10 @@
 
-{% if section.settings.full-width != 'full-width' %}<div class="page-width">{% endif %}
+{% if section.settings.full-width != 'full-width' %}<div class="page-width page-width--hero-image">{% endif %}
   <div class="hero-image--50-50 {{ section.settings.margin_bottom }}">
     {%- for block in section.blocks -%}
-      {% include 'hero-image' type: 'Two blocks' %}
+      <div class="hero-image--50-50__video-ratio {{ block.settings.mobile_enable }}">
+        {% include 'hero-image' type: 'Two blocks' %}
+      </div>
     {%- endfor -%}
   </div>
 {% if section.settings.full-width != 'full-width' %}</div>{% endif %}
@@ -42,30 +44,6 @@
           {
             "label": "No margin",
             "value": "no-margin"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "height",
-        "label": "Block height",
-        "default": "hero-image--xlarge",
-        "options": [
-          {
-            "label": "Small",
-            "value": "hero-image--small"
-          },
-          {
-            "label": "Medium",
-            "value": "hero-image--medium"
-          },
-          {
-            "label": "Large",
-            "value": "hero-image--large"
-          },
-          {
-            "label": "X-Large",
-            "value": "hero-image--xlarge"
           }
         ]
       }
@@ -225,15 +203,15 @@
             "type": "select",
             "id": "mobile_enable",
             "label": "Mobile Enable",
-            "default": "hero-image--mobile-show",
+            "default": "hero-image--50-50__mobile-show",
             "options": [
               {
                 "label": "Show",
-                "value": "hero-image--mobile-show"
+                "value": "hero-image--50-50__mobile-show"
               },
               {
                 "label": "Hide",
-                "value": "hero-image--mobile-hide"
+                "value": "hero-image--50-50__mobile-hide"
               }
             ]
           },

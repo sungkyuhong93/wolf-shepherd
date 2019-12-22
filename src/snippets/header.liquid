@@ -13,7 +13,7 @@
   @media only screen and (min-width: 45.85em) {
     .header--{{sectionID}} .header__container {
       margin: 0 auto;
-      max-width: {{maxWidth}}%;
+      max-width: {{maxWidth | default: '1400' }}px;
     }
   }
 </style>

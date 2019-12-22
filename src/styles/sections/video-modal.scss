@@ -8,6 +8,22 @@ Video modal Section
   pointer-events: all;
   position: relative;
 
+  &.is-active {
+    #{$parent}__overlay {
+      opacity: 0.5;
+    }
+
+    #{$parent}__title {
+      opacity: 0;
+    }
+
+    #{$parent}__buttons {
+      .button:first-child {
+        opacity: 0;
+      }
+    }
+  }
+
   &--white {
     #{$parent}__overlay {
       background: rgba($COLOR_PRIMARY, 0.6);
@@ -53,10 +69,6 @@ Video modal Section
     transition: 0.8s ease-in-out;
     width: 100%;
     z-index: 3;
-
-    &.is-active {
-      opacity: 0.5;
-    }
   }
 
   &__text-area {
@@ -82,6 +94,7 @@ Video modal Section
 
   &__title {
     margin-bottom: 10px;
+    transition: 0.8s ease-in-out;
   }
 
   &__text {
@@ -91,6 +104,7 @@ Video modal Section
   &__buttons {
     .button {
       margin: 0 5px;
+      transition: 0.8s ease-in-out;
     }
   }
 
@@ -149,11 +163,6 @@ Video modal Section
   @include media-query( $medium-down ) {
     padding-bottom: 58%;
 
-    .page-width & {
-      margin-left: -20px;
-      width: calc(100% + 40px);
-    }
-
     &__mobile-text {
       padding-top: 28px;
       text-align: center;
@@ -198,6 +207,10 @@ Video modal Section
     
       #{$parent}__buttons {
         display: block;
+
+        .button, .button--white {
+          width: 210px;
+        }
       }
     }
   }

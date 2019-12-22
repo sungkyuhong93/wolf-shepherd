@@ -52,7 +52,6 @@
 
     #{$parent}__second-image {
       opacity: 0;
-      transition: ease-in-out 0.3s;
       transition: all .4s cubic-bezier(.44,.13,.48,.87);
       z-index: 1;
     }

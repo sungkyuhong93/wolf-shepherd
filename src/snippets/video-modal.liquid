@@ -29,9 +29,9 @@
 {% if sectionEnable %}
 
   <div class="{% if sectionMarginBottom == 'margin' %}section-margin-bottom{% endif %}">
-    {% if sectionFullWidth != 'full-width' %}<div class="page-width">{% endif %}
+    {% if sectionFullWidth != 'full-width' %}<div class="page-width page-width--hero-image">{% endif %}
 
-      <div class="video-modal {{textColor}}">
+      <div js-video-modal="container" class="video-modal {{textColor}}">
 
         <div class="video-modal__video">
           <video autoplay muted loop poster="{{ videoSectionBackground }}">

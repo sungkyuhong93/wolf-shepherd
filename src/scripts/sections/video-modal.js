@@ -12,6 +12,7 @@ export default () => {
 
   // Selectors
   const selectors = {
+    container: document.querySelectorAll('[js-video-modal="container"]'),
     trigger: document.querySelectorAll('[js-video-modal="trigger"]'),
     overlay: document.querySelectorAll('[js-video-modal="overlay"]'),
     close: document.querySelectorAll('[js-video-modal="close"]'),
@@ -60,13 +61,13 @@ export default () => {
   }
 
   function modalReady() {
-    selectors.overlay.forEach((item) => {
+    selectors.container.forEach((item) => {
       item.classList.add(cssClasses.active);
     });
   }
 
   function modalRelax() {
-    selectors.overlay.forEach((item) => {
+    selectors.container.forEach((item) => {
       item.classList.remove(cssClasses.active);
     });
   }
