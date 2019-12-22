@@ -177,7 +177,8 @@
       <div class="rte-setting hero-image__text">
         {% if sectionText != blank %}{{ sectionText }}{% endif %}
         {% if sectionButtonLabel != blank and sectionButtonLink != blank %}
-          <a href="{{ sectionButtonLink }}" class="{{ sectionButtonColor }}">
+          <a href="{{ sectionButtonLink }}" 
+            class="{{ sectionButtonColor }} {% if sectionMobileTextPosition contains '--mobile-text-under' %}button--white--compress{% endif %}">
             {{ sectionButtonLabel }}
           </a>
         {% endif %}
