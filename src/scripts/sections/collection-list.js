@@ -5,6 +5,7 @@ import _ from 'slick-carousel';
 register('collection-list', {
 
   onLoad() {
+    return false;
     this.eventListeners();
   },
 
