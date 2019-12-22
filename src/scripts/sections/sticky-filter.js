@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import cssClasses from '../helpers/cssClasses';
+import jsWidth from '../helpers/screenWidths';
 
 /**
  * Export default sticky filter.
@@ -8,8 +9,11 @@ export default () => {
 
   // Selectors
   const target = $('.collection-filter__container');
-  
+  const windowWidth = $(window).width();
+
   function init() {
+    if (!target.length) { return false; }
+    if (windowWidth >= jsWidth.mobile) { return false; }
     setEventListeners();
   }
 
@@ -18,8 +22,6 @@ export default () => {
   }
 
   function stickyFilter() {
-    if (!target.length) { return false; }
-
     const scrollTop = $(window).scrollTop();
     const headerHieght = document.querySelector('.site-header').offsetHeight;
     const headerOffestTop = target.offset().top - headerHieght;

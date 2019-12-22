@@ -43,7 +43,7 @@
     </noscript>
   {% endif %}
 
-  <div class="page-width">
+  <div class="page-width article__container">
 
     {% if settings.social_sharing_blog %}
       <div class="social_sharing_header">
@@ -58,7 +58,7 @@
           <h6>{{ article.published_at | time_tag: format: 'month_day_year' }}</h6 >
         </header>
 
-        <div class="rte">
+        <div class="rte article__body">
           {% if article.content contains 'Wolf-and-shephard-slider' %}
             {% assign articleSplit = article.content | split: 'Wolf-and-shephard-slider' %}
             {{ articleSplit[0] }}

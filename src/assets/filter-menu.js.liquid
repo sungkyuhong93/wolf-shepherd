@@ -238,10 +238,18 @@ function deferFilterjQuery() {
 
           $(".filter-group").each(function( index ) {
             if($( this ).hasClass('filter-group--target')) {
-              $(this).toggleClass('pt-group-expanded');
+              // $(this).toggleClass('pt-group-expanded');
+              var $target = $(this).children('.scroll-content');
+              if ($target.css("display") == "none" ) {
+                $target.slideDown();
+              } else {
+                $target.slideUp();
+              }
               target.removeClass('filter-group--target');
             } else {
-              $(this).removeClass('pt-group-expanded');
+
+              $(this).children('.scroll-content').slideUp();
+              // $(this).removeClass('pt-group-expanded');
             }
           });
 

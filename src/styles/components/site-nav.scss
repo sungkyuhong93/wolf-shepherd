@@ -144,9 +144,10 @@ site nav
 
   .site-nav {
     &__link {
+      outline: none;
       position: relative;
 
-      &:hover::before {
+      &:focus::before, &:hover::before {
         background: $COLOR_PRIMARY;
         bottom: 15px;
         content: '';
@@ -158,6 +159,7 @@ site nav
     }
 
     &__item--has-dropdown {
+      outline: none;
       position: relative;
 
       &:hover, &:focus, &:focus-within {
@@ -224,9 +226,10 @@ site nav
   }
 
   .navlist__link {
+    outline: none;
     position: relative;
 
-    &--active::before, &:hover::before {
+    &:focus::before, &--active::before, &:hover::before {
       background: $COLOR_PRIMARY;
       bottom: 3px;
       content: '';

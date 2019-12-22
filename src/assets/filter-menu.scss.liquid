@@ -384,7 +384,7 @@ i.check-icon {
 }
 
 {% if settings.pt_mobile_enable %}
-@media only screen and (max-width: {{ settings.pt_mobile_max_width  | default: '749px' }}) {
+@media only screen and (max-width: {{ settings.pt_mobile_max_width  | default: '747px' }}) {
   .filter-menu {
   	display: block;
 
@@ -619,7 +619,7 @@ i.check-icon {
       to { opacity: 1; }
 }
 
-@media only screen and (max-width: {{ settings.pt_mobile_max_width  | default: '749px' }}) {
+@media only screen and (max-width: {{ settings.pt_mobile_max_width  | default: '747px' }}) {
   .filter-menu .pt-mobile-header {
     display: block;
     position: relative;
@@ -644,8 +644,7 @@ i.check-icon {
   }
 
   .pt-expand .filter-group h4,
-  .pt-expand .filter-group .menu-trigger,
-  .pt-expand .filter-group .scroll-content
+  .pt-expand .filter-group .menu-trigger
   {
     display: inherit;
     -webkit-animation: fadeIn 0.3s;
@@ -1059,7 +1058,7 @@ i.check-icon {
   -webkit-animation: none;
 }
 
-@media screen and (min-width: {{ settings.pt_sticky_min_width | default: '749px' }}) {
+@media screen and (min-width: {{ settings.pt_sticky_min_width | default: '747px' }}) {
   .pt-sticky-mode {
     position: sticky;
     position: -webkit-sticky;

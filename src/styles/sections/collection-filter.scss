@@ -264,7 +264,7 @@ Collection filter
 
       &.pt-expand {
         .filter-group-sort-orders {
-          display: none;
+          display: none!important;
         }
 
         .filter-group h4 {
@@ -326,4 +326,12 @@ Collection filter
   @include media-query($small) {
     margin-top: -42px;
   }
+}
+
+.filter-group .scroll-content, .pt-expand .filter-group .scroll-content, .filter-menu .filter-group .filter-clear {
+  height: auto;
+  max-height: none !important;
+  overflow: auto;
+  transition: none !important;
+  display: none;
 }

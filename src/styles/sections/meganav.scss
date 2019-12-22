@@ -94,6 +94,7 @@ MegaNav
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    outline: none;
     padding: 20px 0 !important;
     width: 25%;
 
@@ -106,7 +107,7 @@ MegaNav
       margin-bottom: 20px;
     }
 
-    &:hover {
+    &:focus, &:hover {
       h6::before {
         background: $COLOR_PRIMARY;
         bottom: -3px;
@@ -120,9 +121,10 @@ MegaNav
   }
 
   &__link {
+    outline: none;
     position: relative;
 
-    &--active::before, &:hover::before {
+    &:focus::before, &--active::before, &:hover::before {
       background: $COLOR_PRIMARY;
       bottom: -6px;
       content: '';

@@ -890,7 +890,7 @@
         "type": "text",
         "id": "pt_mobile_max_width",
         "label": "CSS Max Width For Display",
-        "default": "749px"
+        "default": "747px"
       },
       {
         "type": "range",
@@ -1103,7 +1103,7 @@
         "type": "text",
         "id": "pt_sticky_min_width",
         "label": "Minimum screen width to activate sticky mode",
-        "default": "749px"
+        "default": "747px"
       },
       {
         "type": "header",

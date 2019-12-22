@@ -48,18 +48,35 @@
 
     </header>
 
-    {% if section.settings.enable_usp %}
-      <div class="site-header__usp">
-        {% if section.settings.usp_image != blank %}
-          <img src="{{ section.settings.usp_image | img_url: '100x' }}" alt="{{ section.settings.usp_image.alt }}"/>
-        {% endif %}
-        {% if section.settings.usp_text %}
-          <span>{{ section.settings.usp_text }}</span>
-        {% endif %}
-      </div>
+    {% if page.handle contains 'about' %}
+      {% if section.settings.enable_usp_about %}
+        <div class="site-header__usp">
+          {% if section.settings.usp_url_about %}<a href="{{section.settings.usp_url_about}}">{% endif %}
+          {% if section.settings.usp_image_about != blank %}
+            <img src="{{ section.settings.usp_image_about | img_url: '100x' }}" alt="{{ section.settings.usp_image_about.alt }}"/>
+          {% endif %}
+          {% if section.settings.usp_text_about %}
+            <span>{{ section.settings.usp_text_about }}</span>
+          {% endif %}
+          {% if section.settings.usp_url_about %}</a>{% endif %}
+        </div>
+      {% endif %}
+    {% else %}
+      {% if section.settings.enable_usp %}
+        <div class="site-header__usp">
+          {% if section.settings.usp_url %}<a href="{{section.settings.usp_url}}">{% endif %}
+          {% if section.settings.usp_image != blank %}
+            <img src="{{ section.settings.usp_image | img_url: '100x' }}" alt="{{ section.settings.usp_image.alt }}"/>
+          {% endif %}
+          {% if section.settings.usp_text %}
+            <span>{{ section.settings.usp_text }}</span>
+          {% endif %}
+          {% if section.settings.usp_url %}</a>{% endif %}
+        </div>
+      {% endif %}
     {% endif %}
 
-
+    
     <div class="site-header__misc">
       <ul>
 
@@ -177,6 +194,36 @@
         "type": "text",
         "id": "usp_text",
         "label": "USP text"
+      },
+      {
+        "type": "url",
+        "id": "usp_url",
+        "label": "USP URL"
+      },
+      {
+        "type": "header",
+        "content": "About page USP"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_usp_about",
+        "label": "Enable USP",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "usp_image_about",
+        "label": "USP Image"
+      },
+      {
+        "type": "text",
+        "id": "usp_text_about",
+        "label": "USP text"
+      },
+      {
+        "type": "url",
+        "id": "usp_url_about",
+        "label": "USP URL"
       }
     ],
     "blocks": [

@@ -16,9 +16,21 @@
     }
   }
 
+  &__container {
+    position: relative;
+  }
+
+  &__body {
+    margin-bottom: 36px;
+  }
+
   ul {
     margin-bottom: 30px;
     margin-left: 0;
+  }
+
+  b, strong {
+    font-weight: inherit;
   }
 
   li {
@@ -235,6 +247,22 @@
   @include media-query($tablet-up) {
     .social_sharing_header {
       display: block;
+
+      &.is-active {
+        .social-sharing {
+          position: fixed;
+          top: 101px;
+        }
+      }
+
+      &.is-locked {
+        bottom: -4px;
+        top: initial;
+
+        .social-sharing {
+          position: static;
+        }
+      }
     }
   }
 

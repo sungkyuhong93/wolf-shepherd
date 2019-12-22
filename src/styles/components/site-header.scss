@@ -29,6 +29,7 @@ body {
     a {
       left: 50%;
       margin-top: 2px;
+      outline: none;
       position: absolute;
       top: 50%;
       transform: translateY(-50%) translateX(-50%);
@@ -101,6 +102,7 @@ body {
       list-style: none;
 
       a {
+        outline: none;
         padding: 10px;
         position: relative;
         z-index: 1;
@@ -165,6 +167,11 @@ body {
       position: absolute;
       top: 0;
       transform: translateX(-50%);
+
+      a {
+        align-items: center;
+        display: flex;
+      }
 
       img {
         margin-right: 12px;
