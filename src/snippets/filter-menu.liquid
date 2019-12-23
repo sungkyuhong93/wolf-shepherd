@@ -47,7 +47,10 @@
       <div class="filter-group refine-header">
           <h4>{{ pt_refine_text }}</h4>
           {%- unless collection.handle == 'all' or collection.handle == nil and current_tags == nil -%}
-          <a class="filter-clear" href="/collections/{% if settings.pt_clear_to_current_collection %}{{ collection.handle }}{% else %}all{% endif %}">{{ pt_view_all_text }}</a>
+          <a class="filter-clear" href="/collections/{% if settings.pt_clear_to_current_collection %}{{ collection.handle }}{% else %}all{% endif %}">
+            {{ pt_view_all_text }}
+            {% include 'icons' with icon: 'close' %}
+          </a>
           {%- endunless -%}
       </div>
       {% endunless %}
@@ -232,7 +235,10 @@
           </ul>
           </div>
           {%- unless '|' == current_selected -%}
-          <a class="filter-clear" href="/collections/{{ current_collection_handle_sep }}{%- unless '|' == cleared_tags or '' == cleared_tags -%}/{{ cleared_tags }}{%- endunless -%}">{{ pt_clear_text }}</a>
+          <a class="filter-clear" href="/collections/{{ current_collection_handle_sep }}{%- unless '|' == cleared_tags or '' == cleared_tags -%}/{{ cleared_tags }}{%- endunless -%}">
+            {{ pt_clear_text }}
+            {% include 'icons' with icon: 'close' %}
+          </a>
           {%- endunless -%}
       </div>
       {%- endif -%}
@@ -290,7 +296,10 @@
                   {%- assign cleared_tags_handle = '' -%}
                   {%- for full_tag in cleared_tags -%}{% assign handle_tag = full_tag | handle %}{%- assign cleared_tags_handle = cleared_tags_handle | append:  cleared_tags_handle | append: '|' | append: handle_tag -%}{%- endfor -%}
                   {%- assign cleared_tags = cleared_tags_handle | remove_first: '|' | split: '|' | uniq | join: '+' -%}
-                  <a class="filter-clear" href="/collections/{{ current_collection_handle }}{% unless '|' == cleared_tags or '' == cleared_tags %}/{{ cleared_tags }}{% endunless %}">{{ pt_clear_text }}</a>
+                  <a class="filter-clear" href="/collections/{{ current_collection_handle }}{% unless '|' == cleared_tags or '' == cleared_tags %}/{{ cleared_tags }}{% endunless %}">
+                    {{ pt_clear_text }}
+                    {% include 'icons' with icon: 'close' %}
+                  </a>
                   {%- endunless -%}
               </div>
           {%- endfor -%}
@@ -370,7 +379,10 @@
                   </div>
               </li>
           </ul>
-          <a class="filter-clear" href="/collections/all{%- if current_tags -%}/{{ current_tags | join: '+' }}{%- endif -%}">{{ pt_clear_text }}</a>
+          <a class="filter-clear" href="/collections/all{%- if current_tags -%}/{{ current_tags | join: '+' }}{%- endif -%}">
+            {{ pt_clear_text }}
+            {% include 'icons' with icon: 'close' %}
+          </a>
         </div>
       </div>
       {%- endunless -%}

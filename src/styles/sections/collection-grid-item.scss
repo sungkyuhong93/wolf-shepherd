@@ -70,13 +70,14 @@
   }
 
   &__title {
-    margin-bottom: 10px;
+    font-size: $FONT_SIZE_XXSMALL !important;
+    margin-bottom: 6px;
   }
 
   &__price {
     font-family: $FONT_BASE;
-    font-size: $FONT_SIZE_XSMALL !important;
-    margin: 0 0 4px;
+    font-size: $FONT_SIZE_XXSMALL !important;
+    margin: 0 0 8px;
   }
 
   .swatch__wrapper {
@@ -84,43 +85,71 @@
   }
 
   &__review {
-    margin: 0 0 8px !important;
+    line-height: 12px;
+    margin: 0 0 16px !important;
     text-align: center;
 
     i:before {
-      font-size: $FONT_SIZE_XSMALL;
+      font-size: 11px;
     }
 
     .stamped-badge-starrating {
       border-right: 1px solid $COLOR_PRIMARY;
-      margin-right: 10px !important;
-      padding-right: 10px;
+      margin-right: 6px !important;
+      padding-right: 6px;
     }
 
     .stamped-badge-caption {
       font-family: $FONT_BASE;
       font-size: 10px;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.1px;
       text-transform: capitalize;
     }
 
     .stamped-badge {
-      height: 29px;
+      height: 14px;
       opacity: 1;
       transition: 0.8s;
     }
 
     [data-rating="0.0"] {
       display: none!important;
-
     }
   }
 
   .fa-star, .fa-star-checked, .fa-star-half-o, .fa-star-o, .stamped-fa-star, .stamped-fa-star-checked, .stamped-fa-star-half-o, .stamped-fa-star-o {
     color: $COLOR_PRIMARY;
   }
+
   @include media-query( $tablet-down ) {
     padding: 0;
+  }
+
+  @include media-query($medium-up) {
+    &__title {
+      font-size: $FONT_SIZE_XSMALL!important;
+      margin-bottom: 4px;
+    }
+
+    &__price {
+      font-size: $FONT_SIZE_XSMALL!important;
+      margin: 0 0 8px;
+    }
+
+    &__review {
+      .stamped-badge-starrating {
+        margin-right: 6px !important;
+        padding-right: 6px;
+      }
+
+      .stamped-badge-caption {
+        // letter-spacing: 0.   4px;
+      }
+      
+      i:before {
+        font-size: $FONT_SIZE_XSMALL;
+      }
+    }
   }
 
   @include media-query( $tablet-up ) {
@@ -144,11 +173,6 @@
     &:hover {
       background: $COLOR_WHITE;
       box-shadow: 0 2px 16px rgba($COLOR_BLACK, 0.1);
-
-      .stamped-badge {
-        height: 29px;
-        opacity: 1;
-      }
 
       #{$parent}__first-image {
         opacity: 0;

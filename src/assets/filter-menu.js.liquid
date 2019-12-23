@@ -238,7 +238,7 @@ function deferFilterjQuery() {
 
           $(".filter-group").each(function( index ) {
             if($( this ).hasClass('filter-group--target')) {
-              // $(this).toggleClass('pt-group-expanded');
+              $(this).toggleClass('pt-group-expanded');
               var $target = $(this).children('.scroll-content');
               if ($target.css("display") == "none" ) {
                 $target.slideDown();
@@ -249,7 +249,7 @@ function deferFilterjQuery() {
             } else {
 
               $(this).children('.scroll-content').slideUp();
-              // $(this).removeClass('pt-group-expanded');
+              $(this).removeClass('pt-group-expanded');
             }
           });
 

@@ -155,7 +155,7 @@
       <p class="{{ sectionSupertitle }} hero-image__supertitle">{{ sectionSupertitle }}</p>
     {% endif %}
 
-    {% if template contains 'collection' %}
+    {% if type contains 'collection' %}
       {% if collection.description != blank %}
         <h1 class="visually-hidden">{{ collection.title }}</h1>
         <span class="{{ sectionTextSize }} hero-image__title">{{ collection.description }}</h2>
@@ -172,7 +172,7 @@
       {% endif %}
     {% endif %}
     
-    {% unless template contains 'collection' %}
+    {% unless type contains 'collection' %}
       <div class="rte-setting hero-image__text">
         {% if sectionText != blank %}{{ sectionText }}{% endif %}
         {% if sectionButtonLabel != blank and sectionButtonLink != blank %}

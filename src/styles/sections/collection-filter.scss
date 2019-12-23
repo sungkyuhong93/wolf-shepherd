@@ -72,14 +72,23 @@ Collection filter
   }
 
   .filter-menu .has_group_selected .filter-clear {
+    background: $COLOR_WHITE;
     color: $COLOR_PRIMARY;
-    background: transparent;
     font-family: $FONT_BODY;
     font-size: 9px;
     letter-spacing: 0.25px;
+    right: 0;
     text-transform: uppercase;
-    right: 30px;
     top: 0;
+
+    svg {
+      margin-left: 7px;
+      width: 11px;
+    }
+
+    @include media-query($small) {
+      top: 14px;
+    }
   }
   
   .filter-group+.filter-group .filter-clear {
@@ -151,16 +160,14 @@ Collection filter
 
       .pt-mobile-header a.pt-nav-toggle {
         display: block;
-        left: 50%;
+        left: 0;
         margin: 0;
         padding: 0;
         position: relative;
         top: 50%;
-        transform: translate(-50%, -50%);
-
         transform: translate(0%, -50%);
+        transition: 0.4s ease-in-out;
         width: 50%;
-        left: 0;
 
         p {
           font-family: $FONT_BODY;
@@ -169,6 +176,7 @@ Collection filter
           position: relative;
           text-transform: uppercase;
           top: 0;
+
           &:after {
             content: '';
             background-image: $ICON_FILTER;
@@ -204,10 +212,8 @@ Collection filter
         padding: 0;
         position: absolute;
         top: 50%;
-        transform: translate(-50%, -50%);
-
-        left: 50%;
         transform: translate(0%, -50%);
+        transition: 0.4s ease-in-out;
         width: 50%;
 
         p {
@@ -306,13 +312,14 @@ Collection filter
 
 .collection-filter__container {
   display: block;
-  height: 54px;
   margin: 0 0 20px;
   position: relative;
   width: 100%;
   z-index: 100;
-
+  
   &.is-active {
+    height: 54px;
+
     .collection-filter {
       left: 0;
       margin: 0;

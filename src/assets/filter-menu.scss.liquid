@@ -630,21 +630,26 @@ i.check-icon {
   .filter-menu .filter-group h4,
   .filter-menu .filter-group .menu-trigger,
   .filter-menu .filter-group .scroll-content,
+  .sort-expand .filter-group h4,
+  .sort-expand .filter-group .menu-trigger,
+  .sort-expand .filter-group .scroll-content
+
   {
     display: none;
   }
 
-  .sort-expand .filter-group h4,
-  .sort-expand .filter-group .menu-trigger,
-  .sort-expand .filter-group .scroll-content
-  {
-    display: inherit;
-    -webkit-animation: fadeIn 0.3s;
-    animation: fadeIn 0.3s;
-  }
+  // .sort-expand .filter-group h4,
+  // .sort-expand .filter-group .menu-trigger,
+  // .sort-expand .filter-group .scroll-content
+  // {
+  //   display: inherit;
+  //   -webkit-animation: fadeIn 0.3s;
+  //   animation: fadeIn 0.3s;
+  // }
 
   .pt-expand .filter-group h4,
-  .pt-expand .filter-group .menu-trigger
+  .pt-expand .filter-group .menu-trigger,
+  .pt-expand .filter-menu .has_group_selected h4
   {
     display: inherit;
     -webkit-animation: fadeIn 0.3s;
@@ -652,16 +657,16 @@ i.check-icon {
   }
 
   {% if settings.pt_mobile_hide_selected == false %}
-  .filter-menu .has_group_selected h4,
-  .filter-menu .has_group_selected .menu-trigger,
-  .filter-menu .has_group_selected .scroll-content {
-    display: inherit;
-  }
+  // .filter-menu .has_group_selected h4,
+  // .filter-menu .has_group_selected .menu-trigger,
+  // .filter-menu .has_group_selected .scroll-content {
+  //   display: inherit;
+  // }
 
-  .filter-menu .has_group_selected .menu-trigger
-  {
-    display: block;
-  }
+  // .filter-menu .has_group_selected .menu-trigger
+  // {
+  //   display: block;
+  // }
   {% endif %}
 
   .sort-expand .filter-group .menu-trigger {
