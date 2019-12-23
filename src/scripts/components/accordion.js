@@ -10,6 +10,7 @@ import debounce from 'lodash-es/debounce';
 import cssClasses from '../helpers/cssClasses';
 import {extendDefaults, on} from '../helpers/utils';
 import bind from '../mixins/bind';
+import $ from 'jquery';
 
 /**
  * DOM selectors.
@@ -111,6 +112,7 @@ export default (selector, config) => {
    */
   function showItem(element) {
     element.classList.add(cssClasses.active);
+    $(element).children('.accordion__content').slideDown();
 
     if (settings.aria) {
       updateARIA(element, true);
@@ -122,6 +124,7 @@ export default (selector, config) => {
    * @param {HTMLElement} element - The accordion item.
    */
   function hideItem(element) {
+    $(element).children('.accordion__content').slideUp();
     element.classList.remove(cssClasses.active);
 
     if (settings.aria) {

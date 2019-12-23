@@ -76,8 +76,31 @@ $ACCORDION_PADDING_LARGE: 22px;
     margin: 0;
     outline: none;
     padding: $ACCORDION_PADDING 0;
+    position: relative;
     text-align: left;
     width: 100%;
+
+    &::before {
+      background: $COLOR_PRIMARY;
+      content: '';
+      height: 12px;
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 1px;
+    }
+
+    &::after {
+      background: $COLOR_PRIMARY;
+      content: '';
+      height: 1px;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 12px;
+    }
 
     #{$parent}__arrow-up {
       display: none;
@@ -115,16 +138,8 @@ $ACCORDION_PADDING_LARGE: 22px;
 
   &__content {
     font-size: $FONT_SIZE_XSMALL;
-    height: auto;
-    max-height: 0;
-    overflow: hidden;
+    margin-bottom: 16px;
     padding-bottom: 0;
-    transition: 0.2s;
-
-    max-height: 0;
-    overflow: hidden;
-    padding-bottom: 0;
-    transition: 0.6s ease-out;
 
     ul, ol {
       padding-left: 25px;
@@ -141,18 +156,14 @@ $ACCORDION_PADDING_LARGE: 22px;
     border-bottom: 1px solid $COLOR_PRIMARY_LIGHT;
 
     &.is-active {
+      #{$parent}__control {
+        &::before {
+          display: none;
+        }
+      }
+
       #{$parent}__content {
         border-top: 0;
-        // max-height: 800px;
-        // padding-bottom: $ACCORDION_PADDING;
-        // padding-top: 0;
-
-        max-height: 200px;
-        margin-bottom: 16px;
-        padding-top: 0;
-        overflow: auto;
-        transition: 0.9s ease-in;
-    
       }
   
       #{$parent}__arrow-down {
