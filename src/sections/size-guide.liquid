@@ -1,0 +1,28 @@
+{% include 'sub-menu' %}
+
+<div class="page-width">
+  <div class="grid">
+    <div class="grid__item small--one-whole medium-up--eight-twelfths medium-up--push-two-twelfths">
+      <div class="rte text-center">
+        {{ page.content }}
+      </div>
+    </div>
+  </div>
+</div>
+ 
+{% schema %}
+  {
+    "name": "Size guide page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Size guide Settings"
+      },
+      {
+        "type": "link_list",
+        "id": "linklist",
+        "label": "Navigation"
+      }
+    ]
+  }
+{% endschema %}

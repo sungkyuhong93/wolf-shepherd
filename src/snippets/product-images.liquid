@@ -35,7 +35,7 @@
                 {% assign productImage = image.src | img_url: '800x'  %}
 
                 {% for variant in product.variants %}
-                  {% assign variantImage = variant.image.src | img_url: 'master'  %}
+                  {% assign variantImage = variant.image.src | img_url: '800x'  %}
                   {% if variantImage == productImage %}
                     {% assign productImage = variantImage  %}
                     {% assign productData = 'data-slick-variant="' | append: variant.id | append: '"'  %}

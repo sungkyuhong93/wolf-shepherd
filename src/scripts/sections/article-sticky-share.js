@@ -39,9 +39,6 @@ export default () => {
     }
     const articleTotal = article.offset + article.height - 200;
 
-    console.log(scrollTop)
-    console.log(articleTotal)
-
     if (scrollTop >= headerOffestTop) {
       stickyActive(headerHieght);
     } else {

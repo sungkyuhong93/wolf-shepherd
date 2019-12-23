@@ -74,7 +74,6 @@ export default () => {
 
     if (windowWidth >= jsWidth.tablet) {
       [...nodeSelectors.zoomImage].forEach((element, index) => {
-        // console.log(element);
         zoomImages[index] = new Drift(element.querySelector('img'), zoomOptions);
       });
     }

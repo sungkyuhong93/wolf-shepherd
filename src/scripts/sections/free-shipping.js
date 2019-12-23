@@ -156,7 +156,6 @@ export default () => {
         AjaxCart().cartRender();
       },
       error: (response) => {
-        console.log(response)
       }
     });
   }

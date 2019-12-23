@@ -223,17 +223,8 @@ function deferFilterjQuery() {
         // Accordion
         {% if settings.pt_accordion_enable %}
         $(document).on('click', '.filter-menu h4', function(e){
-          // $(this).closest('.filter-group').not('.has_group_selected, .refine-header, .pt-display-dropdown').toggleClass('pt-group-expanded');
-          // console.log('click');
-          
-          // const filterGroup = document.querySelectorAll('.filter-group');
-          // [...filterGroup].forEach((element, index) => {
-            //   // console.log(element);
-            //   element.
-            //   zoomImages[index] = new Drift(element.querySelector('img'), zoomOptions);
-            // });
             
-          const target = $(this).closest('.filter-group');
+          var target = $(this).closest('.filter-group');
           target.addClass('filter-group--target');
 
           $(".filter-group").each(function( index ) {

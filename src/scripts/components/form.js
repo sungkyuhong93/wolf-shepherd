@@ -19,7 +19,6 @@ theme.Type = (function() {
     const inputValue = e.target.value;
     const labelName = input.id;
     const label = document.querySelector(`.slick-form label[for=${labelName}]`);
-    console.log(inputValue)
     inputActive(inputValue, label);
   }
 

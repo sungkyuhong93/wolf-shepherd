@@ -43,9 +43,9 @@
                   {% assign productImage = image.alt | handleize %}
                   {% if productImage == color %}
                     {% if imageCount == 0 %}
-                      {% assign productImageOne = image.src | img_url: '800x' %}
+                      {% assign productImageOne = image.src | img_url: '380x' %}
                     {% else %}
-                      {% assign productImageTwo = image.src | img_url: '800x' %}
+                      {% assign productImageTwo = image.src | img_url: '380x' %}
                     {% endif %}
                     {% assign imageCount = imageCount | plus: 1 %}
                   {% endif %}

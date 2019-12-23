@@ -46,15 +46,6 @@ export default () => {
       clientId: 'Client',
       sortBy: 'most-recent',
       template: '<div class="instafeed__contianer"><a class="instafeed__img" target="_blank" href="\{\{link\}\}" style="background-image: url\(\{\{image\}\}\)"><span class="instafeed__overlay"><span class="instafeed__overlay-text">{{caption}}</span></span></a></div>',
-      success: (data) => {
-        // read the feed data and create owr own data struture.
-        const images = data.data;
-        let i;
-        for (i = 0; i < images.length; i++) {
-          // const image = images[i];
-          // console.log(image)
-        }
-      },
       after: () => {
         createSlider();
       },
@@ -64,22 +55,6 @@ export default () => {
 
   function setObserver() {
     createFeed();
-    // if (('IntersectionObserver' in window)) {
-    //   const observer = new IntersectionObserver((entries, observer) => { 
-    //     entries.forEach((entry) => {
-    //       if (entry.isIntersecting) {
-    //         createFeed();
-    //         observer.unobserve(entry.target);
-    //         return false;
-    //       } else {
-    //         return false;
-    //       }
-    //     });
-    //   }, {rootMargin: '0px 0px -200px 0px'});
-    //   document.querySelectorAll('.instafeed').forEach((instagram) => { observer.observe(instagram)});
-    // } else {
-      
-    // }
   }
 
   /**

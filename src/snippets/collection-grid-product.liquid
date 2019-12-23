@@ -68,22 +68,22 @@
             {% assign image_order = 'collection-grid-item__second-image' %}
           {% endif %}
 
-          {% assign image_url = image.src | img_url: '250x' %}
+          {% assign image_url = image.src | img_url: '380x' %}
           {% assign image_url_2x = image.src | img_url: '500x' %}
 
           <img 
           data-src="{{ image_url }}"
-          data-srcset="{{image_url}} 1x, {{image_url_2x}} 2x" 
+          data-srcset="{{image_url}} 1x" 
           alt="{{ image.alt }}" 
           class="lazyload {{ image_order }}" />
 
         {% endfor %}
       {% else %}
-        {% assign image_url = product.featured_image.src | img_url: '440x' %}
+        {% assign image_url = product.featured_image.src | img_url: '380x' %}
         {% assign image_url_2x = product.featured_image.src | img_url: '880x' %}
         <img 
         data-src="{{ image_url }}"
-        data-srcset="{{image_url}} 1x, {{image_url_2x}} 2x"
+        data-srcset="{{image_url}} 1x"
         alt="{{ product.featured_image.alt | escape }}"  
         class="lazyload" />
       {% endif %}

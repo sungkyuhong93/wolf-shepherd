@@ -3,7 +3,7 @@
   {% assign sectionEnable = section.settings.enable %}
   {% assign sectionFullWidth = section.settings.full-width %}
   {% assign sectionMarginBottom = section.settings.margin_bottom %}
-  {% assign videoSectionBackground = section.settings.image | img_url: 'master' %}
+  {% assign videoSectionBackground = section.settings.image | img_url: '1000x' %}
   {% assign videoSectionUrlReady = section.settings.vimeo_link %}
   {% assign textColor = section.settings.text_color %}
   {% assign ogg = section.settings.mp4 %}
@@ -22,7 +22,7 @@
   {% assign sectionEnable = block.settings.enable %}
   {% assign sectionFullWidth = block.settings.full-width %}
   {% assign sectionMarginBottom = block.settings.margin_bottom %}
-  {% assign videoSectionBackground = block.settings.image | img_url: 'master' %}
+  {% assign videoSectionBackground = block.settings.image | img_url: '1000x' %}
   {% assign videoSectionUrlReady = block.settings.video_link %}
 {% endif %}
 
