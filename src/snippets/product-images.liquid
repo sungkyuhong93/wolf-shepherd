@@ -85,7 +85,7 @@
 
         {% else %}
           {% if featured_image != blank %}
-            <img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+            <img src="{{ featured_image | img_url: '800x' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
           {% endif %}
         {% endif %}
       </div>
@@ -106,10 +106,10 @@
               {% assign varColor = varColor[0] | handleize %}
 
             
-                {% assign productImage = image.src | img_url: 'master'  %}
+                {% assign productImage = image.src | img_url: '800x'  %}
 
                 {% for variant in product.variants %}
-                  {% assign variantImage = variant.image.src | img_url: 'master'  %}
+                  {% assign variantImage = variant.image.src | img_url: '800x'  %}
                   {% if variantImage == productImage %}
                     {% assign productImage = variantImage  %}
                     {% assign productData = 'data-slick-variant="' | append: variant.id | append: '"'  %}
@@ -150,7 +150,7 @@
 
         {% else %}
           {% if featured_image != blank %}
-            <img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
+            <img src="{{ featured_image | img_url: '800x' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
           {% endif %}
         {% endif %}
       </div>

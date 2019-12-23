@@ -34,7 +34,7 @@
             {% assign meganav_image = 'meganav_image_' | append: i %}
             {% if block.settings[meganav_image] != blank %}
               <a href="{{ block.settings[meganav_image_link] }}" class="meganav__image">
-                {{ block.settings[meganav_image] | img_url: 'master' | img_tag }}
+                {{ block.settings[meganav_image] | img_url: '200x' | img_tag }}
                 <h6>{{ block.settings[meganav_image_title] }}</h6>
               </a>
             {% endif %}

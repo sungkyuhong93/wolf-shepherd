@@ -10,7 +10,7 @@
       {% include 'ambassador-featured-collection' %}
     {% elsif block.type == 'image' %}
       <div class="article__image {{block.settings.margin_bottom}}">
-        <img src="{{block.settings.image | img_url: 'master' }}" alt="{{block.settings.image.alt}}">
+        <img src="{{block.settings.image | img_url: '1200x' }}" alt="{{block.settings.image.alt}}">
       </div>
     {% elsif block.type == 'quote' %}
       <div class="article__quote {{block.settings.margin_bottom}}">

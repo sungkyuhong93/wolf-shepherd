@@ -34,7 +34,6 @@ import '../sections/testimonials';
 
 import Accordion from '../components/accordion';
 import '../components/form';
-import '../components/slide-to';
 import '../components/type';
 import '../components/quantity';
 import Loadpage from '../components/loadpage';
