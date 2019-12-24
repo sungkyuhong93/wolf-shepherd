@@ -47,19 +47,20 @@
       right: 0;
       top: 0;
       transform: translate3d(0, 0, 0);
+      transition: all .6s cubic-bezier(.44,.13,.48,.87);
       width: 100%;
     }
 
     #{$parent}__second-image {
       opacity: 0;
-      transition: all .4s cubic-bezier(.44,.13,.48,.87);
+      transition: all .6s cubic-bezier(.44,.13,.48,.87);
       z-index: 1;
     }
 
     &.is-loading {
       img {
         opacity: 0!important;
-        transition: all .4s cubic-bezier(.44,.13,.48,.87) ;
+        // transition: all .4s cubic-bezier(.44,.13,.48,.87);
       }
     }
   }
@@ -167,7 +168,7 @@
     }
 
     #{$parent}__second-image {
-      transition: all .6s cubic-bezier(.44,.13,.48,.87) ;
+      transition: all .6s cubic-bezier(.44,.13,.48,.87);
     }
 
     &:hover {

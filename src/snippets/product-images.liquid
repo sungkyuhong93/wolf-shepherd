@@ -17,7 +17,7 @@
     {% assign productImage = '' %}
     {% assign colorClean = color | split: '//' %}
     {% assign colorClean = colorClean[0] | handleize %}
-
+  
     <div id="product-images__container--{{colorClean}}" 
       class="product-images__container
       {% if selectColour == colorClean %} is-active {% endif %}" 
@@ -75,7 +75,7 @@
               {% assign varColor = image.alt | split: '//' %}
               {% assign varColor = varColor[0] | handleize %}
               {% if varColor == colorClean %}
-                {% assign productThumbnail = image.src | img_url: '240x'  %}
+                {% assign productThumbnail = image.src | img_url: '800x'  %}
                 <div class="product-slider-nav__image {% if image.alt contains '.mp4' %}product-slider-nav__image--video{% endif %}">
                   <img src="{{ productThumbnail }}" alt="{{ image.alt | escape }}">
                 </div>

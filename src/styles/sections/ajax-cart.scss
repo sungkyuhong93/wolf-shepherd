@@ -5,6 +5,8 @@ Ajaxt-cart
 /* =============== Counter =============== */
 .cart-icon__container {
   display: flex;
+  position: relative;
+  top: 1px;
 
   &.is-active {
     .cart-count {

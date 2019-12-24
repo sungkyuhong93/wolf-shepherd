@@ -29,6 +29,7 @@ register('featured-collection-section', {
       adaptiveHeight: false,
       speed: 300,
       touchThreshold: 30,
+      lazyLoad: 'ondemand',
       responsive: [
         {
           breakpoint: jsWidth.tabletdown,

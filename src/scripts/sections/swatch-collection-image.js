@@ -55,7 +55,7 @@ export default () => {
     imageContainer.innerHTML = markup;
     window.setTimeout(() => {  
       imageContainer.classList.remove(cssClasses.loading);
-    }, 200);
+    }, 400);
   }
 
   function updateURL(productLink, href) {

@@ -53,8 +53,8 @@
 
                 {% capture preload %}
                   {{ preload }}
-                  <link rel="prefetch" as="image" href="{{ productImageOne }}">
-                  <link rel="prefetch" as="image" href="{{ productImageTwo }}">
+                  {% comment %} <link rel="prefetch" as="image" href="{{ productImageOne }}"> {% endcomment %}
+                  {% comment %} <link rel="prefetch" as="image" href="{{ productImageTwo }}"> {% endcomment %}
                 {% endcapture %}
 
                 <div js-swatch-image="trigger"

@@ -37,6 +37,7 @@ export default () => {
       fade: true,
       asNavFor: nav,
       touchThreshold: 30,
+      lazyLoad: 'ondemand',
     });
 
     nav.slick({
@@ -49,6 +50,7 @@ export default () => {
       focusOnSelect: true,
       vertical: false,
       verticalSwiping: false,
+      lazyLoad: 'ondemand',
     });
   }
 

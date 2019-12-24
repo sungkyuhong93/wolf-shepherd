@@ -22,7 +22,6 @@ register('site-header-section', {
     });
 
     $('.site-nav__item').on('mouseover', function() {
-      console.log('hover');
       Search().removeActiveState();
     })
   },
