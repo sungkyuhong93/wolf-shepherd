@@ -264,7 +264,7 @@ body {
         display: inline-block;
       }
 
-      a {
+      a, .secret-a {
         font-family: $FONT_BODY;
         font-size: 10px;
         letter-spacing: $LETTER_SPACING_BASE;

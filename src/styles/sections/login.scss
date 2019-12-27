@@ -21,32 +21,25 @@ Login/account
     align-items: center;
     display: flex;
     justify-content: center;
-
-    @media (min-width: 1100px) {
-      align-items: flex-start;
-    }
   }
 
   &__form-container {
     align-items: center;
     display: flex;
     justify-content: center;
-    padding: 40px 40px 150px;
+    padding: 40px;
     width: 50%;
 
     .form-vertical {
       max-width: 400px;
-    }
-
-    @media (min-width: 1100px) {
-      padding-top: 150px;
     }
   }
 
   &__image {
     background-position: center;
     background-size: cover;
-    padding-bottom: 74%;
+    height: calc(100vh - 64px);
+    min-height: 700px;
     width: 50%;
   }
 

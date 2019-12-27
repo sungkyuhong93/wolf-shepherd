@@ -160,6 +160,27 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
     margin-bottom: 10px;
   }
 
+  input {
+    font-family: $FONT_BODY!important;
+  }
+
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 100px white inset!important;
+    color: $COLOR_PRIMARY!important;
+    font-family: $FONT_BODY!important;
+    font-size: $FONT_SIZE_XSMALL!important;
+    font: normal 12px/1.8 "SackersGothicStd-Medium", sans-serif !important;
+  }
+
+  input:-internal-autofill-selected {
+    -webkit-box-shadow: 0 0 0 100px white inset!important;
+    color: $COLOR_PRIMARY!important;
+    font-family: $FONT_BODY!important;
+    font-size: $FONT_SIZE_XSMALL!important;
+    font: normal 12px/1.8 "SackersGothicStd-Medium", sans-serif !important;
+  }
+  
   input[type=email], input[type=text], input[type=tel], input[type=email], input[type=password] {
     border: 0;
     border-bottom: 1px solid rgba($COLOR_PRIMARY, 0.5);
@@ -179,8 +200,6 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
       border-bottom: 1px solid rgba($COLOR_PRIMARY, 1);
     }
   }
-
-
 
   select, textarea {
     border: 1px solid rgba($COLOR_PRIMARY, 0.5);

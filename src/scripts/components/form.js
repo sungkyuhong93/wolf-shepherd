@@ -5,6 +5,7 @@ const selectors = {
   form: '[js-form="true"]',
   input: '[js-form="true"] input',
   textarea: '[js-form="true"] textarea',
+  autofill: 'input:-internal-autofill-selected',
 };
 
 theme.Type = (function() {
@@ -49,12 +50,25 @@ theme.Type = (function() {
     });
   }
 
+  function checkoutfill() {
+    window.setTimeout(() => { 
+      const $autofill = $('input:-internal-autofill-selected');
+
+      $autofill.each(function() {
+        const $this = $(this);
+        const labelName = $this.attr('id');
+        const $label = $(`.slick-form label[for=${labelName}]`);
+        $label.addClass(cssClasses.active);
+      });
+     }, 300);
+  }
+
   function init() {
+    checkoutfill();
     setEventListeners();
     nodeSelectors.input.forEach((element, index) => {
-      element.addEventListener('load', handleFocus);
-
       const labelName = element.id;
+
       if (labelName !== '') {
         const inputValue = element.value;
         const label = document.querySelector(`.slick-form label[for=${labelName}]`);

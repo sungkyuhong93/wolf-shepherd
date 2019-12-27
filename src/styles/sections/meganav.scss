@@ -73,9 +73,9 @@ MegaNav
 
     &::after {
       background: $COLOR_GREY;
-      bottom: 0;
+      bottom: -100px;
       content: '';
-      left: 100px;
+      left: 0;
       position: absolute;
       right: -600px;
       top: 0;
@@ -90,7 +90,7 @@ MegaNav
   }
 
   &__image {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -101,14 +101,8 @@ MegaNav
     h6 {
       margin: 0;
       position: relative;
-    }
 
-    img {
-      margin-bottom: 20px;
-    }
-
-    &:focus, &:hover {
-      h6::before {
+      &::before {
         background: $COLOR_PRIMARY;
         bottom: -3px;
         content: '';
@@ -116,22 +110,51 @@ MegaNav
         left: 0;
         position: absolute;
         right: 0;
+        transform: scaleX(0);
+        transform-origin: 100% 50%;
+        transition: transform 250ms ease-in-out;
       }
     }
+
+    img {
+      margin-bottom: 20px;
+    }
+
+    &:focus, &:hover {
+      h6:before {
+        transform: scaleX(1);
+        transform-origin: 0% 50%;
+      }
+    }
+  }
+
+  &__image-center {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
   }
 
   &__link {
     outline: none;
     position: relative;
 
-    &:focus::before, &--active::before, &:hover::before {
+    &::before {
       background: $COLOR_PRIMARY;
-      bottom: -6px;
       content: '';
       height: 1px;
-      left: 0px;
+      left: 0;
       position: absolute;
-      right: 0px;
+      right: 0;
+      top: calc(100% + 4px);
+      transform: scaleX(0);
+      transform-origin: 100% 50%;
+      transition: transform 250ms ease-in-out;
+    }
+
+    &:focus::before, &--active::before, &:hover::before {
+      transform: scaleX(1);
+      transform-origin: 0% 50%;
     }
   }
 }

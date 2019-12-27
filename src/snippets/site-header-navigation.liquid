@@ -42,9 +42,15 @@
       {% endcomment %}
       {% elsif link.levels == 1 and meganav != true %}
         <li class="site-nav__item site-nav__item--has-dropdown" data-meganav-parent="{{ link.title | handle }}" tab-index="1" aria-expanded="false" aria-haspopup="true">
-          <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" href="{{ link.url }}">
-            {{ link.title }}
-          </a>
+          {% if link.title contains 'ommunity' %}
+            <a class="site-nav__link secret-a {% if link.active %}site-nav__link--active{% endif %}" href="#!">
+              {{ link.title }}
+            </a>
+          {% else %}
+            <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+          {% endif %}
 
           <ul class="site-nav__dropdown navlist navlist--block">
             {% for child_link in link.links %}
