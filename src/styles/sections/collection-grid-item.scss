@@ -86,6 +86,7 @@
   }
 
   &__review {
+    display: block;
     line-height: 12px;
     margin: 0 0 16px !important;
     text-align: center;
@@ -123,7 +124,7 @@
   }
 
   @include media-query( $tablet-down ) {
-    padding: 0;
+    padding: 8px 18px;
   }
 
   @include media-query($medium-up) {
@@ -138,6 +139,7 @@
     }
 
     &__review {
+
       .stamped-badge-starrating {
         margin-right: 6px !important;
         padding-right: 6px;

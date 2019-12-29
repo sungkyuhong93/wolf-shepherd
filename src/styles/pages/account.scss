@@ -49,9 +49,10 @@ account
     display: none;
     font-size: $FONT_SIZE_SMALL;
     margin-bottom: 36px;
+    margin-top: 10px;
 
     svg {
-      margin-right: 20px;
+      margin-right: 12px;
     }
   }
 
@@ -230,7 +231,7 @@ account
 
     &__header {
       display: block;
-      margin-bottom: 30px;
+      margin-bottom: 50px;
       text-align: center;
     }
 
@@ -244,6 +245,19 @@ account
       &__empty {
         padding-top: 0;
         width: 100%;
+
+        h3 {
+          font-family: $FONT_BODY;
+          font-size: $FONT_SIZE_XSMALL;
+          font-weight: $WEIGHT_NORMAL;
+          line-height: $LINE_HEIGHT_DISPLAY;
+          margin: 0 0 30px;
+          text-transform: uppercase;
+        }
+
+        .button {
+          margin-bottom: 52px;
+        }
       }
     }
   }
@@ -382,8 +396,185 @@ Order
 }
 
 /* ============================================================================
-Address
+account
 ============================================================================== */
-.address {
+.account-page {
+  margin-bottom: 160px;
+}
 
+.address-form {
+  background: rgba($COLOR_BLACK, 0.6);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 111111;
+
+  &__wrapper {
+    @include transform(translate(-50%, -50%));
+    @include flexbox;
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(center);
+    background: transparent;
+    border-radius: 7px;
+    bottom: 0;
+    // box-shadow: 0 0 33px rgba($COLOR_BLACK, 0.2);
+    height: 80vh;
+    left: 50%;
+    max-width: 90%;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 600px;
+    z-index: 1000;
+  }
+
+  &__background {
+    background: $COLOR_WHITE;
+    border-radius: 3px;
+    overflow: scroll;
+    padding: 20px;
+    width: 100%;
+  }
+
+  &__footer {
+    background: $COLOR_WHITE;
+    border-top: 1px solid $COLOR_PRIMARY_LIGHT;
+    bottom: 10px;
+    left: 10px;
+    padding: 0 20px 20px;
+    position: absolute;
+    right: 10px;
+
+    .checkbox {
+      margin: 10px 0 0;
+    }
+  }
+
+  form {
+    margin-bottom: 160px;
+    text-align: left;
+
+    h3 {
+      text-align: center;
+    }
+  }
+
+  .button {
+    margin-bottom: 10px;
+  }
+
+  .button--white {
+    margin-bottom: 0;
+  }
+
+  @include media-query($medium-up) {
+    &__background {
+      padding: 32px;
+    }
+
+    &__footer {
+      padding: 20px 32px;
+    }
+
+    &__footer-buttons {
+      display: flex;
+
+      .button {
+        width: 50%;
+      }
+
+      .button--white {
+        margin-bottom: 0;
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+.address-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+
+  &__address {
+    margin-bottom: 10px;
+
+    h3 {
+      margin: 0 0 16px;
+    }
+
+    .h4 {
+      font-size: 14px;
+      letter-spacing: 0.3px;
+
+      @media (max-width: 749px){
+        font-size: 12px;
+      }
+    }
+
+    p {
+      font-family: $FONT_BODY;
+      font-size: 10px;
+      letter-spacing: 0.25px;
+      margin-bottom: 0;
+      text-transform: uppercase;
+    }
+  }
+
+  strong {
+    font-family: $FONT_BODY;
+    font-size: $FONT_SIZE_SMALL;
+    font-weight: normal;
+    letter-spacing: $LETTER_SPACING_BASE;
+    text-transform: uppercase;
+
+    @media (max-width: 749px){
+      font-size: 10px;
+    }
+  }
+
+  &__footer {
+    align-items: center;
+    display: flex;
+
+    button {
+      background: transparent;
+      border: 0;
+      color: $COLOR_PRIMARY;
+      font-family: $FONT_BASE;
+      font-size: $FONT_SIZE_XSMALL;
+      padding: 0;
+    }
+
+    span {
+      color: $COLOR_PRIMARY;
+      font-family: $FONT_BASE;
+      // font-size: $FONT_SIZE_XSMALL;
+      padding: 0 6px;
+    }
+  }
+}
+
+@include media-query($medium-up) {
+  .address-list__wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 50% 50%;
+  }
+}
+
+/* ============================================================================
+account product slider
+============================================================================== */
+@include media-query($small) {
+  #account, #order {
+    #shopify-section-account-featured-collection .feature-collection {
+      padding-bottom: 40px;
+    }
+  }
 }

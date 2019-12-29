@@ -191,19 +191,14 @@
             <div class="address-list__wrapper">
               {% for address in customer.addresses %}
                 <div class="address-list">
-                  {% if address == customer.default_address %}
-                    <p><strong>{{ 'customer.addresses.default' | t }}</strong></p>
 
-                    {% comment %} <h3>{{customer.name}}</h3> {% endcomment %}
-                  {% endif %}
-                  {% comment %} {{ address | format_address }} {% endcomment %}
 
                   <div class="address-list__address">
-                  {% if address.name %}<h3>{{address.name}}</h3>{%endif%}
+                    {% if address.name %}<h3 class="h4">{{address.name}}{% if address == customer.default_address %} - {{ 'customer.addresses.default' | t }}{% endif %}</h3>{%endif%}
                     {% if address.address1 %}<p>{{address.address1}}</p>{%endif%}
                     {% if address.address2 %}<p>{{address.address2}}</p>{%endif%}
                     {% if address.company %}<p>{{address.company}}</p>{%endif%}
-                    {% if address.city %}<p>{{address.city}}{% if address.zip %}, {{address.zip}}{%endif%}</p>{%endif%}
+                    {% if address.city %}<p>{{address.city}},{% if address.zip %} {{address.zip}}{%endif%}</p>{%endif%}
                     {% if address.country %}<p>{{address.country}}</p>{%endif%}
                     {% if address.phone %}<p>{{address.phone}}</p>{%endif%}
                   </div>
