@@ -9,101 +9,101 @@
 
 
   <div id="cart" class="cart-ajax" data-cart-total="{{ cart.item_count }}" >
-
-    <a href="#" class="cart-ajax__close">
-      {% include 'icons' with icon: 'close' %}
-    </a>
-
     <div class="cart-ajax__header">
+      <a href="#" class="cart-ajax__close">
+        {% include 'icons' with icon: 'close' %}
+      </a>
       <h3 class="cart-ajax__title">Shopping Bag</h3>
     </div>
 
-    {% if settings.freeshipping_enable == true %}
-      <div class="cart-ajax__freeshipping">
-        <div class="freeshipping">
-          <div js-freeshipping="info" class="freeshipping__info">You are {{settings.freeshipping_threshold | times: 100 | money_without_trailing_zeros }} away from the free gift</div>
-          <div class="freeshipping__bar">
-            <div js-freeshipping="bar" class="freeshipping__percent"></div>
-          </div>
-        </div>
-      </div>
-    {% endif %}
-    
-    <div class="cart-ajax__list"></div>
-
-
-    <div class="cart-ajax__tools">
-
-      {% if settings.enable_gift_wrapping == true %}
-        {% assign giftProduct = all_products[settings.gift_wrap_product].variants.first.id | default: false %}
-        {% assign giftProductHandle = all_products[settings.gift_wrap_product].handle | default: false %}
-        {%- capture giftWrapInCart -%}
-          {% if cart.item_count > 0 %}
-            {% for item in cart.items %}
-              {% if item.product.handle == giftProductHandle %}
-                is-hidden
-              {% endif %}
-            {% endfor %}
-          {% endif %}
-        {%- endcapture -%}
-
-        {% if giftProduct != false %}
-          <div class="cart-ajax__giftwrapping">
-
-            <div js-gift-wrap="container" class="giftwrapping {{giftWrapInCart}}">
-              <div class="giftwrapping__add">
-
-                {% include 'icons' with icon: 'gift-box' %}
-
-                Gifting these items? <span js-gift-wrap="true" data-quantity="1" data-product-id="{{giftProduct}}" class="giftwrapping__link">Add gift wrap to my order</span>
-              </div>
-              <div class="giftwrapping__success">
-                Your order will be gift wrapped 
-                <span js-gift-wrap="false" data-product-id="{{giftProduct}}" class="giftwrapping__remove">Remove</span>
-              </div>
+    <div class="cart-ajax__body">
+      {% if settings.freeshipping_enable == true %}
+        <div class="cart-ajax__freeshipping">
+          <div class="freeshipping">
+            <div js-freeshipping="info" class="freeshipping__info">You are {{settings.freeshipping_threshold | times: 100 | money_without_trailing_zeros }} away from the free gift</div>
+            <div class="freeshipping__bar">
+              <div js-freeshipping="bar" class="freeshipping__percent"></div>
             </div>
-
           </div>
-        {% endif %}
+        </div>
       {% endif %}
+      
+      <div class="cart-ajax__list"></div>
 
-      <div class="cart-ajax__footer">
-        <div class="cart-ajax__footer-text">
-          Shipping <span class="cart-ajax--shipping-price">Free</span>
-        </div>
-        <div class="cart-ajax__footer-text">
-          Subtotal <span class="cart-ajax--total-price"></span>
-        </div>
-        <a href="/checkout" class="button button--checkout">{{ 'cart.general.checkout' | t }}</a>
-        <a class="cart-ajax__international" href="https://wolfandshepherd.com/pages/international-checkout">International Checkout</a>
-      </div>
+      <div class="cart-ajax__tools">
 
-      {%- if settings.collection_enable == true %}
-        <div class="ajax-related is-active">
-          <h5>
-            Consider these items!
-          </h5>
-          <div class="ajax-related__container">
-            {%- for product in collections[upsell].products -%}
-              <div class="ajax-related__product-wrapper">
-                <a href="{{product.url}}" class="ajax-related__product-image" style="background-image:url({{product.featured_image.src | img_url: '440x'}})"></a>
+        {% if settings.enable_gift_wrapping == true %}
+          {% assign giftProduct = all_products[settings.gift_wrap_product].variants.first.id | default: false %}
+          {% assign giftProductHandle = all_products[settings.gift_wrap_product].handle | default: false %}
+          {%- capture giftWrapInCart -%}
+            {% if cart.item_count > 0 %}
+              {% for item in cart.items %}
+                {% if item.product.handle == giftProductHandle %}
+                  is-hidden
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {%- endcapture -%}
 
-                <div class="ajax-related__text">
-                  <h5 class="ajax-related__product-title">{{product.title}}</h5>
-                  {% include 'ajaxcart-product-form' %}
+          {% if giftProduct != false %}
+            <div class="cart-ajax__giftwrapping">
+
+              <div js-gift-wrap="container" class="giftwrapping {{giftWrapInCart}}">
+                <div class="giftwrapping__add">
+
+                  {% include 'icons' with icon: 'gift-box' %}
+
+                  Gifting these items? <span js-gift-wrap="true" data-quantity="1" data-product-id="{{giftProduct}}" class="giftwrapping__link">Add gift wrap to my order</span>
+                </div>
+                <div class="giftwrapping__success">
+                  Your order will be gift wrapped 
+                  <span js-gift-wrap="false" data-product-id="{{giftProduct}}" class="giftwrapping__remove">Remove</span>
                 </div>
               </div>
-            {%- endfor -%}
+
+            </div>
+          {% endif %}
+        {% endif %}
+
+        <div class="cart-ajax__footer">
+          <div class="cart-ajax__footer-text">
+            Shipping <span class="cart-ajax--shipping-price">Free</span>
           </div>
+
+          <div class="cart-ajax__footer-text">
+            Subtotal
+            <span class="cart-ajax--total-price">{{ cart.total_price | money_without_trailing_zeros }}</span>
+          </div>
+
+          
+
+          <a href="/checkout" class="button button--checkout">{{ 'cart.general.checkout' | t }}</a>
+          <a class="cart-ajax__international" href="https://wolfandshepherd.com/pages/international-checkout">International Checkout</a>
         </div>
-      {%- endif -%}
 
+        {%- if settings.collection_enable == true %}
+          <div class="ajax-related is-active">
+            <h5>
+              Consider these items!
+            </h5>
+            <div class="ajax-related__container">
+              {%- for product in collections[upsell].products -%}
+                <div class="ajax-related__product-wrapper">
+                  <a href="{{product.url}}" class="ajax-related__product-image" style="background-image:url({{product.featured_image.src | img_url: '440x'}})"></a>
+
+                  <div class="ajax-related__text">
+                    <h5 class="ajax-related__product-title">{{product.title}}</h5>
+                    {% include 'ajaxcart-product-form' %}
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+      </div>
     </div>
-
-    
-
   </div>
-
 </div>
 {%- endif -%}
 

@@ -48,7 +48,15 @@ $CART_HEIGHT: calc(100vh - 280px);
   }
 
   .cart-ajax {
-    @include transform(translateX(100%));
+    @include transform(translateX(-100%));
+    left: 0;
+    right: initial;
+
+    @include media-query($tablet-up) {
+      @include transform(translateX(100%));
+      left: initial;
+      right: 0;
+    }
   }
 
   &.cart-ajax--show {
@@ -59,6 +67,7 @@ $CART_HEIGHT: calc(100vh - 280px);
 
     .cart-ajax {
       @include transform(translateX(0%));
+      box-shadow: 0 0 39px 0 rgba(0, 0, 0, 0.19);
       pointer-events: all;
     }
   }
@@ -71,11 +80,10 @@ $CART_HEIGHT: calc(100vh - 280px);
   border-left: 1px solid rgba($COLOR_WHITE, 0.4);
   bottom: 0;
   max-width: 100%;
-  overflow: auto;
-  padding: 15px 20px 0;
+  overflow: hidden;
+  padding: 15px 0 0;
   pointer-events: none;
   position: fixed;
-  right: 0;
   top: 0;
   transition: all 0.25s cubic-bezier(0.3, 0.6, 0.4, 1);
   width: 600px;
@@ -133,6 +141,12 @@ $CART_HEIGHT: calc(100vh - 280px);
 
   &__header {
     text-align: center;
+  }
+
+  &__body {
+    height: calc(100vh - 70px);
+    overflow: auto;
+    padding: 0 20px;
   }
 
   &__title {
@@ -228,6 +242,7 @@ $CART_HEIGHT: calc(100vh - 280px);
   &__row__money {
     bottom: 0;
     display: block;
+    font-family: $FONT_BODY;
     font-size: $FONT_SIZE_XSMALL;
     margin-bottom: 12px;
     position: absolute;
@@ -320,6 +335,21 @@ $CART_HEIGHT: calc(100vh - 280px);
     letter-spacing: $LETTER_SPACING_BASE;
     margin-bottom: 8px;
     text-transform: uppercase;
+  }
+
+  @include media-query($medium-up) {
+    &__body {
+      padding: 0 40px;
+    }
+
+    &__title {
+      margin-left: -40px;
+      width: calc(100% + 80px);
+    }
+
+    &__close {
+      right: 40px;
+    }
   }
 }
 
@@ -528,12 +558,21 @@ Related Products
       min-width: 90px;
     }
   }
+
+  @include media-query($medium-up) {
+    margin-left: -40px;
+    padding: 20px 40px;
+    width: calc(100% + 80px);
+  }
 }
 
 /* ============================================================================
 Free Shipping
 ============================================================================== */
 .freeshipping {
+  border-bottom: 1px solid $COLOR_GREY;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
   text-align: center;
 
   &__info {
