@@ -87,12 +87,15 @@
 
   &__review {
     display: block;
-    line-height: 12px;
-    margin: 0 0 16px !important;
+    margin: 0 !important;
     text-align: center;
 
     i:before {
       font-size: 11px;
+    }
+
+    .stamped-product-reviews-badge {
+      display: initial !important;
     }
 
     .stamped-badge-starrating {
@@ -110,6 +113,8 @@
 
     .stamped-badge {
       height: 14px;
+      line-height: 12px;
+      margin: 0 0 16px !important;
       opacity: 1;
       transition: 0.8s;
     }

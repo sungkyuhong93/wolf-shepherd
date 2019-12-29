@@ -80,27 +80,27 @@ $ACCORDION_PADDING_LARGE: 22px;
     text-align: left;
     width: 100%;
 
-    &::before {
-      background: $COLOR_PRIMARY;
-      content: '';
-      height: 12px;
-      position: absolute;
-      right: 5px;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 1px;
-    }
+    // &::before {
+    //   background: $COLOR_PRIMARY;
+    //   content: '';
+    //   height: 12px;
+    //   position: absolute;
+    //   right: 5px;
+    //   top: 50%;
+    //   transform: translate(-50%, -50%);
+    //   width: 1px;
+    // }
 
-    &::after {
-      background: $COLOR_PRIMARY;
-      content: '';
-      height: 1px;
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translate(0, -50%);
-      width: 12px;
-    }
+    // &::after {
+    //   background: $COLOR_PRIMARY;
+    //   content: '';
+    //   height: 1px;
+    //   position: absolute;
+    //   right: 0;
+    //   top: 50%;
+    //   transform: translate(0, -50%);
+    //   width: 12px;
+    // }
 
     #{$parent}__arrow-up {
       display: none;
@@ -112,34 +112,34 @@ $ACCORDION_PADDING_LARGE: 22px;
       position: relative;
       width: 12px;
   
-      &::after {
-        background: $COLOR_PRIMARY;
-        content: '';
-        height: 1px;
-        position: absolute;
-        top: 50%;
-        transform: translate(0, -50%);
-        width: 100%;
-      }
+      // &::after {
+      //   background: $COLOR_PRIMARY;
+      //   content: '';
+      //   height: 1px;
+      //   position: absolute;
+      //   top: 50%;
+      //   transform: translate(0, -50%);
+      //   width: 100%;
+      // }
     }
 
     #{$parent}__arrow-down {
-      &::before {
-        background: $COLOR_PRIMARY;
-        content: '';
-        height: 100%;
-        left: 50%;
-        position: absolute;
-        transform: translate(-50%, 0);
-        width: 1px;
-      }
+      // &::before {
+      //   background: $COLOR_PRIMARY;
+      //   content: '';
+      //   height: 100%;
+      //   left: 50%;
+      //   position: absolute;
+      //   transform: translate(-50%, 0);
+      //   width: 1px;
+      // }
     }
   }
 
   &__content {
     font-size: $FONT_SIZE_XSMALL;
-    margin-bottom: 16px;
-    padding-bottom: 0;
+    // margin-bottom: -16px;
+    padding-bottom: 16px;
 
     ul, ol {
       padding-left: 25px;
@@ -149,6 +149,10 @@ $ACCORDION_PADDING_LARGE: 22px;
         font-size: $FONT_SIZE_XSMALL;
         list-style: disc;
       }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 

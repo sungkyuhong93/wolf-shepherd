@@ -93,6 +93,7 @@ export default (selector, config) => {
   function setClickEvents() {
     nodeSelectors.controls.forEach((item) => {
       on('click', item, (event) => onItemClick(event, item.parentNode));
+      lastNodeMargin(item.parentNode);
     });
   }
 
@@ -104,6 +105,13 @@ export default (selector, config) => {
   function onItemClick(event, element) {
     event.preventDefault();
     toggleElement(element);
+  }
+
+  function lastNodeMargin(container) {
+    if (container.querySelector('.accordion__content').lastElementChild) {
+      const lastChild = container.querySelector('.accordion__content').lastElementChild;
+      lastChild.style.marginBottom = '0px';
+    }
   }
 
   /**
