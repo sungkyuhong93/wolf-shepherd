@@ -195,6 +195,7 @@ function deferFilterjQuery() {
         });
 
         $(document).on('click', '.filter-menu .pt-mobile-header .pt-nav-toggle-sort', function(e){
+          console.log('toff')
           if(e.handled !== true) {
             $('.pt-nav-toggle').removeClass('active');
             $('.pt-nav-toggle-sort').removeClass('not-active');
@@ -233,12 +234,14 @@ function deferFilterjQuery() {
               var $target = $(this).children('.scroll-content');
               if ($target.css("display") == "none" ) {
                 $target.slideDown();
+                console.log('slide down')
               } else {
                 $target.slideUp();
+                console.log('slide up')
               }
               target.removeClass('filter-group--target');
             } else {
-
+              console.log('slide up')
               $(this).children('.scroll-content').slideUp();
               $(this).removeClass('pt-group-expanded');
             }

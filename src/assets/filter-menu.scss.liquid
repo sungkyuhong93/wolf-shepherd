@@ -630,6 +630,7 @@ i.check-icon {
   .filter-menu .filter-group h4,
   .filter-menu .filter-group .menu-trigger,
   .filter-menu .filter-group .scroll-content,
+  .filter-menu .filter-menu__wrapper,
   .sort-expand .filter-group h4,
   .sort-expand .filter-group .menu-trigger,
   .sort-expand .filter-group .scroll-content
@@ -670,6 +671,16 @@ i.check-icon {
   {% endif %}
 
   .sort-expand .filter-group .menu-trigger {
+    display: block;
+  }
+
+  .sort-expand .filter-menu__wrapper {
+    display: block;
+    border-top: 1px solid #eeeeee;
+    padding-top: 20px!important;
+  }
+
+  .sort-expand .filter-group .scroll-content {
     display: block;
   }
 
@@ -841,11 +852,14 @@ i.check-icon {
 .filter-group .scroll-content,
 .pt-expand .filter-group .scroll-content,
 .filter-menu .filter-group .filter-clear {
-  // display: none;
-  height: auto;
-  max-height: 0; 
-  overflow: hidden;
-  transition: 0.2s ease-in-out;
+  display: none;
+  // height: 0;
+  // max-height: 0; 
+  // overflow: hidden;
+  // transition: 0.2s ease-in-out;
+}
+.pt-expand .filter-menu__wrapper {
+  display: block;
 }
 
 .filter-menu .has_group_selected .scroll-content,
@@ -853,8 +867,8 @@ i.check-icon {
 .filter-menu .refine-header .filter-clear,
 .pt-group-expanded .scroll-content  {
   // display: inherit;
-  height: auto;
-  max-height: 600px; 
+  // height: auto;
+  // max-height: 600px; 
 }
 
 .filter-menu .has_group_selected .filter-clear {

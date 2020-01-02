@@ -83,16 +83,17 @@ Collection filter
 
     svg {
       margin-left: 7px;
+      margin-top: -2px;
       width: 11px;
     }
 
     @include media-query($small) {
-      top: 14px;
+      top: 16px;
     }
   }
-  
+
   .filter-group+.filter-group .filter-clear {
-    top: 18px;
+    top: 16px;
   }
 
   .nav-size, .nav-color {

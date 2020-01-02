@@ -13,9 +13,9 @@
                 <div class="flagship__store-text">
                   <h3>{{block.settings.title}}</h3>
                   <div class="flagship__store-content">{{block.settings.text}}</div>
-                  <a href="{{block.settings.link}}" class="button-text-and-arrow" title="{{block.settings.link_text}}">
+                  <a href="{{block.settings.link}}" class="button--white button--white--compress" title="{{block.settings.link_text}}">
                     {{block.settings.link_text}}
-                    <div class="wolf-arrow wolf-arrow--right"></div>
+                    {% comment %} <div class="wolf-arrow wolf-arrow--right"></div> {% endcomment %}
                   </a>
                 </div>
                 <img src="{{block.settings.map | img_url: 'master' }}" alt="{{block.settings.store.alt}}"/>

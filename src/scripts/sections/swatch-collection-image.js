@@ -44,7 +44,7 @@ export default () => {
     imageContainer.classList.add(cssClasses.loading);
     window.setTimeout(() => {  
       addImage(imageContainer, imageOne, imageTwo);
-    }, 400);
+    }, 600);
   }
 
   function addImage(imageContainer, imageOne, imageTwo) {

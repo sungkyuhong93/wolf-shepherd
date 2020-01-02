@@ -193,6 +193,16 @@
   }
 }
 
+.template-collection {
+  .collection-grid-item {
+    padding: 0;
+
+    @include media-query( $medium-up ) {
+      padding: 8px 8px 23px;
+    }
+  }
+}
+
 .ie9 .collection-grid-item .collection-grid-item__badge {
   padding: 4px 13px 6px;
 }
