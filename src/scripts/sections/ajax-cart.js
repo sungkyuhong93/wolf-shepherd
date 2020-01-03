@@ -232,9 +232,7 @@ export default () => {
   }
 
   function updateAjaxCartTotal(cart) {
-    console.log('prece')
     const cartTotal = formatMoney(cart.total_price, theme.moneyFormat).replace('.00','');
-    console.log(cartTotal)
     selectors.$cartTotalPrice.html(`<span class=money>${cartTotal}</span>`);
   }
 

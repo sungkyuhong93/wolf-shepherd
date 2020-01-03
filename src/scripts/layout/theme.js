@@ -36,6 +36,7 @@ import Accordion from '../components/accordion';
 import '../components/form';
 import '../components/type';
 import '../components/quantity';
+import '../components/select';
 import Loadpage from '../components/loadpage';
 
 document.addEventListener('DOMContentLoaded', () => {

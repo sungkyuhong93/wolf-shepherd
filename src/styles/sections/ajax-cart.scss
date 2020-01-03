@@ -48,15 +48,14 @@ $CART_HEIGHT: calc(100vh - 280px);
   }
 
   .cart-ajax {
-    @include transform(translateX(-100%));
-    left: 0;
-    right: initial;
-
-    @include media-query($tablet-up) {
-      @include transform(translateX(100%));
-      left: initial;
-      right: 0;
-    }
+    // @include transform(translateX(-100%));
+    // left: 0;
+    // right: initial;
+    // @include media-query($tablet-up) {
+    @include transform(translateX(100%));
+    left: initial;
+    right: 0;
+    // }
   }
 
   &.cart-ajax--show {
@@ -77,7 +76,6 @@ $CART_HEIGHT: calc(100vh - 280px);
   $parent: &;
   background-color: $COLOR_WHITE;
   border: 0;
-  border-left: 1px solid rgba($COLOR_WHITE, 0.4);
   bottom: 0;
   max-width: 100%;
   overflow: hidden;
@@ -90,7 +88,7 @@ $CART_HEIGHT: calc(100vh - 280px);
   z-index: 99999;
 
   &__empty {
-    margin-bottom: 20px;
+    margin-bottom: 54px;
     text-align: center;
 
     .button {
@@ -172,10 +170,10 @@ $CART_HEIGHT: calc(100vh - 280px);
   }
 
   /* =============== Ajax main body/rows of product =============== */
-  &__list {
-    min-height: 360px;
-    overflow-y: auto;
-  }
+  // &__list {
+  //   min-height: 360px;
+  //   overflow-y: auto;
+  // }
 
   &__row {
     border-bottom: $COLOR_GREY 1px solid;
