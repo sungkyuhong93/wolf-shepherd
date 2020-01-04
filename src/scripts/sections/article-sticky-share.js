@@ -37,7 +37,7 @@ export default () => {
       offset: selectors.$article.offset().top,
       height: selectors.$article.height(),
     }
-    const articleTotal = article.offset + article.height - 200;
+    const articleTotal = article.offset + article.height - 600;
 
     if (scrollTop >= headerOffestTop) {
       stickyActive(headerHieght);
@@ -61,11 +61,13 @@ export default () => {
   }
 
   function stickyLocked() {
-    selectors.$container.addClass(cssClasses.locked);
+    // selectors.$container.addClass(cssClasses.locked);
+    selectors.$container.fadeOut(1000);
   }
-
+  
   function stickyUnlock() {
-    selectors.$container.removeClass(cssClasses.locked);
+    // selectors.$container.removeClass(cssClasses.locked);
+    selectors.$container.fadeIn(1000);
   }
 
   /**

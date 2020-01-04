@@ -35,6 +35,10 @@ pagination
     .btn--disabled {
       opacity: 0.2;
     }
+    
+    &.next, &.back {
+      width: 36px;
+    }
   }
 
   &__pages {

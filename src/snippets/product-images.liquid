@@ -77,7 +77,9 @@
               {% if varColor == colorClean %}
                 {% assign productThumbnail = image.src | img_url: '800x'  %}
                 <div class="product-slider-nav__image {% if image.alt contains '.mp4' %}product-slider-nav__image--video{% endif %}">
-                  <img src="{{ productThumbnail }}" alt="{{ image.alt | escape }}">
+                  <div class="product-slider-nav__image-wrapper">
+                    <img src="{{ productThumbnail }}" alt="{{ image.alt | escape }}">
+                  </div>
                 </div>
               {% endif %}
             {% endfor %}

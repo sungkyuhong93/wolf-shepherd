@@ -39,6 +39,9 @@ import '../components/quantity';
 import '../components/select';
 import Loadpage from '../components/loadpage';
 
+import Article from '../snippets/article-slider';
+import ArticleCollectionSlider from '../sections/article-collection-slider';
+
 document.addEventListener('DOMContentLoaded', () => {
   Loadpage().init();
   AjaxCart().init();
@@ -63,6 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (Shopify.theme.role == 'unpublished') {
     console.log(Shopify.theme);
+  }
+
+  if (document.querySelector('.hero-image--ambassador') !== null) {
+    Article().init();
+    ArticleCollectionSlider().init();
   }
 
 });

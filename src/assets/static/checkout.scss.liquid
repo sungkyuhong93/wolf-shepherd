@@ -325,6 +325,34 @@ h2 {
     }
   }
 
+  .logged-in-customer-information__paragraph {
+    span, a {
+      color: $COLOR_PRIMARY;
+      font-family: $FONT_BASE;
+      font-size: 12px;
+    }
+  }
+
+  .logged-in-customer-newsletter {
+    .checkbox-wrapper {
+      display: flex;
+    }
+
+    label[for] {
+      position: static;
+    }
+  }
+
+  .input-checkbox:checked, .input-radio:checked {
+    border: none;
+    -webkit-box-shadow: 0 0 0 10px $COLOR_PRIMARY inset;
+    box-shadow: 0 0 0 10px $COLOR_PRIMARY inset;
+  }
+
+  a {
+    color: $COLOR_PRIMARY;
+  }
+
   .input-checkbox, .main .input-radio {
     border-color: $COLOR_PRIMARY!important;
   }
@@ -450,9 +478,8 @@ h2 {
   .section--shipping-method {
     .content-box__emphasis {
       color: $COLOR_PRIMARY;
-      font-family: $FONT_BODY;
+      font-family: $FONT_BASE;
       font-size: 12px;
-      letter-spacing: 0.25px;
     }
   }
 
@@ -467,6 +494,14 @@ h2 {
         display: table-cell;
       }
     }
+
+    label {
+      display: none;
+    }
+
+    .field__input {
+      border-radius: 0;
+    }
   }
 
   .card-fields-container--loaded {
@@ -477,10 +512,14 @@ h2 {
     }
 
     .field__icon {
-      bottom: -15px;
+      bottom: 1px;
       top: initial;
     }
 
+  }
+
+  .content-box .field__icon .icon-svg--color-adaptive-lighter, .content-box .field__caret .icon-svg--color-adaptive-lighter {
+    color: rgba($COLOR_BLACK, 0.75);
   }
 
   .section--remember-me {
@@ -521,6 +560,10 @@ h2 {
     padding: 0 8px;
     height: 37px;
     transform: none;
+  }
+
+  .section--reductions {
+    display: none;
   }
 }
 
@@ -605,7 +648,7 @@ h2 {
     font-family: $FONT_BODY;
     text-transform: uppercase;
     letter-spacing: 0.25px;
-    font-size: $FONT_SIZE_XSMALL;
+    font-size: 10px;
 
     &:before {
       background-image: $ICON_ARROW_LEFT;
@@ -617,7 +660,7 @@ h2 {
       width: 9px;
       margin-right: 10px;
       position: relative;
-      top: -2px;
+      top: -1px;
     }
   }
 }
@@ -705,6 +748,16 @@ h2 {
 
       span {
         color: $COLOR_PRIMARY;
+      }
+    }
+
+    @media (max-width: 999px) {
+      .product__description__name {
+        padding-bottom: 20px;
+      }
+
+      .product-thumbnail__quantity {
+        top: 0;
       }
     }
 
