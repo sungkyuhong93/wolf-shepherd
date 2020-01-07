@@ -132,18 +132,17 @@
 
         {% if shop.customer_accounts_enabled %}
           <li class="site-nav__helpful-links">
+            <a href="{{section.settings.mobile_footer_one}}">
+              <img src="{{ 'icon-box-wolf.svg' | asset_url }}" alt="Returns and Exchanges">
+              {{section.settings.mobile_footer_title_one}}
+              {% comment %} returns &<br>exchanges {% endcomment %}
+            </a>
 
-          <a href="#">
-            <img src="{{ 'icon-box-wolf.svg' | asset_url }}" alt="Returns and Exchanges">
-            returns &<br>exchanges
-          </a>
-
-          <a href="#">
-            <img src="{{ 'icon-help-wolf.svg' | asset_url }}" alt="Customer service">
-            Customer<br>service
-          </a>
-
-            
+            <a href="{{section.settings.mobile_footer_two}}">
+              <img src="{{ 'icon-help-wolf.svg' | asset_url }}" alt="Customer service">
+              {{section.settings.mobile_footer_title_two}}
+              {% comment %} Customer<br>service {% endcomment %}
+            </a>
           </li>
         {% endif %}
 

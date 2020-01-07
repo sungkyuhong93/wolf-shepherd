@@ -6,7 +6,7 @@ Ajaxt-cart
 .cart-icon__container {
   display: flex;
   position: relative;
-  top: 1px;
+  top: 2px;
 
   &.is-active {
     .cart-count {
@@ -16,6 +16,10 @@ Ajaxt-cart
     svg.icon:not(.icon--full-color) rect, symbol.icon:not(.icon--full-color) rect {
       fill: $COLOR_PRIMARY;
     }
+  }
+
+  @include media-query($tablet-down) {
+    top: 0;
   }
 }
 

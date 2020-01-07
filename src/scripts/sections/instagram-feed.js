@@ -34,7 +34,7 @@ const api = {
 
 export default () => {
 
-  return false;
+  // return false;
 
   function createFeed() {
     const userFeed = new Instafeed({

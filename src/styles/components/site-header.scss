@@ -50,7 +50,7 @@ body {
   &__navigation {
     background-color: $COLOR_WHITE;
     height: calc(100% - 64px);
-    overflow: scroll;
+    overflow: auto;
     padding: 0 20px;
     position: fixed;
     right: -100%;

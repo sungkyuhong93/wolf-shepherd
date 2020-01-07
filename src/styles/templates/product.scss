@@ -65,11 +65,19 @@
 
     [data-product-price] {
       order: -1;
+      position: relative;
+      top: -27px;
     }
   }
 
   @include media-query($tablet-up) {
     display: block;
+
+    &__price {
+      [data-product-price] {
+        position: static;
+      }
+    }
   }
 }
 

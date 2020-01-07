@@ -38,14 +38,27 @@ export default () => {
       asNavFor: nav,
       touchThreshold: 30,
       lazyLoad: 'ondemand',
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            dots: true,
+            arrows: true,
+            prevArrow: '<div class="slick-arrow slick-prev wolf-arrow"></div>',
+            nextArrow: '<div class="slick-arrow slick-next wolf-arrow wolf-arrow--right"></div>',
+          },
+        },
+      ],
     });
 
     nav.slick({
-      slidesToShow: 10,
+      slidesToShow: 7,
       slidesToScroll: 1,
       asNavFor: slider,
-      dots: true,
+      dots: false,
       arrows: true,
+      prevArrow: '<div class="slick-arrow slick-prev wolf-arrow"></div>',
+      nextArrow: '<div class="slick-arrow slick-next wolf-arrow wolf-arrow--right"></div>',
       centerMode: false,
       focusOnSelect: true,
       vertical: false,

@@ -264,6 +264,11 @@ body .reviews-page {
       background: $COLOR_PRIMARY;
     }
 
+    .stamped-review-product a {
+      display: none;
+      color: rgba($COLOR_PRIMARY, 1) !important;
+    }
+
     .stamped-review-option-scale {
       background: $COLOR_GREY;
       border-radius: 2px;
@@ -276,7 +281,12 @@ body .reviews-page {
         font-size: 0!important;
         height: 4px;
         vertical-align: top;
+
+        &:nth-of-type(2), &:nth-of-type(3), &:nth-of-type(4), &:nth-of-type(5) {
+          display: none;
+        }
       }
+
 
       content: attr(data-content);
     }

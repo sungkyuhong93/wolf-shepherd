@@ -73,6 +73,10 @@
     * {
       background-color: $COLOR_WHITE;
     }
+
+    @include media-query($tablet-down) {
+      padding-right: 20px;
+    }
   }
 
   .drift-zoom-pane {
@@ -84,7 +88,7 @@
   display: none;
 }
 
-.product-slider-nav:not(.slick-initialized) {
+.product-slider-nav__container:not(.slick-initialized) {
   display: none;
 }
 
@@ -92,11 +96,53 @@
   cursor: zoom-in;
   overflow: hidden;
   position: relative;
+
+  .slick-dots {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    li {
+      list-style: none;
+
+      &.slick-active button {
+        background: $COLOR_PRIMARY;
+      }
+    }
+
+    button {
+      background: transparent;
+      border: 1px solid $COLOR_PRIMARY;
+      border-radius: 50%;
+      font-size: 0;
+      height: 8px!important;
+      margin: 0 5px;
+      max-width: 8px!important;
+      padding: 0;
+      width: 8px!important;
+    }
+  }
+
+  .slick-prev, .slick-next {
+    background-color: transparent!important;
+    background-size: 14px 24px;
+    border: 0!important;
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .slick-prev {
+    left: -10px;
+    right: initial;
+  }
 }
 
 .product-slider-nav {
   $parent: &;
-  overflow: hidden;
+  width: 80%;
+  // width: 784px;
 
   .slick-track {
     margin-left: 0;
@@ -117,7 +163,7 @@
 
   &__image {
     display: block !important;
-    padding-right: 10px;
+    padding-right: 16px;
     // margin: 10px 10px 10px 0;
 
     img {
@@ -165,35 +211,21 @@
     }
   }
 
+  .slick-prev {
+    display: none !important;
+  }
+
+  .slick-next {
+    background-color: transparent!important;
+    border: 0!important;
+    position: absolute;
+    right: -27px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+
   @include media-query($tablet-down) {
-    .slick-track {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      margin-left: auto;
-      padding: 20px 0;
-    }
-
-    .slick-slide {
-      border: 1px solid $COLOR_PRIMARY;
-      border-radius: 50%;
-      height: 8px!important;
-      margin: 0 5px;
-      width: 8px!important;
-
-      img {
-        display: none;
-      }
-
-      &:hover, &.slick-current {
-        background: $COLOR_PRIMARY;
-      }
-    }
-
-    &__image--video {
-      &::before, &::after {
-        display: none;
-      }
-    }
+    display: none!important;
   }
 }

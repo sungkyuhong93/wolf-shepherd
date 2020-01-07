@@ -29,9 +29,24 @@ width='0' height='0' style='display:none'/>
   {% section 'product-featured-collection-two' %}
 </div>
 
-{% for image in product.images %}
-  <link rel="prefetch" as="image" href="{{ image.src | img_url: '1024x' }}">
-{% endfor %}
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    window.setTimeout(function(){ 
+      var images = new Array()
+      function preload() {
+        for (i = 0; i < preload.arguments.length; i++) {
+          images[i] = new Image()
+          images[i].src = preload.arguments[i]
+        }
+      }
+      preload(
+        {% for image in product.images %}
+          'https:{{ image.src | img_url: '1024x' }}',
+        {% endfor %}
+      )
+    }, 1000);
+  });
+</script>
 
 
 <script type="application/ld+json">

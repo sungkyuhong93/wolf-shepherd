@@ -27,7 +27,7 @@ register('testimonials', {
       focusOnSelect: true,
     });
   },
-  
+
   getSliderSettings() {
     return {
       slidesToShow: 1,
@@ -41,6 +41,7 @@ register('testimonials', {
       dots: false,
       asNavFor: '.testimonials__images',
       touchThreshold: 30,
+      waitForAnimate: false,
       responsive: [
         {
           breakpoint: jsWidth.tabletdown,

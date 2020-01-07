@@ -45,23 +45,25 @@
                   {% endif %}
                 {% endfor %}
                 
-                {% if image.alt contains '.mp4' %}
+                {% if image.alt contains ' ' %}
                   {% assign videoURL = image.alt | split: '//cdn' %}
                   {% assign videoURL = videoURL[1] %}
                   <video autoplay muted loop poster="{{ productImage }}">
                     <source src="//cdn{{videoURL}}" type="video/mp4">
                   </video>
                 {% else %}
+                  {% assign zoomImage = image.src | img_url: '1024x' %}
                   <div js-product-gallery="zoom">
                     {% if loopCounter == 1 %}
-                      <img src="{{ productImage }}" alt="{{ image.alt | escape }}" {{productData}} data-zoom="{{ image.src | img_url: '1024x1024', scale: 2 }}">
+                      <img src="{{ productImage }}" alt="{{ image.alt | escape }}" {{productData}} data-zoom="{{ zoomImage }}">
                     {% else %}
                       <img 
                       class="lazyload" 
                       data-src="{{ productImage }}"
                       alt="{{ image.alt | escape }}" 
-                      {{productData}} data-zoom="{{ image.src | img_url: '1024x1024', scale: 2 }}">
+                      {{productData}} data-zoom="{{ zoomImage }}">
                     {% endif %}
+                    {% comment %} <link rel="preload" as="image" href="{{ zoomImage }}"> {% endcomment %}
                   </div>
                 {% endif %}
 
@@ -70,19 +72,24 @@
             {% endfor %}
           </div>
 
-          <div class="product-slider-nav" id="product-nav--{{colorClean}}">
+          <div class="product-slider-nav">
+            <div class="product-slider-nav__contianer" id="product-nav--{{colorClean}}">
             {% for image in product.images %}
               {% assign varColor = image.alt | split: '//' %}
               {% assign varColor = varColor[0] | handleize %}
               {% if varColor == colorClean %}
                 {% assign productThumbnail = image.src | img_url: '800x'  %}
-                <div class="product-slider-nav__image {% if image.alt contains '.mp4' %}product-slider-nav__image--video{% endif %}">
-                  <div class="product-slider-nav__image-wrapper">
-                    <img src="{{ productThumbnail }}" alt="{{ image.alt | escape }}">
+    
+                  <div class="product-slider-nav__image {% if image.alt contains '.mp4' %}product-slider-nav__image--video{% endif %}">
+                    <div class="product-slider-nav__image-wrapper">
+                      <img src="{{ productThumbnail }}" alt="{{ image.alt | escape }}">
+                    </div>
                   </div>
-                </div>
+                  
               {% endif %}
             {% endfor %}
+            </div>
+
           </div>
 
         {% else %}
@@ -129,7 +136,7 @@
                   </video>
                 {% else %}
                   <div js-product-gallery="zoom">
-                    <img src="{{ productImage }}" alt="{{ image.alt | escape }}" {{productData}} data-zoom="{{ image.src | img_url: '1024x1024', scale: 2 }}">
+                    <img src="{{ productImage }}" alt="{{ image.alt | escape }}" {{productData}} data-zoom="{{ image.src | img_url: '1024x' }}">
                   </div>
                 {% endif %}
 

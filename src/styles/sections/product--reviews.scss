@@ -118,39 +118,87 @@
     .stamped-review-option-scale {
       background: transparent;
       border: 0;
-      overflow: hidden;
+      // overflow: hidden;
 
       i {
+        border-radius: 2px 0 0 2px;
         display: none;
-      }
-
-      span {
-        background: $COLOR_PRIMARY;
-        width: 2px;
-        z-index: 1;
+        height: 4px;
+        position: relative;
 
         &:before {
           background: $COLOR_PRIMARY;
           content: '';
-          height: 4px;
-          left: -600px;
+          height: 8px;
           position: absolute;
           right: 0;
           top: 50%;
           transform: translateY(-50%);
+          width: 2px;
         }
 
-        &:after {
-          background: $COLOR_GREY;
-          content: '';
-          height: 4px;
-          left: 0;
-          position: absolute;
-          right: -600px;
-          top: 50%;
-          transform: translateY(-50%);
-          z-index: -1;
-        }
+        &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5) {
+          display: none!important;
+        } 
+      }
+
+      &:after {
+        background: $COLOR_GREY;
+        content: '';
+        height: 4px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+      }
+    }
+    
+    [data-value^="0"] {
+      i {
+        display: block;
+        background: $COLOR_PRIMARY !important;
+        width: 0%;
+      }
+    }
+    
+    [data-value^="1"] {
+      i {
+        display: block;
+        background: $COLOR_PRIMARY !important;
+        width: 20%;
+      }
+    }
+
+    [data-value^="2"] {
+      i {
+        display: block;
+        background: $COLOR_PRIMARY !important;
+        width: 40%;
+      }
+    }
+
+    [data-value^="3"] {
+      i {
+        display: block;
+        background: $COLOR_PRIMARY !important;
+        width: 60%;
+      }
+    }
+
+    [data-value^="4"] {
+      i {
+        display: block;
+        background: $COLOR_PRIMARY !important;
+        width: 80%;
+      }
+    }
+
+    [data-value^="5"] {
+      i {
+        display: block;
+        background: $COLOR_PRIMARY !important;
+        width: 100%;
       }
     }
   }
@@ -185,6 +233,7 @@
   }
 
   .stamped-content {
+
     .stamped-reviews {
       margin-bottom: 0;
     }
@@ -254,47 +303,56 @@
         font-size: 0!important;
         height: 4px;
         vertical-align: top;
+
+        &:nth-of-type(2), &:nth-of-type(3), &:nth-of-type(4), &:nth-of-type(5) {
+          display: none;
+        }
       }
 
       content: attr(data-content);
     }
+
+    .stamped-review-product a {
+      color: rgba($COLOR_PRIMARY, 1) !important;
+      display: none;
+    }
     
-    [data-value="0"] {
+    [data-value^="0"] {
       span {
         background: $COLOR_PRIMARY !important;
         width: 0%;
       }
     }
     
-    [data-value="1"] {
+    [data-value^="1"] {
       span {
         background: $COLOR_PRIMARY !important;
         width: 20%;
       }
     }
 
-    [data-value="2"] {
+    [data-value^="2"] {
       span {
         background: $COLOR_PRIMARY !important;
         width: 40%;
       }
     }
 
-    [data-value="3"] {
+    [data-value^="3"] {
       span {
         background: $COLOR_PRIMARY !important;
         width: 60%;
       }
     }
 
-    [data-value="4"] {
+    [data-value^="4"] {
       span {
         background: $COLOR_PRIMARY !important;
         width: 80%;
       }
     }
 
-    [data-value="5"] {
+    [data-value^="5"] {
       span {
         background: $COLOR_PRIMARY !important;
         width: 100%;
