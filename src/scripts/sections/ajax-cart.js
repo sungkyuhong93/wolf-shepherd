@@ -6,7 +6,7 @@ import {misc as icons} from '../helpers/svg-map';
 import FreeShipping from '../sections/free-shipping';
 import Navigation from '../sections/navigation';
 import cssClasses from '../helpers/cssClasses';
-import swatch from '../sections/swatch';
+import swatch from '../sections/swatch-product';
 
 /**
  * Export default AjaxCart.

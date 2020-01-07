@@ -1,4 +1,4 @@
-<div class="page-width">
+<div class="page-width" js-swatch-product="main">
   <div class="grid">
     <div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
 
@@ -14,7 +14,6 @@
         <div class="product-meta">
           
           {% include 'product-header' %}
-
           {% include 'product-form' %}
 
           <div class="product-description">
@@ -36,10 +35,22 @@
     </div>
 
     {% unless product == empty %}
-      <script type="application/json" data-product-json>
+      <script type="application/json" id="product" data-product-json>
         {{ product | json }}
       </script>
+      
+      <script id="productInventory" data-inventory-json type="application/json">
+        {% for variant in product.variants %}
+          window.ProductInventoryJSON[{{ variant.id | json }}] = {
+            available: {{ variant.available | json }},
+            id: {{ variant.id | json }},
+            incoming: {{ variant.incoming | json }},
+            inventory_quantity: {{ variant.inventory_quantity | json }},
+          }
+        {% endfor %}
+      </script>
     {% endunless %}
+
 
     </div>
 

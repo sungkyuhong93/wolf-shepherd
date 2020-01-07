@@ -17,11 +17,8 @@ import AjaxCart from '../sections/ajax-cart';
 import Instafeed from '../sections/instagram-feed';
 import GiftWrap from '../sections/giftwrapping';
 import QuickAdd from '../sections/quick-add';
-import Swatch from '../sections/swatch';
 import SwatchCollectionImage from '../sections/swatch-collection-image';
 import VideoModal from '../sections/video-modal';
-import '../sections/product';
-import '../sections/product-miniform';
 
 import '../sections/site-header';
 import '../sections/sticky-nav';
@@ -45,7 +42,6 @@ import ArticleCollectionSlider from '../sections/article-collection-slider';
 document.addEventListener('DOMContentLoaded', () => {
   Loadpage().init();
   AjaxCart().init();
-  Swatch().init();
   GiftWrap().init();
   QuickAdd().init();
   Navigation().init();

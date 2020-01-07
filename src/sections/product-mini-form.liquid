@@ -4,10 +4,10 @@
   onclick="_tfa.push({notify: 'event', name: 'Add_to_Bag', id: 1065515});">
   {% include 'product-form-mini' %}
   {% unless product == empty %}
-      <script type="application/json" data-product-json>
-        {{ product | json }}
-      </script>
-    {% endunless %}
+    <script type="application/json" data-product-json>
+      {{ product | json }}
+    </script>
+  {% endunless %}
 </div>
 
 

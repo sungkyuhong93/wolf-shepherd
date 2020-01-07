@@ -1,34 +1,38 @@
 {% if swatchShow %}
 
-{% assign colorCount = 0 %}
-{% for value in option.values %}
-  {%- if optionName == 'color' or optionName == 'colour' -%}
-    {% assign colorCount = colorCount | plus: 1 %}
-  {%- endif -%}
-{% endfor %}
-
-<h6 class="swatch__header {% if option.name == 'Size' or option.name == 'size' %} swatch__header--flex {% endif %}">
-  {{ option.name }}
-  {%- for value in option.values -%}  
+  {% assign colorCount = 0 %}
+  {% for value in option.values %}
     {%- if optionName == 'color' or optionName == 'colour' -%}
-      {% if option.selected_value == value %}
-        <span js-swatch="color" class="swatch__header__color">{{ value }}</span>
-        <span class="swatch__header__color-count">{{colorCount}} {{colorCount | pluralize: 'color', 'colors' }}</span>
-      {% endif %}
+      {% assign colorCount = colorCount | plus: 1 %}
     {%- endif -%}
-  {%- endfor -%}
-  {%- if option.name == 'Size' or option.name == 'size' -%}
-    <span class="swatch__header__size js--size-guide">{% include 'icons' with icon: 'ruler' %} What size am I?</span>
-  {%- endif -%}
-</h6>
+  {% endfor %}
+  {% assign optionCount = 'option-' | append: forloop.index %}
 
-  <div class="swatch__wrapper {% if option.name == 'Size' or option.name == 'size' %} swatch__wrapper--size {% endif %}">
+  <h6 class="swatch__header {% if option.name == 'Size' or option.name == 'size' %} swatch__header--flex {% endif %}">
+    {{ option.name }}
+    {%- for value in option.values -%}  
+      {%- if optionName == 'color' or optionName == 'colour' -%}
+        {% if option.selected_value == value %}
+          <span js-swatch="color" class="swatch__header__color">{{ value }}</span>
+          <span class="swatch__header__color-count">{{colorCount}} {{colorCount | pluralize: 'color', 'colors' }}</span>
+        {% endif %}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if option.name == 'Size' or option.name == 'size' -%}
+      <span class="swatch__header__size js--size-guide">{% include 'icons' with icon: 'ruler' %} What size am I?</span>
+    {%- endif -%}
+  </h6>
+
+  <div class="swatch__wrapper 
+    {{'option-' | append: forloop.index}} 
+    {% if option.name == 'Size' or option.name == 'size' %} swatch__wrapper--size {% endif %}">
+
     {% if option.name == 'Size' or option.name == 'size' %}
-        <div js-size-toggle="trigger" class="swatch__size-toggle__trigger">
-          <div class="swatch__size-toggle__title">
-            Select Size
-          </div>
+      <div js-size-toggle="trigger" class="swatch__size-toggle__trigger">
+        <div class="swatch__size-toggle__title">
+          Select Size
         </div>
+      </div>
     {% endif %}
 
     {% for value in option.values %}  
@@ -40,23 +44,26 @@
         {% assign swatchBackground = value | handleize | downcase %}
       {% endif%}
 
-      <div class="swatch swatch-product is-loaded swatch-product--{{ value | handleize }}
-      {% if option.selected_value == value %}swatch-product--active{% endif %}
-      {% if optionName == 'color' or optionName == 'colour' %}swatch-product--color{% endif %}
-      {% if optionName == 'size' or optionName == 'Size' %}swatch-product--size {{specialClass}}{% endif %}
-      {% if optionName == 'width' or optionName == 'Width' %}swatch-product--width {{specialClass}}{% endif %}" 
-      data-swatch-value="{{ value | escape }}"
-      style="background-size: {{swatchBackground}};"
-      {% if optionName == 'color' or optionName == 'colour' %}
-        data-slider="product-images__container--{{swatchBackground}}"
-        data-swatch-color="{{value}}"
-      {% endif%}
-      >
+      <div class="swatch swatch-product swatch-product--{{ value | handleize }}
+        {% if option.selected_value == value %}is-active{% endif %}
+        {% if optionName == 'color' or optionName == 'colour' %}swatch-product--color{% endif %}
+        {% if optionName == 'size' or optionName == 'Size' %}swatch-product--size {{specialClass}}{% endif %}
+        {% if optionName == 'width' or optionName == 'Width' %}swatch-product--width {{specialClass}}{% endif %}" 
+        js-product-swatches="container"
+        data-swatch-option="{{optionCount}}"
+        data-swatch-value="{{ value | escape }}"
+        style="background-size: {{swatchBackground}};"
+        {% if optionName == 'color' or optionName == 'colour' %}
+          data-slider="product-images__container--{{swatchBackground}}"
+          data-swatch-color="{{value}}"
+        {% endif%}
+        >
         {% unless optionName == 'color' or optionName == 'colour' %}
           {{ value | escape }}
         {% endunless %}
       </div>
     {% endfor %}
   </div>
+
 
 {% endif %}

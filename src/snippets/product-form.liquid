@@ -14,6 +14,13 @@
   <div class="product-swatches">
     {% unless product.has_only_default_variant %}
       {% for option in product.options_with_values %}
+
+        {% if forloop.index == 2 %}
+          <div class="swatch__size-container" style="border: red 1px solid">
+            <div class="swatch__size-container__title">
+              Select Size
+            </div> 
+        {% endif %}
         
         {% assign swatchShow = false %}      
         {% if settings.show_swatches %}
@@ -43,10 +50,18 @@
               {% endfor %}
             </select>
           </div>
+
           
-          {% include 'swatch-product' with specialClass: 'js-main-form'  %}
+          
+            {% include 'swatch-product' with specialClass: 'js-main-form'  %}
+
 
         </div>
+
+        {% if forloop.last %}
+          </div>
+        {% endif %}
+        
       {% endfor %}
     {% endunless %}
 

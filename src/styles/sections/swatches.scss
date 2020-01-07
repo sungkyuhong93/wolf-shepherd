@@ -229,38 +229,37 @@ Swatches Styles
     padding: 0 5px;
     width: auto;
 
-    &.swatch-product--active, &:hover {
-      // border: 1px solid $COLOR_PRIMARY;
+    &.is-active, &:hover {
       background: $COLOR_PRIMARY_LIGHT;
       box-shadow: none;
     }
   }
 
-  .swatch-product--size {
-    opacity: 0.5;
-
-    &.is-loaded {
-      opacity: 1;
-
-      &.swatch-product--active, &:hover {
-        background: $COLOR_PRIMARY_LIGHT;
-        box-shadow: none;
-      }
-    }
-
+  .swatch-product--size, .swatch-product--width {
     &.is-disabled {
       opacity: 0.5;
 
-      &:hover, &.swatch-product--active {
+      &:hover, &.is--active {
         background: #f0f0f0 !important;
         border: 1px solid #f0f0f0;
         color: #a3aeb7;
         opacity: 1;
       }
     }
-
-    
   }
+
+  // .swatch-product--size {
+  //   opacity: 0.5;
+
+  //   &.is-loaded {
+  //     opacity: 1;
+
+  //     &.swatch-product--active, &:hover {
+  //       background: $COLOR_PRIMARY_LIGHT;
+  //       box-shadow: none;
+  //     }
+  //   }
+  // }
 
   .swatch-product--color {
     border: 0;
@@ -271,7 +270,7 @@ Swatches Styles
     min-width: 24px;
     width: 24px;
 
-    &.swatch-product--active, &:hover {
+    &.is-active, &:hover {
       border: 0;
       box-shadow: 0 0 0 1px $COLOR_SWATCH_BORDER, 0 0 0 2px $COLOR_WHITE, 0 0 0 3px $COLOR_BLACK;
     }
@@ -315,7 +314,7 @@ Swatches Styles
         .swatch__size-toggle__title {
           margin-bottom: 12px;
         }
-        
+
         .swatch__size-toggle__trigger {
           padding-bottom: 0;
         }
