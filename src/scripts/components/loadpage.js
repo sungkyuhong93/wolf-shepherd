@@ -16,8 +16,10 @@ export default () => {
    * Initialise component.
    */
   function init() {
-    document.querySelector('#MainContent').classList.add('is-loaded');
-    document.querySelector('.cart-ajax__wrapper').classList.add('is-loaded');
+    setTimeout(function(){ 
+      document.querySelector('#MainContent').classList.add('is-loaded');
+      document.querySelector('.cart-ajax__wrapper').classList.add('is-loaded');
+    }, 500);
   }
 
   /**

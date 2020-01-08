@@ -35,6 +35,7 @@ import '../components/form';
 import '../components/type';
 import '../components/quantity';
 import '../components/select';
+import '../components/slide-to';
 import Loadpage from '../components/loadpage';
 
 import Article from '../snippets/article-slider';

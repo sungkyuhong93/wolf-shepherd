@@ -106,8 +106,10 @@
 
 <!-- affirm price -->
 {% comment %} <p>affirm</p> {% endcomment %}
+<span data-page-type="product" data-amount="{{variant.price}}" data-affirm-color="black"></span>
+
 {% if product.type == 'Seconds' or product.type == 'Shoes' %}
 {% unless product.tags contains 'accessories'%}
-	<p class="affirm-as-low-as" data-page-type="product" data-amount="{{variant.price}}" data-affirm-color="black"></p>
+	{% comment %} <p class="affirm-as-low-as" data-page-type="product" data-amount="{{variant.price}}" data-affirm-color="black"></p> {% endcomment %}
 {% endunless %}
 {% endif %}

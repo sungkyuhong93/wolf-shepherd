@@ -83,6 +83,44 @@
 
 .product-form {
   margin-bottom: 24px;
+
+  .spurit-po-wrapper {
+    width: 100%;
+
+    .design-pre-order-template-wrapper {
+      display: flex;
+      flex-direction: column-reverse;
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .pre-order-2-button {
+    @extend .button;
+    width: 100%;
+  }
+
+  .spurit-po-wrapper .design-pre-order-template-wrapper.hover-visible.right-direction .pre-order-2-message,
+  .pre-order-message, .pre-order-2-message {
+    background: $COLOR_PRIMARY_LIGHT;
+    border: 0;
+    border-radius: 0;
+    box-sizing: border-box;
+    color: $COLOR_PRIMARY;
+    font-family: $FONT_BASE;
+    font-size: $FONT_SIZE_XSMALL;
+    margin-bottom: 16px;
+    max-width: 100%;
+    opacity: 1;
+    padding: 20px;
+    position: static;
+    text-align: center;
+    transform: none;
+    width: 100%;
+  }
 }
 
 .product-description {

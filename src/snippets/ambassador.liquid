@@ -1,34 +1,48 @@
 <div class="article">
   {%- for block in section.blocks -%}
     {% if block.type == 'image_slider' %}
-      {% include 'ambassador-slider' %}
+      <div id="{{block.settings.id}}">
+        {% include 'ambassador-slider' %}
+      </div>
     {% elsif block.type == 'hero' %}
-      {% include 'hero-image' with type: 'block', specialClass: 'hero-image--ambassador' %}
+      <div id="{{block.settings.id}}">
+        {% include 'hero-image' with type: 'block', specialClass: 'hero-image--ambassador' %}
+      </div>
     {% elsif block.type == 'image_with_text' %}
-      {% include 'image-and-text' with type: 'block' %}
+      <div id="{{block.settings.id}}">
+        {% include 'image-and-text' with type: 'block' %}
+      </div>
     {% elsif block.type == 'featured_collection' %}
-      {% include 'ambassador-featured-collection' %}
+      <div id="{{block.settings.id}}">
+        {% include 'ambassador-featured-collection' %}
+      </div>
     {% elsif block.type == 'image' %}
-      <div class="article__image {{block.settings.margin_bottom}}">
-        <img src="{{block.settings.image | img_url: '1200x' }}" alt="{{block.settings.image.alt}}">
+      <div id="{{block.settings.id}}">
+        <div class="article__image {{block.settings.margin_bottom}}">
+          <img src="{{block.settings.image | img_url: '1200x' }}" alt="{{block.settings.image.alt}}">
+        </div>
       </div>
     {% elsif block.type == 'video' %}
-      <div class="article__video {{block.settings.margin_bottom}}">
-        {% if block.settings.mp4 != blank %}
-          <video autoplay muted loop poster="{{ block.settings.image }}">
-            <source src="{{block.settings.mp4}}" type="video/mp4">
-            <source src="{{block.settings.ogg}}" type="video/ogg">
-            Your browser does not support HTML5 video.
-          </video>
-      {% endif %}
+      <div id="{{block.settings.id}}">
+        <div class="article__video {{block.settings.margin_bottom}}">
+          {% if block.settings.mp4 != blank %}
+            <video autoplay muted loop poster="{{ block.settings.image }}">
+              <source src="{{block.settings.mp4}}" type="video/mp4">
+              <source src="{{block.settings.ogg}}" type="video/ogg">
+              Your browser does not support HTML5 video.
+            </video>
+        {% endif %}
+        </div>
       </div>
     {% elsif block.type == 'quote' %}
-      <div class="article__quote {{block.settings.margin_bottom}}">
-        <div class="page-width">
-          <div class="grid">
-            <div class="grid__item medium-up--one-whole large-up--ten-twelfths large-up--push-one-twelfth">
-              <h3>{{block.settings.title}}</h3>
-              <h6>{{block.settings.cite}}</h6>
+      <div id="{{block.settings.id}}">
+        <div class="article__quote {{block.settings.margin_bottom}}">
+          <div class="page-width">
+            <div class="grid">
+              <div class="grid__item medium-up--one-whole large-up--ten-twelfths large-up--push-one-twelfth">
+                <h3>{{block.settings.title}}</h3>
+                <h6>{{block.settings.cite}}</h6>
+              </div>
             </div>
           </div>
         </div>
