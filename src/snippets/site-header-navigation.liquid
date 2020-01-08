@@ -12,7 +12,7 @@
           {% assign meganav = true %}
           <li class="site-nav__item site-nav__item--has-meganav {% if link.active %}site-nav__link--active{% endif %}" 
             js-mega-nav="desktop-nav">
-            <a class="site-nav__link" href="{{ link.url }}" tab-index="1" aria-expanded="false" aria-haspopup="true">
+            <a class="site-nav__link" js-meganav="trigger" href="{{ link.url }}" tab-index="1" aria-expanded="false" aria-haspopup="true">
               {{ link.title }}
             </a>
             {% comment %} <button type="button">
@@ -30,7 +30,7 @@
       {% endcomment %}
       {% if link.levels == 0 and meganav != true %}
         <li class="site-nav__item" data-meganav-parent="{{ link.title | handle }}" tab-index="1" aria-expanded="false" aria-haspopup="false">
-          <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" href="{{ link.url }}">
+          <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" js-meganav="trigger" href="{{ link.url }}">
             {{ link.title }}
           </a>
         </li>
@@ -43,11 +43,11 @@
       {% elsif link.levels == 1 and meganav != true %}
         <li class="site-nav__item site-nav__item--has-dropdown" data-meganav-parent="{{ link.title | handle }}" tab-index="1" aria-expanded="false" aria-haspopup="true">
           {% if link.title contains 'ommunity' %}
-            <a class="site-nav__link secret-a {% if link.active %}site-nav__link--active{% endif %}" href="#!">
+            <a class="site-nav__link secret-a {% if link.active %}site-nav__link--active{% endif %}" js-meganav="trigger" href="#!">
               {{ link.title }}
             </a>
           {% else %}
-            <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" href="{{ link.url }}">
+            <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" js-meganav="trigger" href="{{ link.url }}">
               {{ link.title }}
             </a>
           {% endif %}

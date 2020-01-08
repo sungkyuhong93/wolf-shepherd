@@ -181,7 +181,7 @@ site nav
       outline: none;
       position: relative;
 
-      &:hover, &:focus, &:focus-within {
+      &:hover, &:focus, &.is-active {
         &::after {
           bottom: -40px;
           content: '';
@@ -227,7 +227,7 @@ site nav
     &__item--has-meganav {
       position: relative;
 
-      &:hover, &:focus, &:focus-within {
+      &:hover, &:focus, &.is-active {
         &::after {
           bottom: -40px;
           content: '';

@@ -8,6 +8,8 @@ const selectors = {
   mobileNav: '[js-nav="mobile"]',
   siteHeader: '[js-site-header="true"]',
   siteHeaderOverlay: '[js-site-header="overlay"]',
+  meganavTrigger: '[js-meganav="trigger"]',
+  siteNavitem: '.site-nav__item',
 };
 
 export default () => {
@@ -20,6 +22,7 @@ export default () => {
     mobileNav: document.querySelector(selectors.mobileNav),
     siteHeader: document.querySelector(selectors.siteHeader),
     siteHeaderOverlay: document.querySelector(selectors.siteHeaderOverlay),
+    meganavTrigger: document.querySelectorAll(selectors.meganavTrigger),
   };
 
   /**
@@ -29,6 +32,15 @@ export default () => {
     nodeSelectors.navTrigger.addEventListener('click', toggleActiveState);
     nodeSelectors.siteHeaderOverlay.addEventListener('click', removeActiveState);
     document.documentElement.addEventListener('keydown', handleKeydown);
+    
+    nodeSelectors.meganavTrigger.forEach((element) => {
+      element.addEventListener('focus', handleMeganav);
+    });
+
+    nodeSelectors.siteNavitem.forEach((element) => {
+      element.addEventListener('blur', handleMeganavClear);
+    });
+
   }
 
   function toggleActiveState() {
@@ -42,6 +54,7 @@ export default () => {
   function handleKeydown(ev) {
     if (ev.keyCode === 27) {
       removeActiveState();
+      removeAllMeganav();
     }
   }
 
@@ -53,6 +66,19 @@ export default () => {
   function addActiveState() {
     nodeSelectors.mobileNav.classList.add(cssClasses.active);
     document.querySelector('body').style.overflowY = 'hidden';
+  }
+
+  function handleMeganav(element) {
+    removeAllMeganav(element);
+    $(element.target).parent().addClass(cssClasses.active);
+  }
+
+  function handleMeganavClear(element) {
+    $(element.target).removeClass(cssClasses.active);
+  }
+
+  function removeAllMeganav() {
+    $('[js-meganav="trigger"]').parent().removeClass(cssClasses.active);
   }
 
   /**
