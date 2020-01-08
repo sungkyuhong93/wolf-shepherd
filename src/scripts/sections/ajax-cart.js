@@ -263,9 +263,6 @@ export default () => {
     }
 
     updateTotals();
-    if (theme.ajaxCart.upsellEnable !== false) {
-      // relateProducts(cart);
-    }
   }
 
   // Gift wrapping product check
@@ -314,53 +311,6 @@ export default () => {
           </div>`;
 
     return cartRow;
-  }
-
-  function relateProducts(cart) {
-    const relateProductsArray = [];
-
-    if ($(window).width() < 750) {
-      return false;
-    }
-
-    $.each(cartUpsell.slice(0,3), (i, item) => {
-      const collectionItem = item;
-      const collectionItemVar = collectionItem.variants[0].id;
-      var relateBoo = false;
-
-      $.each(cart.items, (i, cartItem) => {
-        if (cartItem.id === collectionItemVar) {
-          relateBoo = true;
-        }
-        return i<2;
-      });
-
-      if (relateBoo === false) {
-        const relatedProductImage = `<div class="ajax-related__product-image" style="background-image:url(${collectionItem.featured_image})"></div>`;
-        const relatedProductTitle = `
-          <div class="ajax-related__text">
-            <h5 class="ajax-related__product-title">${collectionItem.title}</h5>
-            <p class="ajax-related__product-price">${formatMoney(collectionItem.price, theme.moneyFormat).replace('.00','')}</p>
-            <div class="button ajax-related__button">VIEW NOW</div>
-          </div>`;
-        const relatedProductNode = `
-          <a href="/products/${collectionItem.handle}" class="ajax-related__product-wrapper">
-            ${relatedProductImage}
-            ${relatedProductTitle}
-          </a>`;
-
-        relateProductsArray.push(relatedProductNode);
-      }
-    });
-
-    if (relateProductsArray.length === 0) {
-      $('.ajax-related').removeClass(cssClasses.active);
-    } else {
-      $('.ajax-related').addClass(cssClasses.active);
-    }
-
-    $('.ajax-related__container').html(relateProductsArray);
-    return;
   }
 
   // Cart Page

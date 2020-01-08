@@ -48,6 +48,7 @@ export default (config) => {
   function handleClick(element) {
     const target = element.target;
     if (target.dataset.swatchOption === 'option-1') {
+      console.log('click');
       optionActive(target, 1);
       checkInventory(target);
       updateColorTitle(target);
@@ -161,7 +162,7 @@ export default (config) => {
     const swatchValue = $this.attr('data-swatch-value');
     const swatchOption = $this.attr('data-swatch-option').replace('-', '');
 
-    $(`[data-index="${swatchOption}"]`).val(swatchValue).trigger('change');
+    $(`${config.container} [data-index="${swatchOption}"]`).val(swatchValue).trigger('change');
   }
 
   function updateSlider(target) {

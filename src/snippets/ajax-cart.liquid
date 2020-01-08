@@ -88,7 +88,7 @@
             </h5>
             <div class="ajax-related__container">
               {%- for product in collections[upsell].products -%}
-                <div class="ajax-related__product-wrapper">
+                <div class="ajax-related__product-wrapper" js-ajax-cart="ajax-product-{{forloop.index}}">
                   <a href="{{product.url}}" class="ajax-related__product-image" style="background-image:url({{product.featured_image.src | img_url: '440x'}})"></a>
 
                   <div class="ajax-related__text">
@@ -107,8 +107,4 @@
 </div>
 {%- endif -%}
 
-<script>
-  // <![CDATA[
-  var cartUpsell   = {{ collections[upsell].products | json }};
-  // ]]>
-</script>
+

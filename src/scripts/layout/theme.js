@@ -28,6 +28,7 @@ import '../sections/collection-page';
 import '../sections/features';
 import '../sections/reviews';
 import '../sections/testimonials';
+import SwatchProduct from '../sections/swatch-product';
 
 import Accordion from '../components/accordion';
 import '../components/form';
@@ -55,6 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }).init();
     Accordion('.accordion').showInitialItem();
   }
+
+  SwatchProduct({
+    container: '[js-ajax-cart="ajax-product-1"]',
+    updateSlider: false,
+  }).init();
+
+  SwatchProduct({
+    container: '[js-ajax-cart="ajax-product-2"]',
+    updateSlider: false,
+  }).init();
 
   Instafeed();
 
