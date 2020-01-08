@@ -28,7 +28,7 @@
 
 {% if sectionEnable %}
 
-  <div class="{% if sectionMarginBottom == 'margin' %}section-margin-bottom{% endif %}">
+  <div class="{% if sectionMarginBottom == 'margin' %}section-margin-bottom{% endif %}" style="overflow: hidden;">
     {% if sectionFullWidth != 'full-width' %}<div class="page-width page-width--hero-image">{% endif %}
 
       <div js-video-modal="container" class="video-modal {{textColor}}">

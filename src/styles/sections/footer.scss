@@ -59,6 +59,22 @@
     }
   }
 
+  input[type=email] {
+    color: $COLOR_WHITE;
+
+    &::-webkit-input-placeholder { /* Edge */
+      color: $COLOR_WHITE;
+    }
+
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: $COLOR_WHITE;
+    }
+
+    &::placeholder {
+      color: $COLOR_WHITE;
+    }
+  }
+
   @include media-query($small) {
     .grid {
       display: flex;
