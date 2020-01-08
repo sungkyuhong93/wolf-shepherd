@@ -248,19 +248,6 @@ Swatches Styles
     }
   }
 
-  // .swatch-product--size {
-  //   opacity: 0.5;
-
-  //   &.is-loaded {
-  //     opacity: 1;
-
-  //     &.swatch-product--active, &:hover {
-  //       background: $COLOR_PRIMARY_LIGHT;
-  //       box-shadow: none;
-  //     }
-  //   }
-  // }
-
   .swatch-product--color {
     border: 0;
     border-radius: 100%;
@@ -275,11 +262,38 @@ Swatches Styles
       box-shadow: 0 0 0 1px $COLOR_SWATCH_BORDER, 0 0 0 2px $COLOR_WHITE, 0 0 0 3px $COLOR_BLACK;
     }
   }
+
+  .swatch__wrapper.option-3 {
+    justify-content: space-between;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+
+    .swatch {
+      margin-left: 0;
+      margin-right: 0;
+      width: 33.333%;
+      
+      &:nth-child(2) {
+        border-left: 0;
+        border-right: 0;
+      }
+    }
+  }
 }
 
 .product-form {
+  .swatch__size-container__title,
+  .swatch__header--tablet {
+    display: none;
+  }
+
   @include media-query($tablet-down) {
-    .swatch__wrapper--size {
+    .swatch__header--tablet {
+      display: flex;
+    }
+
+    .swatch__size-container {
       background-image: $ICON_ARROW_DOWN;
       background-position: calc(100% - 20px) 17px;
       background-repeat: no-repeat;
@@ -298,12 +312,51 @@ Swatches Styles
       text-transform: uppercase;
       width: 100%;
 
-      .swatch__size-toggle__trigger {
+      .swatch__size-container__title {
+        display: block;
         padding: 10px 28px 10px 12px;
         width: 100%;
       }
 
-      .swatch {
+      .swatch__size-container__content {
+        display: none;
+        padding: 12px 16px 32px;
+        position: relative;
+      }
+
+      .swatch__header {
+        display: flex;
+        justify-content: center;
+        position: static;
+        text-align: center;
+      }
+
+      .selector-wrapper--size {
+        .swatch__header {
+          margin-bottom: 0;
+        }
+
+        .swatch__header__text {
+          display: none;
+        }
+      }
+
+      .swatch__header__size {
+        bottom: 16px;
+        display: flex;
+        float: none;
+        justify-content: center;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: inherit;
+      }
+
+      .swatch__size-container__title-trigger {
+        display: block;
+      }
+
+      .swatch__size-container__title-text {
         display: none;
       }
 
@@ -311,17 +364,29 @@ Swatches Styles
         background-image: $ICON_ARROW_UP;
         padding-bottom: 0;
 
-        .swatch__size-toggle__title {
-          margin-bottom: 12px;
-        }
-
-        .swatch__size-toggle__trigger {
-          padding-bottom: 0;
-        }
-
-        .swatch {
+        .swatch__size-container__content {
           display: block;
         }
+
+        .swatch__size-container__title-trigger {
+          display: none;
+        }
+
+        .swatch__size-container__title-text {
+          display: block;
+        }
+
+        // .swatch__size-toggle__title {
+        //   margin-bottom: 12px;
+        // }
+
+        // .swatch__size-toggle__trigger {
+        //   padding-bottom: 0;
+        // }
+
+        // .swatch {
+        //   display: block;
+        // }
       }
     }
   }

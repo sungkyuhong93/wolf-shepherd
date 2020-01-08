@@ -9,7 +9,7 @@
   {% assign optionCount = 'option-' | append: forloop.index %}
 
   <h6 class="swatch__header {% if option.name == 'Size' or option.name == 'size' %} swatch__header--flex {% endif %}">
-    {{ option.name }}
+    <span class="swatch__header__text">{{ option.name }}</span>
     {%- for value in option.values -%}  
       {%- if optionName == 'color' or optionName == 'colour' -%}
         {% if option.selected_value == value %}
@@ -26,14 +26,6 @@
   <div class="swatch__wrapper 
     {{'option-' | append: forloop.index}} 
     {% if option.name == 'Size' or option.name == 'size' %} swatch__wrapper--size {% endif %}">
-
-    {% if option.name == 'Size' or option.name == 'size' %}
-      <div js-size-toggle="trigger" class="swatch__size-toggle__trigger">
-        <div class="swatch__size-toggle__title">
-          Select Size
-        </div>
-      </div>
-    {% endif %}
 
     {% for value in option.values %}  
 

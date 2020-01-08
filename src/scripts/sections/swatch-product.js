@@ -51,15 +51,16 @@ export default (config) => {
       optionActive(target, 1);
       checkInventory(target);
       updateColorTitle(target);
-
+      
       if (config.updateSlider === true) {
         updateSlider(target);
       }
     }
-
+    
     if (target.dataset.swatchOption === 'option-2') {
       optionActive(target, 2);
       checkInventory(target);
+      updateSizeTitle(target);
     }
 
     if (target.dataset.swatchOption === 'option-3') {
@@ -176,6 +177,12 @@ export default (config) => {
     container.querySelector('[js-swatch="color"]').innerHTML = swatchColor;
   }
 
+  function updateSizeTitle(target) {
+    const swatchSize = target.dataset.swatchValue;
+
+    container.querySelector('[js-swatch="size"]').innerHTML = `SIZE: ${swatchSize}`;
+  }
+
   function openMiniSwatch() {
     const $details = $('.product-form-mini__details');
     $details.addClass(cssClasses.active);
@@ -188,7 +195,7 @@ export default (config) => {
 
   function toggleSize(element) {
     const target = element.target;
-    const wrapper = container.querySelector('.swatch__wrapper--size');
+    const wrapper = container.querySelector('.swatch__size-container');
     if (target.classList.contains(cssClasses.active)) {
       target.classList.remove(cssClasses.active);
       wrapper.classList.remove(cssClasses.active);

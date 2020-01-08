@@ -3,23 +3,28 @@
   method="post" 
   enctype="multipart/form-data" 
   onclick="_tfa.push({notify: 'event', name: 'Add_to_Bag', id: 1065515});">
-  {% if section.settings.additional_label %}
-    {% comment %} 
-    <div class="additional_label text-center uppercase">
-      {{section.settings.additional_label}}
-    </div> 
-    {% endcomment %}
-  {% endif %}
 
   <div class="product-swatches">
     {% unless product.has_only_default_variant %}
       {% for option in product.options_with_values %}
 
         {% if forloop.index == 2 %}
-          <div class="swatch__size-container" style="border: red 1px solid">
-            <div class="swatch__size-container__title">
-              Select Size
-            </div> 
+          <h6 class="swatch__header swatch__header--flex swatch__header--tablet">
+            Size
+            <span class="swatch__header__size js--size-guide">{% include 'icons' with icon: 'ruler' %} What size am I?</span>
+          </h6>
+          <div class="swatch__size-container">
+            <div class="swatch__size-container__title" js-size-toggle="trigger">
+              <span class="swatch__size-container__title-trigger" js-swatch="size">
+                {% for value in option.values %}  
+                  {% if option.selected_value == value %}
+                    SIZE: {{value}}
+                  {% endif %}
+                {% endfor %}
+              </span>
+              <span class="swatch__size-container__title-text">SELECT SIZE</span>
+            </div>
+            <div class="swatch__size-container__content">
         {% endif %}
         
         {% assign swatchShow = false %}      
@@ -59,6 +64,7 @@
         </div>
 
         {% if forloop.last %}
+            </div>
           </div>
         {% endif %}
         

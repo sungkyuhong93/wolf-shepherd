@@ -201,7 +201,9 @@ export default () => {
     selectors.$cartBody.addClass('cart-ajax--show');
     cartOpened = true;
     scrollLockDown();
-    swatch().closeMiniSwatch();
+    swatch({
+      container: '[data-section-type="product-miniform"]',
+    }).closeMiniSwatch();
   }
 
   // Ajax Cart Close
