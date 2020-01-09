@@ -632,3 +632,8 @@ $selectric-font-size:       12px !default;                                      
     }
   }
 }
+
+// IE/EDGE Support
+.form-vertical input[type="text"]::-ms-input-placeholder { color: transparent!important; }
+.form-vertical input[type="email"]::-ms-input-placeholder { color: transparent!important; }
+.form-vertical input[type="password"]::-ms-input-placeholder { color: transparent!important; }
