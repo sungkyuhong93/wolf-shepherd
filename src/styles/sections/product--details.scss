@@ -114,3 +114,12 @@
     padding: 64px 20px;
   }
 }
+
+.affirm-as-low-as {
+  padding-top: 22px;
+  font-size: $FONT_SIZE_XSMALL;
+
+  a {
+    text-decoration: underline;
+  }
+}
