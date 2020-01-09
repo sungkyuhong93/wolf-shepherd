@@ -23,16 +23,23 @@
 
             {%- assign collectionCounterClass = 'grid__item small--one-half medium-up--one-quarter' -%}
 
-            <div class="collection-carousel--article">
-              {% for i in (1..6) %}
-                {% assign relatedProduct = 'related_product_' | append: i %}
-                {% if article.metafields.article[relatedProduct] %}
-                  {% assign relatedProductField = article.metafields.article[relatedProduct] %}
-                  {% assign product = all_products[relatedProductField] %}
-                  {% include 'collection-grid-product' with gridWidth: collectionCounterClass  %}
-                {% endif %}
-              {% endfor %}
+            {%- assign collectionCounterClass = 'swiper-slide' -%}
+
+            <div class="swiper-container collection-carousel--article">
+              <div class="swiper-wrapper">
+                {% for i in (1..6) %}
+                  {% assign relatedProduct = 'related_product_' | append: i %}
+                  {% if article.metafields.article[relatedProduct] %}
+                    {% assign relatedProductField = article.metafields.article[relatedProduct] %}
+                    {% assign product = all_products[relatedProductField] %}
+                    {% include 'collection-grid-product' with gridWidth: collectionCounterClass  %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <div class="swiper-button-prev wolf-arrow"></div>
+              <div class="swiper-button-next wolf-arrow wolf-arrow--right"></div>
             </div>
+          </div>
 
           </div>
         </div>

@@ -12,7 +12,6 @@ theme.SlideTo = (function() {
       scrollTop: $(slideLink).offset().top - navHeight
     }, 1500);
   });
-
 })();
 
 

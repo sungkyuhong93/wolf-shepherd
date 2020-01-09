@@ -43,3 +43,12 @@ All developers who wish to contribute through code or issues, take a look at the
 ## License
 
 Copyright © 2018 Shopify. See [LICENSE](https://github.com/Shopify/starter-theme/blob/master/LICENSE) for further details.
+
+
+## Terminal errors 
+
+How to fix the error message in slate
+Update the return Axios code in the slate-analytics/index.js file.
+node_modules/@shopify/slate-analytics/index.js
+Update the code in line 95
+return axios('https://v.shopify.com/slate/track', axiosConfig).catch(() => {});

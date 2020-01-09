@@ -64,8 +64,10 @@
         </div>
 
         {% if forloop.last %}
+          {% unless forloop.first %}
             </div>
           </div>
+          {% endunless %}
         {% endif %}
         
       {% endfor %}

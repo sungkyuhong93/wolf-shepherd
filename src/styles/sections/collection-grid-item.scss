@@ -118,6 +118,7 @@
       margin: 0 0 16px !important;
       opacity: 1;
       transition: 0.8s;
+      white-space: nowrap;
     }
 
     [data-rating="0.0"] {
@@ -145,16 +146,11 @@
     }
 
     &__review {
-
       .stamped-badge-starrating {
         margin-right: 6px !important;
         padding-right: 6px;
       }
 
-      .stamped-badge-caption {
-        // letter-spacing: 0.   4px;
-      }
-      
       i:before {
         font-size: $FONT_SIZE_XSMALL;
       }
@@ -169,6 +165,14 @@
       align-items: center;
       display: flex !important;
       justify-content: center;
+
+      i:before {
+        font-size: 14px;
+      }
+
+      .stamped-badge-caption {
+        font-size: 12px;
+      }
     }
 
     #{$parent}__first-image {

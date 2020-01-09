@@ -82,10 +82,14 @@
 }
 
 .product-shoe-image {
+  // background: $COLOR_GREY;
+  background-color: #f6f6f6;
+  padding: 36px 20px;
+  text-align: center;
   width: 100%;
 
   &__mobile {
-
+    display: none;
   }
 
   &__tablet {
@@ -93,35 +97,20 @@
   }
 
   &__desktop {
-    display: none;
+    // display: none;
+  }
+
+  img {
+    margin: 0 auto;
+    max-width: 780px;
+    width: 100%;
   }
 
   @media (min-width: 749px) {
-    &__mobile {
-      display: none;
-    }
-  
-    &__tablet {
-      display: block;
-    }
-  
-    &__desktop {
-      display: none;
-    }
+    padding: 42px 20px;
   }
 
   @media (min-width: 1024px) {
-
-    &__mobile {
-      display: none;
-    }
-  
-    &__tablet {
-      display: none;
-    }
-  
-    &__desktop {
-      display: block;
-    }
+    padding: 64px 20px;
   }
 }

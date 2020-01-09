@@ -12,9 +12,12 @@
 {% if sectionEnable %}
   {% if sectionFullWidth != 'full-width' %}<div class="page-width">{% endif %}
 
+
+
   <div class="product-shoe-image {{ sectionMarginBottom }}">
-    <img class="product-shoe-image__mobile lazyload" data-src="{{ sectionImageMobile }}" alt="{{sectionImageMobileAlt}}"/>
-    <img class="product-shoe-image__tablet lazyload" data-src="{{ sectionImageTablet }}" alt="{{sectionImageTabletAlt}}"/>
+
+    {% include 'header' with title: section.settings.title, text: section.settings.text %}
+
     <img class="product-shoe-image__desktop lazyload" data-src="{{ sectionImage }}" alt="{{sectionImageAlt}}"/>
   </div>
 
@@ -65,21 +68,21 @@
         ]
       },
       {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Perfomance Shoe"
+      },
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Text",
+        "default": "We took the best principles from designing running shoes and applied them<br> to classic and timeless dress shoes you can wear all day."
+      },
+      {
         "type": "image_picker",
         "id": "image",
         "label": "Desktop image",
-        "info": "Advised size:"
-      },
-      {
-        "type": "image_picker",
-        "id": "image_tablet",
-        "label": "Tablet image",
-        "info": "Advised size:"
-      },
-      {
-        "type": "image_picker",
-        "id": "image_mobile",
-        "label": "Mobile image",
         "info": "Advised size:"
       }
     ]

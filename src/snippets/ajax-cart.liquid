@@ -92,7 +92,7 @@
                   <a href="{{product.url}}" class="ajax-related__product-image" style="background-image:url({{product.featured_image.src | img_url: '440x'}})"></a>
 
                   <div class="ajax-related__text">
-                    <h5 class="ajax-related__product-title">{{product.title}}</h5>
+                    <a href="{{product.url}}" class="h5 ajax-related__product-title">{{product.title}}</a>
                     {% include 'ajaxcart-product-form' %}
                   </div>
                 </div>

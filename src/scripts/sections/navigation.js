@@ -23,6 +23,7 @@ export default () => {
     siteHeader: document.querySelector(selectors.siteHeader),
     siteHeaderOverlay: document.querySelector(selectors.siteHeaderOverlay),
     meganavTrigger: document.querySelectorAll(selectors.meganavTrigger),
+    siteNavitem: document.querySelectorAll(selectors.siteNavitem),
   };
 
   /**

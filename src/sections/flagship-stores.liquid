@@ -5,22 +5,27 @@
         <div class="flagship">
           {%- for block in section.blocks -%}
 
-            <div class="flagship__store">
-              <div class="flagship__store-image">
-                <img src="{{block.settings.store | img_url: 'master' }}" alt="{{block.settings.store.alt}}"/>
-              </div>
-              <div class="flagship__store-info">
-                <div class="flagship__store-text">
-                  <h3>{{block.settings.title}}</h3>
-                  <div class="flagship__store-content">{{block.settings.text}}</div>
-                  <a href="{{block.settings.link}}" class="button--white button--white--compress" title="{{block.settings.link_text}}">
-                    {{block.settings.link_text}}
-                    {% comment %} <div class="wolf-arrow wolf-arrow--right"></div> {% endcomment %}
-                  </a>
+            <div id="{{block.settings.id}}">
+              <div class="flagship__store">
+                <div class="flagship__store-image">
+                  <img src="{{block.settings.store | img_url: 'master' }}" alt="{{block.settings.store.alt}}"/>
                 </div>
-                <img src="{{block.settings.map | img_url: 'master' }}" alt="{{block.settings.store.alt}}"/>
+                <div class="flagship__store-info">
+                  <div class="flagship__store-text">
+                    <h3>{{block.settings.title}}</h3>
+                    <div class="flagship__store-content">{{block.settings.text}}</div>
+                    <a href="{{block.settings.link}}" class="button--white button--white--compress" title="{{block.settings.link_text}}">
+                      {{block.settings.link_text}}
+                      {% comment %} <div class="wolf-arrow wolf-arrow--right"></div> {% endcomment %}
+                    </a>
+                  </div>
+                  <div class="flagship__store-img">
+                    <img src="{{block.settings.map | img_url: 'master' }}" alt="{{block.settings.store.alt}}"/>
+                  </div>
+                </div>
               </div>
             </div>
+
           {%- endfor -%}
         </div>
       </div>
@@ -36,6 +41,11 @@
         "type": "newstore",
         "name": "Store",
         "settings": [
+          {
+            "type": "text",
+            "id": "id",
+            "label": "Section ID"
+          },
           {
             "type": "image_picker",
             "id": "store",

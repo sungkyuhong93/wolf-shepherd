@@ -1,62 +1,41 @@
-import $ from 'jquery';
 import {register} from '@shopify/theme-sections';
-import _ from 'slick-carousel';
-import jsWidth from '../helpers/screenWidths';
+import Swiper from 'swiper';
 
 register('featured-collection-section', {
   onLoad() {
     this.init();
   },
 
-  onSelect() {
-    this.cleanSlick();
-  },
-
   init() {
-    this.cleanSlick(this.id);
+    this.cleanSlide(this.id);
   },
 
-  getSliderSettings() {
-    return {
-      arrows: true,
-      vertical: false,
-      prevArrow: '<div class="slick-arrow slick-prev wolf-arrow"></div>',
-      nextArrow: '<div class="slick-arrow slick-next wolf-arrow wolf-arrow--right"></div>',
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      infinite: true,
-      dots: false,
-      adaptiveHeight: false,
-      speed: 300,
-      touchThreshold: 30,
-      lazyLoad: 'ondemand',
-      responsive: [
-        {
-          breakpoint: jsWidth.tabletdown,
-          settings: {
-            arrows: false,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            centerMode: true,
-            centerPadding: '32%',
-          },
+  cleanSlide(id) {
+    const target = `.collection-carousel--${id}`;
+    const swiper = new Swiper(target, {
+      slidesPerView: 4,
+      loop: true,
+      freeMode: true,
+      breakpoints: {
+        // when window width is >= 320px
+        320: {
+          slidesPerView: 2,
+          spaceBetween: 16,
+          centeredSlides: true,
+          centeredSlidesBounds: true,
+          freeModeSticky: true,
         },
-        {
-          breakpoint: 620,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            centerMode: true,
-            centerPadding: '25%',
+        790: {
+          slidesPerView: 4,
+          spaceBetween: 16,
+          centeredSlides: false,
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
           },
-        },
-      ],
-    }
-  },
-
-  cleanSlick(id) {
-    const section = this;
-    $(`.collection-carousel--${id}`).slick(section.getSliderSettings());
+        }
+      }
+    });
   },
 });
 

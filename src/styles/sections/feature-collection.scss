@@ -26,7 +26,6 @@
   }
 
   &__button-row {
-    margin-top: -20px;
     padding: 0 0 40px;
     text-align: center;
 
@@ -41,19 +40,37 @@
     }
   }
 
-  .collection-grid-item {
-    margin-bottom: 60px;
+  .swiper-container {
+    // margin-left: -20px;
+    // padding: 0 40px;
+    // width: calc(100% + 40px);
   }
 
-  .slick-arrow {
+  .swiper-slide {
+    align-self: stretch;
+    height: auto;
+
+    .collection-grid-item {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      margin-bottom: 10px;
+    }
+  }
+
+  .swiper-button-prev, .swiper-button-next {
     left: -5px;
     position: absolute;
     top: 50%;
-    transform: translateY(-140%);
+    transform: translateY(-50%);
     z-index: 5000;
+
+    &::after {
+      display: none !important;
+    }
   }
 
-  .slick-next {
+  .swiper-button-next {
     background-position: calc(50% + 1px) calc(50% - 1px);
     left: initial;
     right: -15px;
@@ -90,45 +107,70 @@
       padding: 0;
     }
 
-    .slick-arrow {
+    .swiper-button-next, .swiper-button-prev {
       display: none !important;
     }
   }
 
   @include media-query($medium-up) {
-    .slick-prev {
-      left: -50px;
+    &--dark {
+      padding-top: 40px;
     }
 
-    .slick-next {
-      right: -50px;
+  }
+  
+  @include media-query($tablet-up) {
+    .swiper-button-prev {
+      left: 0;
+    }
+  
+    .swiper-button-next {
+      right: 0;
     }
   }
 
   @include media-query($large-up) {
-    .slick-list {
-      margin-left: -20px;
-      padding: 20px;
-      width: calc(100% + 40px);
+    .swiper-button-prev {
+      left: 10px;
+    }
+
+    .swiper-button-next {
+      right: 10px;
+    }
+
+    &.feature-collection--dark {
+      .swiper-container {
+        &:before, &:after {
+          background-color: $COLOR_GREY;
+        }
+      }
+    }
+
+    .swiper-container {
+      margin-left: -70px;
+      padding: 10px 70px;
+      width: calc(100% + 140px);
 
       &:before {
+        background-color: $COLOR_WHITE;
         bottom: 0;
         content: '';
         left: 0;
         position: absolute;
         top: 0;
-        width: 20px;
-        z-index: 1;
+        width: 60px;
+        z-index: 10;
       }
 
       &:after {
+        background-color: $COLOR_WHITE;
         bottom: 0;
         content: '';
         position: absolute;
         right: 0;
         top: 0;
-        width: 20px;
-        z-index: 1;
+        width: 60px;
+        z-index: 10;
       }
     }
   }

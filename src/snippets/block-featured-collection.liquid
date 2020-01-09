@@ -15,7 +15,7 @@
     </div>
   {% endif %}
 
-  <div class="page-width">
+  <div class="page-width {% if section.settings.show_carousel %} page-width--slider {% endif %}">
     <div class="grid">
       <div class="grid__item medium-up--one-whole">
         <div class="feature-collection__container">
@@ -46,8 +46,9 @@
           {% if section.settings.show_carousel %}
             {% assign slidesToShow = collectionCounter %}
             {% assign collectionCounter = collectionCounter | times:3 %}
-            {% assign collectionCounterClass = '' %}
-            <div class="collection-carousel--{{section.id}}">
+            {% assign collectionCounterClass = 'swiper-slide' %}
+            <div class="swiper-container collection-carousel--{{section.id}}">
+              <div class="swiper-wrapper">
           {% endif %}
 
           {% for product in collection.products limit: collectionCounter %}
@@ -56,7 +57,7 @@
             
           {% else %}
             {% for i in (1..collectionCounter) %}
-              <div class="item grid__item {% unless section.settings.show_carousel %}{{ collectionCounterClass }}{% endunless %}" >
+              <div class="item {% unless section.settings.show_carousel %}{{ collectionCounterClass }}{% endunless %}" >
                   <a href="#" class="product-link">
                     {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
                     {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
@@ -72,13 +73,16 @@
           {% endfor %}
 
           {% if section.settings.show_carousel %}
+              </div>
+              <div class="swiper-button-prev wolf-arrow"></div>
+              <div class="swiper-button-next wolf-arrow wolf-arrow--right"></div>
             </div>
           {% endif %}
 
           {% if section.settings.show_button %}
             <div class="grid__item">
               <div class="feature-collection__button-row">
-                <a href="{{collection.url}}" class="button--white">{{ section.settings.button_text  }}</a>
+                <a href="{{collection.url}}" class="button--white button--white--compress">{{ section.settings.button_text  }}</a>
               </div>
             </div>
           {% endif %}

@@ -172,6 +172,7 @@
     }
 
     &--video {
+      overflow: hidden;
       position: relative;
 
       img {
@@ -184,7 +185,7 @@
         border-radius: 50%;
         content: '';
         height: 34px;
-        left: calc(50% - 0px);
+        left: calc(50% - 8px);
         position: absolute;
         top: 50%; 
         transform: translateY(-50%) translateX(-50%);
@@ -200,7 +201,7 @@
         bottom: 50%;
         content: '';
         height: 0;
-        left: calc(50% - 0px);
+        left: calc(50% - 8px);
         pointer-events: none;
         position: absolute;
         transform: translateX(-50%) translateY(50%);

@@ -14,7 +14,6 @@ theme.Type = (function() {
     textarea: document.querySelectorAll(selectors.textarea),
   };
 
-  // Remove empty p tags
   function handleBlur(e) {
     const input = e.target;
     const inputValue = e.target.value;
@@ -39,14 +38,9 @@ theme.Type = (function() {
   }
 
   function setEventListeners() {
-    nodeSelectors.input.forEach((element, index) => {
+    nodeSelectors.input.forEach((element) => {
       element.addEventListener('blur', handleBlur);
       element.addEventListener('focus', handleFocus);
-    });
-
-    nodeSelectors.textarea.forEach((element, index) => {
-      // element.addEventListener('blur', handleBlur);
-      // element.addEventListener('focus', handleFocus);
     });
   }
 
@@ -63,18 +57,31 @@ theme.Type = (function() {
      }, 300);
   }
 
-  function init() {
-    checkoutfill();
-    setEventListeners();
+  function handleLoad() {
+    if($("input").is(":focus")) {
+      const target = $("input:focus");
+      const labelName = target.attr('id');
+      const label = $(`.slick-form label[for=${labelName}]`);
+      label.addClass(cssClasses.active);
+    }
+  }
+
+  function handleNoneBlank() {
     nodeSelectors.input.forEach((element, index) => {
       const labelName = element.id;
-
       if (labelName !== '') {
         const inputValue = element.value;
         const label = document.querySelector(`.slick-form label[for=${labelName}]`);
         inputActive(inputValue, label);
       }
     });
+  }
+
+  function init() {
+    checkoutfill();
+    setEventListeners();
+    handleNoneBlank();
+    handleLoad();
   }
 
   init();

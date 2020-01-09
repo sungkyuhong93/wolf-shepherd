@@ -2,6 +2,8 @@
   #Product--reviews
 ============================================================================== */
 .product-reviews {
+  padding-top: 64px;
+
   &__header {
     text-align: center;
   }
@@ -72,6 +74,20 @@
     }
   }
 
+  .stamped-share-links {
+    a {
+      background: $COLOR_PRIMARY;
+      border: 1px solid $COLOR_PRIMARY;
+      color: $COLOR_WHITE;
+      font-family: $FONT_BODY;
+      font-size: $FONT_SIZE_XSMALL;
+      letter-spacing: $LETTER_SPACING_BASE;
+      text-transform: uppercase;
+      margin-right: 10px;
+      padding: 14px 40px 12px;
+    }
+  }
+
   .stamped-header {
 
     .stamped-review-options {
@@ -110,6 +126,7 @@
         }
 
         &:last-of-type {
+          display: block;
           text-align: right;
         }
       }
@@ -715,7 +732,10 @@
     }
   }
 
-  @media (max-width:480px) {
+  @media (max-width:560px) {
+    .stamped-header .stamped-review-options ul li {
+      width: 100%;
+    }
     .stamped-pagination {
       // li.last {
       //   display: inline-block!important;

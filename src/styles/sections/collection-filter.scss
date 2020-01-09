@@ -143,7 +143,7 @@ Collection filter
 
     .filter-menu {
       max-height: calc(100vh - 64px);
-      overflow: scroll;
+      overflow: auto;
 
       .pt-mobile-header{
         position: relative;

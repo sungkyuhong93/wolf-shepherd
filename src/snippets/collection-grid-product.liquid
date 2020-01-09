@@ -120,8 +120,10 @@
       </a>
     </div>
 
-    <a id="stamped-main-widget" class="collection-grid-item__review">
-      <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
+    <a href="{{product.url | append: '#readTheReviewsContainer' }}" class="collection-grid-item__review-container" data-slide-to="blocked">
+      <div class="collection-grid-item__review">
+        <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
+      </div>
     </a>
 
     {% include 'swatch-collection' %}

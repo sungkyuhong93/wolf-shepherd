@@ -17,13 +17,19 @@
 
           {%- assign collection = collections[block.settings.collection] -%}
 
-          {%- assign collectionCounterClass = 'grid__item small--one-half medium-up--one-quarter' -%}
+          {%- assign collectionCounterClass = 'swiper-slide' -%}
 
-          <div class="collection-carousel--article">
-            {% for product in collection.products limit: collectionCounter %}
-                {% include 'collection-grid-product' with gridWidth: collectionCounterClass  %}
-            {% endfor %}
+          <div class="swiper-container collection-carousel--article">
+              <div class="swiper-wrapper">
+                {% for product in collection.products limit: collectionCounter %}
+                    {% include 'collection-grid-product' with gridWidth: collectionCounterClass  %}
+                {% endfor %}
+              </div>
+              <div class="swiper-button-prev wolf-arrow"></div>
+              <div class="swiper-button-next wolf-arrow wolf-arrow--right"></div>
+            </div>
           </div>
+
 
         </div>
       </div>

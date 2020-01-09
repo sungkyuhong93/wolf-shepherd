@@ -153,8 +153,10 @@ $BUTTON_LETTER_SPACING: 0.25px;
   border-radius: 50%;
   cursor: pointer;
   font-size: 0;
+  height: 36px;
   padding: 17px;
   transition: 0.2s;
+  width: 36px;
   z-index: 5;
 
   &:hover {

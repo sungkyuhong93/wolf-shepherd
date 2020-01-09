@@ -7,9 +7,7 @@
  */
 
 
-import $ from 'jquery';
-import _ from 'slick-carousel';
-import jsWidth from '../helpers/screenWidths';
+import Swiper from 'swiper';
 
 /**
  * Export default article slider
@@ -17,55 +15,38 @@ import jsWidth from '../helpers/screenWidths';
 export default () => {
 
   const selectors = {
-    $container: $('.collection-carousel--article'),
+    container: '.collection-carousel--article',
   };
 
   function init() {
-    slickRender(selectors.$container);
+    sliderRender(selectors.container);
   }
 
-  function slickRender(slider) {
-    slider.slick(getSliderSettings());
-  }
-
-  function getSliderSettings() {
-    return {
-      arrows: true,
-      vertical: false,
-      prevArrow: '<div class="slick-arrow slick-prev wolf-arrow"></div>',
-      nextArrow: '<div class="slick-arrow slick-next wolf-arrow wolf-arrow--right"></div>',
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      infinite: true,
-      dots: false,
-      adaptiveHeight: false,
-      responsive: [
-        {
-          breakpoint: jsWidth.mac13,
-          settings: {
-            arrows: false,
-          },
+  function sliderRender(slider) {
+    const swiper = new Swiper(slider, {
+      slidesPerView: 4,
+      loop: true,
+      freeMode: true,
+      breakpoints: {
+        // when window width is >= 320px
+        320: {
+          slidesPerView: 2,
+          spaceBetween: 16,
+          centeredSlides: true,
+          centeredSlidesBounds: true,
+          freeModeSticky: true,
         },
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            centerMode: true,
-            centerPadding: '32%',
+        790: {
+          slidesPerView: 4,
+          spaceBetween: 16,
+          centeredSlides: false,
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
           },
-        },
-        {
-          breakpoint: 620,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            centerMode: true,
-            centerPadding: '25%',
-          },
-        },
-      ],
-    }
+        }
+      }
+    });
   }
 
   /**

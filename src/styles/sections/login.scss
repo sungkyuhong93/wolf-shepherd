@@ -112,6 +112,23 @@ Login/account
     top: 32px;
   }
 
+  input {
+    &::-webkit-input-placeholder { /* Edge */
+      color: transparent;
+      opacity: 0;
+    }
+    
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: transparent;
+      opacity: 0;
+    }
+    
+    &::placeholder {
+      color: transparent;
+      opacity: 0;
+    }
+  }
+
   @media (max-width: 880px) {
     &__image {
       display: none;
