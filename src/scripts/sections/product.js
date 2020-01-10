@@ -211,6 +211,9 @@ register('product', {
       $comparePrice.html('');
       $compareEls.addClass(cssClasses.hide);
     }
+
+    $('.affirm-as-low-as').attr('data-amount',variant.price);
+    affirm.ui.refresh();
   },
 
   /**

@@ -116,10 +116,14 @@
 }
 
 .affirm-as-low-as {
-  padding-top: 22px;
   font-size: $FONT_SIZE_XSMALL;
+  padding-top: 22px;
 
   a {
     text-decoration: underline;
   }
+}
+
+.__affirm-logo.__ligature__affirm_full_logo__ {
+  font-size: 1.536em!important;
 }

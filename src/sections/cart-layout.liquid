@@ -51,7 +51,7 @@
                           </a>
 
                           <div class="cart-item__text-wrapper">
-                            <h5 class="cart-item__title">{{ item.product.title }}</h5>
+                            <a href="{{ item.url | within: collections.all }}" class="h5 cart-item__title">{{ item.product.title }}</a>
 
                             {% unless item.product.has_only_default_variant %}
                               <p class="cart-item__variant">{{ item.variant.title }}</p>
@@ -64,15 +64,16 @@
 
                             {% if property_size > 0 %}
                               {% for p in item.properties %}
-                                {% unless p.last == blank %}
-                                {{ p.first }}:
+                                <p class="cart-item__variant">
+                                  {% unless p.last == blank %}
+                                  {{ p.first }}:
 
-                                {% if p.last contains '/uploads/' %}
-                                  <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
-                                {% else %}
-                                  {{ p.last }}
-                                {% endif %}
-
+                                  {% if p.last contains '/uploads/' %}
+                                    <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                                  {% else %}
+                                    {{ p.last }}
+                                  {% endif %}
+                                </p>
                                 {% endunless %}
                               {% endfor %}
                             {% endif %}

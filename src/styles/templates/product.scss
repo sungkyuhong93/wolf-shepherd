@@ -88,9 +88,9 @@
     width: 100%;
 
     .design-pre-order-template-wrapper {
-      display: flex;
-      flex-direction: column-reverse;
-      width: 100%;
+      display: flex!important;
+      flex-direction: column-reverse!important;
+      width: 100%!important;
     }
 
     button {
@@ -98,7 +98,8 @@
     }
   }
 
-  .pre-order-2-button {
+  .design-pre-order-template-wrapper [data-editable="pre-order-button-hover"],
+  .design-pre-order-template-wrapper .pre-order-2-button {
     @extend .button;
     width: 100%;
   }
@@ -115,7 +116,7 @@
     margin-bottom: 16px;
     max-width: 100%;
     opacity: 1;
-    padding: 20px;
+    padding: 20px 40px;
     position: static;
     text-align: center;
     transform: none;

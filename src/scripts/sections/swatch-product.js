@@ -162,6 +162,8 @@ export default (config) => {
     const swatchOption = $this.attr('data-swatch-option').replace('-', '');
 
     $(`${config.container} [data-index="${swatchOption}"]`).val(swatchValue).trigger('change');
+    // $('.affirm-as-low-as').attr('data-amount', 32900);
+    // affirm.ui.refresh();
   }
 
   function updateSlider(target) {

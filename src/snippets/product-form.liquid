@@ -102,11 +102,7 @@
       </span>
   </button>
   
-  <div class="affirm-as-low-as" data-page-type="product" data-amount="{{product.first_available_variant | json }}" data-affirm-color="black"></div>
+  <div class="affirm-as-low-as" data-page-type="product" data-amount="{{product.first_available_variant.price }}" data-affirm-color="black"></div>
 
   <div class="error error--hide"></div>
 </form>
-
-<!-- affirm price -->
-{% comment %} <p>affirm</p> {% endcomment %}
-

@@ -129,7 +129,8 @@
       {%- unless current_collection_handle_sep -%}
       {%- assign current_collection_handle_sep = 'all' -%}
       {%- endunless -%}
-      <div class="filter-group filter-group{{ header_handle }} {% if has_selected %}has_group_selected{% endif %} {% if has_multiple_items %}has_mutliple_items{% else %}has_single_item{% endif %} {% if settings.pt_force_dropdown or pt_force_dropdown %}pt-display-dropdown{% endif %} {{ shop.metafields.pt_filter_display[menu_header.first] }} pt-filter-mode-{{ shop.metafields.pt_filter_mode[menu_header.first] }} ">
+      <div class="filter-group filter-group{{ header_handle }} {% if has_selected %}has_group_selected{% endif %} {% if has_multiple_items %}has_mutliple_items{% else %}has_single_item{% endif %} {% if settings.pt_force_dropdown or pt_force_dropdown %}pt-display-dropdown{% endif %} {{ shop.metafields.pt_filter_display[menu_header.first] }} pt-filter-mode-{{ shop.metafields.pt_filter_mode[menu_header.first] }} 
+        {% unless '|' == current_selected %}filter-group--force-open{% endunless %}">
           <h4>{{ shop.metafields.pt_filter_header[menu_header.first] }}</h4>
           <div class="scroll-content">
           <input type="text" class="fm-search-box" name="filter" placeholder="{{ pt_search_placeholder_text }}" style="display:none" autocomplete="off">

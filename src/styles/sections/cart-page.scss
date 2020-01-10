@@ -167,6 +167,7 @@ $border-color: #dedede;
 .cart-item {
   &__remove {
     color: $COLOR_PRIMARY;
+    cursor: pointer;
     font-size: $FONT_SIZE_XSMALL;
     text-decoration: underline;
   }

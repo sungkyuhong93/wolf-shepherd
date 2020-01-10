@@ -209,7 +209,27 @@ body .reviews-page {
     }
 
     .stamped-reviews-filter {
-      display: none;
+      align-items: center;
+      background: $COLOR_GREY;
+      display: flex;
+      height: 50px;
+      justify-content: flex-end;
+      padding: 10px;
+      width: 100%;
+
+      #stamped-sort-select {
+        background-color: transparent;
+        background-image: $ICON_ARROW_DOWN!important;
+        background-position: calc(90%) calc(50% - 1px) !important;
+        background-repeat: no-repeat!important;
+        background-size: 10px 13px;
+        border: 0!important;
+        color: $COLOR_PRIMARY;
+        font-family: $FONT_BODY;
+        font-size: 10px;
+        margin: 0;
+        text-transform: uppercase;
+      }
     }
 
     .stamped-review-header {
