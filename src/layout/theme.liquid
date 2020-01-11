@@ -51,7 +51,7 @@
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
 
-  <a class="in-page-link visually-hidden skip-link" href="#MainContent"> {{ 'general.accessibility.skip_to_content' | t }} </a>
+  <a class="in-page-link visually-hidden skip-link" href="#MainContent" title="{{ 'general.accessibility.skip_to_content' | t }}">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
   {% if settings.stickynav_enable %}<div class="header-fixed">{% endif %}
     {% section 'site-header' %}

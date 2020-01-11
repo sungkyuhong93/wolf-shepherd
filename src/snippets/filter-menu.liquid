@@ -37,8 +37,8 @@
 {%- endcapture -%}
 <div class="filter-menu {% if collection.handle != blank and collection.handle == 'all' and current_tags == blank%}filter-menu-none-selected{% endif %} filter-selected-{{ collection.handle }}{% for tag in current_tags %} filter-selected-{{ tag | handleize }}{% endfor %}" data-total-tag-count="{{ collection.tags | size }}">
     <div class="pt-mobile-header">
-        <a id="pt-nav-toggle" class="pt-nav-toggle" href="#"><span></span> <p>{{ settings.pt_mobile_text | default: 'Filter' }}</p></a>
-        <a id="pt-nav-toggle-sort" class="pt-nav-toggle-sort" href="#"><span></span> <p>Sort By</p></a>
+        <a id="pt-nav-toggle" class="pt-nav-toggle" href="#" title="Filter"><span></span> <p>{{ settings.pt_mobile_text | default: 'Filter' }}</p></a>
+        <a id="pt-nav-toggle-sort" class="pt-nav-toggle-sort" href="#" title="Sort By"><span></span> <p>Sort By</p></a>
     </div>
 
     <div class="filter-menu__wrapper">
@@ -47,7 +47,7 @@
       <div class="filter-group refine-header">
           <h4>{{ pt_refine_text }}</h4>
           {%- unless collection.handle == 'all' or collection.handle == nil and current_tags == nil -%}
-          <a class="filter-clear" href="/collections/{% if settings.pt_clear_to_current_collection %}{{ collection.handle }}{% else %}all{% endif %}">
+          <a class="filter-clear" title="{{ pt_view_all_text }}" href="/collections/{% if settings.pt_clear_to_current_collection %}{{ collection.handle }}{% else %}all{% endif %}">
             {{ pt_view_all_text }}
             {% include 'icons' with icon: 'close' %}
           </a>
@@ -236,7 +236,7 @@
           </ul>
           </div>
           {%- unless '|' == current_selected -%}
-          <a class="filter-clear" href="/collections/{{ current_collection_handle_sep }}{%- unless '|' == cleared_tags or '' == cleared_tags -%}/{{ cleared_tags }}{%- endunless -%}">
+          <a class="filter-clear" href="/collections/{{ current_collection_handle_sep }}{%- unless '|' == cleared_tags or '' == cleared_tags -%}/{{ cleared_tags }}{%- endunless -%}" title="{{ pt_clear_text }}">
             {{ pt_clear_text }}
             {% include 'icons' with icon: 'close' %}
           </a>
@@ -297,7 +297,7 @@
                   {%- assign cleared_tags_handle = '' -%}
                   {%- for full_tag in cleared_tags -%}{% assign handle_tag = full_tag | handle %}{%- assign cleared_tags_handle = cleared_tags_handle | append:  cleared_tags_handle | append: '|' | append: handle_tag -%}{%- endfor -%}
                   {%- assign cleared_tags = cleared_tags_handle | remove_first: '|' | split: '|' | uniq | join: '+' -%}
-                  <a class="filter-clear" href="/collections/{{ current_collection_handle }}{% unless '|' == cleared_tags or '' == cleared_tags %}/{{ cleared_tags }}{% endunless %}">
+                  <a class="filter-clear" href="/collections/{{ current_collection_handle }}{% unless '|' == cleared_tags or '' == cleared_tags %}/{{ cleared_tags }}{% endunless %}" title="{{ pt_clear_text }}">
                     {{ pt_clear_text }}
                     {% include 'icons' with icon: 'close' %}
                   </a>
@@ -363,7 +363,7 @@
           {%- assign cleared_tags_handle = '' -%}
           {%- for full_tag in cleared_tags -%}{% assign handle_tag = full_tag | handle %}{%- assign cleared_tags_handle = cleared_tags_handle | append:  cleared_tags_handle | append: '|' | append: handle_tag -%}{%- endfor -%}
           {%- assign cleared_tags = cleared_tags_handle | remove_first: '|' | split: '|' | uniq | join: '+' -%}
-          <a class="filter-clear" href="/collections/{{ current_collection_handle }}{% unless '|' == cleared_tags or '' == cleared_tags %}/{{ cleared_tags }}{% endunless %}">{{ pt_clear_text }}</a>
+          <a class="filter-clear" href="/collections/{{ current_collection_handle }}{% unless '|' == cleared_tags or '' == cleared_tags %}/{{ cleared_tags }}{% endunless %}" title="{{ pt_clear_text }}">{{ pt_clear_text }}</a>
           {%- endunless -%}
       </div>
       {%- endif -%}
@@ -380,7 +380,7 @@
                   </div>
               </li>
           </ul>
-          <a class="filter-clear" href="/collections/all{%- if current_tags -%}/{{ current_tags | join: '+' }}{%- endif -%}">
+          <a class="filter-clear" href="/collections/all{%- if current_tags -%}/{{ current_tags | join: '+' }}{%- endif -%}" title="{{ pt_clear_text }}">
             {{ pt_clear_text }}
             {% include 'icons' with icon: 'close' %}
           </a>

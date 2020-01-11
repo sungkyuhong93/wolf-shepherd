@@ -69,7 +69,7 @@
         <div>{{ sectionText }}</div>
       {% endif %}
       {% if sectionButtonLabel != blank and sectionButtonLink != blank %}
-        <a href="{{ sectionButtonLink }}" class="button--white button--white--compress {% if sectionButtonLink contains '#' %}slide-to{% endif %}" data-slide="{{ sectionButtonLink }}">
+        <a href="{{ sectionButtonLink }}" title="{{ sectionButtonLabel | escape }}" class="button--white button--white--compress {% if sectionButtonLink contains '#' %}slide-to{% endif %}" data-slide="{{ sectionButtonLink }}">
           {{ sectionButtonLabel | escape }}
         </a>
       {% endif %}

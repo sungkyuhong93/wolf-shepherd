@@ -57,7 +57,7 @@
 
           <div class="video-modal__buttons">
             {% if sectionButtonLabel != blank and sectionButtonLink != blank %}
-              <a href="{{ sectionButtonLink }}" class="{{ sectionButtonColor }}">
+              <a href="{{ sectionButtonLink }}" class="{{ sectionButtonColor }}" title="{{ sectionButtonLabel }}">
                 {{ sectionButtonLabel }}
               </a>
             {% endif %}
@@ -82,7 +82,7 @@
 
         <div class="video-modal__buttons">
           {% if sectionButtonLabel != blank and sectionButtonLink != blank %}
-            <a href="{{ sectionButtonLink }}" class="button--white button--white--compress">
+            <a href="{{ sectionButtonLink }}" class="button--white button--white--compress" title="{{ sectionButtonLabel }}">
               {{ sectionButtonLabel }}
             </a>
           {% endif %}

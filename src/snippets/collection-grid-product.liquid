@@ -58,7 +58,7 @@
       <div class="collection-grid-item__badge" {% if has_badge_color %}style="background-color: {{ badge_color }}"{% endif %}>{{ badge_text }}</div>
     {% endif %}
 
-    <a href="{{ product.url | within: collection }}" class="collection-grid-item__image-wrapper">
+    <a href="{{ product.url | within: collection }}" class="collection-grid-item__image-wrapper" title="Imag of {{ product.title }}">
 
       {% if product.images.size > 1 %}
         {% for image in product.images limit: 2 %}
@@ -92,7 +92,7 @@
 
     <div class="collection-grid-item__text-wrapper">
       
-      <a href="{{ product.url }}">
+      <a href="{{ product.url }}" title="{{ product.title }}">
         <h3 class="h4 collection-grid-item__title">{{ product.title }}</h3>
 
         {% if section.settings.show_excerpt %}
@@ -120,7 +120,7 @@
       </a>
     </div>
 
-    <a href="{{product.url | append: '#readTheReviewsContainer' }}" class="collection-grid-item__review-container" data-slide-to="blocked">
+    <a href="{{product.url | append: '#readTheReviewsContainer' }}" title="Reviews of {{ product.title }}" class="collection-grid-item__review-container" data-slide-to="blocked">
       <div class="collection-grid-item__review">
         <span class="stamped-product-reviews-badge stamped-main-badge" data-id="{{ product.id }}" data-product-sku="{{ product.handle }}" style="display: inline-block;">{{ product.metafields.stamped.badge }}</span>
       </div>

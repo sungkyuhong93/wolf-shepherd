@@ -10,7 +10,7 @@
 
   <div id="cart" class="cart-ajax" data-cart-total="{{ cart.item_count }}">
     <div class="cart-ajax__header">
-      <a href="#" class="cart-ajax__close">
+      <a href="#" class="cart-ajax__close" title="Close Cart">
         {% include 'icons' with icon: 'close' %}
       </a>
       <h3 class="cart-ajax__title">Shopping Bag</h3>
@@ -77,8 +77,8 @@
 
           
 
-          <a href="/checkout" class="button button--checkout">{{ 'cart.general.checkout' | t }}</a>
-          <a class="cart-ajax__international" href="https://wolfandshepherd.com/pages/international-checkout">International Checkout</a>
+          <a href="/checkout" class="button button--checkout" title="Checkout">{{ 'cart.general.checkout' | t }}</a>
+          <a class="cart-ajax__international" title="International Checkout" href="https://wolfandshepherd.com/pages/international-checkout">International Checkout</a>
         </div>
 
         {%- if settings.collection_enable == true %}
@@ -89,10 +89,10 @@
             <div class="ajax-related__container">
               {%- for product in collections[upsell].products -%}
                 <div class="ajax-related__product-wrapper" js-ajax-cart="ajax-product-{{forloop.index}}">
-                  <a href="{{product.url}}" class="ajax-related__product-image" style="background-image:url({{product.featured_image.src | img_url: '440x'}})"></a>
+                  <a href="{{product.url}}" title="Image of {{product.title}}" class="ajax-related__product-image" style="background-image:url({{product.featured_image.src | img_url: '440x'}})"></a>
 
                   <div class="ajax-related__text">
-                    <a href="{{product.url}}" class="h5 ajax-related__product-title">{{product.title}}</a>
+                    <a href="{{product.url}}" class="h5 ajax-related__product-title" title="{{product.title}}">{{product.title}}</a>
                     {% include 'ajaxcart-product-form' %}
                   </div>
                 </div>

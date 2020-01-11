@@ -6,8 +6,8 @@
     {% else %}
       <div class="cart__empty">
         <h1>Your bag is empty…</h1>
-        <a href="/collections/shoes" class="button">shop shoes</a>
-        <a href="/collections/accessories" class="button">Shop accessories</a>
+        <a href="/collections/shoes" class="button" title="Shop shoes">Shop shoes</a>
+        <a href="/collections/accessories" class="button" title="Shop accessories">Shop accessories</a>
       </div>
     {% endif %}
   </div>
@@ -46,12 +46,12 @@
 
                       {% if item.image != blank %}
                         <td class="cart__image">
-                          <a href="{{ item.url | within: collections.all }}">
+                          <a href="{{ item.url | within: collections.all }}" title="Image of {{ item.product.title }}">
                             {{ item | img_url: '400x' | img_tag: item.title }}
                           </a>
 
                           <div class="cart-item__text-wrapper">
-                            <a href="{{ item.url | within: collections.all }}" class="h5 cart-item__title">{{ item.product.title }}</a>
+                            <a href="{{ item.url | within: collections.all }}" class="h5 cart-item__title" title="{{ item.product.title }}">{{ item.product.title }}</a>
 
                             {% unless item.product.has_only_default_variant %}
                               <p class="cart-item__variant">{{ item.variant.title }}</p>
@@ -107,7 +107,7 @@
 
                       <td class="cart__content">
 
-                        <a href="{{ item.url }}">
+                        <a href="{{ item.url }}" title="Item Price">
                           
                           <p class="cart-item__price">
                             <span class="cart__line-total">{{ item.line_price | money_without_trailing_zeros }}</span>
@@ -152,7 +152,7 @@
           <div class="grid__item medium-up--one-whole large-up--ten-twelfths large-up--push-one-twelfth">
             <div class="grid cart-footer">
               <div class="grid__item medium-up--four-twelfths">
-                <a href="/collections/all" class="button-text-and-arrow button-text-and-arrow--reverse">
+                <a href="/collections/all" class="button-text-and-arrow button-text-and-arrow--reverse" title="Continue Shopping">
                   Continue Shopping <div class="wolf-arrow wolf-arrow--right"></div>
                 </a>
               </div>
@@ -172,7 +172,7 @@
                     {% endif %}
                     <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
                     <input type="submit" name="checkout" class="button button--full" value="{{ 'cart.general.checkout' | t }}">
-                    <a class="cart-summary__link" href="https://wolfandshepherd.com/pages/international-checkout">International Checkout</a>
+                    <a class="cart-summary__link" href="https://wolfandshepherd.com/pages/international-checkout" title="International Checkout">International Checkout</a>
                   </div>
                 </div>
 

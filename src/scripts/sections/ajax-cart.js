@@ -255,8 +255,8 @@ export default () => {
       const emptyCart = `
         <div class="cart-ajax__empty">
           <h3>Your bag is empty…</h3>
-          <a href="/collections/shoes" class="button">shop shoes</a>
-          <a href="/collections/accessories" class="button">Shop accessories</a>
+          <a href="/collections/shoes" class="button" title="Shop shoes">Shop shoes</a>
+          <a href="/collections/accessories" title="Shop accessories" class="button">Shop accessories</a>
         </div>
       `;
       selectors.$cartList.append(emptyCart);
@@ -293,10 +293,10 @@ export default () => {
     const cartRow =  `
           <div class="cart-ajax__row cart-data ${isGiftWrap} ${isFreeGift}" data-line="${loopCounter}" data-id="${cart.id}">
             <div class="cart-ajax__row__column">
-              <a href="${cart.url}" class="js-click-gtm cart-ajax__row__image" style="background-image: url(${cart.image})"></a>
+              <a href="${cart.url}" title="Product Image" class="js-click-gtm cart-ajax__row__image" style="background-image: url(${cart.image})"></a>
             </div>
             <div class="cart-ajax__row__column">
-              <a href="${cart.url}" class="js-click-gtm h6 cart-ajax__row__title">
+              <a href="${cart.url}" title="${cart.product_title}" class="js-click-gtm h6 cart-ajax__row__title">
                 ${cart.product_title}
                 <small class="cart-ajax__row__variant">${cartVariantTitle}</small>
               </a>

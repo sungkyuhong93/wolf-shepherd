@@ -12,7 +12,7 @@
   {% else %}
     <div class="h1 site-header__site-logo"  itemscope itemtype="http://schema.org/Organization">
   {% endif %}
-    <a href="/" itemprop="url" >
+    <a href="/" itemprop="url" title="{{section.settings.logo.alt}}">
       {% if section.settings.logo != blank %}
         {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
         <img src="{{ section.settings.logo | img_url: image_size }}"
@@ -51,7 +51,7 @@
     {% if page.handle contains 'about' %}
       {% if section.settings.enable_usp_about %}
         <div class="site-header__usp">
-          {% if section.settings.usp_url_about %}<a href="{{section.settings.usp_url_about}}">{% endif %}
+          {% if section.settings.usp_url_about %}<a href="{{section.settings.usp_url_about}}" title="{{ section.settings.usp_text_about }}">{% endif %}
           {% if section.settings.usp_image_about != blank %}
             <img src="{{ section.settings.usp_image_about | img_url: '100x' }}" alt="{{ section.settings.usp_image_about.alt }}"/>
           {% endif %}
@@ -64,7 +64,7 @@
     {% else %}
       {% if section.settings.enable_usp %}
         <div class="site-header__usp">
-          {% if section.settings.usp_url %}<a href="{{section.settings.usp_url}}">{% endif %}
+          {% if section.settings.usp_url %}<a href="{{section.settings.usp_url}}" title=="{{ section.settings.usp_text }}">{% endif %}
           {% if section.settings.usp_image != blank %}
             <img src="{{ section.settings.usp_image | img_url: '100x' }}" alt="{{ section.settings.usp_image.alt }}"/>
           {% endif %}
@@ -81,7 +81,7 @@
       <ul>
 
         <li>
-          <a href="#"  class="site-header__search-icon">
+          <a href="#"  class="site-header__search-icon" title="Search store">
           {% include 'icons' with icon: 'search-wolf' %}
             {% unless section.settings.enable_full_screen_search %}
               {% include 'search-form--basic' %}
@@ -92,13 +92,13 @@
         {% if shop.customer_accounts_enabled %}
           {% if customer %}
             <li class="site-header__mobile-hide">
-                <a href="/account">
+                <a href="/account" title="Account">
                   {% include 'icons' with icon: 'account-wolf' %}
                 </a>
             </li>
           {% else %}
             <li class="site-header__mobile-hide">
-              <a href="/account/login">
+              <a href="/account/login" title="Login">
                 {% include 'icons' with icon: 'account-wolf' %}
               </a>
             </li>
@@ -106,7 +106,7 @@
         {% endif %}
 
         <li>
-          <a href="/cart" id="Cart-icon" class="site-header__cart-icon">
+          <a href="/cart" id="Cart-icon" class="site-header__cart-icon" title="Cart">
             <div class="cart-icon__container {% if cart.item_count != 0 %}is-active{% endif %}">
               {% include 'icons' with icon: 'cart-wolf' %}
               <span class="js-cart-item-count cart-count">{{ cart.item_count }}</span>

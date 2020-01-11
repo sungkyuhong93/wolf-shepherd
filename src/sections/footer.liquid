@@ -24,7 +24,7 @@
               {% if linklists[footer_linklist].links.size > 0 %}
                 <ul>
                   {% for link in linklists[footer_linklist].links %}
-                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    <li><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
                   {% endfor %}
                 </ul>
               {% endif %}
@@ -74,7 +74,7 @@
 
       <div class="grid__item">
         <div class="copyright">
-          &copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}. All rights reversed.<span style="display:none">Designed and Built by <a href="https://karmoon.co.uk/" target="_blank">Karmoon</a></span>
+          &copy; {{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}. All rights reversed.<span class="visually-hidden">Built by <a href="https://karmoon.co.uk/" target="_blank" title="Karmoon.co.uk">Karmoon</a></span>
         </div>
 
         {% if section.settings.show_payment_icons %}

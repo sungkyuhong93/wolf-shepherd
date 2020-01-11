@@ -14,7 +14,7 @@
       {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
       <div id="{{ img_wrapper_id }}" class="article__grid-image-wrapper js">
-        <a href="{{ article.url }}" class="article__grid-image-container" >
+        <a href="{{ article.url }}" class="article__grid-image-container" title="{{ article.title }}">
           <img id="{{ img_id }}"
                class="article__grid-image"
                src="{{ article.image | img_url: '480x377' }}"
@@ -26,7 +26,7 @@
         </a>
       </div>
       <noscript>
-        <a href="{{ article.url }}" class="article__grid-image-wrapper">
+        <a href="{{ article.url }}" class="article__grid-image-wrapper" title="{{ article.title }}">
           {{ article | img_url: '480x377', scale: 2 | img_tag: article.title, 'article__grid-image' }}
         </a>
       </noscript>
@@ -35,7 +35,7 @@
 
     <div class="medium-up--one-third grid__item article__grid-meta{% if article.image %} article__grid-meta--has-image{% endif %}">
       <h2 class="h5 article__title uppercase">
-        <a href="{{ article.url }}">{{ article.title }}</a>
+        <a href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
       </h2>
 
       {% if section.settings.blog_show_author %}
@@ -59,21 +59,21 @@
       {% if article.tags.size > 0 %}
         <div class="article__tags rte">
           {% for tag in article.tags %}
-            <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article__grid-tag">{{ tag }}</a>
+            <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article__grid-tag" title="Blog tagged {{ tag }}">{{ tag }}</a>
           {% endfor %}
         </div>
       {% endif %}
 
       <ul class="list--inline article__meta-buttons">
         <li>
-          <a href="{{ article.url }}" class="button">
+          <a href="{{ article.url }}" title="{{ 'blogs.article.read_more' | t }}" class="button">
             {{ 'blogs.article.read_more' | t }}
           </a>
         </li>
 
         {% if blog.comments_enabled? and article.comments_count > 0 %}
           <li>
-            <a href="{{ article.url }}#comments" class="button">
+            <a href="{{ article.url }}#comments" class="button" title="{{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}">
               {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
             </a>
           </li>

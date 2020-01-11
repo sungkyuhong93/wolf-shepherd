@@ -13,21 +13,21 @@
       <ul class="account__sidebar  account__mobile-nav">
 
         <li class="active">
-          <a href="/account#account" id="accountDetailsShow" class="active h4">
+          <a href="/account#account" id="accountDetailsShow" class="active h4" title="Details">
             Account Details
             {% include 'icons' with icon: 'arrow-right' %}
           </a>
         </li>
 
         <li>
-          <a id="accountOrdersShow" href="/account#accountOrders" class="h4">
+          <a id="accountOrdersShow" href="/account#accountOrders" class="h4" title="Order History">
             Order History
             {% include 'icons' with icon: 'arrow-right' %}
           </a>
         </li>
 
         <li>
-          <a href="/account/addresses#addressShow" class="h4">
+          <a href="/account/addresses#addressShow" class="h4" title="Address Book">
             Address Book
             {% include 'icons' with icon: 'arrow-right' %}
           </a>
@@ -80,7 +80,7 @@
             {% else %}
             <div class="account-container__order__empty">
               <h3>{{ 'customer.orders.none' | t }}</h3>
-              <a href="/collections/all" class="button">START SHOPPPING</a>
+              <a href="/collections/all" class="button" title="Start Shopping">START SHOPPPING</a>
             </div>
             {% endif %}
 

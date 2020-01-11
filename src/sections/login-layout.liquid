@@ -54,18 +54,18 @@
                 {% include 'icons' with icon: 'eye' %}
               </div>
             </div>
-            <a class="login__recover" href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a>
+            <a class="login__recover" href="#recover" id="RecoverPassword" title="{{ 'customer.login.forgot_password' | t }}">{{ 'customer.login.forgot_password' | t }}</a>
           {% endif %}
 
           {{ form.errors | default_errors }}
 
-          <button type="submit" class="button button--full">{{ 'customer.login.sign_in' | t }}</button>
+          <button type="submit" class="button button--full" title="{{ 'customer.login.sign_in' | t }}">{{ 'customer.login.sign_in' | t }}</button>
 
           {% comment %} <a class="login__link" href="/">{{ 'customer.login.cancel' | t }}</a> {% endcomment %}
 
           <p class="login__link">New to Wolf & Shepherd? 
           
-            <a class="login__link" href="/account/register">
+            <a class="login__link" href="/account/register" title="{{ 'layout.customer.create_account' | t }}">
               {{ 'layout.customer.create_account' | t }}
             </a>
           </p>

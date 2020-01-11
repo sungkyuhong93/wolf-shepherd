@@ -6,7 +6,7 @@
   </h5>
 
   {% if settings.share_twitter %}
-    <a target="_blank" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}">
+    <a target="_blank" title="{{ 'general.social.share_on_twitter' | t }}" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}">
       {% include 'icons' with icon: 'share_twitter' %}
 
       <span class="visually-hidden" aria-hidden="true">{{ 'general.social.share_on_twitter' | t }}</span>
@@ -15,7 +15,7 @@
   {% endif %}
 
   {% if settings.share_facebook %}
-    <a target="_blank" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}">
+    <a target="_blank" title="{{ 'general.social.share_on_facebook' | t }}" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}">
       {% include 'icons' with icon: 'share_facebook' %}
       <span class="visually-hidden" aria-hidden="true">{{ 'general.social.share_on_facebook' | t }}</span>
       <span class="visually-hidden">{{ 'general.social.alt_text.share_on_facebook' | t }}</span>

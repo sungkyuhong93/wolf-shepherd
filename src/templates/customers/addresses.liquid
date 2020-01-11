@@ -13,21 +13,21 @@
       <ul class="account__sidebar  account__mobile-nav">
 
         <li>
-          <a href="/account#account" id="accountDetailsShow" class="h4">
+          <a href="/account#account" id="accountDetailsShow" class="h4" title="Details">
             Account Details
             {% include 'icons' with icon: 'arrow-right' %}
           </a>
         </li>
 
         <li>
-          <a id="accountOrdersShow" href="/account#accountOrders" class="h4">
+          <a id="accountOrdersShow" href="/account#accountOrders" class="h4" title="Order History">
             Order History
             {% include 'icons' with icon: 'arrow-right' %}
           </a>
         </li>
 
         <li>
-          <a id="accountAddressShow" href="/account/addresses#addressShow" class="active h4">
+          <a id="accountAddressShow" href="/account/addresses#addressShow" class="active h4" title="Address Book">
             Address Book
             {% include 'icons' with icon: 'arrow-right' %}
           </a>
@@ -39,7 +39,7 @@
     </div>
 
     <div class="grid__item medium-up--three-quarters medium-down--one-whole">
-      <a href="/account/addresses" class="account__breadcrumb">
+      <a href="/account/addresses" class="account__breadcrumb" title="Account">
         {% include 'icons' with icon: 'arrow-left' %}
         Account
       </a>

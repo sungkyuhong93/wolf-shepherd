@@ -5,7 +5,7 @@
         <span class="icon__fallback-text">{% comment %}{{ 'general.pagination.previous' | t }}{% endcomment %}Prev</span>
       </div>
     {% else %}
-      <a href="{{ paginate.previous.url }}" class="wolf-arrow prev">
+      <a href="{{ paginate.previous.url }}" class="wolf-arrow prev" title="Previous">
         <span class="icon__fallback-text">{% comment %}{{ 'general.pagination.previous' | t }}{% endcomment %}Prev</span>
       </a>
     {% endunless %}
@@ -17,7 +17,7 @@
         <span class="icon__fallback-text">{% comment %}{{ 'general.pagination.next' | t }}{% endcomment %}Next</span>
       </div>
     {% else %}
-      <a href="{{ paginate.next.url }}" class="wolf-arrow wolf-arrow--right ">
+      <a href="{{ paginate.next.url }}" class="wolf-arrow wolf-arrow--right" title="Next">
         <span class="icon__fallback-text">{% comment %}{{ 'general.pagination.next' | t }}{% endcomment %}Next</span>
       </a>
     {% endunless %}
