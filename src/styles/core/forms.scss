@@ -333,7 +333,8 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
   width: 92px;
 
   &__minus, &__plus {
-    border: 0;
+    background-color: $COLOR_WHITE;
+    border: 1px solid $COLOR_PRIMARY_LIGHT;
     cursor: pointer;
     height: 33px;
     left: 0;
@@ -341,7 +342,12 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
     position: absolute;
     text-align: center;
     top: 0;
+    transition: 0.2s;
     width: 30px;
+
+    &:hover, &:focus {
+      background-color: rgba($COLOR_PRIMARY_LIGHT, 0.2);
+    }
   }
 
   &__plus {

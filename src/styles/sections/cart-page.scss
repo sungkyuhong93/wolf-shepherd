@@ -166,10 +166,16 @@ $border-color: #dedede;
 
 .cart-item {
   &__remove {
+    background-color: transparent;
+    border: 0;
     color: $COLOR_PRIMARY;
     cursor: pointer;
     font-size: $FONT_SIZE_XSMALL;
     text-decoration: underline;
+
+    &:focus {
+      color: rgba($COLOR_PRIMARY, 0.8);
+    }
   }
 
   &__title {

@@ -87,7 +87,7 @@
 
                         <div class="cart-item__quanity-wrapper">
                           <div class="quantity-wrapper">
-                            <div class="quantity-wrapper__minus js--quantity" data-increment="false">-</div>
+                            <button class="quantity-wrapper__minus js--quantity" data-increment="false">-</button>
                             <input type="number"
                                     name="updates[]"
                                     id="updates_{{ item.key }}"
@@ -95,12 +95,12 @@
                                     class="cart-ajax__quantity__input"
                                     min="0"
                                     aria-label="{{ 'cart.general.item_quantity' | t }}">
-                            <div class="quantity-wrapper__plus js--quantity" data-increment="true">+</div>
+                            <button class="quantity-wrapper__plus js--quantity" data-increment="true">+</button>
                           </div>
 
-                          <div class="cart-item__remove cart-data" data-line="{{ forloop.index }}" data-id="{{ item.id }}">
+                          <button type="button" class="cart-item__remove cart-data" data-line="{{ forloop.index }}" data-id="{{ item.id }}">
                             {{ 'cart.general.remove' | t }}
-                          </div>
+                          </button>
                         </div>
 
                       </td>
