@@ -52,14 +52,9 @@ $CART_HEIGHT: calc(100vh - 280px);
   }
 
   .cart-ajax {
-    // @include transform(translateX(-100%));
-    // left: 0;
-    // right: initial;
-    // @include media-query($tablet-up) {
     @include transform(translateX(100%));
     left: initial;
     right: 0;
-    // }
   }
 
   &.cart-ajax--show {
@@ -274,6 +269,8 @@ $CART_HEIGHT: calc(100vh - 280px);
   }
 
   &__remove {
+    background-color: transparent;
+    border: 0;
     cursor: pointer;
     padding: 8px 16px;
     position: absolute;
@@ -282,6 +279,10 @@ $CART_HEIGHT: calc(100vh - 280px);
 
     .icon {
       width: 11px;
+    }
+
+    &:focus {
+      opacity: 0.6;
     }
   }
 

@@ -11,8 +11,19 @@ Gift wrapping
   padding: 12px 0;
 
   &__remove {
+    background-color: transparent;
+    border: 0;
+    color: $COLOR_PRIMARY;
     cursor: pointer;
     float: right;
+    font-family: $FONT_BASE;
+    font-size: $FONT_SIZE_XSMALL;
+    padding: 0;
+    text-decoration: underline;
+
+    &:focus {
+      opacity: 0.8;
+    }
   }
 
   &__success {
@@ -20,8 +31,19 @@ Gift wrapping
   }
 
   &__link {
+    background-color: transparent;
+    border: 0;
+    color: $COLOR_PRIMARY;
     cursor: pointer;
+    font-family: $FONT_BASE;
+    font-size: $FONT_SIZE_XSMALL;
+    padding: 0;
+    padding-left: 5px;
     text-decoration: underline;
+
+    &:focus {
+      opacity: 0.8;
+    }
   }
 
   &__add {

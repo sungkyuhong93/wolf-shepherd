@@ -60,7 +60,7 @@ export default () => {
     });
 
 
-    $(document).on('focusout', '.cart-ajax .quantity-wrapper input', function() {
+    $(document).on('change', '.cart-ajax .quantity-wrapper input', function() {
       const $this = $(this);
       cartValueTrigger($this);
     });
@@ -302,11 +302,11 @@ export default () => {
               </a>
               <span class="cart-ajax__row__money">${cartLinePrice}</span>
               <div class="quantity-wrapper">
-                <div class="quantity-wrapper__minus js--quantity" data-increment="false">-</div>
+                <button type="button" class="quantity-wrapper__minus js--quantity" data-increment="false">-</button>
                 <input type="number" value="${cart.quantity}" min="0">
-                <div class="quantity-wrapper__plus js--quantity" data-increment="true">+</div>
+                <button type="button" class="quantity-wrapper__plus js--quantity" data-increment="true">+</button>
               </div>
-              <div class="cart-ajax__remove" tabindex="0">${icons.remove}</div>
+              <button type="button" class="cart-ajax__remove" tabindex="0">${icons.remove}</button>
             </div>
           </div>`;
 

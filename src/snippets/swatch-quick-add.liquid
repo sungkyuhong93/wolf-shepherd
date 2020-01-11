@@ -10,8 +10,8 @@
       {% assign swatchBackground = value | handleize | downcase %}
     {% endif%}
 
-    <div class="swatch swatch-product swatch-product--quick-add swatch-product--{{ value | handleize }}
-    {% if option.selected_value == value %}swatch-product--active{% endif %}
+    <button type="button" class="swatch swatch-product swatch-product--quick-add swatch-product--{{ value | handleize }}
+    {% if option.selected_value == value %}is-active{% endif %}
     {% if optionName == 'color' or optionName == 'colour' %}swatch-product--color{% endif %}
     {% if optionName == 'size' or optionName == 'Size' %}swatch-product--size{% endif %}" 
     js-product-swatches="container"
@@ -21,7 +21,7 @@
       {% unless optionName == 'color' or optionName == 'colour' %}
         {{ value | escape }}
       {% endunless %}
-    </div>
+    </button>
   {% endfor %}
 </div>
 {% endif %}

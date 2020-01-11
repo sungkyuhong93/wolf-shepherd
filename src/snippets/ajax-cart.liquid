@@ -8,7 +8,7 @@
   </div>
 
 
-  <div id="cart" class="cart-ajax" data-cart-total="{{ cart.item_count }}" >
+  <div id="cart" class="cart-ajax" data-cart-total="{{ cart.item_count }}">
     <div class="cart-ajax__header">
       <a href="#" class="cart-ajax__close">
         {% include 'icons' with icon: 'close' %}
@@ -53,11 +53,11 @@
 
                   {% include 'icons' with icon: 'gift-box' %}
 
-                  Gifting these items? <span js-gift-wrap="true" data-quantity="1" data-product-id="{{giftProduct}}" class="giftwrapping__link">Add gift wrap to my order</span>
+                  Gifting these items? <button type="button" js-gift-wrap="true" data-quantity="1" data-product-id="{{giftProduct}}" class="giftwrapping__link">Add gift wrap to my order</button>
                 </div>
                 <div class="giftwrapping__success">
                   Your order will be gift wrapped 
-                  <span js-gift-wrap="false" data-product-id="{{giftProduct}}" class="giftwrapping__remove">Remove</span>
+                  <button type="button" js-gift-wrap="false" data-product-id="{{giftProduct}}" class="giftwrapping__remove">Remove</button>
                 </div>
               </div>
 
