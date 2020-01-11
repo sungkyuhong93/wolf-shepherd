@@ -67,7 +67,7 @@
               {% for i in (1..5) %}
                 {% assign image = 'slider_image_' | append: i %}
                 {% if article.metafields.article[image] %}
-                  <img src="{{article.metafields.article[image] }}">
+                  <img src="{{article.metafields.article[image] }}" alt="{{article.metafields.article[image].alt }}">
                 {% endif %}
               {% endfor %}
             </div>
