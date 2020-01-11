@@ -36,7 +36,8 @@
         {% assign swatchBackground = value | handleize | downcase %}
       {% endif%}
 
-      <div class="swatch swatch-product swatch-product--{{ value | handleize }}
+      <button type="button" {% if option.selected_value == value %}autofocus {% endif %}
+        class="swatch swatch-product swatch-product--{{ value | handleize }}
         {% if option.selected_value == value %}is-active{% endif %}
         {% if optionName == 'color' or optionName == 'colour' %}swatch-product--color{% endif %}
         {% if optionName == 'size' or optionName == 'Size' %}swatch-product--size {{specialClass}}{% endif %}
@@ -53,7 +54,7 @@
         {% unless optionName == 'color' or optionName == 'colour' %}
           {{ value | escape }}
         {% endunless %}
-      </div>
+      </button>
     {% endfor %}
   </div>
 
