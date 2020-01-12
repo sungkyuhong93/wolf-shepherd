@@ -18,7 +18,7 @@ Stockist
     span {
       display: block;
       font-family: $FONT_BODY;
-      font-size: 14px;
+      font-size: $FONT_SIZE_SMALL;
       margin-bottom: 14px;
       text-transform: uppercase;
     }
@@ -55,7 +55,7 @@ Stockist
       padding: 48px 0 20px;
 
       span {
-        font-size: 12px;
+        font-size: $FONT_SIZE_XSMALL;
       }
     }
 
@@ -85,6 +85,7 @@ body {
   .stockist-result-name {
     color: $COLOR_PRIMARY !important;
     font-size: 18px !important;
+    font-size: 1.125em !important;
     letter-spacing: 0.4px !important;
     margin-bottom: 10px !important;
   }
@@ -95,7 +96,7 @@ body {
   }
 
   .stockist-result-address, .stockist-result-details {
-    font-size: 12px !important;
+    font-size: $FONT_SIZE_XSMALL !important;
     line-height: 20px !important;
   }
 

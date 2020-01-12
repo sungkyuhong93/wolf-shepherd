@@ -120,13 +120,14 @@ body .reviews-page {
       &:before {
         color: $COLOR_PRIMARY;
         font-size: 20px!important;
+        font-size: 1.25em !important;
       }
     }
   }
 
   .stamped-summary-caption .stamped-summary-text {
     font-family: $FONT_BODY;
-    font-size: 10px;
+    font-size: $FONT_SIZE_XXSMALL;
     letter-spacing: 0.25px;
     text-transform: uppercase;
   }
@@ -175,7 +176,7 @@ body .reviews-page {
     strong {
       color: $COLOR_PRIMARY;
       font-family: $FONT_BODY;
-      font-size: 10px;
+      font-size: $FONT_SIZE_XXSMALL;
       font-weight: normal;
       letter-spacing: $LETTER_SPACING_BASE;
       min-width: 70px;
@@ -226,7 +227,7 @@ body .reviews-page {
         border: 0!important;
         color: $COLOR_PRIMARY;
         font-family: $FONT_BODY;
-        font-size: 10px;
+        font-size: $FONT_SIZE_XXSMALL;
         margin: 0;
         text-transform: uppercase;
       }
@@ -256,7 +257,7 @@ body .reviews-page {
       .review-location {
         color: $COLOR_PRIMARY;
         font-family: $FONT_BASE;
-        font-size: 10px;
+        font-size: $FONT_SIZE_XXSMALL;
         font-weight: normal;
         padding: 6px 0;
       }
@@ -273,6 +274,7 @@ body .reviews-page {
       &:before {
         color: $COLOR_PRIMARY;
         font-size: 14px!important;
+        font-size: 0.875em!important;
       }
     }
 
@@ -382,6 +384,7 @@ body .reviews-page {
       .stamped-review-header-title {
         color: $COLOR_PRIMARY;
         font-size: 24px;
+        font-size: 1.5em;
         font-weight: normal;
         margin-bottom: 18px;
       }
@@ -390,6 +393,7 @@ body .reviews-page {
         color: $COLOR_PRIMARY;
         font-family: $FONT_BASE;
         font-size: 13px;
+        font-size: 0.8125em;
         font-weight: normal;
         line-height: 1.8;
       }
@@ -398,7 +402,7 @@ body .reviews-page {
         strong {
           color: $COLOR_PRIMARY;
           font-family: $FONT_BODY;
-          font-size: 10px;
+          font-size: $FONT_SIZE_XXSMALL;
           font-weight: normal;
           letter-spacing: $LETTER_SPACING_BASE;
           min-width: 70px;
@@ -550,6 +554,7 @@ body .reviews-page {
 
     .stamped-content .stamped-review .stamped-review-header-title {
       font-size: 18px;
+      font-size: 1.125em;
     }
 
     .stamped-pagination {
@@ -578,6 +583,7 @@ body .reviews-page {
 
       .stamped-review-option-title {
         font-size: 18px;
+        font-size: 1.125em;
         text-align: left;
       }
     }
@@ -594,6 +600,7 @@ body .reviews-page {
 
     .header__title {
       font-size: 56px;
+      font-size: 3.5em;
     }
   }
 }

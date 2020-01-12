@@ -59,6 +59,7 @@ account
   @media (max-width: 749px) {
     &__header h1 {
       font-size: 32px;
+      font-size: 2em;
     }
 
     &__sidebar {
@@ -384,10 +385,12 @@ Order
 
   .order__table tbody tr td {
     font-size: 13px;
+    font-size: 0.8125em;
   }
 
   .order__table tfoot td {
     font-size: 13px;
+    font-size: 0.8125em;
   }
 
   .account-container {
@@ -509,17 +512,17 @@ account
     }
 
     .h4 {
-      font-size: 14px;
+      font-size: $FONT_SIZE_SMALL;
       letter-spacing: 0.3px;
 
       @media (max-width: 749px){
-        font-size: 12px;
+        font-size: $FONT_SIZE_XSMALL;
       }
     }
 
     p {
       font-family: $FONT_BODY;
-      font-size: 10px;
+      font-size: $FONT_SIZE_XXSMALL;
       letter-spacing: 0.25px;
       margin-bottom: 0;
       text-transform: uppercase;
@@ -534,7 +537,7 @@ account
     text-transform: uppercase;
 
     @media (max-width: 749px){
-      font-size: 10px;
+      font-size: $FONT_SIZE_XXSMALL;
     }
   }
 

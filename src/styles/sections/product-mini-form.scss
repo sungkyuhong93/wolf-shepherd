@@ -29,6 +29,7 @@
 
     h3 {
       font-size: 18px;
+      font-size: 1.125em;
     }
 
     #{$parent}__price {
@@ -59,7 +60,7 @@
       bottom: -55px;
       display: flex;
       font-family: $FONT_BODY;
-      font-size: 10px;
+      font-size: $FONT_SIZE_XXSMALL;
       height: 56px;
       justify-content: center;
       left: 15px;

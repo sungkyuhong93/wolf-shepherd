@@ -57,12 +57,14 @@ Login/account
 
   &__title {
     font-size: 32px;
+    font-size: 2em;
     margin-bottom: 15px;
     margin-top: 0;
     text-align: center;
 
     @include media-query($medium-up) {
       font-size: 40px;
+      font-size: 2.5em;
     }
   }
 

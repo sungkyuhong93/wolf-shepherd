@@ -38,7 +38,7 @@ trackmyorder
 
   label {
     color: $COLOR_PRIMARY;
-    font-size: 12px;
+    font-size: $FONT_SIZE_XSMALL;
     text-transform: capitalize;
   }
 
@@ -47,7 +47,7 @@ trackmyorder
     border-bottom: 1px solid $COLOR_PRIMARY;
     color: $COLOR_PRIMARY;
     font-family: $FONT_BODY;
-    font-size: 14px;
+    font-size: $FONT_SIZE_SMALL;
     letter-spacing: $LETTER_SPACING_BASE;
     padding: 0 0 4px;
   }

@@ -384,9 +384,8 @@ input[type=text], input[type=email], input[type=tel], input[type=password], inpu
   padding: 6px;
   text-align: center;
   width: 100%;
-
   font-family: $FONT_BODY;
-  font-size: 10px;
+  font-size: $FONT_SIZE_XXSMALL;
   letter-spacing: 0.25px;
   text-transform: uppercase;
 

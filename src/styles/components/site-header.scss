@@ -180,7 +180,7 @@ body {
 
       span {
         font-family: $FONT_BODY;
-        font-size: 10px;
+        font-size: $FONT_SIZE_XXSMALL;
         letter-spacing: $LETTER_SPACING_BASE;
         padding-top: 7px;
         text-transform: uppercase;
@@ -266,7 +266,7 @@ body {
 
       a, .secret-a {
         font-family: $FONT_BODY;
-        font-size: 10px;
+        font-size: $FONT_SIZE_XXSMALL;
         letter-spacing: $LETTER_SPACING_BASE;
         padding: 20px;
         text-transform: uppercase;

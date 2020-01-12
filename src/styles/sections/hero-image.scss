@@ -20,6 +20,7 @@ Hero image
   &--ambassador {
     #{$parent}__title {
       font-size: 80px;
+      font-size: 5em;
       margin-bottom: 0;
     }
 
@@ -30,6 +31,7 @@ Hero image
     #{$parent}__text p, #{$parent}__text, #{$parent}__supertitle {
       font-family: $FONT-BODY;
       font-size: 14px;
+      font-size: 0.875em;
       letter-spacing: 0.35px;
       text-transform: uppercase;
     }
@@ -37,10 +39,11 @@ Hero image
     @include media-query($small) {
       #{$parent}__title {
         font-size: 56px;
+        font-size: 3.5em;
       }
 
       #{$parent}__supertitle {
-        font-size: 12px;
+        font-size: $FONT_SIZE_XSMALL;
       }
 
       #{$parent}__text {
@@ -63,12 +66,13 @@ Hero image
   &__supertitle {
     font-family: $FONT-BODY;
     font-size: 14px;
+    font-size: 0.875em;
     letter-spacing: 0.35px;
     margin-bottom: 0px !important;
     text-transform: uppercase;
 
     @include media-query($small) {
-      font-size: 12px;
+      font-size: $FONT_SIZE_XSMALL;
     }
   }
 

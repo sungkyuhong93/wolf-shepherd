@@ -16,16 +16,19 @@ Contact
 
   &__main-title {
     font-size: 32px;
+    font-size: 2em;
     margin-bottom: 24px;
   }
 
   &__title {
     border-top: 1px solid $COLOR_PRIMARY_LIGHT;
     font-size: 24px;
+    font-size: 1.5em;
     padding-top: 30px;
 
     @include media-query($medium-up) {
       font-size: 32px;
+      font-size: 2em;
     }
   }
 
@@ -62,7 +65,7 @@ Contact
 
       li {
         font-family: $FONT_BODY;
-        font-size: 10px;
+        font-size: $FONT_SIZE_XXSMALL;
         letter-spacing: 0.25px;
         text-transform: uppercase;
       }
@@ -189,6 +192,7 @@ FAQs
 
     h3 {
       font-size: 18px;
+      font-size: 1.125em;
     }
   }
 }
@@ -208,6 +212,7 @@ Pagelayout
   @include media-query($small) {
     h3 {
       font-size: 18px;
+      font-size: 1.125em;
     }
   }
 }

@@ -29,7 +29,7 @@
   &__text {
     p {
       font-family: $FONT_BODY;
-      font-size: 10px;
+      font-size: $FONT_SIZE_XXSMALL;
       letter-spacing: $LETTER_SPACING_BASE;
       margin-bottom: 0;
       text-transform: uppercase;

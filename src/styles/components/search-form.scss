@@ -107,24 +107,28 @@ Search Form
         input {
           border-bottom: 0;
           font-size: 16px;
+          font-size: 1em;
           padding-left: 60px;
           padding-right: 40px;
 
           &::-webkit-input-placeholder { /* Edge */
             color: $COLOR_PRIMARY;
             font-size: 16px;
+            font-size: 1em;
             opacity: 1;
           }
           
           &:-ms-input-placeholder { /* Internet Explorer 10-11 */
             color: $COLOR_PRIMARY;
             font-size: 16px;
+            font-size: 1em;
             opacity: 1;
           }
           
           &::placeholder {
             color: $COLOR_PRIMARY;
             font-size: 16px;
+            font-size: 1em;
             opacity: 1;
           }
         }
@@ -187,6 +191,7 @@ Search Form
           float: left;
           font-family: $FONT_BODY;
           font-size: 10px;
+          font-size: 0.625em;
           left: 0;
           margin-bottom: 0;
           opacity: 0.5;
@@ -273,6 +278,7 @@ Search Form
     border-radius: 0;
     color: $COLOR_WHITE;
     font-size: 45px;
+    font-size: 2.8125em;
     height: auto;
     padding-bottom: 10px;
     padding-left: 0;
@@ -323,6 +329,7 @@ Search Form
   .search-hero__inner {
     .search__input {
       font-size: 25px;
+      font-size: 1.5625em;
     }
 
     .search {

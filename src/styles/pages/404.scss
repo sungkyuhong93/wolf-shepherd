@@ -25,27 +25,33 @@
     h1 {
       color: $COLOR_WHITE;
       font-size: 140px;
+      font-size: 8.75em;
       line-height: 1;
       text-align: center;
       
       span {
         display: block;
         font-size: 44px;
+        font-size: 2.75em;
       }
 
       @include media-query($medium-up) {
         font-size: 160px;
+        font-size: 10em;
 
         span {
           font-size: 54px;
+          font-size: 3.375em;
         }
       }
 
       @include media-query($large-up) {
         font-size: 200px;
+        font-size: 12.5em;
 
         span {
           font-size: 64px;
+          font-size: 4em;
         }
       }
     }

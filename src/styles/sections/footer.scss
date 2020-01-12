@@ -52,7 +52,7 @@
 
     input, input::placeholder {
       color: $COLOR_WHITE;
-      font-size: 10px;
+      font-size: $FONT_SIZE_XXSMALL;
       letter-spacing: $LETTER_SPACING_BASE;
       padding-left: 0;
       text-transform: uppercase;
@@ -127,6 +127,7 @@ Newsletter
   &__title {
     color: $COLOR_WHITE;
     font-size: 24px;
+    font-size: 1.5em;
     margin-top: 0;
   }
 

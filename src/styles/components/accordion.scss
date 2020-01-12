@@ -59,6 +59,7 @@ $ACCORDION_PADDING_LARGE: 22px;
     @include media-query($small) {
       h3 {
         font-size: 18px;
+        font-size: 1.125em;
       }
     }
   }

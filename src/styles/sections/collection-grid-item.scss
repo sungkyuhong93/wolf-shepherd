@@ -93,6 +93,7 @@
 
     i:before {
       font-size: 11px;
+      font-size: 0.6875em;
     }
 
     .stamped-product-reviews-badge {
@@ -107,7 +108,7 @@
 
     .stamped-badge-caption {
       font-family: $FONT_BASE;
-      font-size: 10px;
+      font-size: $FONT_SIZE_XXSMALL;
       letter-spacing: 0.1px;
       text-transform: capitalize;
     }
@@ -167,11 +168,11 @@
       justify-content: center;
 
       i:before {
-        font-size: 14px;
+        font-size: $FONT_SIZE_SMALL;
       }
 
       .stamped-badge-caption {
-        font-size: 12px;
+        font-size: $FONT_SIZE_XSMALL;
       }
     }
 
