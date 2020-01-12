@@ -159,6 +159,40 @@ Hero image
     z-index: 1;
   }
 
+  @include media-query($small) {
+    .button--white {
+      // @extend %button;
+      background: $BUTTON_COLOR;
+      border: 1px solid $BUTTON_COLOR;
+      border-radius: 0;
+      color: $BUTTON_TEXT_COLOR;
+      cursor: pointer;
+      display: inline-block;
+      font: 500 10px/40px $FONT_BODY;
+      height: 40px;
+      letter-spacing: $BUTTON_LETTER_SPACING;
+      margin: 0;
+      min-width: 152px;
+      outline: 0;
+      padding: 0 40px;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: 0.4s;
+      vertical-align: top;
+      
+      background: $BUTTON_WHITE_COLOR !important;
+      border-color: $BUTTON_WHITE_PRESS_COLOR;
+      color: $BUTTON_WHITE_TEXT_COLOR;
+
+      &:hover {
+        background: $BUTTON_WHITE_HOVER_COLOR !important;
+        border-color: $BUTTON_WHITE_HOVER_COLOR;
+        color: $BUTTON_WHITE_TEXT_COLOR;
+      }
+    }
+  }
+
   @include media-query( $medium-down ) {
     &--mobile-text-under {
       height: 380px;

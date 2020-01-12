@@ -47,6 +47,23 @@ $grid-max-width: 1180em;
 $grid-gutter: 30px;
 /* stylelint-enable */
 
+
+$BUTTON_COLOR: #032540;
+$BUTTON_PRESS_COLOR: #032540;
+$BUTTON_HOVER_COLOR: #021B2F;
+$BUTTON_DISABLE_COLOR: #8FA1AE;
+$BUTTON_TEXT_COLOR: #FFFFFF;
+
+$BUTTON_WHITE_COLOR: #FFFFFF;
+$BUTTON_WHITE_PRESS_COLOR: rgb(206, 224, 242);
+$BUTTON_WHITE_HOVER_COLOR: rgb(206, 224, 242);
+$BUTTON_WHITE_DISABLE_COLOR: rgb(233, 241, 249);
+$BUTTON_WHITE_TEXT_COLOR: rgb(12, 45, 71);
+
+$BUTTON_LETTER_SPACING: 0.25px;
+
+
+
 // Breakpoints used with the media-query mixin
 $small: 'small';
 $smallPX: 'small-px';
