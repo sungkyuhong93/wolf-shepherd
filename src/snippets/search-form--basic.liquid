@@ -10,7 +10,7 @@
           id="Search"
           value="{{ search.terms | escape }}"
           placeholder="{{ 'general.search.placeholder' | t }}">
-    <button type="submit">
+    <button type="submit" name="Search">
       <span class="h6">Search</span>
       {% include 'icons' with icon: 'search-wolf' %}
       <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>

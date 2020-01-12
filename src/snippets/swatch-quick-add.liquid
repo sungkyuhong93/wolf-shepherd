@@ -17,6 +17,7 @@
     js-product-swatches="container"
     data-swatch-option="{{optionCount}}"
     data-swatch-value="{{ value | escape }}"
+    name="{{value}}"
     style="background-size: {{swatchBackground}};">
       {% unless optionName == 'color' or optionName == 'colour' %}
         {{ value | escape }}

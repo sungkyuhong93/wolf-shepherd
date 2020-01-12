@@ -302,11 +302,11 @@ export default () => {
               </a>
               <span class="cart-ajax__row__money">${cartLinePrice}</span>
               <div class="quantity-wrapper">
-                <button type="button" class="quantity-wrapper__minus js--quantity" data-increment="false">-</button>
+                <button name="Quantity decrease" type="button" class="quantity-wrapper__minus js--quantity" data-increment="false">-</button>
                 <input type="number" value="${cart.quantity}" min="0">
-                <button type="button" class="quantity-wrapper__plus js--quantity" data-increment="true">+</button>
+                <button name="Quantity increment" type="button" class="quantity-wrapper__plus js--quantity" data-increment="true">+</button>
               </div>
-              <button type="button" class="cart-ajax__remove" tabindex="0">${icons.remove}</button>
+              <button name="Remove" type="button" class="cart-ajax__remove" tabindex="0">${icons.remove}</button>
             </div>
           </div>`;
 

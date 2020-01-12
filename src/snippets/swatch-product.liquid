@@ -46,6 +46,7 @@
         data-swatch-option="{{optionCount}}"
         data-swatch-value="{{ value | escape }}"
         style="background-size: {{swatchBackground}};"
+        name="{{value}}"
         {% if optionName == 'color' or optionName == 'colour' %}
           data-slider="product-images__container--{{swatchBackground}}"
           data-swatch-color="{{value}}"

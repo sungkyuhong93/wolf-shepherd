@@ -53,11 +53,11 @@
 
                   {% include 'icons' with icon: 'gift-box' %}
 
-                  Gifting these items? <button type="button" js-gift-wrap="true" data-quantity="1" data-product-id="{{giftProduct}}" class="giftwrapping__link">Add gift wrap to my order</button>
+                  Gifting these items? <button name="Gift wrap add" type="button" js-gift-wrap="true" data-quantity="1" data-product-id="{{giftProduct}}" class="giftwrapping__link">Add gift wrap to my order</button>
                 </div>
                 <div class="giftwrapping__success">
                   Your order will be gift wrapped 
-                  <button type="button" js-gift-wrap="false" data-product-id="{{giftProduct}}" class="giftwrapping__remove">Remove</button>
+                  <button name="Gift wrap remove" type="button" js-gift-wrap="false" data-product-id="{{giftProduct}}" class="giftwrapping__remove">Remove</button>
                 </div>
               </div>
 
