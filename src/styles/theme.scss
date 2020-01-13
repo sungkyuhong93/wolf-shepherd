@@ -46,7 +46,6 @@
 @import './pages/contact';
 @import './pages/404';
 @import './pages/trackmyorder';
-@import './pages/stockist';
 @import './pages/flagship';
 @import './pages/article';
 
@@ -71,7 +70,6 @@
 @import './sections/signup-success';
 @import './sections/product--images';
 @import './sections/product--details';
-@import './sections/product--reviews';
 @import './sections/product-mini-form';
 @import './sections/blog';
 @import './sections/search-page';
@@ -84,7 +82,9 @@
 @import './sections/style-guide';
 @import './sections/gift-wrapping';
 @import './sections/features';
+@import './sections/product--reviews';
 @import './sections/reviews';
+@import './pages/stockist';
 
 // Templates
 @import './templates/gift_card';

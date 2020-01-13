@@ -5,7 +5,7 @@
         <div class="testimonials__slider testimonials__slider--{{section.id}}" data-count="{{ section.blocks.size }}">
           {% for block in section.blocks %}
             <div class="testimonials__slide testimonials__slide--{{ block.id }}" data-slide-count="{{forloop.index | minus: 1 }}" {{ block.shopify_attributes }}>
-              <blockquote class="testimonials__slider-text">
+              <blockquote class="testimonials__slider-text font-reset">
                 {% if block.settings.quote != blank %}
                   <div class="testimonials__slider-text">‘‘{{ block.settings.quote | strip_html  }}’’</div>
                 {% endif %}

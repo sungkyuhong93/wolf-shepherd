@@ -1,6 +1,10 @@
 /* ============================================================================
   #Product--reviews
 ============================================================================== */
+$FONT_SIZE_SMALL: 14px;
+$FONT_SIZE_XSMALL: 12px;
+$FONT_SIZE_XXSMALL: 10px;
+
 .product-reviews {
   padding-top: 64px;
 
@@ -33,7 +37,7 @@
 
     &:before {
       font-size: 14px;
-      font-size: 0.875em;
+      // font-size: 0.875em;
     }
   }
 
@@ -109,7 +113,7 @@
       color: $COLOR_PRIMARY;
       font-family: $FONT_HEADING;
       font-size: 24px;
-      font-size: 1.5em;
+      // font-size: 1.5em;
       font-weight: normal;
       letter-spacing: 0.3px;
       line-height: 1;
@@ -390,6 +394,22 @@
       .stamped-review-vote {
         display: none;
       }
+
+      .stamped-review-footer {
+        display: none;
+      }
+
+      .stamped-review-image {
+        display: none;
+      }
+
+      .stamped-review-product {
+        display: none!important;
+      }
+
+      .stamped-review-variant {
+        display: none!important;
+      }
     }
 
     .stamped-review-footer {
@@ -407,7 +427,7 @@
       .stamped-review-header-title {
         color: $COLOR_PRIMARY;
         font-size: 24px;
-        font-size: 1.5em;
+        // font-size: 1.5em;
         font-weight: normal;
         margin-bottom: 18px;
       }
@@ -416,7 +436,7 @@
         color: $COLOR_PRIMARY;
         font-family: $FONT_BASE;
         font-size: 13px;
-        font-size: 0.8125em;
+        // font-size: 0.8125em;
         font-weight: normal;
         line-height: 1.8;
       }
@@ -698,7 +718,7 @@
 
     .stamped-content .stamped-review .stamped-review-header-title {
       font-size: 18px;
-      font-size: 1.125em;
+      // font-size: 1.125em;
     }
 
     .stamped-pagination {
@@ -726,7 +746,7 @@
 
       .stamped-review-option-title {
         font-size: 18px;
-        font-size: 1.125em;
+        // font-size: 1.125em;
         text-align: left;
       }
     }

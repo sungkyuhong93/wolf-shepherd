@@ -367,6 +367,22 @@ body .reviews-page {
       .stamped-review-vote {
         display: none;
       }
+
+      .stamped-review-footer {
+        display: none;
+      }
+
+      .stamped-review-image {
+        display: none;
+      }
+
+      .stamped-review-product {
+        display: none!important;
+      }
+
+      .stamped-review-variant {
+        display: none!important;
+      }
     }
 
     .stamped-review-footer {
@@ -384,7 +400,7 @@ body .reviews-page {
       .stamped-review-header-title {
         color: $COLOR_PRIMARY;
         font-size: 24px;
-        font-size: 1.5em;
+        // font-size: 1.5em;
         font-weight: normal;
         margin-bottom: 18px;
       }
@@ -393,7 +409,7 @@ body .reviews-page {
         color: $COLOR_PRIMARY;
         font-family: $FONT_BASE;
         font-size: 13px;
-        font-size: 0.8125em;
+        // font-size: 0.8125em;
         font-weight: normal;
         line-height: 1.8;
       }
@@ -554,7 +570,7 @@ body .reviews-page {
 
     .stamped-content .stamped-review .stamped-review-header-title {
       font-size: 18px;
-      font-size: 1.125em;
+      // font-size: 1.125em;
     }
 
     .stamped-pagination {
@@ -583,7 +599,7 @@ body .reviews-page {
 
       .stamped-review-option-title {
         font-size: 18px;
-        font-size: 1.125em;
+        // font-size: 1.125em;
         text-align: left;
       }
     }
@@ -600,7 +616,7 @@ body .reviews-page {
 
     .header__title {
       font-size: 56px;
-      font-size: 3.5em;
+      // font-size: 3.5em;
     }
   }
 }

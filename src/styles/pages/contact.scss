@@ -211,8 +211,24 @@ Pagelayout
 
   @include media-query($small) {
     h3 {
-      font-size: 18px;
-      font-size: 1.125em;
+      // font-size: 18px;
+      // font-size: 1.125em;
+    }
+  }
+}
+
+#shopify-section-about-video-modal {
+  @include media-query($small) {
+    margin-bottom: 40px;
+  }
+}
+
+#privacy-policy {
+  ul li {
+    font-size: $FONT_SIZE_XSMALL;
+    
+    a {
+      font-size: 1em;
     }
   }
 }

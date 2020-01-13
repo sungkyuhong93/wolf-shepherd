@@ -31,7 +31,7 @@ Collection filter
 
   .filter-group li a, .filter-group li a:visited, .filter-group .collection-count {
     color: $COLOR_PRIMARY;
-    font-size: $FONT_SIZE_XSMALL;
+    font-size: 12px;
     margin: 0;
     padding-bottom: 10px;
   }
@@ -309,6 +309,23 @@ Collection filter
           margin-top: 0;
         }
       }
+    }
+  }
+}
+
+.template-list-collections .collection-filter .filter-menu .pt-mobile-header {
+
+  @include media-query($small) {
+    &:after {
+      display: none;
+    }
+
+    .pt-nav-toggle {
+      width: 100%;
+    }
+
+    .pt-nav-toggle-sort {
+      display: none;
     }
   }
 }

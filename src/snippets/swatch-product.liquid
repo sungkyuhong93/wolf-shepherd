@@ -10,17 +10,19 @@
 
   <h6 class="swatch__header {% if option.name == 'Size' or option.name == 'size' %} swatch__header--flex {% endif %}">
     <span class="swatch__header__text">{{ option.name }}</span>
-    {%- for value in option.values -%}  
-      {%- if optionName == 'color' or optionName == 'colour' -%}
-        {% if option.selected_value == value %}
-          <span js-swatch="color" class="swatch__header__color">{{ value }}</span>
-          <span class="swatch__header__color-count">{{colorCount}} {{colorCount | pluralize: 'color', 'colors' }}</span>
-        {% endif %}
+    <span class="font-reset">
+      {%- for value in option.values -%}  
+        {%- if optionName == 'color' or optionName == 'colour' -%}
+          {% if option.selected_value == value %}
+            <span js-swatch="color" class="swatch__header__color">{{ value }}</span>
+            <span class="swatch__header__color-count">{{colorCount}} {{colorCount | pluralize: 'color', 'colors' }}</span>
+          {% endif %}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if option.name == 'Size' or option.name == 'size' -%}
+        <span class="swatch__header__size js--size-guide">{% include 'icons' with icon: 'ruler' %} What size am I?</span>
       {%- endif -%}
-    {%- endfor -%}
-    {%- if option.name == 'Size' or option.name == 'size' -%}
-      <span class="swatch__header__size js--size-guide">{% include 'icons' with icon: 'ruler' %} What size am I?</span>
-    {%- endif -%}
+    </span>
   </h6>
 
   <div class="swatch__wrapper 

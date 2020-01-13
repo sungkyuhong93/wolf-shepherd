@@ -42,8 +42,17 @@
     }
   }
 
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p {
+    span {
+      font-size: 1em;
+    }
+  }
+
   .rte {
-    font-size: $FONT_SIZE_XSMALL;
+    p {
+      font-size: $FONT_SIZE_XSMALL;
+      font-size: 12px;
+    }
   }
 
   p {
@@ -167,7 +176,7 @@
   }
 
   .social_sharing_header {
-    display: none;
+    display: none !important;
     left: 20px;
     position: absolute;
 
@@ -264,8 +273,11 @@
       font-size: $FONT_SIZE_SMALL;
     }
 
-    .rte, p, meta {
-      font-size: $FONT_SIZE_SMALL;
+    .rte {
+      p, meta {
+        font-size: $FONT_SIZE_SMALL;
+        font-size: 14px;
+      }
     }
 
     .social_sharing_footer {
@@ -283,7 +295,7 @@
 
   @include media-query($tablet-up) {
     .social_sharing_header {
-      display: block;
+      display: block !important;
 
       &.is-active {
         .social-sharing {

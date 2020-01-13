@@ -2,7 +2,7 @@
   <ul class="accordion">
 
     {% unless product.description == blank %}
-      <li class="accordion__item" js-accordion="item">
+      <li class="accordion__item font-reset" js-accordion="item">
         <button tabindex="0" class="accordion__control h6" js-accordion="control">
           Details 
           <span class="accordion__arrow-up accordion__arrow">
@@ -13,14 +13,14 @@
           </span>
         </button>
 
-        <div id="content-1" class="accordion__content" js-accordion="content">
+        <div id="content-1" class="accordion__content font-reset" js-accordion="content">
           {{ product.description }}
         </div>
       </li>
     {% endunless %}
 
     {% unless product.metafields.details.product_details == blank %}
-      <li class="accordion__item" js-accordion="item">
+      <li class="accordion__item font-reset" js-accordion="item">
         <button tabindex="0" class="accordion__control h6" js-accordion="control">
           Story 
           <span class="accordion__arrow-up accordion__arrow">
@@ -31,14 +31,14 @@
           </span>
         </button>
 
-        <div id="content-1" class="accordion__content" js-accordion="content">
+        <div id="content-1" class="accordion__content font-reset" js-accordion="content">
            {{ product.metafields.details.product_details }}
         </div>
       </li>
     {% endunless %}
 
     {% unless product.metafields.fit.product_fit == blank %}
-      <li class="accordion__item" js-accordion="item">
+      <li class="accordion__item font-reset" js-accordion="item">
         <button tabindex="0" class="accordion__control h6" js-accordion="control">
           Fit 
           <span class="accordion__arrow-up accordion__arrow">
@@ -49,14 +49,14 @@
           </span>
         </button>
 
-        <div id="content-1" class="accordion__content" js-accordion="content">
+        <div id="content-1" class="accordion__content font-reset" js-accordion="content">
            {{ product.metafields.fit.product_fit }}
         </div>
       </li>
     {% endunless %}
 
     {% unless product.metafields.worn_with.best_worn_with == blank %}
-      <li class="accordion__item" js-accordion="item">
+      <li class="accordion__item font-reset" js-accordion="item">
         <button tabindex="0" class="accordion__control h6" js-accordion="control">
           Best Worn With
           <span class="accordion__arrow-up accordion__arrow">
@@ -67,7 +67,7 @@
           </span>
         </button>
 
-        <div id="content-1" class="accordion__content" js-accordion="content">
+        <div id="content-1" class="accordion__content font-reset" js-accordion="content">
            {{ product.metafields.worn_with.best_worn_with }}
         </div>
       </li>

@@ -16,6 +16,12 @@ html, body {
   text-size-adjust: 100%;
 }
 
+$FONT_SIZE_BASE: 16px;
+
+.font-reset {
+  font-size: $FONT_SIZE_BASE !important;
+}
+
 /**
  * Display styles.
  */
@@ -207,7 +213,6 @@ caption, .caption, label {
  * Block styles.
  */
 blockquote {
-  @include ms-respond(font-size, 2);
   border-left: 2px solid $COLOR_PRIMARY;
   line-height: $LINE_HEIGHT_BODY;
   margin: 0 0 $SPACING_XL;
@@ -223,13 +228,13 @@ ol,
 .ol,
 ul,
 .ul {
-  @include ms-respond(font-size, 0);
+  font-size: $FONT_SIZE_BASE;
   line-height: $LINE_HEIGHT_BODY;
 }
 
 input[type=email] {
-  @include ms-respond(font-size, -2);
   font-family: $FONT_BODY;
+  font-size: $FONT_SIZE_XXSMALL;
   line-height: $LINE_HEIGHT_BODY;
 }
 
