@@ -72,19 +72,20 @@
 
   @include media-query($small) {
     // &--compress {
-      background-color: transparent!important;
-      border-left: 0;
-      border-right: 0;
-      border-top: 0;
-      height: 23px;
-      line-height: 2.6;
-      min-width: initial;
-      padding-left: 0;
-      padding-right: 0;
+    background-color: transparent!important;
+    border-bottom-width: 2px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    height: 23px;
+    line-height: 2.6;
+    min-width: initial;
+    padding-left: 0;
+    padding-right: 0;
 
-      &:hover {
-        background: transparent;
-      }
+    &:hover {
+      background: transparent;
+    }
     // }
   }
 }

@@ -247,6 +247,16 @@ $FONT_SIZE_XXSMALL: 10px;
         &:before {
           display: none;
         }
+
+        @include media-query($small) {
+          border-bottom-width: 2px;
+          border-left: 0;
+          border-right: 0;
+          border-top: 0;
+          cursor: pointer;
+          line-height: 19px;
+          padding: 0;
+        }
       }
 
       .stamped-summary-actions-newquestion {
