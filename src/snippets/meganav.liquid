@@ -8,17 +8,13 @@
         <div class="meganav__header">
           <h3>{{ block.settings.meganav_list_title}}</h3>
         </div>
-        {% for i in (1..1) %}
-          {% assign meganav_linklist = 'meganav_linklist_' | append: i %}
-          {% assign childlist = block.settings[meganav_linklist] %}
-          <ul>
-            {% for link in linklists[childlist].links %}
-              <li>
-                <a class="meganav__link {% if link.active %}meganav__link--active{% endif %}" href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        {% endfor %}
+        <ul>
+          {% for child_link in link.links %}
+            <li>
+              <a class="meganav__link {% if child_link.active %}meganav__link--active{% endif %}" href="{{ child_link.url }}" title="{{ child_link.title }}">{{ child_link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
       </div>
     </div>
 
