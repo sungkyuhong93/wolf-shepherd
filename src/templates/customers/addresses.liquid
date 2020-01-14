@@ -1,4 +1,4 @@
-<div class="page-width account-page">
+<div class="page-width account-page account-page--address">
   <div class="grid">
 
 
@@ -39,7 +39,7 @@
     </div>
 
     <div class="grid__item medium-up--three-quarters medium-down--one-whole">
-      <a href="/account/addresses" class="account__breadcrumb" title="Account">
+      <a href="/account" class="account__breadcrumb" title="Account">
         {% include 'icons' with icon: 'arrow-left' %}
         Account
       </a>
@@ -155,6 +155,7 @@
                             name="address[phone]"
                             id="AddressPhoneNew"
                             value="{{ form.phone }}"
+                            title="Please enter a vaild phone number"
                             pattern="[0-9\-]*">
 
                       <div class="address-form__footer">
@@ -322,6 +323,7 @@
                                   name="address[phone]"
                                   id="AddressPhone_{{ form.id }}"
                                   value="{{ form.phone }}"
+                                  title="Please enter a vaild phone number"
                                   pattern="[0-9\-]*">
 
                             <div class="address-form__footer">
