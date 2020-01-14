@@ -198,6 +198,7 @@ export default () => {
   // Ajax Cart Open
   function cartOpen() {
     Navigation().removeActiveState();
+    selectors.$cartClose.focus();
     selectors.$cartBody.addClass('cart-ajax--show');
     cartOpened = true;
     scrollLockDown();

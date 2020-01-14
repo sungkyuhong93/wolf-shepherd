@@ -125,6 +125,7 @@ $CART_HEIGHT: calc(100vh - 280px);
 
   /* =============== Ajax header section =============== */
   &__close {
+    border-bottom: 1px solid $COLOR_GREY;
     display: block;
     position: absolute;
     right: 20px;
@@ -133,6 +134,10 @@ $CART_HEIGHT: calc(100vh - 280px);
     .icon {
       height: 14px;
       width: 14px;
+    }
+
+    &:focus {
+      border-bottom: 1px solid $COLOR_PRIMARY;
     }
   }
 
@@ -166,6 +171,10 @@ $CART_HEIGHT: calc(100vh - 280px);
   &__international {
     font-size: $FONT_SIZE_XSMALL;
     text-decoration: underline;
+
+    &:focus {
+      opacity: 0.6;
+    }
   }
 
   /* =============== Ajax main body/rows of product =============== */
@@ -220,10 +229,15 @@ $CART_HEIGHT: calc(100vh - 280px);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
+    border-bottom: 1px solid $COLOR_WHITE;
     display: block;
     height: $dimensions;
     margin-right: 10px;
     width: 60px;
+
+    &:focus {
+      border-bottom: 1px solid $COLOR_PRIMARY;
+    }
 
     @include media-query($large-up) {
       $dimensions: 100px;
@@ -254,6 +268,10 @@ $CART_HEIGHT: calc(100vh - 280px);
   &__row__title {
     margin: 0;
     text-decoration: none;
+
+    &:focus {
+      text-decoration: underline;
+    }
   }
 
   &__row__subtitle {
@@ -279,11 +297,12 @@ $CART_HEIGHT: calc(100vh - 280px);
     top: 0;
 
     .icon {
+      border-bottom: 1px solid $COLOR_WHITE;
       width: 11px;
     }
 
-    &:focus {
-      opacity: 0.6;
+    &:focus .icon {
+      border-bottom: 1px solid $COLOR_PRIMARY;
     }
   }
 
@@ -447,25 +466,35 @@ Related Products
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+    border-bottom: 1px solid $COLOR_GREY;
     display: block;
     height: 0;
     margin-bottom: 0;
     margin-right: 20px;
     min-width: 140px;
     padding-top: 25%;
+
+    &:focus {
+      border-bottom: 1px solid $COLOR_PRIMARY;
+    }
   }
 
   &__text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
     width: 100%;
   }
 
   &__product-title {
+    border-bottom: 1px solid $COLOR_GREY;
     font-size: 11px;
     font-size: 0.6875em;
     margin-bottom: 4px;
+
+    &:focus {
+      border-bottom: 1px solid $COLOR_PRIMARY;
+    }
   }
 
   &__product-price {
@@ -491,6 +520,10 @@ Related Products
     height: 40px;
     margin-right: 20px;
     width: 100%;
+
+    &:focus {
+      border-color: $COLOR_PRIMARY;
+    }
   }
 
   .selector-wrapper--size {

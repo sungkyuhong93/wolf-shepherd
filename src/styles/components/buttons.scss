@@ -33,7 +33,7 @@
     }
   }
 
-  &:hover {
+  &:hover, &:focus {
     background-color: $BUTTON_HOVER_COLOR;
     color: $BUTTON_TEXT_COLOR;
   }
@@ -64,7 +64,7 @@
   border-color: $BUTTON_WHITE_PRESS_COLOR;
   color: $BUTTON_WHITE_TEXT_COLOR;
 
-  &:hover {
+  &:hover, &:focus {
     background: $BUTTON_WHITE_HOVER_COLOR;
     border-color: $BUTTON_WHITE_HOVER_COLOR;
     color: $BUTTON_WHITE_TEXT_COLOR;
@@ -83,7 +83,7 @@
     padding-left: 0;
     padding-right: 0;
 
-    &:hover {
+    &:hover, &:focus {
       background: transparent;
     }
     // }
