@@ -58,6 +58,19 @@ $ICON_CLOSE: var(--icon-close);
 $WOLF: var(--wolf);
 $CART: var(--cart);
 
+.field--error .field__input {
+  border-color: #e32c2b!important;
+}
+
+.field__message--error {
+  font-family: $FONT_BASE;
+  font-size: 12px;
+}
+
+.card-fields-container--loaded .field--error .field__input--iframe-container {
+  box-shadow: none;
+}
+
 .breadcrumb {
   li {
     &:nth-of-type(1) span::before,
@@ -250,6 +263,15 @@ h2 {
     transform: none;
   }
 
+  [for="checkout_shipping_address_id"] {
+    top: 0 !important;
+  }
+
+  [name="checkout[shipping_address][id]"] {
+    font-weight: 400 !important;
+    font-size: 12px!important;
+  }
+  
   .field--show-floating-label label, .field--active label {
     top: 0;
   }
@@ -296,12 +318,12 @@ h2 {
     box-shadow: none!important;
     color: $COLOR_PRIMARY;
     height: 36px;
-    font-family: $FONT_BODY;
-    font-size: $FONT_SIZE_XSMALL;
+    font-family: $FONT_BASE !important;
+    font-size: 12px;
     padding-bottom: 8px !important;
     padding-left: 0;
     padding-top: 6px !important;
-    text-transform: uppercase;
+    text-transform: none;
 
     &::placeholder {
       opacity: 0;

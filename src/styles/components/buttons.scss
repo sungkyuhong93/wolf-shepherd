@@ -134,9 +134,9 @@
 
 .wolf-arrow {
   background-image: $ICON_ARROW_LEFT;
-  background-position: calc(50% - 1px) calc(50% - 1px);
+  background-position: calc(50% - 1px) calc(50%);
   background-repeat: no-repeat;
-  background-size: 10px 13px;
+  background-size: 6px 10px;
   border: 1px solid $COLOR_SECONDARY;
   border-radius: 50%;
   cursor: pointer;
@@ -154,7 +154,7 @@
 
 .wolf-arrow--right {
   background-image: $ICON_ARROW_RIGHT;
-  background-position: calc(50% + 1px) calc(50% - 1px);
+  background-position: calc(50% + 1px) calc(50%);
 }
 
 .button-arrow {
