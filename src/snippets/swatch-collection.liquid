@@ -27,52 +27,56 @@
       {% endfor %}
       {% assign currentLoop = '' %}
 
-      <div class="swatch__wrapper">
-        {% for value in option.values %}
-          {% for variant in product.variants %}     
-            {% if variant.option1 == value or variant.option2 == value or variant.option3 == value %}
-              {% assign color = value | handleize %}
-              {% if currentLoop contains color %}
-              {% else %}
+      <div class="swatch__container">
+        <div class="swatch__wrapper">
+          {% for value in option.values %}
+            {% for variant in product.variants %}     
+              {% if variant.option1 == value or variant.option2 == value or variant.option3 == value %}
+                {% assign color = value | handleize %}
+                {% if currentLoop contains color %}
+                {% else %}
 
-                {% assign imageCount = 0 %}
-                {% for image in product.images %}
-                  {% if imageCount == 2 %}
-                    {% break %}
-                  {% endif %}
-                  {% assign productImage = image.alt | handleize %}
-                  {% if productImage == color %}
-                    {% if imageCount == 0 %}
-                      {% assign productImageOne = image.src | img_url: '380x' %}
-                    {% else %}
-                      {% assign productImageTwo = image.src | img_url: '380x' %}
+                  {% assign imageCount = 0 %}
+                  {% for image in product.images %}
+                    {% if imageCount == 2 %}
+                      {% break %}
                     {% endif %}
-                    {% assign imageCount = imageCount | plus: 1 %}
-                  {% endif %}
-                {% endfor %}
+                    {% assign productImage = image.alt | handleize %}
+                    {% if productImage == color %}
+                      {% if imageCount == 0 %}
+                        {% assign productImageOne = image.src | img_url: '380x' %}
+                      {% else %}
+                        {% assign productImageTwo = image.src | img_url: '380x' %}
+                      {% endif %}
+                      {% assign imageCount = imageCount | plus: 1 %}
+                    {% endif %}
+                  {% endfor %}
 
-                {% capture preload %}
-                  {{ preload }}
-                {% endcapture %}
+                  <div js-swatch-image="trigger"
+                    data-href="{{ variant.url }}"
+                    data-variant-image-one="{{productImageOne}}"
+                    data-variant-image-two="{{productImageTwo}}"
+                    class="swatch swatch__tooltip swatch-product swatch-product--{{color }}" 
+                    style="background-color: {{ color }};">
 
-                <div js-swatch-image="trigger"
-                  data-href="{{ variant.url }}"
-                  data-variant-image-one="{{productImageOne}}"
-                  data-variant-image-two="{{productImageTwo}}"
-                  class="swatch swatch__tooltip swatch-product swatch-product--{{color }}" 
-                  style="background-color: {{ color }};">
+                    <span class="swatch__tooltip-info">{{color}}</span>
+                  </div>
 
-                  <span class="swatch__tooltip-info">{{color}}</span>
-                  <span class="swatch-product__counter swatch-product__counter--medium">+{{colorCount | minus: 5}}</span>
-                  <span class="swatch-product__counter swatch-product__counter--small">+{{colorCount | minus: 3}}</span>
-
-                </div>
-
+                {% endif %}
+                {% assign currentLoop = currentLoop | append: ',' | append: color %}
               {% endif %}
-              {% assign currentLoop = currentLoop | append: ',' | append: color %}
-            {% endif %}
+            {% endfor %}
           {% endfor %}
-        {% endfor %}
+        </div>
+
+        <div js-swatch-slider="trigger" class="swatch-next">
+          {% if colorCount > 5 %}
+            <span class="swatch-product__counter swatch-product__counter--medium">+{{colorCount | minus: 5}}</span>
+          {% endif %}
+          {% if colorCount > 3 %}
+            <span class="swatch-product__counter swatch-product__counter--small">+{{colorCount | minus: 3}}</span>
+          {% endif %}
+        </div>
       </div>
 
     {% endif %}

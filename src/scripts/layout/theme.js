@@ -18,6 +18,7 @@ import Instafeed from '../sections/instagram-feed';
 import GiftWrap from '../sections/giftwrapping';
 import QuickAdd from '../sections/quick-add';
 import SwatchCollectionImage from '../sections/swatch-collection-image';
+import SwatchSlider from '../sections/swatch-slider';
 import VideoModal from '../sections/video-modal';
 
 import '../sections/site-header';
@@ -50,6 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
   Search().init();
   VideoModal();
   SwatchCollectionImage().init();
+
+  SwatchSlider().init();
 
   if (document.querySelector('.accordion') !== null) {
     Accordion('.accordion', {

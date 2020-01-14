@@ -23,7 +23,7 @@ export default () => {
     const href = target.dataset.href;
     const imageOne = target.dataset.variantImageOne;
     const imageTwo = target.dataset.variantImageTwo;
-    const collectionGridItem = target.parentElement.parentElement;
+    const collectionGridItem = target.parentElement.parentElement.parentElement;
     const productLinks = collectionGridItem.querySelectorAll('a');
 
     for (let i = 0; i < collectionGridItem.childNodes.length; i++) {

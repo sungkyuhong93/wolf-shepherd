@@ -87,78 +87,44 @@ Swatches Styles
 }
 
 .collection-grid-item {
+
+  .swatch__container {
+    align-items: center;
+    display: flex;
+    font-size: 12px;
+    justify-content: center;
+
+    .swatch-product__counter {
+      display: block;
+      padding-top: 2px;
+      padding-left: 4px;
+    }
+
+    @include media-query($small) {
+      .swatch-product__counter--medium {
+        display: none;
+      }
+    }
+
+    @include media-query($medium-up) {
+      .swatch-product__counter--small {
+        display: none;
+      }
+    }
+  }
+
   .swatch__wrapper {
     .swatch-product {
       font-size: 1em;
 
-      .swatch-product__counter {
-        
-      }
-
-      .swatch-product__counter--small, .swatch-product__counter--medium {
-        display: none;
-      }
-
       @include media-query($small) {
         &:nth-child(n+4) {
-          background-color: transparent !important;
-          background-image: none !important;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: 5px 10px;
-          border-radius: 0;
-          box-shadow: none !important;
-          cursor: pointer !important;
-          font-size: $FONT_SIZE_XXSMALL;
-          margin-left: 0;
-          pointer-events: none;
-          position: relative;
-          top: 1px;
-
-          .swatch-product__counter--small {
-            display: block;
-          }
-
-          .swatch__tooltip-info {
-            display: none;
-          }
-        }
-  
-        &:nth-child(n+5) {
           display: none;
         }
       }
 
       @include media-query($medium-up) {
         &:nth-child(n+6) {
-          background-color: transparent !important;
-          background-image: none !important;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: 5px 10px;
-          border-radius: 0;
-          box-shadow: none !important;
-          cursor: pointer !important;
-          font-size: $FONT_SIZE_XXSMALL;
-          margin-left: 0;
-          pointer-events: none;
-          position: relative;
-          top: 1px;
-
-          .swatch-product__counter--small {
-            display: none;
-          }
-
-          .swatch-product__counter--medium {
-            display: block;
-          }
-
-          .swatch__tooltip-info {
-            display: none;
-          }
-        }
-  
-        &:nth-child(n+7) {
           display: none;
         }
       }
