@@ -18,7 +18,7 @@
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  transition: 0.4s;
+  transition: 0.3s;
   vertical-align: top;
 
   &.disabled, &[disabled] {
@@ -36,6 +36,11 @@
   &:hover, &:focus {
     background-color: $BUTTON_HOVER_COLOR;
     color: $BUTTON_TEXT_COLOR;
+  }
+
+  &:active {
+    background-color: #17456e;
+    border-color: #17456e;
   }
 }
 
@@ -68,6 +73,11 @@
     background: $BUTTON_WHITE_HOVER_COLOR;
     border-color: $BUTTON_WHITE_HOVER_COLOR;
     color: $BUTTON_WHITE_TEXT_COLOR;
+  }
+
+  &:active {
+    background-color: #d9ecff;
+    border-color: #d9ecff;
   }
 
   @include media-query($small) {

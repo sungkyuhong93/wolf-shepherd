@@ -531,13 +531,67 @@ Related Products
       clip: auto;
       height: auto;
       margin: 0;
+      overflow: visible;
       padding: 0 20px 0 0;
       position: static!important;
       width: auto;
     }
 
+    select {
+      display: none;
+    }
+
     .swatch__wrapper {
       display: none;
+    }
+
+    .selectric {
+      background: $COLOR_WHITE;
+      background-image: $ICON_ARROW_DOWN;
+      background-position: calc(100% - 15px) center;
+      background-repeat: no-repeat;
+      border: 1px solid $COLOR_PRIMARY_LIGHT;
+      color: $COLOR_PRIMARY;
+      height: 40px;
+      margin-right: 20px;
+      width: 100%;
+      
+      span {
+        color: $COLOR_PRIMARY;
+        font-family: $FONT_BASE;
+        font-size: 12px;
+      }
+      
+      .button {
+        display: none;
+      }
+
+    }
+    
+    .selectric-open {
+      .selectric {
+        background-image: $ICON_ARROW_UP;
+      }
+    }
+
+    .selectric-items {
+      background: $COLOR_WHITE;
+      border: 1px solid $COLOR_PRIMARY_LIGHT;
+
+      li {
+        border-bottom: 1px solid $COLOR_PRIMARY_LIGHT;
+        color: $COLOR_PRIMARY;
+        font-family: $FONT_BASE;
+        font-size: 12px;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+        
+        &.selected, &.highlighted {
+          background: rgba($COLOR_PRIMARY_LIGHT, 0.1);
+        }
+      }
     }
   }
 

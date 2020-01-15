@@ -1,5 +1,5 @@
 import $ from 'jquery';
-// import selectric from 'selectric';
+import selectric from 'selectric';
 
 theme.Select = (function() {
 
@@ -14,9 +14,11 @@ theme.Select = (function() {
    * Set click events on items.
    */
   function setDropdown() {
-    $('.ajax-related__product-wrapper select').selectric();
+    $('.ajax-related__product-wrapper .selector-wrapper--size select').selectric({
+      openOnFocus: true,
+    });
   }
 
-  // init();
+  init();
 
 })();

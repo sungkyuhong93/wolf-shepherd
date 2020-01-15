@@ -40,7 +40,7 @@ export default () => {
       lazyLoad: 'ondemand',
       responsive: [
         {
-          breakpoint: 1024,
+          breakpoint: 1025,
           settings: {
             dots: true,
             arrows: true,

@@ -95,6 +95,7 @@ Swatches Styles
     justify-content: center;
 
     .swatch-product__counter {
+      cursor: pointer;
       display: block;
       padding-top: 2px;
       padding-left: 4px;
@@ -272,7 +273,6 @@ Swatches Styles
       border-radius: 0;
       color: $COLOR_PRIMARY;
       font-family: $FONT_BODY;
-      font-size: $FONT_SIZE_XSMALL;
       line-height: 1.6;
       margin-bottom: 24px;
       margin-left: 0;
@@ -285,6 +285,7 @@ Swatches Styles
 
       .swatch__size-container__title {
         display: block;
+        font-size: $FONT_SIZE_XSMALL;
         padding: 10px 28px 10px 12px;
         width: 100%;
       }
