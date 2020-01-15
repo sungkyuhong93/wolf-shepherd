@@ -81,6 +81,7 @@ body {
     width: 50%;
 
     .icon {
+      vertical-align: initial;
       width: 16px;
     }
 
@@ -95,13 +96,16 @@ body {
     }
 
     li {
-      align-items: center;
+      align-items: flex-end;
       display: flex;
       float: right;
       height: 100%;
       list-style: none;
 
       a {
+        align-items: center;
+        display: flex;
+        height: 100%;
         outline: none;
         padding: 10px;
         position: relative;
