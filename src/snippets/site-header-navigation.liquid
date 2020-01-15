@@ -7,18 +7,17 @@
         Has meganav
       ------------------------------------------------------------------------------
       {% endcomment %}
-      {% for block in section.blocks %}
-        {%- if block.settings.navlink_bind == link.title  -%}
-          {% assign meganav = true %}
-          <li class="site-nav__item site-nav__item--has-meganav {% if link.active %}site-nav__link--active{% endif %}" 
-            js-mega-nav="desktop-nav">
-            <a class="site-nav__link" js-meganav="trigger" href="{{ link.url }}" tab-index="1" aria-expanded="false" aria-haspopup="true" title="{{ link.title }}">
-              {{ link.title }}
-            </a>
-            {% include 'meganav' %}
-          </li>
-        {%- endif -%}  
-      {% endfor %}
+      {%- if section.settings.navlink_bind == link.title  -%}
+        {% assign meganav = true %}
+        <li class="site-nav__item site-nav__item--has-meganav {% if link.active %}site-nav__link--active{% endif %}" 
+          js-mega-nav="desktop-nav">
+          <a class="site-nav__link" js-meganav="trigger" href="{{ link.url }}" tab-index="1" aria-expanded="false" aria-haspopup="true" title="{{ link.title }}">
+            {{ link.title }}
+          </a>
+          {% include 'meganav' %}
+        </li>
+      {%- endif -%}  
+      
 
       {% comment %}
       ------------------------------------------------------------------------------
