@@ -140,3 +140,23 @@ $ACCORDION_PADDING_LARGE: 22px;
     }
   }
 }
+
+.product-description {
+  .accordion__content {
+    p {
+      font-size: 13px;
+      font-size: 0.813em;
+
+      * {
+        font-size: 1em;
+      }
+    }
+
+    ul, ol {
+      li {
+        font-size: 13px;
+        font-size: 0.813em;
+      }
+    }
+  }
+}
