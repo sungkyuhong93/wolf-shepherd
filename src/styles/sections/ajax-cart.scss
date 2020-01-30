@@ -146,9 +146,13 @@ $CART_HEIGHT: calc(100vh - 280px);
   }
 
   &__body {
-    height: calc(100vh - 70px);
+    height: calc(100vh - 63px);
     overflow: auto;
-    padding: 0 20px;
+    padding: 20px 20px 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   &__title {
@@ -157,7 +161,7 @@ $CART_HEIGHT: calc(100vh - 280px);
     font-size: $FONT_SIZE_XSMALL;
     height: 64px;
     line-height: 64px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     margin-left: -20px;
     margin-top: -15px;
     text-transform: uppercase;
@@ -363,7 +367,7 @@ $CART_HEIGHT: calc(100vh - 280px);
 
   @include media-query($medium-up) {
     &__body {
-      padding: 0 40px;
+      padding: 20px 40px 0;
     }
 
     &__title {
@@ -437,7 +441,7 @@ Related Products
   display: none;
   margin-left: -20px;
   margin-top: 20px;
-  padding: 20px;
+  padding: 20px 20px 120px;
   width: calc(100% + 40px);
 
   &.is-active {
@@ -538,61 +542,89 @@ Related Products
     }
 
     select {
-      display: none;
-    }
+      display: block;
+      width: 100%;
+    } 
 
     .swatch__wrapper {
       display: none;
     }
 
-    .selectric {
-      background: $COLOR_WHITE;
-      background-image: $ICON_ARROW_DOWN;
-      background-position: calc(100% - 15px) center;
-      background-repeat: no-repeat;
-      border: 1px solid $COLOR_PRIMARY_LIGHT;
-      color: $COLOR_PRIMARY;
-      height: 40px;
-      margin-right: 20px;
-      width: 100%;
-      
-      span {
-        color: $COLOR_PRIMARY;
-        font-family: $FONT_BASE;
-        font-size: 12px;
-      }
-      
-      .button {
-        display: none;
+    // @media (max-width: 1025px) {
+      .selectric, .selectric-items {
+        display: none!important;
       }
 
-    }
-    
-    .selectric-open {
-      .selectric {
-        background-image: $ICON_ARROW_UP;
-      }
-    }
+      .selectric-hide-select {
+        height: auto;
+        position: static;
+        width: auto;
 
-    .selectric-items {
-      background: $COLOR_WHITE;
-      border: 1px solid $COLOR_PRIMARY_LIGHT;
+        select {
+          border: 1px solid rgb(178, 207, 235);
+          height: 42px;
+          left: 0;
+          opacity: 1!important;
 
-      li {
-        border-bottom: 1px solid $COLOR_PRIMARY_LIGHT;
-        color: $COLOR_PRIMARY;
-        font-family: $FONT_BASE;
-        font-size: 12px;
-
-        &:last-child {
-          border-bottom: 0;
+          &:focus {
+            border-color: $COLOR_PRIMARY;
+          }
         }
+      }
+    // }
+    // @media (min-width: 1026px) {
+    //   select {
+    //     display: none;
+    //   }
+
+    //   .selectric {
+    //     background: $COLOR_WHITE;
+    //     background-image: $ICON_ARROW_DOWN;
+    //     background-position: calc(100% - 15px) center;
+    //     background-repeat: no-repeat;
+    //     border: 1px solid $COLOR_PRIMARY_LIGHT;
+    //     color: $COLOR_PRIMARY;
+    //     height: 40px;
+    //     margin-right: 20px;
+    //     width: 100%;
         
-        &.selected, &.highlighted {
-          background: rgba($COLOR_PRIMARY_LIGHT, 0.1);
-        }
-      }
-    }
+    //     span {
+    //       color: $COLOR_PRIMARY;
+    //       font-family: $FONT_BASE;
+    //       font-size: 12px;
+    //     }
+        
+    //     .button {
+    //       display: none;
+    //     }
+    //   }
+
+    //   .selectric-open {
+    //     .selectric {
+    //       background-image: $ICON_ARROW_UP;
+    //     }
+    //   }
+
+    //   .selectric-items {
+    //     background: $COLOR_WHITE;
+    //     border: 1px solid $COLOR_PRIMARY_LIGHT;
+  
+    //     li {
+    //       border-bottom: 1px solid $COLOR_PRIMARY_LIGHT;
+    //       color: $COLOR_PRIMARY;
+    //       font-family: $FONT_BASE;
+    //       font-size: 12px;
+  
+    //       &:last-child {
+    //         border-bottom: 0;
+    //       }
+          
+    //       &.selected, &.highlighted {
+    //         background: rgba($COLOR_PRIMARY_LIGHT, 0.1);
+    //       }
+    //     }
+    //   }
+    // }
   }
 
   .product-swatches {

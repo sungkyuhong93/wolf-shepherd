@@ -7,7 +7,7 @@ theme.Select = (function() {
    * Initialise component.
    */
   function init() {
-    setDropdown();
+    // setDropdown();
   }
 
   /**

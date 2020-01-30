@@ -86,6 +86,20 @@ Swatches Styles
   }
 }
 
+.template-index {
+  .collection-grid-item {
+    @include media-query($medium-up) {
+      .swatch-product {
+        height: 16px;
+        line-height: 16px;
+        margin: 0 4px;
+        min-width: 16px;
+        width: 16px;
+      }
+    }
+  }
+}
+
 .collection-grid-item {
 
   .swatch__container {

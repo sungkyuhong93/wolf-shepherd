@@ -9,8 +9,10 @@
 
     <div class="grid">
       <div class="collection-list collection-list--{{section.id}}">
+
+              <div class="swiper-wrapper">
         {% for block in section.blocks limit: section.blocks.size %}
-          <div {{ block.shopify_attributes }} class="grid__item medium-up--one-third">
+          <div {{ block.shopify_attributes }} class="grid__item medium-up--one-third swiper-slide">
             {%- assign collection = collections[block.settings.collection] -%}
 
             <a class="collection-list__item" href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}" title="{{ collection.title }}">
@@ -45,6 +47,8 @@
             </a>
           </div>
         {% endfor %}
+
+        </div>
       </div>
     </div>
   </div>

@@ -202,9 +202,12 @@ export default () => {
     selectors.$cartBody.addClass('cart-ajax--show');
     cartOpened = true;
     scrollLockDown();
-    swatch({
-      container: '[data-section-type="product-miniform"]',
-    }).closeMiniSwatch();
+
+    if(document.querySelector('[data-section-type="product-miniform"]') !== null ) {
+      swatch({
+        container: '[data-section-type="product-miniform"]',
+      }).closeMiniSwatch();
+    }
   }
 
   // Ajax Cart Close

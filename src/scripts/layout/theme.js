@@ -24,6 +24,7 @@ import VideoModal from '../sections/video-modal';
 import '../sections/site-header';
 import '../sections/sticky-nav';
 import '../sections/featured-collection-slider';
+import '../sections/collection-list';
 import '../sections/list-collections';
 import '../sections/collection-page';
 import '../sections/features';
@@ -51,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
   Search().init();
   VideoModal();
   SwatchCollectionImage().init();
-
   SwatchSlider().init();
 
   if (document.querySelector('.accordion') !== null) {
@@ -61,15 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
     Accordion('.accordion').showInitialItem();
   }
 
-  SwatchProduct({
-    container: '[js-ajax-cart="ajax-product-1"]',
-    updateSlider: false,
-  }).init();
+  if (document.querySelector('[js-ajax-cart="ajax-product-1"]') !== null) {
+    SwatchProduct({
+      container: '[js-ajax-cart="ajax-product-1"]',
+      updateSlider: false,
+    }).init();
+  }
 
-  SwatchProduct({
-    container: '[js-ajax-cart="ajax-product-2"]',
-    updateSlider: false,
-  }).init();
+  if (document.querySelector('[js-ajax-cart="ajax-product-2"]') !== null) {
+    SwatchProduct({
+      container: '[js-ajax-cart="ajax-product-2"]',
+      updateSlider: false,
+    }).init();
+  }
 
   Instafeed();
 

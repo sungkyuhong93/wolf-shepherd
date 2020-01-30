@@ -5,7 +5,7 @@ import {formatMoney} from '@shopify/theme-currency';
 import AjaxCart from '../sections/ajax-cart';
 
 /**
- * Export default AjaxCart.
+ * Export default FreeGift.
  */
 export default () => {
 
@@ -32,13 +32,15 @@ export default () => {
   // Free Shipping
   function freeShippingCheck(cart) {
     const freeShippingTheshold = theme.ajaxCart.freeShippingTheshold * 100;
+    const freeShippingMessage = theme.ajaxCart.freeShippingMessage;
     const cartTotal = cart.total_price;
     const valueUntilFree = freeShippingTheshold - cartTotal;
     const percentUntilFree = `${cartTotal / freeShippingTheshold * 100}%`;
     const formatValueUntilFree = handleFormatValueUntilFree(valueUntilFree);
-    const freeShippingText = `You are ${formatValueUntilFree} away from the free gift`;
+    const freeShippingText = freeShippingMessage.replace('$value$', formatValueUntilFree);
     const giftItemValue = giftItemValueCheck(cart);
     const valueUntilFreeMinusSneakyGift = valueUntilFree + giftItemValue;
+
 
     if (valueUntilFreeMinusSneakyGift <= 0) {
       selectors.$freeShipping.html('Free gift on this order');
@@ -85,6 +87,10 @@ export default () => {
    * Handle add to cart event and build cart.
    */
   function handleAddGift() {
+    if(!config.freeGiftProductId) {
+      return false;
+    }
+
     const data = {
       quantity: 1,
       id: config.freeGiftProductId,
@@ -137,7 +143,6 @@ export default () => {
    * Handle remove from cart event and build cart.
    */
   function handleRemoveGift() {
-
     const data = {
       quantity: 0,
       id: config.freeGiftProductId,

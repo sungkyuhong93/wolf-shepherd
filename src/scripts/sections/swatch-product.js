@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import cssClasses from '../helpers/cssClasses';
+// import {extendDefaults} from '../helpers/utils';
 
 /**
  * DOM selectors.
@@ -15,7 +16,7 @@ const selectors = {
 };
 
 /**
- * Export default AjaxCart.
+ * Export default Swatch Product.
  */
 export default (config) => {
 
@@ -32,6 +33,10 @@ export default (config) => {
   };
 
   function init() {
+    if (document.querySelector(`${config.container} ${selectors.container}`) === null) {
+      return false;
+    }
+    
     nodeSelectors.container.forEach((element) => {
       element.addEventListener('click', handleClick);
       element.addEventListener('click', swatchChange);

@@ -1,4 +1,8 @@
 #shopify-section-collection-list {
+  .page-width {
+    overflow: hidden;
+  }
+
   @include media-query($medium-up) {
     .grid {
       margin-left: -40px;
@@ -30,15 +34,15 @@
     }
 
     .collection-list {
-      margin-right: -16px;
-      overflow: auto;
-      white-space: nowrap;
-      width: calc(100% + 16px);
-      -ms-overflow-style: none;
+      // margin-right: -16px;
+      // overflow: scroll;
+      // white-space: nowrap;
+      // width: calc(100% + 16px);
+      // -ms-overflow-style: none;
 
-      &::-webkit-scrollbar {
-        display: none;
-      }
+      // &::-webkit-scrollbar {
+      //   display: none;
+      // }
     }
 
     .collection-list__image {

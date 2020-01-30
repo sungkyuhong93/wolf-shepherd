@@ -20,7 +20,11 @@
       {% if settings.freeshipping_enable == true %}
         <div class="cart-ajax__freeshipping">
           <div class="freeshipping">
-            <div js-freeshipping="info" class="freeshipping__info">You are {{settings.freeshipping_threshold | times: 100 | money_without_trailing_zeros }} away from the free gift</div>
+            <div js-freeshipping="info" class="freeshipping__info">
+              {% assign freeshippingThreshold = settings.freeshipping_threshold | times: 100 | money_without_trailing_zeros %}
+              {% assign freeshippingMessage = settings.freeshipping_message | replace: '$value$', freeshippingThreshold %}
+              {{freeshippingMessage}}
+            </div>
             <div class="freeshipping__bar">
               <div js-freeshipping="bar" class="freeshipping__percent"></div>
             </div>

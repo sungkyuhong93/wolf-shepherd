@@ -17,6 +17,8 @@
       enable: {{ajaxCartBoo | handleize }},
       freeShipping: {{ settings.freeshipping_enable | default: false }},
       freeShippingTheshold: {{ settings.freeshipping_threshold }},
+      freeShippingMessage: "{{ settings.freeshipping_message | default: 'You are $value$ away from the free gift' }}",
+      freeShippingSuccess: "{{ settings.freeshipping_success | default: 'Free gift on this order' }}",
       freeGiftProductId: {{ all_products[settings.frees_gift].variants.first.id | default: false }},
       freeGiftProducthandle: "{{ all_products[settings.frees_gift].handle | default: false }}",
       upsellEnable: {{ settings.collection_enable | default: false }},

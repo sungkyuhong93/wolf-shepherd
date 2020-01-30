@@ -1205,6 +1205,19 @@
         "label": "Free gift threshold"
       },
       {
+        "type": "text",
+        "id": "freeshipping_message",
+        "label": "Free gift message",
+        "default": "You are $value$ away from the free gift",
+        "info": "Please use '$value$' to place the free gift amount"
+      },
+      {
+        "type": "text",
+        "id": "freeshipping_success",
+        "label": "Free gift success message",
+        "default": "Free gift on this order"
+      },
+      {
         "type": "product",
         "id": "frees_gift",
         "label": "Free Gift"

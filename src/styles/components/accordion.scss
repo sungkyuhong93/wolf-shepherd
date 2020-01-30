@@ -118,6 +118,7 @@ $ACCORDION_PADDING_LARGE: 22px;
 
   &__item {
     border-bottom: 1px solid $COLOR_GREY_2;
+    margin-bottom: 1px;
 
     &.is-active {
       #{$parent}__control {
