@@ -70,9 +70,12 @@
         {% endif %}
 
         <div class="cart-ajax__footer">
-          <div class="cart-ajax__footer-text">
-            Shipping <span class="cart-ajax--shipping-price">Free</span>
-          </div>
+
+          {% if settings.shipping_text_enable == true %}
+            <div class="cart-ajax__footer-text">
+              Shipping <span class="cart-ajax--shipping-price">Free</span>
+            </div>
+          {% endif %}
 
           <div class="cart-ajax__footer-text">
             Subtotal

@@ -1224,6 +1224,12 @@
       },
       {
         "type": "checkbox",
+        "id": "shipping_text_enable",
+        "label": "Enable Shipping Text",
+        "default": false
+      },
+      {
+        "type": "checkbox",
         "id": "collection_enable",
         "label": "Enable Ajax Upsell",
         "default": false

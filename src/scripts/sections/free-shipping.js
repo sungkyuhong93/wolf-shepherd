@@ -43,7 +43,7 @@ export default () => {
 
 
     if (valueUntilFreeMinusSneakyGift <= 0) {
-      selectors.$freeShipping.html('Free gift on this order');
+      selectors.$freeShipping.html(theme.ajaxCart.freeShippingSuccess);
       selectors.$freeShippingBar.css('width', percentUntilFree);
       isGiftInCart(cart);
     } else {
