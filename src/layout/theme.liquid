@@ -44,8 +44,11 @@
   {% endif %}
 
   {% include 'script-tags', layout: 'theme' %}
+    {% if false %}
+    {{ content_for_header }}
+    {% endif %}
+  {{ content_for_header | replace: "<body onload='document._boomrl();'>", "<bodx onload='document._boomrl();'>" }}
 
-  {{ content_for_header }}
 
 </head>
 
