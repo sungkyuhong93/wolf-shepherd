@@ -34,7 +34,6 @@ export default () => {
    * Initialise component.
    */
   function init() {
-    console.log('watch is running')
     setTriggerEvents();
   }
 
@@ -67,8 +66,6 @@ export default () => {
         }
       }
     });
-
-    console.log('Swipe on')
   }
 
 

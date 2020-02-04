@@ -24,11 +24,9 @@ export default () => {
   function swatchSlide(container) {
     const swatches = container.querySelectorAll('[js-swatch-image="trigger"]');
     const counter = getCount();
-    console.log(counter)
     var i = 0;
     
     for (i = 0; i < counter; i++) {
-      // console.log(swatches[i])
       swatchCopy(swatches[i], container)
     }
   }
