@@ -31,7 +31,7 @@
             {% if block.settings[meganav_image] != blank %}
               <a href="{{ block.settings[meganav_image_link] }}" title="{{ block.settings[meganav_image_title] }}" class="meganav__image font-reset">
                 <div class="meganav__image-center">
-                  {{ block.settings[meganav_image] | img_url: '200x' | img_tag }}
+                  {{ block.settings[meganav_image] | img_url: '100x' | img_tag }}
                   <h6>{{ block.settings[meganav_image_title] }}</h6>
                 </div>
               </a>
