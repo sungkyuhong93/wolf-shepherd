@@ -57,7 +57,7 @@
                   <span class="site-nav__link-toggle" js-open="dropdown" data-open=".site-nav__dropdown--{{forloop.index}}">open</span>
                 </a>
               {% else %}
-                <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" href="{{ link.url }}" title="{{ link.tite }}">
+                <a class="site-nav__link {% if link.active %}site-nav__link--active{% endif %}" href="{{ link.url }}" title="{{ link.title }}">
                   {{ link.title }}
                   <span class="site-nav__link-toggle" js-open="dropdown" data-open=".site-nav__dropdown--{{forloop.index}}">open</span>
                 </a>
