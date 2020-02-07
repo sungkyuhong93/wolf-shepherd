@@ -64,9 +64,9 @@
     }
 
     [data-product-price] {
-      order: -1;
-      position: relative;
-      top: -27px;
+     // order: -1;
+     // position: relative;
+     // top: -27px;
     }
   }
 
@@ -75,8 +75,12 @@
 
     &__price {
       [data-product-price] {
-        position: static;
+       // position: static;
       }
+     [data-compare-price] {
+        margin-right: auto;
+        margin-left: 10px;
+       }
     }
   }
 }
