@@ -2,7 +2,11 @@
   #Product--details
 ============================================================================== */
 .compare_at_price {
-  font-size: $FONT_SIZE_XSMALL;
+  //font-size: $FONT_SIZE_XSMALL;
+    color: $BUTTON_DISABLE_COLOR;
+    text-decoration: line-through;
+    margin-left: auto;
+    margin-right: 10px;
 }
 
 .selector-wrapper {

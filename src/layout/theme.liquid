@@ -48,8 +48,6 @@
     {{ content_for_header }}
     {% endif %}
   {{ content_for_header | replace: "<body onload='document._boomrl();'>", "<bodx onload='document._boomrl();'>" }}
-
-
 </head>
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
