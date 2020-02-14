@@ -11,6 +11,10 @@
     margin-bottom:0;
 }
 
+#esc-oos-form {
+    display: none;
+}
+
 @include media-query($tablet-up) {
 .sk-bg-parent:hover .sk-bg,
 .sk-bg-parent:focus .sk-bg {
