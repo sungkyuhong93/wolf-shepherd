@@ -223,3 +223,8 @@ register('product', {
     this.$container.off(this.namespace);
   },
 });
+
+$('.sk-notify').click(function(){
+    $("#esc-oos-form").css('display', 'block');
+})
+
