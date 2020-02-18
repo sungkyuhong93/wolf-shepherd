@@ -8,8 +8,8 @@
 
 import $ from 'jquery';
 import Variants from '@shopify/theme-variants';
-import {formatMoney} from '@shopify/theme-currency';
-import {register} from '@shopify/theme-sections';
+import { formatMoney } from '@shopify/theme-currency';
+import { register } from '@shopify/theme-sections';
 
 const selectors = {
   addToCart: '[data-add-to-cart]',
@@ -212,7 +212,7 @@ register('product', {
       $compareEls.addClass(cssClasses.hide);
     }
 
-    $('.affirm-as-low-as').attr('data-amount',variant.price);
+    $('.affirm-as-low-as').attr('data-amount', variant.price);
     affirm.ui.refresh();
   },
 
@@ -224,7 +224,7 @@ register('product', {
   },
 });
 
-$('.sk-notify').click(function(){
-    $("#esc-oos-form").css('display', 'block');
+$('.sk-notify').click(function () {
+  $("#esc-oos-form").css('display', 'block');
 })
 
