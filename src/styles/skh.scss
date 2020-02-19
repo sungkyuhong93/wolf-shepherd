@@ -28,8 +28,7 @@
 
 
 #BISModal .modal-title {
-    font-family: $FONT_DISPLAY;
-    font-weight: 400 !important;
+    color: red !important;
 }
 
 @include media-query($tablet-up) {
