@@ -26,6 +26,12 @@
     padding-right: 0;
 }
 
+
+#BISModal .modal-title {
+    font-family: $FONT_DISPLAY;
+    font-weight: 400 !important;
+}
+
 @include media-query($tablet-up) {
 .sk-bg-parent:hover .sk-bg,
 .sk-bg-parent:focus .sk-bg {
